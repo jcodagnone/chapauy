@@ -1,0 +1,52 @@
+/**
+ * Copyright 2025 The ChapaUY Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+body {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+#dbSelect {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+}
+
+#results {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    min-height: 200px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}

@@ -1,0 +1,8 @@
+# Copyright 2025 The ChapaUY Authors
+# SPDX-License-Identifier: Apache-2.0
+
+onlyBuiltDependencies:
+  - duckdb
+
+patchedDependencies:
+  duckdb@1.4.3: patches/duckdb@1.4.3.patch

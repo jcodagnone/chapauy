@@ -1,0 +1,529 @@
+/*
+ * Copyright 2025 The ChapaUY Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+body {
+    font-family: sans-serif;
+    margin: 2em;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2em 0;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+}
+
+td.count, th.count {
+    text-align: right;
+}
+
+.count-column {
+    text-align: right;
+    width: 20%;
+}
+
+td.vehicle {
+    font-family: monospace;
+}
+
+a {
+    color: #bb86fc;
+}
+
+.pagination {
+    margin-top: 1em;
+}
+
+.container {
+    display: flex;
+}
+
+.facets {
+    width: 20%;
+    padding-right: 2em;
+}
+
+.data {
+    width: 80%;
+}
+
+.facet-group {
+    margin-bottom: 1em;
+}
+
+.facet-group h3 {
+    margin-bottom: 0.5em;
+}
+
+.facet-group ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chart-container {
+    position: relative;
+    width: 50%;
+}
+
+.fullscreen-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.fullscreen-button:hover {
+    background-color: #777;
+}
+
+.chart-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.chart-container.fullscreen canvas {
+    max-height: calc(100vh - 80px);
+}
+
+.top-lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.top-list-container {
+    width: 32%;
+}
+
+button {
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a06cd5;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.table-danger {
+    background-color: #4b0000;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+.summary-box {
+    border: 1px solid #444;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+/* For mobile phones: */
+@media (max-width: 768px) {
+    body {
+        margin: 1em;
+    }
+
+    .container, .charts, .top-lists, .summary {
+        flex-direction: column;
+    }
+
+    .facets, .data, .chart-container, .top-list-container {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .top-list-container {
+        margin-bottom: 1em;
+    }
+
+    /* Make tables responsive */
+    table:not(.top-list-table), thead:not(.top-list-table thead), tbody:not(.top-list-table tbody), th:not(.top-list-table th), td:not(.top-list-table td), tr:not(.top-list-table tr) {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 1em;
+        border: 1px solid #444;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #444;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+@media print {
+    body {
+        background-color: #fff;
+        color: #000;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+
+    table, figure, .top-list-container {
+        page-break-inside: avoid;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    .pagination, nav, .facets, button {
+        display: none;
+    }
+
+    .container, .charts, .top-lists, .summary {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .data {
+        width: 100%;
+    }
+
+    .chart-container {
+        width: 50%;
+    }
+
+    .top-list-container {
+        width: 32%;
+    }
+}
+
+/* Styles from geocode.html, adapted for descriptions.html */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f5f5f5;
+}
+.header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.progress-bar {
+    background: #34495e;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    height: calc(100vh - 120px);
+    gap: 0;
+}
+.sidebar {
+    background: white;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+.description-queue { /* Changed from .location-queue */
+    padding: 1rem;
+}
+.description-item { /* Changed from .location-item */
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.description-item:hover { /* Changed from .location-item:hover */
+    border-color: #3498db;
+    background: #f8f9fa;
+}
+.description-item.active { /* Changed from .location-item.active */
+    border-color: #3498db;
+    background: #e3f2fd;
+}
+.description-name { /* Changed from .location-name */
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+.description-meta { /* Changed from .location-meta */
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+.description-count { /* Changed from .offense-count */
+    color: #e74c3c;
+    font-weight: 600;
+}
+.curation-panel { /* Changed from .map-panel */
+    position: relative;
+    padding: 1rem; /* Added padding for the curation panel */
+}
+.current-description-card { /* Changed from .current-location-card */
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 700px; /* Adjusted max-width */
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Center the card */
+}
+.card-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+.card-field {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.card-label {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.keybinding-tip {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+button {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+.btn-primary:hover {
+    background: #2980b9;
+}
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #7f8c8d;
+}
+
+/* Styles for the add article panel */
+.add-article-panel {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.add-article-panel h3 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.add-article-panel input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.add-article-panel button {
+    padding: 0.75rem;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-article-panel button:hover {
+    background: #229a56;
+}
+
+.article-item.suggested {
+    background-color: #e8f5e9; /* A light green background */
+}
+
+.article-item label {
+    color: black;
+}
+
+/* Dark Mode Overrides */
+.dark-mode body {
+    background-color: #1a1a1a;
+    color: #f8f9fa;
+}
+
+.dark-mode .header {
+    background-color: #2c3e50;
+    border-bottom: 1px solid #495057;
+    color: #f8f9fa;
+}
+
+.dark-mode .container {
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.dark-mode .sidebar {
+    background-color: #2c3e50;
+    border: 1px solid #495057;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.dark-mode .description-item {
+    border: 1px solid #495057;
+}
+
+.dark-mode .description-item.active {
+    border-color: #007bff;
+    background-color: #3a3a3a;
+}
+
+.dark-mode #description-search {
+    background-color: #3a3a3a;
+    color: #f8f9fa;
+    border: 1px solid #495057;
+}
+
+.dark-mode .curation-panel .current-description-card,
+.dark-mode .curation-panel .add-article-panel {
+    background-color: #2c3e50;
+    border: 1px solid #495057;
+}
+
+.dark-mode input[type="text"] {
+    background-color: #3a3a3a;
+    color: #f8f9fa;
+    border: 1px solid #495057;
+}
+
+.dark-mode .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.dark-mode .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.dark-mode .btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.dark-mode .description-name {
+    color: #f8f9fa;
+}
+
+.dark-mode .article-item label {
+    color: #f8f9fa;
+}
+
+.dark-mode .description-count {
+    color: #f8f9fa;
+}
+
+.dark-mode .card-title {
+    color: #f8f9fa;
+}

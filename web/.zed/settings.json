@@ -1,0 +1,54 @@
+{
+  "format_on_save": "on",
+  "formatter": "prettier",
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "arrowParens": "always"
+  },
+  "tab_size": 2,
+  "hard_tabs": false,
+  "preferred_line_length": 80,
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "languages": {
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        "validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ]
+      }
+    }
+  }
+}

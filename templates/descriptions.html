@@ -1,0 +1,486 @@
+<!--
+Copyright 2025 The ChapaUY Authors
+SPDX-License-Identifier: Apache-2.0
+-->
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description Curation</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <h1>📝 ChapaUY - Description Curation</h1>
+                <a href="/review">Go to Review</a>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="progress-bar">
+            <span id="progress-text">Loading...</span>
+        </div>
+        <div class="progress-bar" style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <span id="progress-detail"></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="description-queue">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 style="color: #2c3e50; margin: 0;">
+                        <span id="queue-title">📍 Description Queue</span>
+                    </h3>
+                </div>
+                <input type="text" id="description-search" placeholder="Search descriptions..." style="width: 100%; margin-bottom: 1rem; padding: 0.5rem; border: 1px solid #bdc3c7; border-radius: 4px;">
+                <div id="queue-container" class="loading">
+                    Loading descriptions...
+                </div>
+            </div>
+        </div>
+
+        <div class="curation-panel">
+            <div class="current-description-card" id="description-card" style="display: none;">
+                <div style="flex-grow: 1;">
+                    <div class="card-title" id="card-description">Select a description</div>
+                    <div class="card-field">
+                        <div class="card-label">Count</div>
+                        <div id="card-count" class="description-count">-</div>
+                    </div>
+                    <hr>
+                    <h2>Articles</h2>
+                    <input type="text" id="article-search" placeholder="Search articles..." autofocus>
+                    <div id="articles-list"></div>
+                </div>
+                <div class="button-group">
+                    <button class="btn-primary" id="btn-accept">✓ Accept</button>
+                    <button class="btn-secondary" id="btn-skip">→ Skip</button>
+                </div>
+                <div class="keybinding-tip">
+                    Tip: ESC to Skip, Ctrl+Enter to Accept
+                </div>
+            </div>
+            <div class="add-article-panel">
+                <h3>Add New Article</h3>
+                <input type="text" id="new-article-id" placeholder="Article ID">
+                <input type="text" id="new-article-description" placeholder="Article Description">
+                <button id="btn-add-article">Add Article</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let descriptions = [];
+        let articles = [];
+        let currentDescription = null;
+        let currentIndex = 0;
+        let currentlySelectedArticleIDs = new Set();
+        let allArticlesCache = new Map();
+        let renderedDescriptions = [];
+
+        const spanishStopwords = new Set([
+            "un", "una", "unas", "unos", "uno", "sobre", "todo", "también", "tras", "otro", "algún", "alguno", "algunas", "algunos", "ser", "es", "soy", "eres", "somos", "sois", "estoy", "esta", "estamos", "estais", "estan", "como", "en", "para", "atras", "porque", "por qué", "estado", "estaba", "ante", "antes", "siendo", "ambos", "pero", "por", "poder", "puede", "puedo", "podemos", "podeis", "pueden", "fui", "fue", "fuimos", "fueron", "hacer", "hago", "hace", "hacemos", "haceis", "hacen", "cada", "fin", "incluso", "primero", "desde", "conseguir", "consigo", "consigue", "consigues", "conseguimos", "consiguen", "ir", "voy", "va", "vamos", "vais", "van", "durante", "entre", "estar", "gran", "mediante", "poco", "donde", "donde", "asi", "además", "aparte", "apenas", "aproximadamente", "aqui", "alla", "alli", "alrededor", "aun", "aunque", "ayer", "bastante", "bien", "casi", "cerca", "cierto", "claro", "como", "con", "conmigo", "contigo", "contra", "cual", "cuando", "cuanto", "de", "del", "dentro", "desde", "donde", "durante", "e", "el", "ella", "ellas", "ellos", "en", "encima", "entonces", "entre", "era", "eramos", "eran", "eras", "eres", "es", "esa", "esas", "ese", "eso", "esos", "esta", "estaba", "estado", "estais", "estamos", "estan", "estar", "este", "esto", "estos", "ex", "excepto", "fuera", "gran", "hasta", "hay", "haya", "he", "hemos", "hice", "hizo", "la", "las", "le", "les", "lo", "los", "mas", "me", "menos", "mi", "mia", "mias", "mio", "mios", "mis", "mismo", "mucho", "muy", "nada", "ni", "ningun", "ninguna", "ningunas", "ninguno", "ningunos", "no", "nos", "nosotras", "nosotros", "nuestra", "nuestras", "nuestro", "nuestros", "nunca", "o", "para", "parece", "pero", "poca", "pocas", "poco", "pocos", "por", "por que", "porque", "primero", "puede", "pueden", "quiero", "quien", "quienes", "quizas", "sabe", "sabeis", "sabemos", "saben", "se", "según", "ser", "si", "siempre", "siendo", "sin", "sino", "so", "sobre", "solamente", "solo", "somos", "soy", "su", "sus", "suya", "suyas", "suyo", "suyos", "tal", "también", "tampoco", "tan", "tanto", "te", "teneis", "tenemos", "tener", "tengo", "ti", "tiene", "todo", "todos", "trabaja", "trabajais", "trabajamos", "trabajan", "trabajar", "trabajas", "tu", "tus", "un", "una", "uno", "unos", "usted", "ustedes", "va", "vais", "valor", "vamos", "van", "varias", "varios", "verdad", "verdadera", "verdadero", "vosotras", "vosotros", "y", "ya", "yo", "za"
+        ]);
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const descriptionsQueueContainer = document.getElementById('queue-container');
+            const descriptionCard = document.getElementById('description-card');
+            const cardDescription = document.getElementById('card-description');
+            const cardCount = document.getElementById('card-count');
+            const articleSearch = document.getElementById('article-search');
+            const articlesList = document.getElementById('articles-list');
+            const btnAccept = document.getElementById('btn-accept');
+            const btnSkip = document.getElementById('btn-skip');
+            const newArticleIdInput = document.getElementById('new-article-id');
+            const newArticleDescriptionInput = document.getElementById('new-article-description');
+            const btnAddArticle = document.getElementById('btn-add-article');
+            const descriptionSearch = document.getElementById('description-search');
+
+            // --- Helper Functions ---
+            function updateProgress() {
+                let url = '/api/descriptions/progress';
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('progress-text').textContent =
+                            `Descriptions: ${data.classified_descriptions.toLocaleString()} / ${data.total_descriptions.toLocaleString()} (${data.descriptions_percentage.toFixed(1)}%) • ` +
+                            `Offenses: ${data.classified_offenses.toLocaleString()} / ${data.total_offenses.toLocaleString()} (${data.offenses_percentage.toFixed(1)}%)`;
+                        document.getElementById('progress-detail').textContent = ''; // No detailed breakdown for now
+                    })
+                    .catch(err => {
+                        console.error('Error loading progress:', err);
+                        document.getElementById('progress-text').textContent = 'Progress: Loading...';
+                    });
+            }
+
+            async function fetchUnclassifiedDescriptions() {
+                try {
+                    let url = '/api/descriptions/unclassified';
+                    const response = await fetch(url);
+                    descriptions = await response.json();
+                    renderDescriptionQueue();
+                    loadNextDescription();
+                    updateProgress();
+                } catch (error) {
+                    console.error('Error fetching unclassified descriptions:', error);
+                    descriptionsQueueContainer.innerHTML = '<div class="loading">Error loading descriptions</div>';
+                }
+            }
+
+            function renderDescriptionQueue(filter = '') {
+                descriptionsQueueContainer.innerHTML = '';
+                let descriptionsToRender = descriptions;
+
+                if (filter) {
+                    const filterTokens = filter.toLowerCase().replace(/[:]/g, '').split(/\s+/).filter(word => !spanishStopwords.has(word));
+                    if (filterTokens.length > 0) {
+                        descriptionsToRender = descriptions.map(desc => {
+                            const descTokens = desc.description.toLowerCase().replace(/[:]/g, '').split(/\s+/).filter(word => !spanishStopwords.has(word));
+                            let score = 0;
+                            for (const filterToken of filterTokens) {
+                                if (descTokens.some(descToken => descToken.includes(filterToken))) {
+                                    score++;
+                                }
+                            }
+                            return { ...desc, score };
+                        })
+                        .filter(desc => desc.score > 0)
+                        .sort((a, b) => b.score - a.score || b.count - a.count);
+                    }
+                }
+                
+                renderedDescriptions = descriptionsToRender;
+
+                if (renderedDescriptions.length === 0) {
+                    descriptionsQueueContainer.innerHTML = '<div class="loading">No matching descriptions found.</div>';
+                    return;
+                }
+
+                renderedDescriptions.forEach(desc => {
+                    const div = document.createElement('div');
+                    div.classList.add('description-item');
+                    if (currentDescription === desc.description) {
+                        div.classList.add('active');
+                    }
+                    div.onclick = () => {
+                        const originalIndex = descriptions.findIndex(d => d.description === desc.description);
+                        selectDescription(originalIndex);
+                    };
+                    div.innerHTML = `
+                        <div class="description-name">${desc.description}</div>
+                        <div class="description-meta">
+                            <span class="description-count">${desc.count.toLocaleString()} occurrences</span>
+                        </div>
+                    `;
+                    descriptionsQueueContainer.appendChild(div);
+                });
+            }
+
+            function selectDescription(index) {
+                currentIndex = index;
+                currentlySelectedArticleIDs.clear(); // Clear selections for the new description
+                
+                // Clear suggestions from previous item
+                articlesList.querySelectorAll('.suggested').forEach(el => el.classList.remove('suggested'));
+
+
+                const desc = descriptions[index];
+
+                document.querySelectorAll('.description-item').forEach((el, idx) => {
+                    // This is tricky because of filtering. We need to match by description text.
+                    const itemDesc = renderedDescriptions[idx];
+                    if (itemDesc) {
+                         el.classList.toggle('active', itemDesc.description === desc.description);
+                    }
+                });
+
+                descriptionCard.style.display = 'block';
+                cardDescription.textContent = desc.description;
+                cardCount.textContent = desc.count.toLocaleString();
+
+                articlesList.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                currentDescription = desc.description;
+
+                articleSearch.value = desc.description;
+                fetchArticles(desc.description)
+                    .then(() => fetchAndApplySuggestions(desc.description));
+            }
+
+            async function fetchAndApplySuggestions(description) {
+                try {
+                    const response = await fetch(`/api/descriptions/suggest?description=${encodeURIComponent(description)}`);
+                    if (!response.ok) {
+                        console.error('Suggestion request failed with status:', response.status);
+                        return;
+                    }
+                    const suggestions = await response.json();
+
+                    if (suggestions && suggestions.length > 0) {
+                        let firstSuggestedElement = null;
+
+                        suggestions.forEach(suggestion => {
+                            const checkbox = document.getElementById(`art-${suggestion.ArticleID}`);
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                currentlySelectedArticleIDs.add(suggestion.ArticleID);
+                                checkbox.parentElement.classList.add('suggested');
+
+                                if (!firstSuggestedElement) {
+                                    firstSuggestedElement = checkbox.parentElement;
+                                }
+                            }
+                        });
+
+                        if (firstSuggestedElement) {
+                            firstSuggestedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error fetching suggestions:', error);
+                }
+            }
+
+            function loadNextDescription() {
+                if (renderedDescriptions.length > 0) {
+                    const firstVisibleDesc = renderedDescriptions[0];
+                    const masterIndex = descriptions.findIndex(d => d.description === firstVisibleDesc.description);
+                    if (masterIndex !== -1) {
+                        selectDescription(masterIndex);
+                    }
+                } else {
+                    currentDescription = null;
+                    descriptionCard.style.display = 'none';
+                    if (descriptions.length === 0) {
+                        descriptionsQueueContainer.innerHTML = '<div class="loading">No descriptions to curate 🎉</div>';
+                    }
+                }
+            }
+
+            async function fetchArticles(query = '') {
+                try {
+                    let url = '/api/descriptions/articles';
+                    if (query) {
+                        const cleanedQuery = query.toLowerCase().replace(/[:]/g, '').split(/\s+/).filter(word => !spanishStopwords.has(word)).join(' ');
+                        if (cleanedQuery) {
+                            url = `/api/descriptions/articles/search?query=${encodeURIComponent(cleanedQuery)}`;
+                        }
+                    }
+
+                    const response = await fetch(url);
+                    const searchResultArticles = await response.json();
+
+                    // On initial load (or if cache is empty), populate the cache
+                    if (allArticlesCache.size === 0) {
+                        searchResultArticles.forEach(article => allArticlesCache.set(article.id, article));
+                    }
+
+                    // Create a map of search results for quick lookup
+                    const searchResultMap = new Map(searchResultArticles.map(art => [art.id, art]));
+
+                    // Add selected articles that are not in the search results
+                    const articlesToRender = [...searchResultArticles];
+                    currentlySelectedArticleIDs.forEach(selectedId => {
+                        if (!searchResultMap.has(selectedId)) {
+                            const missingArticle = allArticlesCache.get(selectedId);
+                            if (missingArticle) {
+                                articlesToRender.push(missingArticle);
+                            }
+                        }
+                    });
+
+                    // Sort the final list for consistent display, e.g., by ID
+                    articlesToRender.sort((a, b) => a.id.localeCompare(b.id));
+
+                    articles = articlesToRender; // Update global articles for rendering
+                    renderArticlesList();
+                } catch (error) {
+                    console.error('Error fetching articles:', error);
+                }
+            }
+
+            function renderArticlesList() {
+                articlesList.innerHTML = '';
+                articles.forEach(article => {
+                    const div = document.createElement('div');
+                    div.classList.add('article-item');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `art-${article.id}`;
+                    checkbox.value = article.id;
+                    checkbox.checked = currentlySelectedArticleIDs.has(article.id); // Set checked state
+
+                    // Add event listener to update currentlySelectedArticleIDs
+                    checkbox.addEventListener('change', (event) => {
+                        if (event.target.checked) {
+                            currentlySelectedArticleIDs.add(article.id);
+                        } else {
+                            currentlySelectedArticleIDs.delete(article.id);
+                        }
+                    });
+
+                    const label = document.createElement('label');
+                    label.htmlFor = `art-${article.id}`;
+                    label.textContent = `${article.id}: ${article.text} (${article.title})`;
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+                    articlesList.appendChild(div);
+                });
+            }
+
+            async function classifyDescription(description, article_ids) {
+                btnAccept.disabled = true;
+                btnAccept.textContent = '⏳ Saving...';
+                try {
+                    const response = await fetch('/api/descriptions/classify', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ description, article_ids })
+                    });
+
+                    // --- Smarter next item selection ---
+                    const currentRenderedIndex = renderedDescriptions.findIndex(d => d.description === description);
+                    let nextDescriptionToSelect = null;
+                    if (currentRenderedIndex !== -1 && currentRenderedIndex < renderedDescriptions.length - 1) {
+                        nextDescriptionToSelect = renderedDescriptions[currentRenderedIndex + 1];
+                    } else if (renderedDescriptions.length > 1) {
+                        nextDescriptionToSelect = renderedDescriptions[currentRenderedIndex - 1];
+                    }
+
+                    descriptions.splice(currentIndex, 1);
+                    currentlySelectedArticleIDs.clear();
+                    renderDescriptionQueue(descriptionSearch.value);
+
+                    if (nextDescriptionToSelect) {
+                        const newMasterIndex = descriptions.findIndex(d => d.description === nextDescriptionToSelect.description);
+                        if (newMasterIndex !== -1) {
+                            selectDescription(newMasterIndex);
+                        } else {
+                            loadNextDescription(); // Fallback
+                        }
+                    } else {
+                        loadNextDescription();
+                    }
+                    updateProgress();
+
+                } catch (error) {
+                    console.error('Error classifying description:', error);
+                    alert('Error classifying description. Please try again.');
+                } finally {
+                    btnAccept.disabled = false;
+                    btnAccept.textContent = '✓ Accept';
+                }
+            }
+
+            async function addArticle(id, descriptionText) {
+                btnAddArticle.disabled = true;
+                btnAddArticle.textContent = '⏳ Adding...';
+                try {
+                    const response = await fetch('/api/descriptions/articles/add', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id, description: descriptionText })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to add article');
+                    }
+
+                    newArticleIdInput.value = '';
+                    newArticleDescriptionInput.value = '';
+                    fetchArticles();
+                    alert('Article added successfully!');
+
+                } catch (error) {
+                    console.error('Error adding article:', error);
+                    alert('Error adding article. Please try again.');
+                } finally {
+                    btnAddArticle.disabled = false;
+                    btnAddArticle.textContent = 'Add Article';
+                }
+            }
+
+            // --- Event Listeners ---
+            btnAccept.addEventListener('click', () => {
+                if (!currentDescription) return;
+                const selectedArticleIDs = Array.from(articlesList.querySelectorAll('input:checked')).map(cb => cb.value);
+                if (selectedArticleIDs.length > 0) {
+                    classifyDescription(currentDescription, selectedArticleIDs);
+                } else {
+                    alert('Please select at least one article.');
+                }
+            });
+
+            btnSkip.addEventListener('click', () => {
+                if (descriptions.length > 0) {
+                    const currentRenderedIndex = renderedDescriptions.findIndex(d => d.description === currentDescription);
+                    let nextDescriptionToSelect = null;
+                    if (currentRenderedIndex !== -1 && currentRenderedIndex < renderedDescriptions.length - 1) {
+                        nextDescriptionToSelect = renderedDescriptions[currentRenderedIndex + 1];
+                    } else if (renderedDescriptions.length > 1) {
+                        nextDescriptionToSelect = renderedDescriptions[currentRenderedIndex - 1];
+                    }
+
+                    descriptions.splice(currentIndex, 1);
+                    renderDescriptionQueue(descriptionSearch.value);
+
+                    if (nextDescriptionToSelect) {
+                        const newMasterIndex = descriptions.findIndex(d => d.description === nextDescriptionToSelect.description);
+                        if (newMasterIndex !== -1) {
+                            selectDescription(newMasterIndex);
+                        } else {
+                            loadNextDescription(); // Fallback
+                        }
+                    } else {
+                        loadNextDescription();
+                    }
+                    updateProgress();
+                }
+            });
+
+            articleSearch.addEventListener('input', () => {
+                fetchArticles(articleSearch.value);
+            });
+
+            descriptionSearch.addEventListener('input', () => {
+                renderDescriptionQueue(descriptionSearch.value);
+            });
+
+            btnAddArticle.addEventListener('click', () => {
+                const id = newArticleIdInput.value.trim();
+                const descriptionText = newArticleDescriptionInput.value.trim();
+                if (id && descriptionText) {
+                    addArticle(id, descriptionText);
+                } else {
+                    alert('Please enter both Article ID and Description.');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    if (btnSkip && !btnSkip.disabled) {
+                        btnSkip.click();
+                    }
+                }
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    if (btnAccept && !btnAccept.disabled) {
+                        btnAccept.click();
+                    }
+                }
+            });
+
+            // --- Initialization ---
+            fetchUnclassifiedDescriptions();
+            fetchArticles();
+        });
+    </script>
+</body>
+</html>

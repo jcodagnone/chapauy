@@ -1,0 +1,8 @@
+{
+  "name": "chapauy",
+  "engineVersion": "v0.19.8",
+  "sdk": {
+    "source": "go"
+  },
+  "source": ".dagger"
+}

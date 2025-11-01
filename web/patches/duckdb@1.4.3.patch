@@ -1,0 +1,19 @@
+diff --git a/package.json b/package.json
+index 3a4c98d576e7e304561cdfdad20265579068bc1d..03d2e3f9b988f12b73b77d35381441a53466b963 100644
+--- a/package.json
++++ b/package.json
+@@ -12,8 +12,12 @@
+   },
+   "binary": {
+     "module_name": "duckdb",
+-    "module_path": "./lib/binding/",
+-    "host": "https://npm.duckdb.org/duckdb"
++    "module_path": "./lib/binding/{napi_build_version}/../",
++    "host": "https://npm.duckdb.org/duckdb",
++    "napi_versions": [
++      3
++    ],
++    "remote_path": "./{napi_build_version}/../"
+   },
+   "scripts": {
+     "install": "node-pre-gyp install --fallback-to-build",

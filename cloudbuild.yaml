@@ -1,0 +1,32 @@
+# Copyright 2025 The ChapaUY Authors
+# SPDX-License-Identifier: Apache-2.0
+
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'gcloud auth print-access-token > token'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        curl -L https://dl.dagger.io/dagger/install.sh | sh
+        export GCP_ACCESS_TOKEN=$(cat token)
+
+        # 1. Build CLI and Web
+        echo "Building Web+Data..."
+        ./bin/dagger call build-and-publish --token=env:GCP_ACCESS_TOKEN -vvv
+
+        # 2. Build Web+Data
+        echo "Building Web+Data..."
+        ./bin/dagger call build-web-data --token=env:GCP_ACCESS_TOKEN
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'REGION=${_REGION}'
+      - 'SHORT_SHA=$SHORT_SHA'
+      - 'DAGGER_NO_NAG=1'
+options:
+    logging: CLOUD_LOGGING_ONLY

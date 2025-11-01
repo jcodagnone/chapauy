@@ -1,0 +1,2139 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "radares_rutas.119",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.224719,
+          -34.780539
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 9,
+        "progresiva": "107k218",
+        "gestion": "IIDD",
+        "descrip": "Pan de Azúcar "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.123",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.303739,
+          -34.839836
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 10,
+        "progresiva": "93k869",
+        "gestion": "IIDD",
+        "descrip": "Playa Hermosa "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.125",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.240903,
+          -34.867467
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 93,
+        "progresiva": "2k639",
+        "gestion": "IIDD",
+        "descrip": "Av. Uruguay"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.135",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.89171227,
+          -31.6587408
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "453k110",
+        "gestion": "MTOP",
+        "descrip": "Chapicuy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.137",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.04637908,
+          -32.32337319
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 90,
+        "progresiva": "5k440",
+        "gestion": "MTOP",
+        "descrip": "Paysandú"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.139",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.00402873,
+          -32.20729438
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "383k490",
+        "gestion": "MTOP",
+        "descrip": "Constancia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.140",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.9412034,
+          -31.69659729
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "393K020",
+        "gestion": "MTOP",
+        "descrip": "Tacuerembó / Ruta 26 N a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.141",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.28259996,
+          -34.42530101
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 81,
+        "progresiva": "10k390",
+        "gestion": "MTOP",
+        "descrip": "Paso a Pache E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.25269787,
+          -34.864133
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "5K845",
+        "gestion": "MTOP",
+        "descrip": "Santin Carlos Rossi"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.2462024,
+          -34.866987
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "5K100",
+        "gestion": "MTOP",
+        "descrip": "Pantanoso E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.3",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.21911356,
+          -34.870273
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "2K210/2K220",
+        "gestion": "MTOP",
+        "descrip": "Capurro"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.23325887,
+          -34.871988
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "3K650/3K750",
+        "gestion": "MTOP",
+        "descrip": "Refineria"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.250175,
+          -34.86451
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "5K600",
+        "gestion": "MTOP",
+        "descrip": "Pantanoso S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.6",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.20486778,
+          -34.902506
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 0,
+        "progresiva": "1K530/1K570",
+        "gestion": "MTOP",
+        "descrip": "Juan Carlos Gomez"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.7052,
+          -34.5905
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "61K336/61K178",
+        "gestion": "MTOP",
+        "descrip": "Punta de Valdez"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.8",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.2603,
+          -34.3362
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "120K987",
+        "gestion": "MTOP",
+        "descrip": "Colonia Valdense"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.9",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.8156,
+          -34.4556
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "174k210",
+        "gestion": "MTOP",
+        "descrip": "Colonia del Sacramento"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.10",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.6209,
+          -34.6448
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "51K571/51K278",
+        "gestion": "MTOP",
+        "descrip": "Paso Mauricio"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.11",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4445,
+          -34.7415
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "29k000",
+        "gestion": "MTOP",
+        "descrip": "Penino a +"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.12",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4243,
+          -34.7547
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "29K360",
+        "gestion": "MTOP",
+        "descrip": "Penino a -"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.13",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.051803,
+          -34.366281
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 1,
+        "progresiva": "101K738",
+        "gestion": "MTOP",
+        "descrip": "Ecilda Paullier S-E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.14",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.3724,
+          -33.8773
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 2,
+        "progresiva": "181K957",
+        "gestion": "MTOP",
+        "descrip": "Florencio Sanchez"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.21",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.9124,
+          -33.5128
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "191K370",
+        "gestion": "MTOP",
+        "descrip": "Trinidad Acceso N-O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.22",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.8887,
+          -33.5363
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "187K090",
+        "gestion": "MTOP",
+        "descrip": "Trinidad Acceso Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.26",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.88638027,
+          -31.839938
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "432K005",
+        "gestion": "MTOP",
+        "descrip": "Termas Guaviyu"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.27",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.90482009,
+          -31.456802
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "476K980",
+        "gestion": "MTOP",
+        "descrip": "Termas Dayman Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.28",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.9142569,
+          -31.449712
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "478K265",
+        "gestion": "MTOP",
+        "descrip": "Termas Dayman Norte"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.29",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.94101192,
+          -31.416148
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "482K920",
+        "gestion": "MTOP",
+        "descrip": "Salto Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.35",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.5091,
+          -33.3661
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "186K392",
+        "gestion": "MTOP",
+        "descrip": "Santa Bernardina"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.36",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4987,
+          -32.8251
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "248K000",
+        "gestion": "MTOP",
+        "descrip": "Pueblo Centenario"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.37",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.9755,
+          -31.8105
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "377K354",
+        "gestion": "MTOP",
+        "descrip": "Paso Bonilla"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.41",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.153,
+          -32.3603
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "1K136",
+        "gestion": "MTOP",
+        "descrip": "Melo / Ruta 7 NE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.42",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.876389,
+          -34.549511
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "52K528",
+        "gestion": "MTOP",
+        "descrip": "San Jacinto S-O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.43",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.76751189,
+          -34.350115
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "77K785",
+        "gestion": "MTOP",
+        "descrip": "Tala S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.44",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.75407306,
+          -34.341116
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "79K500",
+        "gestion": "MTOP",
+        "descrip": "Tala NE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.45",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.74363995,
+          -34.20591
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "94K610",
+        "gestion": "MTOP",
+        "descrip": "Fray Marcos S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.46",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.72890992,
+          -34.192485
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "97K620/98K078",
+        "gestion": "MTOP",
+        "descrip": "Fray Marcos NE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.49",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.55164115,
+          -33.867728
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "142K010",
+        "gestion": "MTOP",
+        "descrip": "Alejandro Gallinal SO"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.50",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.53642403,
+          -33.860069
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "143K910",
+        "gestion": "MTOP",
+        "descrip": "Alejandro Gallinal NE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.53",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.13255351,
+          -33.11258
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "249K960",
+        "gestion": "MTOP",
+        "descrip": "Ruta 7 Cerro Chato Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.54",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.95534981,
+          -32.924143
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "279K880",
+        "gestion": "MTOP",
+        "descrip": "Santa Clara del Olimar Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.55",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.93122965,
+          -32.917781
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "282K530",
+        "gestion": "MTOP",
+        "descrip": "Santa Clara del Olimar Norte"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.56",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.76677576,
+          -32.841244
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "303K455",
+        "gestion": "MTOP",
+        "descrip": "Tupambae Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.57",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.75462716,
+          -32.836536
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "304K835",
+        "gestion": "MTOP",
+        "descrip": "Tupambae Norte"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.58",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.59184844,
+          -32.622947
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "337K215",
+        "gestion": "MTOP",
+        "descrip": "Cerro de las Cuentas"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.59",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.54096388,
+          -32.518086
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "350K615",
+        "gestion": "MTOP",
+        "descrip": "Fraile Muerto S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.60",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.51481806,
+          -32.506473
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "354K415",
+        "gestion": "MTOP",
+        "descrip": "Fraile Muerto N"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.61",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0999,
+          -34.8207
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "13K457/13K385",
+        "gestion": "MTOP",
+        "descrip": "Punta de Rieles-Barros Blancos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.62",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.1005,
+          -34.8222
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "23K479",
+        "gestion": "MTOP",
+        "descrip": "Punta de Rieles-Barros Blancos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.63",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.022,
+          -34.7666
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "24K410",
+        "gestion": "MTOP",
+        "descrip": "Punta de Rieles-Barros Blancos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.64",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.014,
+          -34.7612
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "25K025",
+        "gestion": "MTOP",
+        "descrip": "Punta de Rieles-Barros Blancos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.65",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.1386,
+          -32.3904
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "391K991",
+        "gestion": "MTOP",
+        "descrip": "Melo / Ruta 8 S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.66",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.1683,
+          -32.3442
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "401K886",
+        "gestion": "MTOP",
+        "descrip": "Melo / Ruta 8 N"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.67",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.3831,
+          -33.2024
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "288K645",
+        "gestion": "MTOP",
+        "descrip": "Treinta y Tres / Ruta 8 N"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.69",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.8538,
+          -34.2051
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 9,
+        "progresiva": "264K038",
+        "gestion": "MTOP",
+        "descrip": "Castillos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.70",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.4476,
+          -33.6941
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 9,
+        "progresiva": "338K106",
+        "gestion": "MTOP",
+        "descrip": "Chuy"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.71",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.30481432,
+          -34.475781
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 9,
+        "progresiva": "209K409",
+        "gestion": "MTOP",
+        "descrip": "Rocha E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.87",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.0923,
+          -33.9655
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 23,
+        "progresiva": "149K485",
+        "gestion": "MTOP",
+        "descrip": "Ismael Cortinas"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.88",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.2122,
+          -32.3653
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 26,
+        "progresiva": "430K679",
+        "gestion": "MTOP",
+        "descrip": "Melo / Ruta 26 O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.72",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.03899063,
+          -34.354737
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "14K621",
+        "gestion": "MTOP",
+        "descrip": "Ecilda Paullier N-E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.73",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.801061,
+          -34.324803
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "39K646",
+        "gestion": "MTOP",
+        "descrip": "Juan Soler"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.74",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.808275,
+          -34.321397
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "38K923",
+        "gestion": "MTOP",
+        "descrip": "Juan Soler"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.75",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.86885,
+          -34.550381
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "139K390",
+        "gestion": "MTOP",
+        "descrip": "San Jacinto S-E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.76",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.878122,
+          -34.545617
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "138K372",
+        "gestion": "MTOP",
+        "descrip": "San Jacinto O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.78",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.301072,
+          -34.520708
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "96K586",
+        "gestion": "MTOP",
+        "descrip": "Canelones N-O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.79",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.77293509,
+          -34.343312
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 12,
+        "progresiva": "78K836",
+        "gestion": "MTOP",
+        "descrip": "Tala O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.80",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.8833,
+          -33.5147
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 14,
+        "progresiva": "138K644",
+        "gestion": "MTOP",
+        "descrip": "Trinidad Acceso E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.81",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.31464892,
+          -34.492374
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 15,
+        "progresiva": "27K482",
+        "gestion": "MTOP",
+        "descrip": "Rocha S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.82",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.3696,
+          -33.215
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 17,
+        "progresiva": "289K350",
+        "gestion": "MTOP",
+        "descrip": "Treinta y Tres"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.83",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.55135212,
+          -33.684483
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 19,
+        "progresiva": "9K970",
+        "gestion": "MTOP",
+        "descrip": "18 de Julio"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.84",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.19957759,
+          -33.517139
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 21,
+        "progresiva": "322K880",
+        "gestion": "MTOP",
+        "descrip": "Puente s/Rio San Salvador"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.85",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.8375289,
+          -34.445898
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 21,
+        "progresiva": "178K500",
+        "gestion": "MTOP",
+        "descrip": "Colonia N"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.86",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.28919495,
+          -33.980834
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 21,
+        "progresiva": "255K710",
+        "gestion": "MTOP",
+        "descrip": "Carmelo O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.89",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.1441,
+          -32.38
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 26,
+        "progresiva": "1K976",
+        "gestion": "MTOP",
+        "descrip": "Melo / Ruta 26 E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.90",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4897,
+          -30.4187
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 30,
+        "progresiva": "128K280",
+        "gestion": "MTOP",
+        "descrip": "Artigas (Acceso Ruta 4)"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.91",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4531,
+          -30.4341
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 30,
+        "progresiva": "132K715",
+        "gestion": "MTOP",
+        "descrip": "Artigas (Pintado Grande)"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.92",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4663,
+          -30.4224
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 30,
+        "progresiva": "130K890",
+        "gestion": "MTOP",
+        "descrip": "Artigas (Bypass O-E)"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.93",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.89992289,
+          -34.032187
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 55,
+        "progresiva": "13K340",
+        "gestion": "MTOP",
+        "descrip": "Campana"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.94",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.205205,
+          -34.707379
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 67,
+        "progresiva": "24K850",
+        "gestion": "MTOP",
+        "descrip": "Las Piedras N-E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.95",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.074948,
+          -34.653248
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 67,
+        "progresiva": "39K395",
+        "gestion": "MTOP",
+        "descrip": "Sauce S-O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.96",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.019186,
+          -34.754179
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 74,
+        "progresiva": "25K135",
+        "gestion": "MTOP",
+        "descrip": "Barros Blancos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.97",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.051481,
+          -34.715624
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 74,
+        "progresiva": "30K510",
+        "gestion": "MTOP",
+        "descrip": "Ruta 6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.98",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.968091,
+          -34.686634
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 75,
+        "progresiva": "35K175",
+        "gestion": "MTOP",
+        "descrip": "Villa Jardines de Pando"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.100",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.2877075,
+          -34.427996
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 81,
+        "progresiva": "9K815",
+        "gestion": "MTOP",
+        "descrip": "Paso a Pache O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.101",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0016,
+          -34.7898
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 101,
+        "progresiva": "25K541",
+        "gestion": "MTOP",
+        "descrip": "Barrio Aeroparque"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.102",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0031,
+          -34.7961
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 101,
+        "progresiva": "24K825",
+        "gestion": "MTOP",
+        "descrip": "Barrio Aeroparque"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.103",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.015,
+          -34.8184
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "22K900",
+        "gestion": "MTOP",
+        "descrip": "Leopolis"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.104",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0292,
+          -34.8161
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "24K220",
+        "gestion": "MTOP",
+        "descrip": "Parque Martinelli"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.105",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0374,
+          -34.8124
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "24K950/25K085",
+        "gestion": "MTOP",
+        "descrip": "Los Paraisos"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.107",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.09787652,
+          -34.792479
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "31K618/31K516",
+        "gestion": "MTOP",
+        "descrip": "Camino Cruz del Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.108",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.15244519,
+          -34.797045
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "36K750/36K636",
+        "gestion": "MTOP",
+        "descrip": "Av de las Instrucciones"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.109",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.24666315,
+          -34.782826
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "45K900",
+        "gestion": "MTOP",
+        "descrip": "Camino Fauquet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.110",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.070215,
+          -34.643568
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 107,
+        "progresiva": "0K394",
+        "gestion": "MTOP",
+        "descrip": "Sauce N-O"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.111",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0005,
+          -34.8263
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "22K079/21K826",
+        "gestion": "MTOP",
+        "descrip": "Almenara"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.112",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.9538,
+          -34.8031
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "27K442/27K093",
+        "gestion": "MTOP",
+        "descrip": "Colinas de Solymar"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.113",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.8738,
+          -34.7806
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "35K369/35K210",
+        "gestion": "MTOP",
+        "descrip": "Neptunia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.115",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.8221,
+          -34.7718
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "40K435/40K091",
+        "gestion": "MTOP",
+        "descrip": "Marindia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.116",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.7129,
+          -34.7512
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "51K051/50K850",
+        "gestion": "MTOP",
+        "descrip": "Parque del Plata"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.117",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.5748,
+          -34.7705
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "64k000",
+        "gestion": "MTOP",
+        "descrip": "San Luis"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.118",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.5882,
+          -34.762
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "63k000",
+        "gestion": "MTOP",
+        "descrip": "San Luis"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.19",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.58785,
+          -30.24854
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "624K037",
+        "gestion": "MTOP",
+        "descrip": "Bella Unión"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.20",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.5901,
+          -30.2631
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "626K411",
+        "gestion": "MTOP",
+        "descrip": "Bella Unión - Barrio las Láminas"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.23",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.7623,
+          -34.5123
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "71K785",
+        "gestion": "MTOP",
+        "descrip": "Villa Marí­a Acceso"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.24",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.7613,
+          -34.518
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "71K150",
+        "gestion": "MTOP",
+        "descrip": "Villa Marí­a Acceso"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.25",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.7311,
+          -34.3339
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 3,
+        "progresiva": "92K275 ap",
+        "gestion": "MTOP",
+        "descrip": "San José-Pque Rodó"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.32",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.209396,
+          -32.360728
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 4,
+        "progresiva": "380K110",
+        "gestion": "MTOP",
+        "descrip": "Guichón"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.33",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.2619,
+          -34.5971
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "37K480",
+        "gestion": "MTOP",
+        "descrip": "Juanicó"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.34",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.2629,
+          -34.5912
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "38K131",
+        "gestion": "MTOP",
+        "descrip": "Juanicó"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.38",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.9825,
+          -31.7414
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "385K972",
+        "gestion": "MTOP",
+        "descrip": "Tacuarembó / Ruta 26 S"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.40",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.9387,
+          -31.6939
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 5,
+        "progresiva": "393K605",
+        "gestion": "MTOP",
+        "descrip": "Tacuarembó / Ruta 26 N b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.47",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.65792811,
+          -34.104175
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "110K240",
+        "gestion": "MTOP",
+        "descrip": "Casupá SO"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.48",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.65219198,
+          -34.098006
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "111K100",
+        "gestion": "MTOP",
+        "descrip": "Casupá NE"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.51",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.1513107,
+          -33.473438
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "204K320",
+        "gestion": "MTOP",
+        "descrip": "José Batlle y Ordoñez Sur"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.52",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.14606147,
+          -33.464343
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 7,
+        "progresiva": "205K485",
+        "gestion": "MTOP",
+        "descrip": "José Batlle y Ordoñez Norte"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.68",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.7538,
+          -33.7429
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 8,
+        "progresiva": "217K132",
+        "gestion": "MTOP",
+        "descrip": "Pirarajá / Ruta 8 N"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.77",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.378031,
+          -34.461197
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 11,
+        "progresiva": "86K573",
+        "gestion": "MTOP",
+        "descrip": "Santa Lucí­a S-E"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.106",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.0627,
+          -34.7972
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 102,
+        "progresiva": "27K840",
+        "gestion": "MTOP",
+        "descrip": "Campeón del Siglo"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "radares_rutas.114",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.8571,
+          -34.7778
+        ]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "ruta": 200,
+        "progresiva": "37K065/36K800",
+        "gestion": "MTOP",
+        "descrip": "Av. Nogueira y Colón"
+      }
+    }
+  ],
+  "totalFeatures": 118,
+  "numberMatched": 118,
+  "numberReturned": 118,
+  "timeStamp": "2025-09-29T17:17:53.069Z",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  }
+}

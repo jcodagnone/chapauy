@@ -1,0 +1,41 @@
+# Copyright 2025 The ChapaUY Authors
+# SPDX-License-Identifier: Apache-2.0
+
+steps:
+  # 1. Extract Access Token for Dagger (Registry Push)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'gcloud auth print-access-token > token'
+
+  # 2. Install Dagger and Run Automation
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Install Dagger
+        curl -L https://dl.dagger.io/dagger/install.sh | sh
+        
+        # Load Token
+        export GCP_ACCESS_TOKEN=$(cat token)
+        
+        # 1. Refresh Data (Builds & Publishes 'data' image)
+        echo "Running Data Refresh..."
+        ./bin/dagger call data-refresh --token=env:GCP_ACCESS_TOKEN
+
+        # 2. Build Web+Data
+        echo "Building Web+Data..."
+        ./bin/dagger call build-web-data --token=env:GCP_ACCESS_TOKEN
+
+        # 3. Deploy Service
+        echo "Deploying Cloud Run Service..."
+        ./bin/dagger call deploy --token=env:GCP_ACCESS_TOKEN
+
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'REGION=southamerica-east1'
+      - 'DAGGER_NO_NAG=1'
+options:
+    logging: CLOUD_LOGGING_ONLY

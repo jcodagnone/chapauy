@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-11-08T00:00:00Z",
+  "judgments": [
+    {
+      "id": 0,
+      "db_id": 6,
+      "location": "AV 8 DE OCTUBRE Y AV CENTENARIO",
+      "latitude": -34.8822366,
+      "longitude": -56.1529602,
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "high",
+      "notes": "Intersección de alta densidad en Montevideo, geocodificada con Google Maps",
+      "created_at": "2025-11-08T00:00:00Z",
+      "updated_at": "2025-11-08T00:00:00Z"
+    },
+    {
+      "id": 0,
+      "db_id": 65,
+      "location": "RUTA 005 Y 038K131_D",
+      "latitude": -34.5912,
+      "longitude": -56.2629,
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Radar de Juanicó, vigilancia electrónica activa",
+      "created_at": "2025-11-08T00:00:00Z",
+      "updated_at": "2025-11-08T00:00:00Z"
+    },
+    {
+      "id": 0,
+      "db_id": 45,
+      "location": "RUTA 010 Y CALLE 019",
+      "latitude": -34.9234,
+      "longitude": -54.9483,
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Intersección en Maldonado, punto medio calculado con Nominatim",
+      "created_at": "2025-11-08T00:00:00Z",
+      "updated_at": "2025-11-08T00:00:00Z"
+    },
+    {
+      "id": 0,
+      "db_id": 40,
+      "location": "RAMBLA REPUBLICA DEL PERU",
+      "latitude": -34.8956,
+      "longitude": -56.1212,
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "high",
+      "notes": "Rambla en Montevideo, geocodificada con Nominatim",
+      "created_at": "2025-11-08T00:00:00Z",
+      "updated_at": "2025-11-08T00:00:00Z"
+    },
+    {
+      "id": 0,
+      "db_id": 6,
+      "location": "BV ARTIGAS Y AV ITALIA",
+      "latitude": -34.8889,
+      "longitude": -56.1234,
+      "is_electronic": false,
+      "geocoding_method": "manual",
+      "confidence": "high",
+      "notes": "Ingreso manual, verificado con mapa",
+      "created_at": "2025-11-08T00:00:00Z",
+      "updated_at": "2025-11-08T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2025 The ChapaUY Authors
+ SPDX-License-Identifier: Apache-2.0
+-->
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChapaUY - Geocoding Workflow</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar {
+            background: #34495e;
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            height: calc(100vh - 120px);
+            gap: 0;
+        }
+        .sidebar {
+            background: white;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+        .location-queue {
+            padding: 1rem;
+        }
+        .location-item {
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .location-item:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+        .location-item.active {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+        .location-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+        .location-meta {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+        .offense-count {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        .map-panel {
+            position: relative;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        .current-location-card {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 1000;
+            max-width: 350px;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .card-field {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .card-label {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+        .coordinates {
+            font-family: monospace;
+            background: #f8f9fa;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-electronic {
+            background: #e74c3c;
+            color: white;
+        }
+        .badge-high {
+            background: #27ae60;
+            color: white;
+        }
+        .badge-medium {
+            background: #f39c12;
+            color: white;
+        }
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .keybinding-tip {
+            font-size: 0.75rem;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+        button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <h1>🗺️ ChapaUY - Geocoding Workflow</h1>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <label for="database-select" style="font-weight: bold; color: #2c3e50;">Database:</label>
+                    <select id="database-select" style="padding: 0.5rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; min-width: 150px;">
+                        <option value="">All Databases</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="progress-bar">
+            <span id="progress-text">Loading...</span>
+        </div>
+        <div class="progress-bar" style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <span id="progress-detail"></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="location-queue">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 style="color: #2c3e50; margin: 0;">
+                        <span id="queue-title">📍 Location Queue</span>
+                    </h3>
+                    <button id="btn-toggle-view" style="padding: 0.5rem; font-size: 0.85rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        👁️ Review
+                    </button>
+                    <button id="btn-toggle-cluster" style="padding: 0.5rem; font-size: 0.85rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        ✨ Cluster
+                    </button>
+                </div>
+                <div id="queue-container" class="loading">
+                    Loading locations...
+                </div>
+            </div>
+        </div>
+
+        <div class="map-panel">
+            <div id="map"></div>
+
+            <div class="current-location-card" id="location-card" style="display: none;">
+                <div style="flex-grow: 1;">
+                    <div class="card-title" id="card-location">Select a location</div>
+                    <div id="intersection-helper" style="margin-bottom: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+                    <div class="card-field">
+                        <div class="card-label">Database</div>
+                        <div id="card-db">-</div>
+                    </div>
+                <div class="card-field">
+                    <div class="card-label">Offenses</div>
+                    <div id="card-offenses" class="offense-count">-</div>
+                </div>
+                <div class="card-field">
+                    <div class="card-label">Coordinates</div>
+                    <div id="card-coordinates" class="coordinates">-</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                        <input type="number" id="input-lat" placeholder="Latitude" step="0.000001"
+                               style="padding: 0.25rem; font-size: 0.85rem; font-family: monospace; width: 120px;">
+                        <input type="number" id="input-lon" placeholder="Longitude" step="0.000001"
+                               style="padding: 0.25rem; font-size: 0.85rem; font-family: monospace; width: 120px;">
+                        <button id="btn-use-manual" title="Set coordinates and method" style="padding: 0.25rem 0.5rem; font-size: 0.85rem; background: #3498db; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            Set
+                        </button>
+                        <button id="btn-focus-map" title="Center map on coordinates" style="padding: 0.25rem 0.5rem; font-size: 0.85rem; background: #95a5a6; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            Focus
+                        </button>
+                    </div>
+                    <div style="font-size: 0.75rem; color: #7f8c8d; margin-top: 0.25rem;">
+                        💡 Click map or drag marker to adjust
+                    </div>
+                </div>
+                <div class="card-field">
+                    <div class="card-label">Method</div>
+                    <div>
+                        <span id="card-method">-</span>
+                        <span id="card-confidence" class="badge badge-high">-</span>
+                    </div>
+                </div>
+                <div class="card-field" id="card-electronic-container" style="display: none;">
+                    <span class="badge badge-electronic">📷 Electronic Surveillance</span>
+                </div>
+                <div class="card-field" id="card-notes-container" style="display: none;">
+                    <div class="card-label">Notes</div>
+                    <div id="card-notes" style="font-size: 0.85rem; color: #555;">-</div>
+                </div>
+                <div id="cluster-locations"></div>
+                </div>
+                <div class="button-group">
+                    <button class="btn-primary" id="btn-accept">✓ Accept</button>
+                    <button class="btn-secondary" id="btn-skip">→ Skip</button>
+                    <button class="btn-primary" id="btn-merge" style="display: none;">✨ Merge</button>
+                </div>
+                <div class="keybinding-tip">
+                    Tip: ESC to Skip, Ctrl+Enter to Accept/Merge
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+    <script>
+        // Initialize map centered on Uruguay
+        const map = L.map('map').setView([-32.5, -56.0], 8);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        let currentMarker = null;
+        let locations = [];
+        let currentIndex = 0;
+        let currentSuggestion = null; // Store current suggestion for acceptance
+        let viewMode = 'queue'; // 'queue', 'review', or 'cluster'
+        let databases = [];
+        let selectedDatabaseId = null;
+
+        // Load available databases
+        async function loadDatabases() {
+            try {
+                const response = await fetch('/api/databases');
+                databases = await response.json();
+
+                const select = document.getElementById('database-select');
+                select.innerHTML = '<option value="">All Databases</option>';
+
+                databases.forEach(db => {
+                    const option = document.createElement('option');
+                    option.value = db.id;
+                    option.textContent = db.name;
+                    select.appendChild(option);
+                });
+
+                // Set initial selection from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const dbId = urlParams.get('db_id');
+                if (dbId) {
+                    select.value = dbId;
+                    selectedDatabaseId = parseInt(dbId);
+                }
+
+            } catch (error) {
+                console.error('Error loading databases:', error);
+            }
+        }
+
+        // Handle database selection change
+        document.getElementById('database-select').addEventListener('change', (e) => {
+            const dbId = e.target.value;
+            selectedDatabaseId = dbId ? parseInt(dbId) : null;
+
+            // Update URL
+            const url = new URL(window.location);
+            if (dbId) {
+                url.searchParams.set('db_id', dbId);
+            } else {
+                url.searchParams.delete('db_id');
+            }
+            window.history.pushState({}, '', url);
+
+            // Reload current view
+            if (viewMode === 'queue') {
+                loadQueue();
+            } else {
+                loadReview();
+            }
+        });
+
+        function switchView(newMode) {
+            viewMode = newMode;
+            const url = new URL(window.location);
+            url.searchParams.set('view', newMode);
+            window.history.pushState({}, '', url);
+
+            if (newMode === 'queue') {
+                document.getElementById('queue-title').textContent = '📍 Location Queue';
+                loadQueue();
+            } else if (newMode === 'review') {
+                document.getElementById('queue-title').textContent = '📝 Geocoded Locations';
+                loadReview();
+            } else if (newMode === 'cluster') {
+                document.getElementById('queue-title').textContent = '✨ Location Clusters';
+                loadClusters();
+            }
+        }
+
+        // Toggle between queue and review modes
+        document.getElementById('btn-toggle-view').addEventListener('click', () => {
+            switchView(viewMode === 'review' ? 'queue' : 'review');
+        });
+
+        document.getElementById('btn-toggle-cluster').addEventListener('click', () => {
+            switchView(viewMode === 'cluster' ? 'queue' : 'cluster');
+        });
+
+        // Load previously geocoded locations for review
+        async function loadReview() {
+            try {
+                const response = await fetch('/api/locations/judgments?per_page=100');
+                const data = await response.json();
+                locations = data.judgments.map(j => ({
+                    db_id: j.db_id,
+                    db_name: '', // TODO: lookup
+                    location: j.location,
+                    offense_count: 0, // Not available in this view
+                    judgment: j
+                }));
+
+                const container = document.getElementById('queue-container');
+
+                if (locations.length === 0) {
+                    container.innerHTML = '<div class="loading">No geocoded locations yet</div>';
+                    return;
+                }
+
+                container.innerHTML = locations.map((loc, idx) => `
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectReviewLocation(${idx})">
+                        <div class="location-name">${loc.location}</div>
+                        <div class="location-meta">
+                            DB ${loc.db_id} | ${loc.judgment.geocoding_method}
+                            ${loc.judgment.is_electronic ? '📷' : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                updateProgress();
+
+                if (locations.length > 0) {
+                    selectReviewLocation(0);
+                }
+            } catch (error) {
+                console.error('Error loading judgments:', error);
+                document.getElementById('queue-container').innerHTML =
+                    '<div class="loading">Error loading geocoded locations</div>';
+            }
+        }
+
+        async function selectReviewLocation(index) {
+            resetCardView();
+            currentIndex = index;
+            const loc = locations[index];
+
+            // Update UI
+            document.querySelectorAll('.location-item').forEach((el, idx) => {
+                el.classList.toggle('active', idx === index);
+            });
+
+            // Show location card with existing judgment
+            const j = loc.judgment;
+            document.getElementById('location-card').style.display = 'block';
+            document.getElementById('card-location').textContent = loc.location;
+            document.getElementById('card-db').textContent = `DB ${loc.db_id}`;
+            document.getElementById('card-offenses').textContent = '-';
+
+            if (j.latitude && j.longitude) {
+                document.getElementById('card-coordinates').textContent =
+                    `${j.latitude.toFixed(6)}, ${j.longitude.toFixed(6)}`;
+                document.getElementById('card-method').textContent = j.geocoding_method;
+
+                const confidenceBadge = document.getElementById('card-confidence');
+                confidenceBadge.textContent = j.confidence;
+                confidenceBadge.className = `badge badge-${j.confidence}`;
+
+                const electronicContainer = document.getElementById('card-electronic-container');
+                electronicContainer.style.display = j.is_electronic ? 'block' : 'none';
+
+                const notesContainer = document.getElementById('card-notes-container');
+                if (j.notes) {
+                    notesContainer.style.display = 'block';
+                    document.getElementById('card-notes').textContent = j.notes;
+                } else {
+                    notesContainer.style.display = 'none';
+                }
+
+                // Show marker on map
+                if (currentMarker) {
+                    map.removeLayer(currentMarker);
+                }
+
+                currentMarker = L.marker([j.latitude, j.longitude])
+                    .addTo(map)
+                    .bindPopup(`${loc.location}<br>Geocoded: ${j.created_at}`)
+                    .openPopup();
+
+                map.setView([j.latitude, j.longitude], 17);
+
+                // Store as current suggestion for editing
+                currentSuggestion = {
+                    latitude: j.latitude,
+                    longitude: j.longitude,
+                    is_electronic: j.is_electronic,
+                    geocoding_method: j.geocoding_method,
+                    confidence: j.confidence,
+                    notes: j.notes
+                };
+            }
+        }
+
+        async function loadClusters() {
+            try {
+                let url = '/api/locations/queue?mode=cluster';
+                if (selectedDatabaseId) {
+                    url += `&db_id=${selectedDatabaseId}`;
+                }
+
+                const response = await fetch(url);
+                const clusters = await response.json();
+                locations = clusters; // Store clusters in the global 'locations' array
+
+                const container = document.getElementById('queue-container');
+
+                if (!clusters || clusters.length === 0) {
+                    container.innerHTML = '<div class="loading">No clusters found</div>';
+                    document.getElementById('location-card').style.display = 'none';
+                    return;
+                }
+
+                container.innerHTML = clusters.map((cluster, idx) => `
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectCluster(${idx})">
+                        <div class="location-name">${cluster.location}</div>
+                        <div class="location-meta">
+                            ${cluster.db_name} | ${cluster.locations.length} locations |
+                            <span class="offense-count">${cluster.total_offenses.toLocaleString()} offenses</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                if (clusters.length > 0) {
+                    selectCluster(0);
+                }
+            } catch (error) {
+                console.error('Error loading clusters:', error);
+                document.getElementById('queue-container').innerHTML =
+                    '<div class="loading">Error loading clusters</div>';
+            }
+        }
+
+        function resetCardView() {
+            // Show fields relevant for geocoding/review
+            document.getElementById('card-coordinates').parentElement.style.display = 'block';
+            document.getElementById('card-method').parentElement.parentElement.style.display = 'block';
+            document.getElementById('card-electronic-container').style.display = 'block';
+            document.getElementById('card-notes-container').style.display = 'block';
+            document.getElementById('cluster-locations').innerHTML = ''; // Clear cluster list
+
+            // Adjust button visibility
+            document.getElementById('btn-accept').style.display = 'block';
+            document.getElementById('btn-skip').style.display = 'block';
+            document.getElementById('btn-merge').style.display = 'none';
+        }
+
+        function selectCluster(index) {
+            currentIndex = index;
+            const cluster = locations[index];
+
+            // Update UI
+            document.querySelectorAll('.location-item').forEach((el, idx) => {
+                el.classList.toggle('active', idx === index);
+            });
+
+            // Show cluster card
+            document.getElementById('location-card').style.display = 'block';
+            document.getElementById('card-location').textContent = cluster.location;
+            document.getElementById('card-db').textContent = cluster.db_name;
+            document.getElementById('card-offenses').textContent = cluster.total_offenses.toLocaleString();
+
+            // Hide fields not relevant for clustering
+            document.getElementById('card-coordinates').parentElement.style.display = 'none';
+            document.getElementById('card-method').parentElement.parentElement.style.display = 'none';
+            document.getElementById('card-electronic-container').style.display = 'none';
+            document.getElementById('card-notes-container').style.display = 'none';
+
+            document.getElementById('cluster-locations').innerHTML = `
+                <div class="card-label" style="margin-top: 1rem;">Locations to Merge</div>
+                ${cluster.locations.map((loc, i) => `
+                    <div style="display: flex; align-items: center; margin-top: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox" id="loc-${i}" name="location" value="${i}" checked style="margin-right: 0.5rem;">
+                        <input type="radio" id="target-${i}" name="target" value="${i}" ${loc.is_principal ? 'checked' : ''} style="margin-right: 0.5rem;">
+                        <label for="loc-${i}" style="flex: 1; display: flex; justify-content: space-between;">
+                            <span>${loc.description} (${loc.offense_count})</span>
+                            <span style="color: #7f8c8d; font-style: italic;">
+                                ${loc.distance_from_principal.toFixed(1)}m
+                            </span>
+                        </label>
+                    </div>
+                `).join('')}
+            `;
+
+            // Adjust button visibility for cluster mode
+            document.getElementById('btn-accept').style.display = 'none';
+            document.getElementById('btn-skip').style.display = 'block'; // Allow skipping clusters
+            document.getElementById('btn-merge').style.display = 'block';
+
+            // Show markers on map
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+            }
+
+            const markers = cluster.locations.map(loc => {
+                return L.marker([loc.point.lat, loc.point.lng])
+                    .bindPopup(loc.description);
+            });
+
+            const group = new L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.5));
+
+            group.addTo(map);
+            currentMarker = group;
+        }
+
+        // Load location queue
+        async function loadQueue() {
+            try {
+                let url = '/api/locations/queue';
+                if (selectedDatabaseId) {
+                    url += `?db_id=${selectedDatabaseId}`;
+                }
+
+                const response = await fetch(url);
+                locations = await response.json();
+
+                const container = document.getElementById('queue-container');
+
+                if (locations.length === 0) {
+                    container.innerHTML = '<div class="loading">No locations to geocode 🎉</div>';
+                    document.getElementById('btn-toggle-cluster').click();
+                    return;
+                }
+
+                container.innerHTML = locations.map((loc, idx) => `
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectLocation(${idx})">
+                        <div class="location-name">${loc.location}</div>
+                        <div class="location-meta">
+                            ${loc.db_name} | <span class="offense-count">${loc.offense_count.toLocaleString()} offenses</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                updateProgress();
+
+                // Load first location
+                if (locations.length > 0) {
+                    selectLocation(0);
+                }
+            } catch (error) {
+                console.error('Error loading queue:', error);
+                document.getElementById('queue-container').innerHTML =
+                    '<div class="loading">Error loading locations</div>';
+            }
+        }
+
+        async function selectLocation(index) {
+            resetCardView();
+            currentIndex = index;
+            const loc = locations[index];
+
+            // Update UI
+            document.querySelectorAll('.location-item').forEach((el, idx) => {
+                el.classList.toggle('active', idx === index);
+            });
+
+            // Show location card
+            document.getElementById('location-card').style.display = 'block';
+            document.getElementById('card-location').textContent = loc.location;
+            document.getElementById('card-db').textContent = loc.db_name;
+            document.getElementById('card-offenses').textContent = loc.offense_count.toLocaleString();
+
+            const intersectionHelper = document.getElementById('intersection-helper');
+            intersectionHelper.innerHTML = ''; // Clear previous buttons
+
+            const parts = loc.location.split(/ y /i);
+            if (parts.length === 2) {
+                const streets = parts.map(s => s.trim()).filter(Boolean);
+                if (streets.length === 2) {
+                    streets.forEach(street => {
+                        const btn = document.createElement('button');
+                        btn.textContent = `Focus: ${street}`;
+                        btn.style.cssText = 'padding: 0.25rem 0.5rem; font-size: 0.75rem; background: #7f8c8d; color: white; border: none; border-radius: 3px; cursor: pointer;';
+                        btn.onclick = () => focusOnStreet(street, loc.db_id);
+                        intersectionHelper.appendChild(btn);
+                    });
+                }
+            }
+
+
+            // Get suggestion
+            try {
+                const response = await fetch(`/api/locations/suggest/${loc.db_id}/${encodeURIComponent(loc.location)}`);
+
+                if (response.ok) {
+                    const suggestion = await response.json();
+                    showSuggestion(suggestion);
+                } else {
+                    showNoSuggestion();
+                }
+            } catch (error) {
+                console.error('Error getting suggestion:', error);
+                showNoSuggestion();
+            }
+        }
+
+        async function focusOnStreet(street, db_id) {
+            try {
+                const response = await fetch(`/api/locations/suggest/${db_id}/${encodeURIComponent(street)}`);
+                if (response.ok) {
+                    const suggestion = await response.json();
+                    map.setView([suggestion.latitude, suggestion.longitude], 17);
+                } else {
+                    alert(`Could not find location for: ${street}`);
+                }
+            } catch (error) {
+                console.error('Error focusing on street:', error);
+                alert(`Error focusing on street: ${street}`);
+            }
+        }
+
+        function showSuggestion(suggestion) {
+            currentSuggestion = suggestion; // Store for acceptance
+
+            updateCoordinatesDisplay(suggestion.latitude, suggestion.longitude);
+            document.getElementById('card-method').textContent = suggestion.geocoding_method;
+
+            const confidenceBadge = document.getElementById('card-confidence');
+            confidenceBadge.textContent = suggestion.confidence;
+            confidenceBadge.className = `badge badge-${suggestion.confidence}`;
+
+            const electronicContainer = document.getElementById('card-electronic-container');
+            electronicContainer.style.display = suggestion.is_electronic ? 'block' : 'none';
+
+            const notesContainer = document.getElementById('card-notes-container');
+            if (suggestion.notes) {
+                notesContainer.style.display = 'block';
+                document.getElementById('card-notes').textContent = suggestion.notes;
+            } else {
+                notesContainer.style.display = 'none';
+            }
+
+            // Show draggable marker on map
+            placeMarker(suggestion.latitude, suggestion.longitude);
+            map.setView([suggestion.latitude, suggestion.longitude], 17);
+        }
+
+        function placeMarker(lat, lon) {
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+            }
+
+            currentMarker = L.marker([lat, lon], {draggable: true})
+                .addTo(map)
+                .bindPopup(locations[currentIndex].location)
+                .openPopup();
+
+            // Update coordinates when marker is dragged
+            currentMarker.on('dragend', function(e) {
+                const pos = e.target.getLatLng();
+                updateCoordinatesDisplay(pos.lat, pos.lng);
+                updateCurrentSuggestion(pos.lat, pos.lng, 'manual_adjustment');
+            });
+        }
+
+        function updateCoordinatesDisplay(lat, lon) {
+            document.getElementById('card-coordinates').textContent =
+                `${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+            document.getElementById('input-lat').value = lat.toFixed(6);
+            document.getElementById('input-lon').value = lon.toFixed(6);
+        }
+
+        function updateCurrentSuggestion(lat, lon, method) {
+            if (!currentSuggestion) {
+                currentSuggestion = {
+                    is_electronic: false,
+                    confidence: 'low',
+                    notes: ''
+                };
+            }
+            currentSuggestion.latitude = lat;
+            currentSuggestion.longitude = lon;
+            currentSuggestion.geocoding_method = method;
+            updateCoordinatesDisplay(lat, lon);
+        }
+
+        // Click on map to place marker
+        map.on('click', function(e) {
+            if (locations.length === 0) return;
+
+            const lat = e.latlng.lat;
+            const lon = e.latlng.lng;
+
+            placeMarker(lat, lon);
+            updateCurrentSuggestion(lat, lon, 'manual_click');
+        });
+
+        // Use manual input coordinates
+        document.getElementById('btn-use-manual').addEventListener('click', () => {
+            const lat = parseFloat(document.getElementById('input-lat').value);
+            const lon = parseFloat(document.getElementById('input-lon').value);
+
+            if (isNaN(lat) || isNaN(lon)) {
+                alert('Please enter valid coordinates');
+                return;
+            }
+
+            placeMarker(lat, lon);
+            map.setView([lat, lon], 17);
+            updateCurrentSuggestion(lat, lon, 'manual_input');
+        });
+
+        // Center map on manual input coordinates
+        document.getElementById('btn-focus-map').addEventListener('click', () => {
+            const lat = parseFloat(document.getElementById('input-lat').value);
+            const lon = parseFloat(document.getElementById('input-lon').value);
+
+            if (isNaN(lat) || isNaN(lon)) {
+                alert('Please enter valid coordinates');
+                return;
+            }
+
+            map.setView([lat, lon], 17);
+        });
+
+        function showNoSuggestion() {
+            currentSuggestion = null; // No suggestion available
+
+            document.getElementById('card-coordinates').textContent = 'Click map to place marker';
+            document.getElementById('card-method').textContent = 'Manual placement required';
+            document.getElementById('card-confidence').textContent = '-';
+            document.getElementById('card-electronic-container').style.display = 'none';
+            document.getElementById('card-notes-container').style.display = 'none';
+
+            // Clear input fields
+            document.getElementById('input-lat').value = '';
+            document.getElementById('input-lon').value = '';
+
+            // Center on Uruguay if no suggestion
+            map.setView([-32.5, -56.0], 8);
+        }
+
+        function updateProgress() {
+            let url = '/api/locations/progress';
+            if (selectedDatabaseId) {
+                url += `?db_id=${selectedDatabaseId}`;
+            }
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    // Get database name for display
+                    let dbName = '';
+                    if (selectedDatabaseId) {
+                        const db = databases.find(d => d.id === selectedDatabaseId);
+                        dbName = db ? ` (${db.name})` : ` (DB ${selectedDatabaseId})`;
+                    }
+
+                    // Main progress bar
+                    document.getElementById('progress-text').textContent =
+                        `Locations${dbName}: ${data.geocoded_locations.toLocaleString()} / ${data.total_locations.toLocaleString()} (${data.locations_percentage.toFixed(1)}%) • ` +
+                        `Offenses: ${data.geocoded_offenses.toLocaleString()} / ${data.total_offenses.toLocaleString()} (${data.offenses_percentage.toFixed(1)}%)`;
+
+                    // Method breakdown
+                    const methods = [];
+                    for (const [method, count] of Object.entries(data.by_method)) {
+                        const icon = method === 'radares_rutas' ? '📷' :
+                                    method.includes('intersection') ? '⊕' : '🗺️';
+                        methods.push(`${icon} ${method}: ${count}`);
+                    }
+                    document.getElementById('progress-detail').textContent = methods.join(' • ');
+                })
+                .catch(err => {
+                    console.error('Error loading progress:', err);
+                    document.getElementById('progress-text').textContent = 'Progress: Loading...';
+                });
+        }
+
+        // Button handlers
+        document.getElementById('btn-accept').addEventListener('click', async () => {
+            if (!currentSuggestion) {
+                alert('No suggestion available to accept');
+                return;
+            }
+
+            const loc = locations[currentIndex];
+            const acceptBtn = document.getElementById('btn-accept');
+
+            // Disable button during save
+            acceptBtn.disabled = true;
+            acceptBtn.textContent = '⏳ Saving...';
+
+            try {
+                const response = await fetch(
+                    `/api/locations/accept/${loc.db_id}/${encodeURIComponent(loc.location)}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(currentSuggestion)
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error('Failed to save judgment');
+                }
+
+                // Remove from locations array
+                locations.splice(currentIndex, 1);
+
+                // Update queue UI
+                const container = document.getElementById('queue-container');
+                if (locations.length === 0) {
+                    container.innerHTML = '<div class="loading">No locations to geocode 🎉</div>';
+                    document.getElementById('location-card').style.display = 'none';
+                    alert('🎉 All locations geocoded!');
+                } else {
+                    container.innerHTML = locations.map((loc, idx) => `
+                        <div class="location-item ${idx === currentIndex ? 'active' : ''}" onclick="selectLocation(${idx})">
+                            <div class="location-name">${loc.location}</div>
+                            <div class="location-meta">
+                                ${loc.db_name} | <span class="offense-count">${loc.offense_count.toLocaleString()} offenses</span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    // Select next location (now at same index since we removed one)
+                    selectLocation(Math.min(currentIndex, locations.length - 1));
+                }
+
+                updateProgress();
+            } catch (error) {
+                console.error('Error saving judgment:', error);
+                alert('Error saving judgment. Please try again.');
+            } finally {
+                acceptBtn.disabled = false;
+                acceptBtn.textContent = '✓ Accept';
+            }
+        });
+
+        document.getElementById('btn-skip').addEventListener('click', () => {
+            if (currentIndex < locations.length - 1) {
+                selectLocation(currentIndex + 1);
+            }
+        });
+
+        document.getElementById('btn-merge').addEventListener('click', async () => {
+            const cluster = locations[currentIndex];
+            const checkboxes = document.querySelectorAll('input[name="location"]:checked');
+            const targetRadio = document.querySelector('input[name="target"]:checked');
+
+            if (!targetRadio) {
+                alert('Please select a target location');
+                return;
+            }
+
+            const targetIndex = parseInt(targetRadio.value);
+            const targetLocation = cluster.locations[targetIndex];
+            const canonicalLocation = targetLocation.description;
+
+            const sourceLocations = Array.from(checkboxes)
+                .map(cb => parseInt(cb.value))
+                .filter(index => index !== targetIndex)
+                .map(index => cluster.locations[index]);
+
+            const mergeBtn = document.getElementById('btn-merge');
+            mergeBtn.disabled = true;
+            mergeBtn.textContent = '⏳ Merging...';
+
+            try {
+                for (const loc of sourceLocations) {
+                    const response = await fetch('/api/locations/merge', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            db_id: cluster.db_id,
+                            target_location: loc.description,
+                            canonical_location: canonicalLocation
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to merge location: ${loc.description}`);
+                    }
+                }
+
+                // After successful merge of all source locations:
+                // Remove the current cluster from the locations array.
+                locations.splice(currentIndex, 1);
+
+                // Update the UI to reflect the removal and select the next item.
+                const container = document.getElementById('queue-container');
+                if (locations.length === 0) {
+                    container.innerHTML = '<div class="loading">No clusters left! 🎉</div>';
+                    document.getElementById('location-card').style.display = 'none';
+                    alert('All clusters processed!');
+                } else {
+                    // Select the next cluster (now at the same index if it exists, or the last one)
+                    selectCluster(Math.min(currentIndex, locations.length - 1));
+                }
+            } catch (error) {
+                console.error('Error merging locations:', error);
+                alert('Error merging locations. Please try again.');
+            } finally {
+                mergeBtn.disabled = false;
+                mergeBtn.textContent = '✨ Merge';
+            }
+        });
+
+        // Initialize page on load
+        async function initializePage() {
+            await loadDatabases();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const view = urlParams.get('view') || 'queue';
+            switchView(view);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                const skipButton = document.getElementById('btn-skip');
+                if (skipButton && !skipButton.disabled) {
+                    skipButton.click();
+                }
+            }
+
+            if (e.key === 'Enter' && e.ctrlKey) {
+                e.preventDefault();
+
+                const acceptBtn = document.getElementById('btn-accept');
+                const mergeBtn = document.getElementById('btn-merge');
+
+                if (acceptBtn && acceptBtn.style.display !== 'none' && !acceptBtn.disabled) {
+                    acceptBtn.click();
+                } else if (mergeBtn && mergeBtn.style.display !== 'none' && !mergeBtn.disabled) {
+                    mergeBtn.click();
+                }
+            }
+        });
+
+        initializePage();
+    </script>
+</body>
+</html>
