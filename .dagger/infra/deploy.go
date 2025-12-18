@@ -50,7 +50,7 @@ func DeployService(ctx context.Context, client *GCPClient, dryRun bool) error {
 						CpuIdle:         true,
 						StartupCpuBoost: true,
 						Limits: map[string]string{
-							"memory": "2Gi",
+							"memory": "1Gi",
 							"cpu":    "2",
 						},
 					},
