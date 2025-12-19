@@ -59,7 +59,7 @@ func DeployService(ctx context.Context, client *GCPClient, dryRun bool) error {
 			ExecutionEnvironment: runpb.ExecutionEnvironment_EXECUTION_ENVIRONMENT_GEN2,
 			ServiceAccount:       SAName + "@" + ProjectID + ".iam.gserviceaccount.com",
 			Scaling: &runpb.RevisionScaling{
-				MinInstanceCount: 1,
+				MinInstanceCount: 0,
 				MaxInstanceCount: 4,
 			},
 			MaxInstanceRequestConcurrency: 160,
