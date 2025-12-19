@@ -171,7 +171,7 @@ func DesiredState() []Resource {
 		&CloudSchedulerResource{
 			JobName:        "daily-data-refresh-job",
 			Description:    "Triggers the daily data refresh build",
-			Schedule:       "0 9 * * *", // 9 AM UYT daily
+			Schedule:       "0 7 * * *", // 7 AM UYT daily
 			TimeZone:       "America/Montevideo",
 			TargetTrigger:  "daily-data-refresh", // Must match TriggerName above
 			ServiceAccount: SAName + "@" + ProjectID + ".iam.gserviceaccount.com",
