@@ -62,7 +62,7 @@ func DeployService(ctx context.Context, client *GCPClient, dryRun bool) error {
 				MinInstanceCount: 0,
 				MaxInstanceCount: 4,
 			},
-			MaxInstanceRequestConcurrency: 160,
+			MaxInstanceRequestConcurrency: 500,
 			Timeout: &durationpb.Duration{
 				Seconds: 15,
 			},
