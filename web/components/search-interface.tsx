@@ -337,7 +337,7 @@ export function SearchInterface({
   // This component now represents only the content area.
 
   return (
-    <div className={viewMode === "map" ? "p-4" : "border-card p-8 print:p-2"}>
+    <div className={viewMode === "map" ? "p-0 md:p-4" : "border-card p-4 md:p-8 print:p-2"}>
       {loading && (viewMode !== "map" || !summaryData) ? (
         <div className="space-y-4">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -351,7 +351,6 @@ export function SearchInterface({
               <div className="flex items-start justify-between gap-3">
                 <div className="text-muted-foreground text-sm">
                   {summaryData.record_count.toLocaleString()} infracciones
-                  encontradas
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="bg-muted/50 flex items-center gap-1 rounded-lg border p-1">
@@ -395,7 +394,7 @@ export function SearchInterface({
                       <span>Mapa</span>
                     </Link>
                   </div>
-                  <div className="flex flex-col items-end gap-0.5">
+                  <div className="hidden md:flex flex-col items-end gap-0.5">
                     <div className="text-foreground flex items-center gap-1.5 text-sm font-semibold">
                       <span className="text-muted-foreground text-xs font-normal">
                         Total

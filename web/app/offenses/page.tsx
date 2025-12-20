@@ -4,6 +4,7 @@
  */
 
 import { OffensesSidebarClient } from "@/components/offenses-sidebar-client"
+import { MobileNav } from "@/components/mobile-nav"
 import { OffensesFeedClient } from "./offenses-feed-client"
 
 // Force static generation - skeletons render at build time
@@ -12,10 +13,11 @@ import { OffensesFeedClient } from "./offenses-feed-client"
 
 export default function OffensesPage() {
   return (
-    <div className="bg-background flex min-h-screen">
-      <OffensesSidebarClient />
+    <div className="bg-background flex flex-col min-h-screen md:flex-row">
+      <MobileNav />
+      <OffensesSidebarClient className="hidden md:flex" />
 
-      <main className="flex-1 print:w-full">
+      <main className="flex-1 w-full print:w-full min-w-0">
         <OffensesFeedClient />
       </main>
     </div>

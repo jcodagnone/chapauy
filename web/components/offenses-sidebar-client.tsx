@@ -18,6 +18,8 @@ import { buildApiUrl } from "@/lib/api-utils"
 interface OffensesSidebarProps {
     visibleDimensions?: Dimension[]
     mode?: SidebarMode
+    className?: string
+    onClose?: () => void
 }
 
 const allDimensions: Dimension[] = [
@@ -36,6 +38,8 @@ const allDimensions: Dimension[] = [
 export function OffensesSidebarClient({
     visibleDimensions = allDimensions,
     mode = SidebarMode.Offenses,
+    className,
+    onClose,
 }: OffensesSidebarProps) {
     const searchParams = useSearchParams()
     const [facets, setFacets] = useState<Facet[]>([])
@@ -161,21 +165,39 @@ export function OffensesSidebarClient({
         }
     })
 
+    // Helper to handle interaction for closing mobile sidebar
+    const handleInteraction = (e: React.MouseEvent) => {
+        const target = (e.target as HTMLElement).closest('a, button') as HTMLElement
+        if (!onClose || !target) return
+
+        // Check if the element (or any parent) explicitly requests NOT to close the sidebar
+        if (target.closest('[data-no-close="true"]')) return
+
+        setTimeout(onClose, 150)
+    }
+
     // We render the skeleton structure but with client content logic
     if (loading) {
-        return <OffensesSidebarSkeleton />
+        return (
+            <div className={className}>
+                <OffensesSidebarSkeleton />
+            </div>
+        )
     }
 
     if (error) {
         return (
-            <aside className="border-border bg-card flex h-full w-64 flex-col border-r p-6">
+            <aside className={`border-border bg-card flex h-full w-64 flex-col border-r p-6 ${className || ''}`}>
                 <div className="text-red-500 text-sm">Error loading filters</div>
             </aside>
         )
     }
 
     return (
-        <aside className="border-border bg-card flex h-full w-64 flex-col border-r print:hidden">
+        <aside
+            className={`border-border bg-card flex h-full w-64 flex-col border-r print:hidden ${className || ''}`}
+            onClickCapture={handleInteraction}
+        >
             <div className={`flex-1 overflow-y-auto p-6 transition-opacity duration-200 ${isUpdating ? "opacity-60" : "opacity-100"}`}>
                 <div className="mb-6">
                     <Link href="/" className="block transition-opacity hover:opacity-80">

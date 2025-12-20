@@ -50,24 +50,24 @@ export function NavSwitcher() {
       <Link
         href={`/offenses${queryString}`}
         className={cn(
-          "flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-all",
+          "flex items-center justify-center rounded-md px-1 py-1.5 text-sm font-medium transition-all",
           !isDocuments
             ? "bg-background text-foreground shadow-sm"
             : "text-muted-foreground hover:text-foreground hover:bg-background/50"
         )}
       >
-        Infracciones
+        <span className="truncate">Infracciones</span>
       </Link>
       <Link
         href={`/documents${queryString}`}
         className={cn(
-          "flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-all",
+          "flex items-center justify-center rounded-md px-1 py-1.5 text-sm font-medium transition-all",
           isDocuments
             ? "bg-background text-foreground shadow-sm"
             : "text-muted-foreground hover:text-foreground hover:bg-background/50"
         )}
       >
-        Documentos
+        <span className="truncate">Documentos</span>
       </Link>
     </div>
   )

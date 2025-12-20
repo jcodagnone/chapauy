@@ -66,7 +66,7 @@ export function OffenseCard({
 
   return (
     <Card
-      className={`hover:bg-accent/50 p-3 transition-colors print:rounded-none print:border-0 print:border-b print:p-1 print:shadow-none ${offense.error ? "border-accent bg-accent/20 print:bg-transparent" : "border-border"}`}
+      className={`hover:bg-accent/50 p-3 transition-colors print:rounded-none print:border-0 print:border-b print:p-1 print:shadow-none overflow-hidden ${offense.error ? "border-accent bg-accent/20 print:bg-transparent" : "border-border"}`}
     >
       <div className="space-y-1 print:space-y-0.5">
         <div className="flex items-start justify-between gap-3">
@@ -106,7 +106,7 @@ export function OffenseCard({
                 })}
               </>
             )}
-            <h3 className="text-foreground text-sm leading-tight font-medium">
+            <h3 className="text-foreground text-sm leading-tight font-medium break-words min-w-0">
               {isFilterActive(Dimension.Description, offense.description) ? (
                 <span>{offense.description}</span>
               ) : (
@@ -150,7 +150,7 @@ export function OffenseCard({
           </div>
         </div>
 
-        <div className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-xs leading-tight">
+        <div className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-xs leading-tight break-words">
           {(() => {
             const dateValue = offense.time.substring(0, 10)
             const label =

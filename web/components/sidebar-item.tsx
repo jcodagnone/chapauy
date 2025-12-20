@@ -94,6 +94,7 @@ export function SidebarItem({
         href={getAddFacetUrl()}
         prefetch={false}
         onClick={handleAddClick}
+        data-no-close="true"
         className="text-muted-foreground hover:text-foreground flex w-full items-center justify-between transition-colors"
       >
         <span className="flex items-center gap-1.5 text-sm">

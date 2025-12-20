@@ -80,6 +80,7 @@ export function FacetFilter({
         href={getRemoveUrl()}
         className="text-foreground hover:text-destructive mb-3 flex w-full items-center justify-between text-sm font-medium transition-colors"
         title="Eliminar dimensión"
+        data-no-close="true"
       >
         <div className="flex items-center gap-1.5">
           <IconComponent className="h-4 w-4" />
