@@ -23,6 +23,10 @@ steps:
         # 2. Build Web+Data
         echo "Building Web+Data..."
         ./bin/dagger call build-web-data --token=env:GCP_ACCESS_TOKEN
+
+        # 3. Deploy Service
+        echo "Deploying Cloud Run Service..."
+        ./bin/dagger call deploy --token=env:GCP_ACCESS_TOKEN
     env:
       - 'PROJECT_ID=$PROJECT_ID'
       - 'REGION=${_REGION}'
