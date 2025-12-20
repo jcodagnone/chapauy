@@ -10,7 +10,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
-  description: "Buscador de infracciones de tránsito en Uruguay",
+  description: "Consultá infracciones de tránsito en Uruguay",
 
 }
 

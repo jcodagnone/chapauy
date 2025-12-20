@@ -14,6 +14,7 @@ import {
     determineSortBy,
 } from "@/lib/repository"
 import { offensesParamsFromQueryParams } from "@/lib/url-utils"
+import { normalizeVehicleId } from "@/lib/utils"
 import {
     OffensesResponse,
     Repo,
@@ -76,14 +77,17 @@ export async function GET(request: NextRequest) {
         // 4. Parse Parameters
         const rawParams: Record<string, string | string[] | undefined> = {}
         searchParams.forEach((value, key) => {
+            const normalizedValue =
+                key === Dimension.Vehicle ? normalizeVehicleId(value) : value
+
             if (rawParams[key]) {
                 if (Array.isArray(rawParams[key])) {
-                    ; (rawParams[key] as string[]).push(value)
+                    ; (rawParams[key] as string[]).push(normalizedValue)
                 } else {
-                    rawParams[key] = [rawParams[key] as string, value]
+                    rawParams[key] = [rawParams[key] as string, normalizedValue]
                 }
             } else {
-                rawParams[key] = value
+                rawParams[key] = normalizedValue
             }
         })
 
