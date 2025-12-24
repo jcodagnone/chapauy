@@ -401,6 +401,7 @@ func visitOffensesTable(
 	offenses *[]*TrafficOffense,
 	defaultDate *time.Time,
 	defaultDescription string,
+	defaultHeaderProps map[int]OffenseProperty,
 ) error {
 	nr := 0
 	// Map to store the column index to property mapping
@@ -418,43 +419,49 @@ func visitOffensesTable(
 			// Process header row to determine column mapping
 			i := 0
 
-			for child := child.FirstChild; child != nil; child = child.NextSibling {
-				if child.Type != html.ElementNode || !strings.EqualFold("td", child.Data) {
-					continue
+			if len(defaultHeaderProps) > 0 {
+				columnMap = defaultHeaderProps
+				nr++
+				// we have to process the first row as data
+			} else {
+				for child := child.FirstChild; child != nil; child = child.NextSibling {
+					if child.Type != html.ElementNode || !strings.EqualFold("td", child.Data) {
+						continue
+					}
+
+					sb.Reset()
+
+					err := htmlutils.Node2string(child, &sb)
+					if err != nil {
+						continue
+					}
+
+					columnMap[i], err = documentPropertyFromString(sb.String())
+					if err != nil {
+						return err
+					}
+
+					i++
 				}
 
-				sb.Reset()
+				hasDescriptionCol := false
 
-				err := htmlutils.Node2string(child, &sb)
-				if err != nil {
-					continue
+				for _, prop := range columnMap {
+					if prop == propDescription {
+						hasDescriptionCol = true
+
+						break
+					}
 				}
 
-				columnMap[i], err = documentPropertyFromString(sb.String())
-				if err != nil {
-					return err
+				if !hasDescriptionCol && defaultDescription == "" {
+					return errors.New("tabla sin columna descripción")
 				}
 
-				i++
+				nr++
+
+				continue
 			}
-
-			hasDescriptionCol := false
-
-			for _, prop := range columnMap {
-				if prop == propDescription {
-					hasDescriptionCol = true
-
-					break
-				}
-			}
-
-			if !hasDescriptionCol && defaultDescription == "" {
-				return errors.New("tabla sin columna descripción")
-			}
-
-			nr++
-
-			continue
 		}
 
 		hasDateCol := false
@@ -563,6 +570,7 @@ func visitDocument(
 	doc *Document,
 	offenses *[]*TrafficOffense,
 	defaultDescription *string,
+	defaultHeaderProps map[int]OffenseProperty,
 	n *html.Node,
 ) error {
 	// Look for a table with class="tabla_en_texto"
@@ -668,9 +676,10 @@ func visitDocument(
 				offenses,
 				&doc.DocDate,
 				*defaultDescription,
+				defaultHeaderProps,
 			)
 		} else {
-			err = visitDocument(issuers, doc, offenses, defaultDescription, child)
+			err = visitDocument(issuers, doc, offenses, defaultDescription, defaultHeaderProps, child)
 		}
 
 		if err != nil {
@@ -682,13 +691,31 @@ func visitDocument(
 }
 
 // ExtractDocument extracts traffic offense information from HTML.
-func ExtractDocument(issuers []string, n *html.Node) ([]*TrafficOffense, error) {
+func ExtractDocument(issuers []string, source string, n *html.Node) ([]*TrafficOffense, error) {
 	doc := &Document{}
 	offenses := make([]*TrafficOffense, 0, 800)
 
 	var defaultDescription string
 
-	if err := visitDocument(issuers, doc, &offenses, &defaultDescription, n); err != nil {
+	var defaultHeaderProps map[int]OffenseProperty
+
+	switch source {
+	case
+		"https://www.impo.com.uy/bases/notificaciones-transito-lavalleja/SN20210707001-2021",
+		"https://www.impo.com.uy/bases/notificaciones-transito-lavalleja/SN20200911002-2020",
+		"https://www.impo.com.uy/bases/notificaciones-transito-lavalleja/SN20210303003-2021",
+		"https://www.impo.com.uy/bases/notificaciones-transito-treintaytres/14-2024",
+		"https://www.impo.com.uy/bases/notificaciones-transito-treintaytres/13-2024",
+		"https://www.impo.com.uy/bases/notificaciones-transito-treintaytres/11-2024",
+		"https://www.impo.com.uy/bases/notificaciones-transito-treintaytres/17-2024":
+		defaultHeaderProps = map[int]OffenseProperty{
+			0: propVehicle,
+			1: propDescription,
+			2: propUR,
+		}
+	}
+
+	if err := visitDocument(issuers, doc, &offenses, &defaultDescription, defaultHeaderProps, n); err != nil {
 		return nil, err
 	}
 
@@ -721,7 +748,7 @@ func (c *Client) extractDocument(id string) (*ExtractMetrics, error) {
 		return failedMetrics, fmt.Errorf("parsing document: %w", err)
 	}
 
-	offenses, err := ExtractDocument(c.dbRef.Issuers, node)
+	offenses, err := ExtractDocument(c.dbRef.Issuers, id, node)
 	if err != nil {
 		return failedMetrics, fmt.Errorf("parsing document: %w", err)
 	}

@@ -57,7 +57,7 @@ Ejemplos:
 			log.Fatalf("error listing issuers: %v", err)
 		}
 
-		notification, err := impo.ExtractDocument(issuers, node)
+		notification, err := impo.ExtractDocument(issuers, "", node)
 		if err != nil {
 			log.Fatalf("error extracting document: %v", err)
 		}

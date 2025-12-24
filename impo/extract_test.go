@@ -621,6 +621,7 @@ Notifícase al propietario del vehículo cuya matrícula se determina, que se co
 				"policía caminera",
 				"centro de gestión de movilidad",
 			},
+			"",
 			node,
 		)
 		if err != nil {
@@ -726,7 +727,7 @@ func TestVisitOffensesTable_WithLocalidadAndHora(t *testing.T) {
 		t.Fatal("could not find tbody node")
 	}
 
-	err = visitOffensesTable(tbodyNode, &offenses, &defaultDate, "")
+	err = visitOffensesTable(tbodyNode, &offenses, &defaultDate, "", nil)
 	if err != nil {
 		t.Fatalf("visitOffensesTable returned an error: %v", err)
 	}
@@ -777,7 +778,7 @@ func TestVisitHTMLWithArt9(t *testing.T) {
 		t.Fatalf("failed to parse html: %v", err)
 	}
 
-	offenses, err := ExtractDocument([]string{"intendencia de montevideo"}, doc)
+	offenses, err := ExtractDocument([]string{"intendencia de montevideo"}, "", doc)
 	if err != nil {
 		t.Fatalf("ExtractDocument failed: %v", err)
 	}
@@ -788,5 +789,51 @@ func TestVisitHTMLWithArt9(t *testing.T) {
 
 	if offenses[0].Description != suciveArt9Descr {
 		t.Errorf("expected description '%s', got '%s'", suciveArt9Descr, offenses[0].Description)
+	}
+}
+
+func TestVisitHTMLWithMissingHeaders(t *testing.T) {
+	htmlInput := `
+	<html>
+		<title>Notificación Dirección General de Tránsito y Transporte Intendencia de Treinta y Tres N° 14/024</title>
+		<h5>Fecha de Publicación: 10/12/2024</h5>
+		<table class="tabla_en_texto">
+			<TR>
+				<TD><pre>SBF1234</pre></TD>
+				<TD><pre>Exceso de velocidad</pre></TD>
+				<TD><pre>5</pre></TD>
+			</TR>
+		</table>
+	</html>
+	`
+
+	doc, err := html.Parse(strings.NewReader(htmlInput))
+	if err != nil {
+		t.Fatalf("failed to parse html: %v", err)
+	}
+
+	offenses, err := ExtractDocument(
+		[]string{"intendencia de treinta y tres"},
+		"https://www.impo.com.uy/bases/notificaciones-transito-treintaytres/14-2024",
+		doc,
+	)
+	if err != nil {
+		t.Fatalf("ExtractDocument failed: %v", err)
+	}
+
+	if len(offenses) != 1 {
+		t.Fatalf("expected 1 offense, got %d", len(offenses))
+	}
+
+	if offenses[0].Vehicle != "SBF1234" {
+		t.Errorf("expected vehicle 'SBF1234', got '%s'", offenses[0].Vehicle)
+	}
+
+	if offenses[0].Description != "Exceso de velocidad" {
+		t.Errorf("expected description 'Exceso de velocidad', got '%s'", offenses[0].Description)
+	}
+
+	if offenses[0].UR != 5*urResolution {
+		t.Errorf("expected UR 5, got %v", offenses[0].UR)
 	}
 }
