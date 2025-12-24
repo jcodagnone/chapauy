@@ -272,9 +272,13 @@ func documentPropertyFromString(s string) (OffenseProperty, error) {
 			"País",
 		},
 		propIgnore: {
-			"Unidad",   // TODO(juan) caminera tengo que volver a esto
-			"Cantidad", // TODO(juan) caminera tengo que volver a esto
-			"CI.",      // Colonia desde https://www.impo.com.uy/bases/notificaciones-transito-colonia/76-2025 reporta cedula
+			"Unidad",                // TODO(juan) caminera tengo que volver a esto
+			"Cantidad",              // TODO(juan) caminera tengo que volver a esto
+			"CI.",                   // Colonia desde https://www.impo.com.uy/bases/notificaciones-transito-colonia/76-2025 reporta cedula
+			"Documento",             // https://www.impo.com.uy/bases/resoluciones-transito-mtop/SN20251204001-2025
+			"N° Documento",          // https://www.impo.com.uy/bases/resoluciones-transito-mtop/SN20251204001-2025
+			"Nombre o razón social", // https://www.impo.com.uy/bases/resoluciones-transito-mtop/SN20251204001-2025
+			"Deuda (11/11)",         // https://www.impo.com.uy/bases/resoluciones-transito-mtop/SN20251204001-2025
 		},
 	} {
 		for _, name := range names {
