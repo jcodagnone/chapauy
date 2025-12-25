@@ -31,9 +31,14 @@ require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/duckdb/duckdb-go-bindings v0.1.24 // indirect
+	github.com/duckdb/duckdb-go-bindings v0.3.1 // indirect
 	github.com/duckdb/duckdb-go-bindings/darwin-amd64 v0.1.24 // indirect
 	github.com/duckdb/duckdb-go-bindings/darwin-arm64 v0.1.24 // indirect
+	github.com/duckdb/duckdb-go-bindings/lib/darwin-amd64 v0.3.1 // indirect
+	github.com/duckdb/duckdb-go-bindings/lib/darwin-arm64 v0.3.1 // indirect
+	github.com/duckdb/duckdb-go-bindings/lib/linux-amd64 v0.3.1 // indirect
+	github.com/duckdb/duckdb-go-bindings/lib/linux-arm64 v0.3.1 // indirect
+	github.com/duckdb/duckdb-go-bindings/lib/windows-amd64 v0.3.1 // indirect
 	github.com/duckdb/duckdb-go-bindings/linux-amd64 v0.1.24 // indirect
 	github.com/duckdb/duckdb-go-bindings/linux-arm64 v0.1.24 // indirect
 	github.com/duckdb/duckdb-go-bindings/windows-amd64 v0.1.24 // indirect
@@ -46,7 +51,7 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.29.0 // indirect
+	github.com/go-playground/validator/v10 v10.30.1 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect
 	github.com/goccy/go-yaml v1.19.1 // indirect
@@ -67,7 +72,7 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.23 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/quic-go/qpack v0.6.0 // indirect
-	github.com/quic-go/quic-go v0.57.1 // indirect
+	github.com/quic-go/quic-go v0.58.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
@@ -86,14 +91,14 @@ require (
 	golang.org/x/mod v0.31.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/sys v0.39.0 // indirect
-	golang.org/x/telemetry v0.0.0-20251219171224-e0dd3dd4fbaf // indirect
+	golang.org/x/telemetry v0.0.0-20251222180846-3f2a21fb04ff // indirect
 	golang.org/x/term v0.38.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
 	golang.org/x/tools v0.40.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20251213004720-97cd9d5aeac2 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251213004720-97cd9d5aeac2 // indirect
-	google.golang.org/grpc v1.77.0 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251222181119-0a764e51fe1b // indirect
+	google.golang.org/grpc v1.78.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
