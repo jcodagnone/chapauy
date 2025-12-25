@@ -343,3 +343,84 @@ func TestClassifyDescriptionAPI(t *testing.T) {
 	require.NoError(t, err)
 	assert.Empty(t, descriptions) // Should be empty
 }
+
+func TestGetGeocodingProgressAPI(t *testing.T) {
+	gin.SetMode(gin.TestMode)
+	router := gin.Default()
+
+	db, _ := setupDescriptionDB(t)
+	defer db.Close()
+
+	// Use real repository
+	geocodeRepo := NewLocationRepository(db, map[int]string{})
+	radarIndex := &RadarIndex{radars: make(map[string]*Radar)}
+	server := NewServer(geocodeRepo, db, radarIndex, map[int]string{})
+
+	router.GET("/api/locations/progress", server.getProgress)
+
+	// Seed offenses
+	_, err := db.Exec(`
+		INSERT INTO offenses (db_id, location, description) VALUES
+			(45, 'LOC 1', 'DESC 1'),
+			(45, 'LOC 1', 'DESC 2'),
+			(45, 'LOC 2', 'DESC 3'),
+			(46, 'LOC 3', 'DESC 4');
+	`)
+	require.NoError(t, err)
+
+	// Seed locations (judgments)
+	// LOC 1: geocoded
+	// LOC 2: NOT geocoded
+	// LOC 3: geocoded
+	// LOC 4: geocoded but NOT in offenses
+	_, err = db.Exec(`
+		INSERT INTO locations (id, db_id, location, geocoding_method) VALUES
+			(1, 45, 'LOC 1', 'method_a'),
+			(2, 46, 'LOC 3', 'method_b'),
+			(3, 45, 'LOC 4', 'method_a');
+	`)
+	require.NoError(t, err)
+
+	// Test without filter
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/api/locations/progress", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	var progress ProgressResponse
+	err = json.Unmarshal(w.Body.Bytes(), &progress)
+	require.NoError(t, err)
+
+	// Total unique locations in offenses: (45, 'LOC 1'), (45, 'LOC 2'), (46, 'LOC 3') = 3
+	assert.Equal(t, 3, progress.TotalLocations)
+	// Geocoded locations in offenses: (45, 'LOC 1'), (46, 'LOC 3') = 2
+	assert.Equal(t, 2, progress.GeocodedLocations)
+	assert.InDelta(t, 66.666, progress.LocationsPercentage, 0.01)
+
+	// By method: method_a (1), method_b (1)
+	assert.Equal(t, 1, progress.ByMethod["method_a"])
+	assert.Equal(t, 1, progress.ByMethod["method_b"])
+	assert.Len(t, progress.ByMethod, 2)
+
+	// Test with db_id=45
+	w = httptest.NewRecorder()
+	req, _ = http.NewRequest(http.MethodGet, "/api/locations/progress?db_id=45", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	progress = ProgressResponse{}
+	err = json.Unmarshal(w.Body.Bytes(), &progress)
+	require.NoError(t, err)
+
+	// Total unique locations in offenses for db_id=45: (45, 'LOC 1'), (45, 'LOC 2') = 2
+	assert.Equal(t, 2, progress.TotalLocations)
+	// Geocoded locations in offenses for db_id=45: (45, 'LOC 1') = 1
+	assert.Equal(t, 1, progress.GeocodedLocations)
+	assert.InDelta(t, 50.0, progress.LocationsPercentage, 0.01)
+
+	// By method: method_a (1)
+	assert.Equal(t, 1, progress.ByMethod["method_a"])
+	assert.Len(t, progress.ByMethod, 1)
+}

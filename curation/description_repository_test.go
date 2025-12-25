@@ -38,6 +38,23 @@ func setupDescriptionDB(t *testing.T) (*sql.DB, DescriptionRepository) {
 	`)
 	require.NoError(t, err)
 
+	_, err = db.Exec(`
+		CREATE TABLE locations (
+			id INTEGER PRIMARY KEY,
+			db_id INTEGER,
+			location VARCHAR,
+			canonical_location VARCHAR,
+			point DOUBLE[],
+			is_electronic BOOLEAN DEFAULT false,
+			geocoding_method VARCHAR,
+			confidence VARCHAR,
+			notes VARCHAR,
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		);
+	`)
+	require.NoError(t, err)
+
 	// Seed articles for tests
 	articles := []Article{
 		{ID: "G.1", Text: "Art 1", Code: 1, Title: "Title 1"},

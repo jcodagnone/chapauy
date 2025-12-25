@@ -549,13 +549,24 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	// Geocoded locations count
 	var geocodedLocations int
 
-	judgmentQuery := `SELECT COUNT(*) FROM locations`
+	judgmentQuery := `
+		SELECT COUNT(*)
+		FROM locations lj
+		WHERE 1=1`
 	judgmentArgs := []any{}
 
 	if dbIDParam != "" {
-		judgmentQuery += ` WHERE db_id = ?`
+		judgmentQuery += ` AND lj.db_id = ?`
+		judgmentArgs = append(judgmentArgs, args...)
+	}
 
-		judgmentArgs = append(judgmentArgs, args[0])
+	judgmentQuery += ` AND EXISTS (
+			SELECT 1 FROM offenses o
+			WHERE o.db_id = lj.db_id AND o.location = lj.location` + whereClause + `
+		)`
+
+	if whereClause != "" {
+		judgmentArgs = append(judgmentArgs, args...)
 	}
 
 	err = db.QueryRow(judgmentQuery, judgmentArgs...).Scan(&geocodedLocations)
@@ -592,7 +603,7 @@ func (s *Server) getProgress(ctx *gin.Context) {
 
 	geocodedArgs := []any{}
 	if dbIDParam != "" {
-		geocodedArgs = append(geocodedArgs, args[0])
+		geocodedArgs = append(geocodedArgs, args...)
 	}
 
 	err = db.QueryRow(geocodedQuery, geocodedArgs...).Scan(&geocodedOffenses)
@@ -606,16 +617,24 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	byMethod := make(map[string]int)
 	methodQuery := `
 		SELECT geocoding_method, COUNT(*)
-		FROM locations`
+		FROM locations lj
+		WHERE 1=1`
 	methodArgs := []any{}
 
 	if dbIDParam != "" {
-		methodQuery += ` WHERE db_id = ?`
-
-		methodArgs = append(methodArgs, args[0])
+		methodQuery += ` AND lj.db_id = ?`
+		methodArgs = append(methodArgs, args...)
 	}
 
-	methodQuery += ` GROUP BY geocoding_method`
+	methodQuery += ` AND EXISTS (
+			SELECT 1 FROM offenses o
+			WHERE o.db_id = lj.db_id AND o.location = lj.location` + whereClause + `
+		)
+		GROUP BY geocoding_method`
+
+	if whereClause != "" {
+		methodArgs = append(methodArgs, args...)
+	}
 
 	rows, err := db.Query(methodQuery, methodArgs...)
 	if err != nil {
