@@ -238,8 +238,8 @@ func (idx *RadarIndex) FindRadar(pattern *RutaPattern) *Radar {
 
 		// Check if radar progresiva contains multiple markers (e.g., "51k571/51k278")
 		if strings.Contains(radar.Progresiva, "/") {
-			markers := strings.Split(radar.Progresiva, "/")
-			for _, marker := range markers {
+			markers := strings.SplitSeq(radar.Progresiva, "/")
+			for marker := range markers {
 				marker = strings.TrimSpace(marker)
 				if marker == pattern.Progresiva {
 					return radar

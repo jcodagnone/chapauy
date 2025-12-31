@@ -557,6 +557,7 @@ func (s *Server) getProgress(ctx *gin.Context) {
 
 	if dbIDParam != "" {
 		judgmentQuery += ` AND lj.db_id = ?`
+
 		judgmentArgs = append(judgmentArgs, args...)
 	}
 
@@ -623,6 +624,7 @@ func (s *Server) getProgress(ctx *gin.Context) {
 
 	if dbIDParam != "" {
 		methodQuery += ` AND lj.db_id = ?`
+
 		methodArgs = append(methodArgs, args...)
 	}
 

@@ -194,17 +194,19 @@ func ToRoman(num int) string {
 
 	val := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
 	syb := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
-	roman := ""
+
+	var roman strings.Builder
+
 	i := 0
 
 	for num > 0 {
 		for num >= val[i] {
-			roman += syb[i]
+			roman.WriteString(syb[i])
 			num -= val[i]
 		}
 
 		i++
 	}
 
-	return roman
+	return roman.String()
 }

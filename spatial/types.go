@@ -28,7 +28,7 @@ func (p Point) Value() (driver.Value, error) {
 }
 
 // Scan implements the sql.Scanner interface for database deserialization.
-func (p *Point) Scan(value interface{}) error {
+func (p *Point) Scan(value any) error {
 	if value == nil {
 		p.Lat, p.Lng = 0, 0
 
@@ -41,7 +41,7 @@ func (p *Point) Scan(value interface{}) error {
 		_, err := fmt.Sscanf(string(v), "POINT (%f %f)", &p.Lng, &p.Lat)
 
 		return err
-	case map[string]interface{}:
+	case map[string]any:
 		x, okX := v["x"].(float64)
 		y, okY := v["y"].(float64)
 

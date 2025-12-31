@@ -206,7 +206,7 @@ var curationDescriptionCmd = &cobra.Command{
 					currentDescription = strings.TrimSpace(strings.TrimPrefix(line, "# "))
 					articleIDs = []string{}
 					isMultiDescription = false
-				} else if strings.HasPrefix(line, "## ") {
+				} else if after, ok := strings.CutPrefix(line, "## "); ok {
 					// Part marker in multi-article description - update current description
 					if isMultiDescription {
 						// Save previous part if we have article IDs
@@ -225,7 +225,7 @@ var curationDescriptionCmd = &cobra.Command{
 							}
 						}
 						// Start new part
-						currentDescription = strings.TrimSpace(strings.TrimPrefix(line, "## "))
+						currentDescription = strings.TrimSpace(after)
 						articleIDs = []string{}
 					}
 				} else if line != "" && !strings.HasPrefix(line, "#") && currentDescription != "" {
