@@ -7,7 +7,14 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - 'gcloud auth print-access-token > token'
+      - |
+        set -e
+        echo "Verifying identity and registry access..."
+        echo "Account: $(gcloud config get-value account)"
+        gcloud artifacts repositories describe prod --project=$PROJECT_ID --location=us-east4 > /dev/null
+        gcloud auth print-access-token > token
+        TOKEN=$(cat token)
+        echo "Token generated: ${TOKEN:0:5}...${TOKEN: -5} (Length: ${#TOKEN})"
 
   # 2. Install Dagger and Run Deployment
   - name: 'gcr.io/cloud-builders/docker'
