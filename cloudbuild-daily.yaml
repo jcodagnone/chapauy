@@ -15,6 +15,7 @@ steps:
     args:
       - '-c'
       - |
+        set -e
         # Install Dagger
         curl -L https://dl.dagger.io/dagger/install.sh | sh
         
