@@ -101,6 +101,7 @@ func DesiredState() []Resource {
 			ProjectRoles: []string{
 				"roles/developerconnect.user",
 				"roles/developerconnect.admin",
+				"roles/artifactregistry.admin",
 			},
 		},
 		// The Cloud Scheduler Service Agent needs to be able to act as the Service Account
