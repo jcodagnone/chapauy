@@ -188,6 +188,15 @@
                     <select id="database-select" style="padding: 0.5rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; min-width: 150px;">
                         <option value="">All Databases</option>
                     </select>
+
+                    <label for="sort-select" style="font-weight: bold; color: #2c3e50; margin-left: 0.5rem;">Sort:</label>
+                    <select id="sort-select" title="Ordena la cola por la opción seleccionada: frecuencia total, más reciente, o incidentes en las últimas 7/30 días" style="padding: 0.4rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; min-width: 220px;">
+                        <option value="frequency">Most incidents (all time)</option>
+                        <option value="newest">Most recent incident</option>
+                        <option value="window_7">Most incidents in last 7 days</option>
+                        <option value="window_30">Most incidents in last 30 days</option>
+                    </select>
+                    <span style="margin-left:0.5rem; color:#7f8c8d; font-size:0.85rem;">? Hover to see meaning</span>
                 </div>
             </div>
             <div>
@@ -331,27 +340,34 @@
             }
         }
 
-        // Handle database selection change
-        document.getElementById('database-select').addEventListener('change', (e) => {
-            const dbId = e.target.value;
-            selectedDatabaseId = dbId ? parseInt(dbId) : null;
+         // Handle database selection change
+         document.getElementById('database-select').addEventListener('change', (e) => {
+             const dbId = e.target.value;
+             selectedDatabaseId = dbId ? parseInt(dbId) : null;
+ 
+             // Update URL
+             const url = new URL(window.location);
+             if (dbId) {
+                 url.searchParams.set('db_id', dbId);
+             } else {
+                 url.searchParams.delete('db_id');
+             }
+             window.history.pushState({}, '', url);
+ 
+             // Reload current view
+             if (viewMode === 'queue') {
+                 loadQueue();
+             } else {
+                 loadReview();
+             }
+         });
 
-            // Update URL
-            const url = new URL(window.location);
-            if (dbId) {
-                url.searchParams.set('db_id', dbId);
-            } else {
-                url.searchParams.delete('db_id');
-            }
-            window.history.pushState({}, '', url);
+         // Wire sort and window controls
+                 document.getElementById('sort-select').addEventListener('change', () => {
+             loadQueue();
+         });
 
-            // Reload current view
-            if (viewMode === 'queue') {
-                loadQueue();
-            } else {
-                loadReview();
-            }
-        });
+
 
         function switchView(newMode) {
             viewMode = newMode;
@@ -596,15 +612,25 @@
         }
 
         // Load location queue
-        async function loadQueue() {
-            try {
-                let url = '/api/locations/queue';
-                if (selectedDatabaseId) {
-                    url += `?db_id=${selectedDatabaseId}`;
-                }
+                 async function loadQueue() {
+             try {
+                 let url = '/api/locations/queue';
+                 const params = new URLSearchParams();
+                 if (selectedDatabaseId) {
+                     params.set('db_id', selectedDatabaseId);
+                 }
 
-                const response = await fetch(url);
-                locations = await response.json();
+                 // Add sort param (fixed options)
+                 const sort = document.getElementById('sort-select') ? document.getElementById('sort-select').value : 'frequency';
+                 if (sort && sort !== 'frequency') params.set('sort', sort);
+
+                 const qs = params.toString();
+                 if (qs) url += `?${qs}`;
+
+                 const response = await fetch(url);
+                 locations = await response.json();
+
+
 
                 const container = document.getElementById('queue-container');
 

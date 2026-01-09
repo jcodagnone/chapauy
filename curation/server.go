@@ -14,6 +14,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
 	apikeys "cloud.google.com/go/apikeys/apiv2"
 	"cloud.google.com/go/apikeys/apiv2/apikeyspb"
@@ -281,6 +282,19 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 	// Check for database filter
 	dbIDParam := ctx.Query("db_id")
 
+	// Sorting params: support fixed window options
+	sort := ctx.Query("sort") // "frequency" (default), "newest", "window_7", "window_30"
+	windowDays := 0
+
+	switch sort {
+	case "window_7":
+		windowDays = 7
+	case "window_30":
+		windowDays = 30
+	default:
+		// windowDays remains 0 (unused) for other modes
+	}
+
 	// Build base query
 	var args []any
 
@@ -300,11 +314,19 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 		args = append(args, dbID)
 	}
 
+	// Compute cutoff using Go and pass as SQL parameter (DuckDB supports casting)
+	cutoff := time.Now().UTC().Add(-time.Duration(windowDays) * 24 * time.Hour)
+	// Use RFC3339 which DuckDB can parse to TIMESTAMP
+	cutoffStr := cutoff.Format(time.RFC3339)
+
+	// Build select with DuckDB-aware CAST to TIMESTAMP
 	query := `
 		SELECT
 			o.db_id,
 			o.location,
-			COUNT(*) as offense_count
+			COUNT(*) as offense_count,
+			MAX(CAST(o.time AS TIMESTAMP)) as newest_offense_date,
+			SUM(CASE WHEN CAST(o.time AS TIMESTAMP) >= CAST(? AS TIMESTAMP) THEN 1 ELSE 0 END) as window_count
 		FROM offenses o
 		LEFT JOIN locations lj
 			ON o.db_id = lj.db_id AND o.location = lj.location
@@ -313,9 +335,17 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 			AND lj.id IS NULL  -- No judgment exists yet
 	` + whereClause + `
 		GROUP BY o.db_id, o.location
-		ORDER BY offense_count DESC
-		LIMIT 1000
 	`
+
+	// Append ordering based on requested sort
+	switch sort {
+	case "newest":
+		query += "\n\t\tORDER BY newest_offense_date DESC, window_count DESC, offense_count DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
+	case "window_7", "window_30":
+		query += "\n\t\tORDER BY window_count DESC, offense_count DESC, newest_offense_date DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
+	default:
+		query += "\n\t\tORDER BY offense_count DESC, newest_offense_date DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
+	}
 
 	// Get DB handle via type assertion
 	sqlRepo, ok := s.geocodeRepo.(*sqlJudgmentRepository)
@@ -324,6 +354,10 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 
 		return
 	}
+
+	// The cutoff placeholder appears before any WHERE placeholders, so ensure args order matches:
+	// cutoff first, then any db_id arg (if present).
+	args = append([]any{cutoffStr}, args...)
 
 	rows, err := sqlRepo.DB().Query(query, args...)
 	if err != nil {
@@ -337,11 +371,17 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 
 	for rows.Next() {
 		var item LocationQueueItem
-		if err := rows.Scan(&item.DbID, &item.Location, &item.OffenseCount); err != nil {
+
+		var newest sql.NullTime
+
+		var windowCount int
+		if err := rows.Scan(&item.DbID, &item.Location, &item.OffenseCount, &newest, &windowCount); err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
 			return
 		}
+
+		// We intentionally do not expose newest/window values in the API response
 
 		// Lookup database name
 		if dbName, ok := s.dbMap[item.DbID]; ok {

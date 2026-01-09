@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	_ "github.com/duckdb/duckdb-go/v2"
 	"github.com/gin-gonic/gin"
@@ -360,12 +361,12 @@ func TestGetGeocodingProgressAPI(t *testing.T) {
 
 	// Seed offenses
 	_, err := db.Exec(`
-		INSERT INTO offenses (db_id, location, description) VALUES
-			(45, 'LOC 1', 'DESC 1'),
-			(45, 'LOC 1', 'DESC 2'),
-			(45, 'LOC 2', 'DESC 3'),
-			(46, 'LOC 3', 'DESC 4');
-	`)
+			INSERT INTO offenses (db_id, location, description) VALUES
+				(45, 'LOC 1', 'DESC 1'),
+				(45, 'LOC 1', 'DESC 2'),
+				(45, 'LOC 2', 'DESC 3'),
+				(46, 'LOC 3', 'DESC 4');
+		`)
 	require.NoError(t, err)
 
 	// Seed locations (judgments)
@@ -374,11 +375,11 @@ func TestGetGeocodingProgressAPI(t *testing.T) {
 	// LOC 3: geocoded
 	// LOC 4: geocoded but NOT in offenses
 	_, err = db.Exec(`
-		INSERT INTO locations (id, db_id, location, geocoding_method) VALUES
-			(1, 45, 'LOC 1', 'method_a'),
-			(2, 46, 'LOC 3', 'method_b'),
-			(3, 45, 'LOC 4', 'method_a');
-	`)
+			INSERT INTO locations (id, db_id, location, geocoding_method) VALUES
+				(1, 45, 'LOC 1', 'method_a'),
+				(2, 46, 'LOC 3', 'method_b'),
+				(3, 45, 'LOC 4', 'method_a');
+		`)
 	require.NoError(t, err)
 
 	// Test without filter
@@ -423,4 +424,88 @@ func TestGetGeocodingProgressAPI(t *testing.T) {
 	// By method: method_a (1)
 	assert.Equal(t, 1, progress.ByMethod["method_a"])
 	assert.Len(t, progress.ByMethod, 1)
+}
+
+// New test: verify getLocationQueue ordering behavior (frequency vs window)
+func TestGetLocationQueueOrdering(t *testing.T) {
+	router, server, db, _ := setupServerTest(t)
+	defer db.Close()
+
+	// Use the real geocode repo on this DB so server.getLocationQueue uses it
+	server.geocodeRepo = NewLocationRepository(db, map[int]string{1: "DB1"})
+
+	// Seed offenses with timestamps relative to now so windowed sorts are deterministic
+	now := time.Now().UTC()
+	// A: two offenses, one 1 day ago, one 8 days ago
+	a1 := now.Add(-24 * time.Hour)
+	a2 := now.Add(-8 * 24 * time.Hour)
+	// B: three offenses, two recent (3d, 5d), one older (40d)
+	b1 := now.Add(-3 * 24 * time.Hour)
+	b2 := now.Add(-5 * 24 * time.Hour)
+	b3 := now.Add(-40 * 24 * time.Hour)
+	// C: one offense 2 days ago
+	c1 := now.Add(-2 * 24 * time.Hour)
+
+	_, err := db.Exec(`INSERT INTO offenses (db_id, location, time) VALUES (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?), (?, ?, ?);`,
+		1, "A", a1.Format("2006-01-02 15:04:05"),
+		1, "A", a2.Format("2006-01-02 15:04:05"),
+		1, "B", b1.Format("2006-01-02 15:04:05"),
+		1, "B", b2.Format("2006-01-02 15:04:05"),
+		1, "B", b3.Format("2006-01-02 15:04:05"),
+		1, "C", c1.Format("2006-01-02 15:04:05"),
+	)
+	require.NoError(t, err)
+
+	// 1) Default ordering (frequency) -> B (3), A (2), C (1)
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest(http.MethodGet, "/api/locations/queue", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	var items []LocationQueueItem
+	err = json.Unmarshal(w.Body.Bytes(), &items)
+	require.NoError(t, err)
+
+	if assert.GreaterOrEqual(t, len(items), 3) {
+		assert.Equal(t, "B", items[0].Location)
+		assert.Equal(t, "A", items[1].Location)
+		assert.Equal(t, "C", items[2].Location)
+	}
+
+	// 2) Window ordering for last 7 days: A has 1 (1d), B has 2 (3d,5d), C has 1 (2d)
+	w = httptest.NewRecorder()
+	req, _ = http.NewRequest(http.MethodGet, "/api/locations/queue?sort=window_7", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	items = []LocationQueueItem{}
+	err = json.Unmarshal(w.Body.Bytes(), &items)
+	require.NoError(t, err)
+
+	if assert.GreaterOrEqual(t, len(items), 3) {
+		// window_7 should order: B (2 in window), A (1), C (1) — tie between A and C broken by offense_count (A has 2)
+		assert.Equal(t, "B", items[0].Location)
+		assert.Equal(t, "A", items[1].Location)
+		assert.Equal(t, "C", items[2].Location)
+	}
+
+	// 3) Window ordering for last 30 days: B (2 recent), A (1 recent <=8 days), C (1 recent)
+	w = httptest.NewRecorder()
+	req, _ = http.NewRequest(http.MethodGet, "/api/locations/queue?sort=window_30", nil)
+	router.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	items = []LocationQueueItem{}
+	err = json.Unmarshal(w.Body.Bytes(), &items)
+	require.NoError(t, err)
+
+	if assert.GreaterOrEqual(t, len(items), 3) {
+		// window_30 should also have B first (2), then A (1), then C (1) — tie broken by offense_count
+		assert.Equal(t, "B", items[0].Location)
+		assert.Equal(t, "A", items[1].Location)
+		assert.Equal(t, "C", items[2].Location)
+	}
 }
