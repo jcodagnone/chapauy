@@ -27,8 +27,12 @@ steps:
         curl -L https://dl.dagger.io/dagger/install.sh | sh
         
         # Load Token
-        export GCP_ACCESS_TOKEN=$(cat token)
+        export GCP_ACCESS_TOKEN=$(cat token | tr -d '\n')
         
+        # Debug Token Info
+        echo "Debugging Token Scopes..."
+        curl -s "https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=$$GCP_ACCESS_TOKEN" || echo "Failed to fetch token info"
+
         # 1. Refresh Data (Builds & Publishes 'data' image)
         echo "Running Data Refresh..."
         ./bin/dagger call data-refresh --token=env:GCP_ACCESS_TOKEN
