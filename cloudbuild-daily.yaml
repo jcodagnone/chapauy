@@ -33,6 +33,11 @@ steps:
         echo "Debugging Token Scopes..."
         curl -s "https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=$$GCP_ACCESS_TOKEN" || echo "Failed to fetch token info"
 
+        # Debug Docker Login
+        echo "Testing Docker Login..."
+        echo $$GCP_ACCESS_TOKEN | docker login -u oauth2accesstoken --password-stdin us-east4-docker.pkg.dev
+        docker pull us-east4-docker.pkg.dev/chapauy-20251216/prod/data:latest || echo "❌ Manual Docker Pull Failed"
+
         # 1. Refresh Data (Builds & Publishes 'data' image)
         echo "Running Data Refresh..."
         ./bin/dagger call data-refresh --token=env:GCP_ACCESS_TOKEN
