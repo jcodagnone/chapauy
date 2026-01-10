@@ -33,17 +33,12 @@ steps:
         echo $$GCP_ACCESS_TOKEN | docker login -u oauth2accesstoken --password-stdin us-east4-docker.pkg.dev
         docker pull us-east4-docker.pkg.dev/chapauy-20251216/prod/data:latest || echo "❌ Manual Docker Pull Failed"
 
-        # 1. Build CLI and Web
-        echo "Building Web+Data..."
-        ./bin/dagger call build-and-publish --token=env:GCP_ACCESS_TOKEN -vvv
+        # 1. Run Everything
+        echo "Running Auth Test..."
+        ./bin/dagger call test-auth --token=env:GCP_ACCESS_TOKEN
 
-        # 2. Build Web+Data
-        echo "Building Web+Data..."
-        ./bin/dagger call build-web-data --token=env:GCP_ACCESS_TOKEN
-
-        # 3. Deploy Service
-        echo "Deploying Cloud Run Service..."
-        ./bin/dagger call deploy --token=env:GCP_ACCESS_TOKEN
+        echo "Running Build All..."
+        ./bin/dagger call build-all --token=env:GCP_ACCESS_TOKEN --src=. --git-sha=$SHORT_SHA -vvv
     env:
       - 'PROJECT_ID=$PROJECT_ID'
       - 'REGION=${_REGION}'

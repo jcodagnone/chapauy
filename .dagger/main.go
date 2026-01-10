@@ -192,6 +192,57 @@ func (c *Chapauy) BuildWebData(
 	return nil
 }
 
+// Builds everything in one go to share context/token
+func (c *Chapauy) BuildAll(
+	ctx context.Context,
+	src *dagger.Directory,
+	token *dagger.Secret,
+	// +optional
+	gitSha string,
+) error {
+	if err := c.BuildAndPublish(ctx, src, token, gitSha); err != nil {
+		return err
+	}
+	if err := c.BuildWebData(ctx, token); err != nil {
+		return err
+	}
+	// Deploy?
+	if err := c.Deploy(ctx, nil, token, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Debug function to test pulling the data image
+func (c *Chapauy) TestAuth(
+	ctx context.Context,
+	token *dagger.Secret,
+) (string, error) {
+	accessToken, err := extractToken(ctx, token)
+	if err != nil {
+		return "", err
+	}
+	tokenSecret := dag.SetSecret("gcp-token", accessToken)
+
+	log.Printf("Testing auth with token len=%d on %s", len(accessToken), infra.Images.RegistryAddr)
+
+	// Try to get the file info/size (forcing a pull)
+	// We use Sync() on the container to force pull, but since it's scratch we can't exec.
+	// We'll try to retrieve the file to the host (or just its size).
+	// Actually, just calling Sync on the File should be enough.
+	f := dag.Container().
+		WithRegistryAuth(infra.Images.RegistryAddr, "oauth2accesstoken", tokenSecret).
+		From(infra.Images.Data).
+		File("/app/db/chapauy.duckdb")
+
+	// Just check if we can resolve the file
+	_, err = f.Size(ctx)
+	if err != nil {
+		return "", fmt.Errorf("auth test failed (file access): %w", err)
+	}
+	return "Auth Test Passed: File access successful", nil
+}
+
 // Deploy triggers a deployment of the latest web service image to Cloud Run.
 func (c *Chapauy) Deploy(
 	ctx context.Context,
