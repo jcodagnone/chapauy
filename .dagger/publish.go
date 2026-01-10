@@ -34,6 +34,13 @@ func extractToken(ctx context.Context, token *dagger.Secret) (string, error) {
 		}
 		accessToken = t.AccessToken
 	}
+
+	if len(accessToken) > 10 {
+		fmt.Printf("DEBUG: Extracted token (len=%d): %s...%s\n", len(accessToken), accessToken[:5], accessToken[len(accessToken)-5:])
+	} else {
+		fmt.Printf("DEBUG: Extracted token is too short or empty: %s\n", accessToken)
+	}
+
 	return accessToken, nil
 }
 
