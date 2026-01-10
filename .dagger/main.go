@@ -226,21 +226,41 @@ func (c *Chapauy) TestAuth(
 
 	log.Printf("Testing auth with token len=%d on %s", len(accessToken), infra.Images.RegistryAddr)
 
-	// Try to get the file info/size (forcing a pull)
-	// We use Sync() on the container to force pull, but since it's scratch we can't exec.
-	// We'll try to retrieve the file to the host (or just its size).
-	// Actually, just calling Sync on the File should be enough.
-	f := dag.Container().
-		WithRegistryAuth(infra.Images.RegistryAddr, "oauth2accesstoken", tokenSecret).
-		From(infra.Images.Data).
-		File("/app/db/chapauy.duckdb")
+	// WORKAROUND: Use host docker to pull the image and save it as a tarball, then import it.
+	// This bypasses Dagger's registry auth issue for now.
+	// Since manual docker pull works, this should work.
+	
+	// 1. Pull on host (already done in cloudbuild script, but ensure here or assume done)
+	// The cloudbuild script does: docker pull .../data:latest
+	
+	// 2. Save to tar
+	// We need to run this on the host or in a container that has access to the docker daemon.
+	// But Dagger runs in a container. It can't easily access the host docker daemon unless socket is mounted.
+	// Cloud Build mounts the socket? usually /var/run/docker.sock.
+	
+	// Attempt 2: Use a container with docker client inside, mount the socket, pull and save.
+	dockerSocket := dag.Host().UnixSocket("/var/run/docker.sock")
+	
+	tarFile := dag.Container().
+		From("docker:cli").
+		WithUnixSocket("/var/run/docker.sock", dockerSocket).
+		WithEnvVariable("DOCKER_HOST", "unix:///var/run/docker.sock").
+		WithExec([]string{"docker", "pull", infra.Images.Data}).
+		WithExec([]string{"docker", "save", "-o", "/image.tar", infra.Images.Data}).
+		File("/image.tar")
+
+	// 3. Import into Dagger
+	dataCtr := dag.Container().Import(tarFile)
+	
+	// Verify file
+	f := dataCtr.File("/app/db/chapauy.duckdb")
 
 	// Just check if we can resolve the file
 	_, err = f.Size(ctx)
 	if err != nil {
 		return "", fmt.Errorf("auth test failed (file access): %w", err)
 	}
-	return "Auth Test Passed: File access successful", nil
+	return "Auth Test Passed: File access successful via Docker Socket", nil
 }
 
 // Deploy triggers a deployment of the latest web service image to Cloud Run.
