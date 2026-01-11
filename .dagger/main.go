@@ -217,30 +217,13 @@ func (c *Chapauy) BuildAll(
 func (c *Chapauy) TestAuth(
 	ctx context.Context,
 	token *dagger.Secret,
+	// +optional
+	// +defaultPath="/var/run/docker.sock"
+	dockerSocket *dagger.Socket,
 ) (string, error) {
-	accessToken, err := extractToken(ctx, token)
-	if err != nil {
-		return "", err
-	}
-	tokenSecret := dag.SetSecret("gcp-token", accessToken)
-
-	log.Printf("Testing auth with token len=%d on %s", len(accessToken), infra.Images.RegistryAddr)
-
-	// WORKAROUND: Use host docker to pull the image and save it as a tarball, then import it.
-	// This bypasses Dagger's registry auth issue for now.
-	// Since manual docker pull works, this should work.
+	// 1. Pull on host (already done in cloudbuild script)
 	
-	// 1. Pull on host (already done in cloudbuild script, but ensure here or assume done)
-	// The cloudbuild script does: docker pull .../data:latest
-	
-	// 2. Save to tar
-	// We need to run this on the host or in a container that has access to the docker daemon.
-	// But Dagger runs in a container. It can't easily access the host docker daemon unless socket is mounted.
-	// Cloud Build mounts the socket? usually /var/run/docker.sock.
-	
-	// Attempt 2: Use a container with docker client inside, mount the socket, pull and save.
-	dockerSocket := dag.Host().UnixSocket("/var/run/docker.sock")
-	
+	// 2. Save to tar using a docker client container that mounts the socket
 	tarFile := dag.Container().
 		From("docker:cli").
 		WithUnixSocket("/var/run/docker.sock", dockerSocket).
@@ -256,13 +239,12 @@ func (c *Chapauy) TestAuth(
 	f := dataCtr.File("/app/db/chapauy.duckdb")
 
 	// Just check if we can resolve the file
-	_, err = f.Size(ctx)
+	_, err := f.Size(ctx)
 	if err != nil {
 		return "", fmt.Errorf("auth test failed (file access): %w", err)
 	}
 	return "Auth Test Passed: File access successful via Docker Socket", nil
 }
-
 // Deploy triggers a deployment of the latest web service image to Cloud Run.
 func (c *Chapauy) Deploy(
 	ctx context.Context,
