@@ -17,7 +17,7 @@ steps:
       - |
         set -e
         # Install Dagger
-        curl -L https://dl.dagger.io/dagger/install.sh | sh
+        curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.19.8 sh
         
         # Load Token
         export GCP_ACCESS_TOKEN=$(cat token)
