@@ -12,6 +12,8 @@ import (
 	"cloud.google.com/go/artifactregistry/apiv1/artifactregistrypb"
 	"cloud.google.com/go/iam/apiv1/iampb"
 	"cloud.google.com/go/run/apiv2/runpb"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/durationpb"
 )
 
@@ -84,7 +86,7 @@ func DeployService(ctx context.Context, client *GCPClient, dryRun bool) error {
 			return fmt.Errorf("failed to wait for update operation: %w", err)
 		}
 		log.Println("✅ Service updated successfully")
-	} else if strings.Contains(err.Error(), "NotFound") {
+	} else if status.Code(err) == codes.NotFound {
 		// Create
 		// For CreateService, the service.Name must be empty. The ID is passed via ServiceId.
 		service.Name = ""
