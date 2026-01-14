@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import { GlobalLinks } from "@/components/global-links"
 import { HomeSearch } from "@/components/home-search"
 
-
 export default function Home() {
   return (
     <div className="bg-background flex min-h-screen flex-col">
@@ -45,14 +44,12 @@ export default function Home() {
           {/* Action Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Button variant="secondary" asChild>
-              <Link href="/offenses">
+              <Link href="/offenses?facet=features&features=no_error">
                 Explorar todas las infracciones
               </Link>
             </Button>
             <Button variant="ghost" className="text-muted-foreground" asChild>
-              <Link href="/docs">
-                Ver Documentación
-              </Link>
+              <Link href="/docs">Ver Documentación</Link>
             </Button>
           </div>
         </div>
