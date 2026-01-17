@@ -343,6 +343,8 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 		query += "\n\t\tORDER BY newest_offense_date DESC, window_count DESC, offense_count DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
 	case "window_7", "window_30":
 		query += "\n\t\tORDER BY window_count DESC, offense_count DESC, newest_offense_date DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
+	case "name":
+		query += "\n\t\tORDER BY o.location ASC, o.db_id ASC, offense_count DESC\n\t\tLIMIT 1000\n\t"
 	default:
 		query += "\n\t\tORDER BY offense_count DESC, newest_offense_date DESC, o.location ASC\n\t\tLIMIT 1000\n\t"
 	}
