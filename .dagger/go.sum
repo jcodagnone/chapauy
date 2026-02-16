@@ -4,8 +4,8 @@ cloud.google.com/go/apikeys v1.2.7 h1:JbdXKvx6i4zyGKmG+hPgtmFIoT5j3CIUgByJypFT1X
 cloud.google.com/go/apikeys v1.2.7/go.mod h1:A2yBJ+/0m3kDZaxJ27Wqw21pzr4wxoE8tTHbXpGepjk=
 cloud.google.com/go/artifactregistry v1.20.0 h1:j/XQiQfaeTyQeNj3HNk4iDFREVnY/fxkHIjsxpaDs8A=
 cloud.google.com/go/artifactregistry v1.20.0/go.mod h1:0G9wdbGyDFkvrYH+2AlQs9MuTJdbY8Vg45M8VjlI8rc=
-cloud.google.com/go/auth v0.18.1 h1:IwTEx92GFUo2pJ6Qea0EU3zYvKnTAeRCODxfA/G5UWs=
-cloud.google.com/go/auth v0.18.1/go.mod h1:GfTYoS9G3CWpRA3Va9doKN9mjPGRS+v41jmZAhBzbrA=
+cloud.google.com/go/auth v0.18.2 h1:+Nbt5Ev0xEqxlNjd6c+yYUeosQ5TtEUaNcN/3FozlaM=
+cloud.google.com/go/auth v0.18.2/go.mod h1:xD+oY7gcahcu7G2SG2DsBerfFxgPAJz17zz2joOFF3M=
 cloud.google.com/go/auth/oauth2adapt v0.2.8 h1:keo8NaayQZ6wimpNSmW5OPc283g65QNIiLpZnkHRbnc=
 cloud.google.com/go/auth/oauth2adapt v0.2.8/go.mod h1:XQ9y31RkqZCcwJWNSx2Xvric3RrU88hAYYbjDWYDL+c=
 cloud.google.com/go/cloudbuild v1.25.0 h1:Fkg+iJdN7bfICZJzLr/XV+k9aVxXS/hakIlhjDIRIDw=
@@ -26,6 +26,8 @@ cloud.google.com/go/scheduler v1.11.8 h1:BoXY2BvBsaRw3ggVMzC9tborZqJBu+NcJcD9Pqe
 cloud.google.com/go/scheduler v1.11.8/go.mod h1:bNKU7/f04eoM6iKQpwVLvFNBgGyJNS87RiFN73mIPik=
 cloud.google.com/go/serviceusage v1.9.7 h1:vrBBeI2ESmri4BLGPz1YH2o37loIQ3DDTloYiDOe2lY=
 cloud.google.com/go/serviceusage v1.9.7/go.mod h1:JpBpv+4Zbe7+RiC9ydc6xgBUOntIL9tA85d2xKgV83g=
+dagger.io/dagger v0.19.11 h1:Cra3wL1oaZsqXJcnPydocx3bIDD5tM7XCuwcn2Uh+2Q=
+dagger.io/dagger v0.19.11/go.mod h1:BjAJWl4Lx7XRW7nooNjBi0ZAC5Ici2pkthkdBIZdbTI=
 github.com/99designs/gqlgen v0.17.86 h1:C8N3UTa5heXX6twl+b0AJyGkTwYL6dNmFrgZNLRcU6w=
 github.com/99designs/gqlgen v0.17.86/go.mod h1:KTrPl+vHA1IUzNlh4EYkl7+tcErL3MgKnhHrBcV74Fw=
 github.com/Khan/genqlient v0.8.1 h1:wtOCc8N9rNynRLXN3k3CnfzheCUNKBcvXmVv5zt6WCs=
