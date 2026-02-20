@@ -11,7 +11,7 @@ require (
 	cloud.google.com/go/run v1.15.0
 	cloud.google.com/go/scheduler v1.11.8
 	cloud.google.com/go/serviceusage v1.9.7
-	github.com/99designs/gqlgen v0.17.86
+	github.com/99designs/gqlgen v0.17.87
 	github.com/Khan/genqlient v0.8.1
 	github.com/spf13/cobra v1.10.2
 	github.com/vektah/gqlparser/v2 v2.5.32

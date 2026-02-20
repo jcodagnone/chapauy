@@ -28,8 +28,8 @@ cloud.google.com/go/serviceusage v1.9.7 h1:vrBBeI2ESmri4BLGPz1YH2o37loIQ3DDTloYi
 cloud.google.com/go/serviceusage v1.9.7/go.mod h1:JpBpv+4Zbe7+RiC9ydc6xgBUOntIL9tA85d2xKgV83g=
 dagger.io/dagger v0.19.11 h1:Cra3wL1oaZsqXJcnPydocx3bIDD5tM7XCuwcn2Uh+2Q=
 dagger.io/dagger v0.19.11/go.mod h1:BjAJWl4Lx7XRW7nooNjBi0ZAC5Ici2pkthkdBIZdbTI=
-github.com/99designs/gqlgen v0.17.86 h1:C8N3UTa5heXX6twl+b0AJyGkTwYL6dNmFrgZNLRcU6w=
-github.com/99designs/gqlgen v0.17.86/go.mod h1:KTrPl+vHA1IUzNlh4EYkl7+tcErL3MgKnhHrBcV74Fw=
+github.com/99designs/gqlgen v0.17.87 h1:pSnCIMhBQezAE8bc1GNmfdLXFmnWtWl1GRDFEE/nHP8=
+github.com/99designs/gqlgen v0.17.87/go.mod h1:fK05f1RqSNfQpd4CfW5qk/810Tqi4/56Wf6Nem0khAg=
 github.com/Khan/genqlient v0.8.1 h1:wtOCc8N9rNynRLXN3k3CnfzheCUNKBcvXmVv5zt6WCs=
 github.com/Khan/genqlient v0.8.1/go.mod h1:R2G6DzjBvCbhjsEajfRjbWdVglSH/73kSivC9TLWVjU=
 github.com/agnivade/levenshtein v1.2.1 h1:EHBY3UOn1gwdy/VbFwgo4cxecRznFk7fKWN1KOX7eoM=
