@@ -4,6 +4,7 @@
 package impo
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -21,6 +22,7 @@ import (
 // Common errors returned by the client.
 var (
 	ErrRedirectNotAllowed = errors.New("redirect not allowed")
+	ErrNotYetPublished    = errors.New("este contenido todavía no se publicó")
 )
 
 // contextKey is a type for context keys to avoid collisions.
@@ -239,8 +241,32 @@ func (c *Client) downloadMissing() error {
 			continue
 		}
 
+		bodyBytes, err := io.ReadAll(r)
+		if err != nil {
+			errs = append(
+				errs,
+				errors.Join(
+					resp.Body.Close(),
+					fmt.Errorf("reading response body completely: %w", err),
+				),
+			)
+
+			log.Printf("[%d/%d] Reading completely: %s", i+1, n, err)
+			continue
+		}
+
+		if bytes.Contains(bodyBytes, []byte("Este contenido se publicará en la edición del Diario Oficial")) {
+			// This document is not yet published. Just close and skip saving.
+			_ = resp.Body.Close()
+			errs = append(errs, fmt.Errorf("document %q: %w", id, ErrNotYetPublished))
+			log.Printf("[%d/%d] Skipped %s: %v", i+1, n, id, ErrNotYetPublished)
+			continue
+		}
+
 		if !c.options.DryRun {
-			if err := c.store.SaveDocument(id, r); err != nil {
+			// Create a new reader from the byte slice to save the document
+			saveReader := bytes.NewReader(bodyBytes)
+			if err := c.store.SaveDocument(id, saveReader); err != nil {
 				errs = append(
 					errs,
 					errors.Join(
@@ -271,7 +297,15 @@ func (c *Client) downloadMissing() error {
 	}
 
 	if len(errs) > 0 {
-		return errors.Join(errs...)
+		var finalErrs []error
+		for _, err := range errs {
+			if !errors.Is(err, ErrNotYetPublished) {
+				finalErrs = append(finalErrs, err)
+			}
+		}
+		if len(finalErrs) > 0 {
+			return errors.Join(finalErrs...)
+		}
 	}
 
 	return nil
