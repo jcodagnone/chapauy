@@ -33,6 +33,34 @@ La fuente de verdad para la lógica del sistema y su arquitectura se encuentra e
 
 ---
 
+## Uso de Git
+
+### Filosofía de Commit
+La historia de commits debe contar una historia clara y lineal. Preferimos múltiples commits pequeños y atómicos en lugar de uno solo monolítico.
+
+- **Commits Atómicos**: Si una funcionalidad requiere una refactorización previa, realice el commit de la refactorización **primero** y la funcionalidad **después**. No los mezcle.
+- **Staging Selectivo**: Evite `git add .`. Use `git add -p` para revisar y confirmar cada cambio.
+- **Historia Lineal (Rebase)**: Mantenga una historia limpia. Al actualizar su rama, use siempre `git pull --rebase`.
+- **Sin Firma**: Los agentes no tienen acceso a claves privadas. Use explícitamente el flag `--no-gpg-sign`.
+- **Mensajes de Commit**: Explique el *porqué* del cambio, no solo el *qué*. Limite las líneas del cuerpo del mensaje a 80 columnas.
+
+## Calidad de Código y Dependencias
+
+- **KISS & YAGNI**: Escriba código simple y no implemente soluciones para problemas hipotéticos futuros.
+- **DRY (Don't Repeat Yourself)**: Si una lógica o constante se usa más de una vez, **extráigala** inmediatamente a una función o constante compartida. No duplique código.
+- **Dependencias Mínimas**: Agote las capacidades de la biblioteca estándar antes de añadir paquetes externos. Cada dependencia nueva requiere justificación.
+
+## Manejo de Errores y Testing
+
+- **Fail Loudly**: Nunca ignore ni oculte errores. Si una función devuelve un error, debe ser manejado o propagado con contexto: `fmt.Errorf("falló al realizar X: %w", err)`.
+- **Existence Proof**: Si una funcionalidad no está probada, no existe. Entienda cómo probará el cambio antes de escribir el código.
+
+## Documentación del Producto
+
+- **Docs as Code**: El repositorio es la única fuente de verdad. No se debe escribir código de funcionalidad sin una definición de producto o documento de descubrimiento correspondiente en `web/docs/` o `prds/`.
+
+---
+
 ## ⚠️ MANDATORY TASK COMPLETION CHECKLIST ⚠️
 
 **🔴 BEFORE MARKING ANY TASK/SUBTASK AS COMPLETE:**
@@ -47,8 +75,10 @@ La fuente de verdad para la lógica del sistema y su arquitectura se encuentra e
 
 **CRITICAL DEVELOPMENT RULES - NEVER OVERRIDE:**
 
-1. **Always Write Integration Tests**: You MUST write or update integration tests to validate changes.
+1. **Existence Proof**: You MUST write or update integration tests to validate changes. A feature without tests does not exist.
 2. **Never Claim Done with Failing Tests**: A task is NOT complete if any tests are failing.
-3. **No Code Duplication**: Search the codebase for existing utilities before implementing new ones. Re-use logic from `impo` or `curation` packages.
+3. **DRY (No Code Duplication)**: Search the codebase for existing utilities before implementing new ones. Re-use logic from `impo` or `curation` packages. If logic or constants are used more than once, extract them.
 4. **Consistency**: Follow the established architectural patterns (Repository pattern in frontend, CLI structure in backend).
-5. **Rioplatense style**: Use "nosotros", "usted", and local terminology
+5. **Rioplatense style**: Use "nosotros", "usted", and local terminology.
+6. **Error Wrapping (Go)**: Always wrap errors with context using `%w` for preservation of the error chain.
+7. **Entity Links**: Ensure all entity references in the UI are linked to their detail views.
