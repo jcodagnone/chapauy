@@ -9,9 +9,31 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://chapa.uy"),
   title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
-  description: "Consultá infracciones de tránsito en Uruguay",
-
+  description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
+  openGraph: {
+    title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
+    description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
+    url: "https://chapa.uy",
+    siteName: "ChapaUY",
+    images: [
+      {
+        url: "/logo.webp",
+        width: 1200,
+        height: 630,
+        alt: "ChapaUY Logo",
+      },
+    ],
+    locale: "es_UY",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
+    description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
+    images: ["/logo.webp"],
+  },
 }
 
 export default function RootLayout({

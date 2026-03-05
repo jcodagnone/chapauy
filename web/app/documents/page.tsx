@@ -9,6 +9,17 @@ import { OffensesSidebarSkeleton } from "@/components/offenses-sidebar-skeleton"
 import { DocumentsList } from "./documents-list"
 import DocumentsLoading from "./loading"
 import { Dimension, SidebarMode } from "@/lib/types"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Documentos Originales | ChapaUY",
+  description: "Navegá los documentos oficiales del IMPO con las notificaciones de infracciones.",
+  openGraph: {
+    title: "Documentos Originales | ChapaUY",
+    description: "Navegá los documentos oficiales del IMPO con las notificaciones de infracciones.",
+    url: "https://chapa.uy/documents",
+  },
+}
 
 interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>

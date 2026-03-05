@@ -72,9 +72,23 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   if (!doc) return {}
 
+  const title = `${doc.title} | Documentación | ChapaUY`
+  const description = doc.description
+
   return {
-    title: `${doc.title} | Documentación | ChapaUY`,
-    description: doc.description,
+    title,
+    description,
     authors: doc.author ? [{ name: doc.author }] : undefined,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `https://chapa.uy/docs/${slug.join("/")}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   }
 }
