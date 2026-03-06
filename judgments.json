@@ -8921,6 +8921,28 @@
     },
     {
       "id": 0,
+      "description": "4.2.1 Conducir bajo efectos de alcohol o placa matricula examen (artículo 46 de la ley 18.191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:27.099279Z"
+    },
+    {
+      "id": 0,
+      "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarse al examen (aarticulo 46 de la ley 18.191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:21.967988Z"
+    },
+    {
+      "id": 0,
       "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarse al examen (articulo 46 de la Iey 18.191)",
       "article_ids": [
         "4.2.1"
@@ -8973,6 +8995,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarse al examen (artículo 46 de la ley 18.191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:15.412672Z"
     },
     {
       "id": 0,
@@ -9039,6 +9072,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "4.2.2 Conducir bajo efectos de drogas o rehusarse al examen (artículo 46 de la ley 18.191)",
+      "article_ids": [
+        "4.2.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:57:43.328242Z"
     },
     {
       "id": 0,
@@ -23611,6 +23655,17 @@
     },
     {
       "id": 0,
+      "description": "CON.BAJO EFECT ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:36.550383Z"
+    },
+    {
+      "id": 0,
       "description": "CON.CON IMPRUDENCIA",
       "article_ids": [
         "4.4.1"
@@ -23688,6 +23743,17 @@
     },
     {
       "id": 0,
+      "description": "COND. EFECTO ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:42.432315Z"
+    },
+    {
+      "id": 0,
       "description": "COND. MANIPULANDO CELU",
       "article_ids": [
         "4.4.2"
@@ -23721,6 +23787,17 @@
     },
     {
       "id": 0,
+      "description": "COND.BAJO EFC ALCOHO",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:48.465719Z"
+    },
+    {
+      "id": 0,
       "description": "COND.BAJO EFEC ALCOHOL",
       "article_ids": [
         "4.2.1"
@@ -23729,6 +23806,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "COND.BAJOS EFEC.ALCOH",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:56:56.831028Z"
     },
     {
       "id": 0,
@@ -23831,6 +23919,17 @@
     },
     {
       "id": 0,
+      "description": "COND.EFEC.ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:57:03.307984Z"
+    },
+    {
+      "id": 0,
       "description": "COND.EFECTO ALCOHOL",
       "article_ids": [
         "4.2.1"
@@ -23839,6 +23938,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "COND.EFECTOS ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:57:08.834665Z"
     },
     {
       "id": 0,
@@ -24264,6 +24374,17 @@
     },
     {
       "id": 0,
+      "description": "CONDUCIR BAJO A EFECTOS DE ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:57:20.058484Z"
+    },
+    {
+      "id": 0,
       "description": "CONDUCIR BAJO EFECTOS DE ALCOHOL",
       "article_ids": [
         "4.2.1"
@@ -24272,6 +24393,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "CONDUCIR BAJO EFECTOS DE ALCOHOL, CONDUCOR SIN CASCO, NO POSEER LICENCIA DE CONDUCIR",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-06T13:57:33.344829Z"
     },
     {
       "id": 0,
