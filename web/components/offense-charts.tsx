@@ -52,11 +52,11 @@ function formatNumber(value: number): string {
 }
 
 const groupColors = [
-  "hsl(200, 70%, 50%)", // blue
-  "hsl(280, 60%, 50%)", // purple
-  "hsl(30, 70%, 50%)", // orange
-  "hsl(340, 60%, 50%)", // pink
-  "hsl(160, 60%, 50%)", // teal
+  "hsl(25, 80%, 50%)",  // Orange (Primary / matching Frequency)
+  "hsl(200, 70%, 50%)", // Blue (High contrast for 2nd group)
+  "hsl(280, 60%, 55%)", // Purple
+  "hsl(160, 60%, 45%)", // Teal/Green
+  "hsl(340, 65%, 50%)", // Pink
 ]
 
 function transformChartData(
