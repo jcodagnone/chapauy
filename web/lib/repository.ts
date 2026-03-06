@@ -245,7 +245,7 @@ export const getArticles = unstable_cache(
       const byId: Record<string, string> = {}
       const byCode: Record<string, string> = {}
       rows.forEach((r: any) => {
-        byId[r.id] = `${r.id} - ${r.title}`
+        byId[r.id] = `${r.id} - ${r.text}`
         byCode[r.code] = `${r.code} - ${r.title}`
       })
       return { byId, byCode }

@@ -105,12 +105,16 @@ const setupTestDB = async () => {
   await runQuery(
     testDB,
     `
-    INSERT INTO offenses (db_id, doc_source, doc_id, doc_date, record_id, offense_id, vehicle, vehicle_country, vehicle_type, time, time_year, location, description, ur, error) VALUES
-      (45, 'doc1', 'doc1_id', '2023-01-01', 1, 'offense1', 'AAAA123', 'UY', 'AUTO', '2023-01-01 10:00:00', 2023, 'Some Location', 'Speeding', 100, NULL),
-      (45, 'doc2', 'doc2_id', '2024-01-01', 1, 'offense2', 'BBBB456', 'UY', 'MOTO', '2024-01-01 11:00:00', 2024, 'Another Location', 'Parking', 200, NULL),
-      (45, 'doc1', 'doc1_id', '2023-01-01', 2, 'offense3', 'AAAA123', 'UY', 'AUTO', '2024-01-01 12:00:00', 2024, 'Some Location', 'Speeding', 300, NULL),
-      (45, 'doc1', 'doc1_id', '2023-01-01', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Some error'),
-      (45, 'doc1', 'doc1_id', '2023-01-01', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Another error')
+    INSERT INTO articles (id, text, code, title) VALUES
+      ('13.3.A', 'Superar las velocidades máximas permitidas: hasta 20 km', 13, 'De las velocidades'),
+      ('18.1.2', 'Estacionar a mayor distancia del cordón que la permitida', 18, 'Del estacionamiento');
+
+    INSERT INTO offenses (db_id, doc_source, doc_id, doc_date, record_id, offense_id, vehicle, vehicle_country, vehicle_type, time, time_year, location, description, ur, error, article_ids, article_codes) VALUES
+      (45, 'doc1', 'doc1_id', '2023-01-01', 1, 'offense1', 'AAAA123', 'UY', 'AUTO', '2023-01-01 10:00:00', 2023, 'Some Location', 'Speeding', 100, NULL, ['13.3.A'], [13]),
+      (45, 'doc2', 'doc2_id', '2024-01-01', 1, 'offense2', 'BBBB456', 'UY', 'MOTO', '2024-01-01 11:00:00', 2024, 'Another Location', 'Parking', 200, NULL, ['18.1.2'], [18]),
+      (45, 'doc1', 'doc1_id', '2023-01-01', 2, 'offense3', 'AAAA123', 'UY', 'AUTO', '2024-01-01 12:00:00', 2024, 'Some Location', 'Speeding', 300, NULL, ['13.3.A'], [13]),
+      (45, 'doc1', 'doc1_id', '2023-01-01', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Some error', NULL, NULL),
+      (45, 'doc1', 'doc1_id', '2023-01-01', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Another error', NULL, NULL)
   `
   )
 }
@@ -296,6 +300,29 @@ describe("OffenseRepository", () => {
 
       expect(values[1].value).toBe("AUTO")
       expect(values[2].value).toBe("MOTO")
+    })
+
+    it("hydrates article labels correctly", async () => {
+      const dimensions = [Dimension.ArticleID, Dimension.ArticleCode]
+      const results = await getDimensionResults([], dimensions)
+
+      const articleIDFacet = results.find((r) => r.dimension === Dimension.ArticleID)
+      const articleCodeFacet = results.find(
+        (r) => r.dimension === Dimension.ArticleCode
+      )
+
+      expect(articleIDFacet).toBeDefined()
+      expect(articleCodeFacet).toBeDefined()
+
+      // Article ID hydration
+      const article13 = articleIDFacet?.values.find((v) => v.value === "13.3.A")
+      expect(article13?.label).toBe(
+        "13.3.A - Superar las velocidades máximas permitidas: hasta 20 km"
+      )
+
+      // Article Code hydration
+      const code13 = articleCodeFacet?.values.find((v) => v.value === "13")
+      expect(code13?.label).toBe("13 - De las velocidades")
     })
   })
 
