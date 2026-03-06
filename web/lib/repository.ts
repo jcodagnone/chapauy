@@ -1405,6 +1405,96 @@ export async function getMapClusters(
   })
 }
 
+export async function getFrequencyData(
+  predicates: InPredicate[]
+): Promise<import("@/lib/types").FreqData> {
+  await waitForDB()
+  const db = getDuckDB()
+  const { where, args } = buildWhereClause(predicates)
+
+  // Use UNION ALL to get all frequency data in a single round trip
+  const query = `
+    -- Day of Week by Year
+    SELECT
+      'dow' as type,
+      strftime(time, '%Y') as year,
+      strftime(time, '%w') as dim,
+      COUNT(*) as count
+    FROM offenses
+    WHERE ${where ? `${where} AND ` : ""} time IS NOT NULL
+    GROUP BY year, dim
+
+    UNION ALL
+
+    -- Month by Year
+    SELECT
+      'month' as type,
+      strftime(time, '%Y') as year,
+      strftime(time, '%m') as dim,
+      COUNT(*) as count
+    FROM offenses
+    WHERE ${where ? `${where} AND ` : ""} time IS NOT NULL
+    GROUP BY year, dim
+
+    UNION ALL
+
+    -- Hour of Day by Year (excluding midnight)
+    SELECT
+      'hour' as type,
+      strftime(time, '%Y') as year,
+      strftime(time, '%H') as dim,
+      COUNT(*) as count
+    FROM offenses
+    WHERE ${where ? `${where} AND ` : ""} time IS NOT NULL 
+      AND strftime(time, '%H:%M:%S') != '00:00:00'
+    GROUP BY year, dim
+
+    UNION ALL
+
+    -- Daily Activity (Real dates for sliding window)
+    SELECT
+      'daily' as type,
+      strftime(time, '%Y') as year,
+      strftime(time, '%Y-%m-%d') as dim,
+      COUNT(*) as count
+    FROM offenses
+    WHERE ${where ? `${where} AND ` : ""} time IS NOT NULL
+    GROUP BY year, dim
+    `
+
+    return new Promise((resolve, reject) => {
+    // We need to provide arguments for each part of the UNION ALL
+    const partsCount = (query.match(/UNION ALL/g) || []).length + 1
+    const allArgs = where ? Array(partsCount).fill(args).flat() : []
+    db.all(query, ...allArgs, (err, rows) => {
+      if (err) return reject(err)
+
+      const dow: Record<string, Record<string, number>> = {}
+      const month: Record<string, Record<string, number>> = {}
+      const hour: Record<string, Record<string, number>> = {}
+      const daily: Record<string, Record<string, number>> = {}
+
+      rows.forEach((row: any) => {
+        const target =
+          row.type === "dow"
+            ? dow
+            : row.type === "month"
+              ? month
+              : row.type === "hour"
+                ? hour
+                : daily
+        
+        // For daily, we keep the real year
+        const year = row.year || "unknown"
+        if (!target[year]) target[year] = {}
+        target[year][row.dim] = Number(row.count)
+      })
+
+      resolve({ dow, month, hour, daily })
+    })
+  })
+}
+
 // Version Caching
 let versionCache: string | null = null
 

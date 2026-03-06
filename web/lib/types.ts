@@ -109,6 +109,7 @@ export interface OffensesListResponse {
     dayOfYear: ChartData | null
     timeOfDay: ChartData | null
   }
+  freqData?: FreqData | null
 }
 
 export interface OffensesSummaryResponse {
@@ -140,6 +141,7 @@ export interface OffensesResponse {
     dayOfYear: ChartData | null
     timeOfDay: ChartData | null
   }
+  freqData?: FreqData | null
 }
 
 export interface OffensesParams {
@@ -150,6 +152,13 @@ export interface OffensesParams {
 }
 
 export type ChartData = Record<string, Record<string, number>>
+
+export interface FreqData {
+  dow: ChartData
+  month: ChartData
+  hour: ChartData
+  daily: ChartData
+}
 
 export interface MapFeature {
   type: "Feature"

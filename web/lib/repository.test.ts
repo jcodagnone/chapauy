@@ -11,6 +11,7 @@ import {
   getDimensionResults,
   getChartDataByDayOfYear,
   getMapClusters,
+  getFrequencyData,
 } from "./repository"
 import { Dimension, InPredicate, SortBy } from "./types"
 
@@ -465,6 +466,35 @@ describe("OffenseRepository", () => {
 
       expect(locB).toBeDefined()
       expect(locB?.properties.offenses).toBe(1)
+    })
+  })
+
+  describe("getFrequencyData", () => {
+    beforeEach(async () => {
+      await setupTestDB()
+    })
+
+    it("should return correct aggregated data", async () => {
+      // 2026-01-01 is a Thursday (4), month 01, hour 10
+      await runQuery(
+        testDB,
+        `INSERT INTO offenses (db_id, doc_source, record_id, time) 
+         VALUES (1, 'src1', 300, '2026-01-01 10:00:00-03')`
+      )
+      // 2026-01-02 is a Friday (5), month 01, hour 00 (midnight)
+      await runQuery(
+        testDB,
+        `INSERT INTO offenses (db_id, doc_source, record_id, time) 
+         VALUES (1, 'src1', 301, '2026-01-02 00:00:00-03')`
+      )
+
+      const result = await getFrequencyData([])
+
+      expect(result.dow["2026"]).toEqual({ "4": 1, "5": 1 })
+      expect(result.month["2026"]).toEqual({ "01": 2 })
+      // Midnight (00) should be excluded in 'hour'
+      expect(result.hour["2026"]).toEqual({ "10": 1 })
+      expect(result.daily["2026"]).toEqual({ "2026-01-01": 1, "2026-01-02": 1 })
     })
   })
 })
