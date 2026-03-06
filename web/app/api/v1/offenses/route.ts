@@ -11,6 +11,7 @@ import {
     getChartDataByDayOfWeek,
     getChartDataByDayOfYear,
     getChartDataByTimeOfDay,
+    getFrequencyData,
     determineSortBy,
 } from "@/lib/repository"
 import { offensesParamsFromQueryParams } from "@/lib/url-utils"
@@ -159,6 +160,7 @@ export async function GET(request: NextRequest) {
         // Charts
         const viewMode = rawParams.view as string | undefined
         let chartData = undefined
+        let freqData = undefined
 
         if (viewMode === "charts") {
             const groupBy = (rawParams.group_by as Dimension) || undefined
@@ -168,6 +170,8 @@ export async function GET(request: NextRequest) {
                 getChartDataByTimeOfDay(params.predicates, groupBy),
             ])
             chartData = { dayOfWeek, dayOfYear, timeOfDay }
+        } else if (viewMode === "freq") {
+            freqData = await getFrequencyData(params.predicates)
         }
 
         const totalCount = Number(stats.count)
@@ -208,6 +212,7 @@ export async function GET(request: NextRequest) {
                 viewport_h3_index: stats.viewport_h3_index,
             },
             chartData,
+            freqData,
         }
 
         // Return with Cache Headers
