@@ -101,12 +101,14 @@ export function useOffenseSearchParams() {
   }, [searchParams, pathname, router])
 
   const setViewMode = useCallback(
-    (mode: "list" | "charts" | "map") => {
+    (mode: "list" | "charts" | "map" | "freq") => {
       const current = new URLSearchParams(window.location.search)
       if (mode === "charts") {
         current.set("view", "charts")
       } else if (mode === "map") {
         current.set("view", "map")
+      } else if (mode === "freq") {
+        current.set("view", "freq")
       } else {
         current.delete("view")
       }
@@ -163,6 +165,7 @@ export function useOffenseSearchParams() {
     const view = searchParams.get("view")
     if (view === "charts") return "charts"
     if (view === "map") return "map"
+    if (view === "freq") return "freq"
     return "list"
   }, [searchParams])
 

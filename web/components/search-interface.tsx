@@ -4,7 +4,7 @@
  */
 
 "use client"
-import { Plus, X, AlertCircle, BarChart3, List, MapPin } from "lucide-react"
+import { Plus, X, AlertCircle, BarChart3, List, MapPin, Activity } from "lucide-react"
 import {
   useCallback,
   useEffect,
@@ -62,6 +62,17 @@ const OffenseCharts = dynamic(
   }
 )
 
+const OffenseFreq = dynamic(
+  () => import("@/components/offense-freq").then((mod) => mod.OffenseFreq),
+  {
+    loading: () => (
+      <div className="flex h-96 w-full items-center justify-center">
+        <p className="text-muted-foreground">Cargando frecuencia...</p>
+      </div>
+    ),
+  }
+)
+
 const allDimensions: Dimension[] = [
   Dimension.Database,
   Dimension.Year,
@@ -85,6 +96,7 @@ interface SearchInterfaceProps {
     dayOfYear: Record<string, Record<string, number>> | null
     timeOfDay: Record<string, Record<string, number>> | null
   }
+  initialFreqData: import("@/lib/types").FreqData | null
 }
 
 export function SearchInterface({
@@ -94,6 +106,7 @@ export function SearchInterface({
   initialArticles,
   initialSummary,
   initialChartData,
+  initialFreqData,
 }: SearchInterfaceProps) {
   const {
     searchParams,
@@ -160,6 +173,7 @@ export function SearchInterface({
     dayOfYear: Record<string, Record<string, number>> | null
     timeOfDay: Record<string, Record<string, number>> | null
   }>(initialChartData)
+  const [freqData, setFreqData] = useState<import("@/lib/types").FreqData | null>(initialFreqData)
   const [chartsLoading, setChartsLoading] = useState(false)
 
   const lastLoadedListKeyRef = useRef<string>("")
@@ -174,6 +188,7 @@ export function SearchInterface({
     setArticles(initialArticles)
     setSummaryData(initialSummary)
     setChartData(initialChartData)
+    setFreqData(initialFreqData)
     setCurrentPage(initialPagination.current_page)
     setChartsLoading(false) // Reset loading state on nav
     setLoading(false)
@@ -184,6 +199,7 @@ export function SearchInterface({
     initialArticles,
     initialSummary,
     initialChartData,
+    initialFreqData,
   ])
 
   const searchParamsString = searchParams.toString()
@@ -368,6 +384,19 @@ export function SearchInterface({
                       <span>Lista</span>
                     </Link>
                     <Link
+                      href={getViewUrl("freq")}
+                      prefetch={false}
+                      onClick={(e) => handleLinkClick(e, getViewUrl("freq"))}
+                      className={`flex items-center gap-1.5 rounded px-3 py-1.5 text-sm transition-colors ${viewMode === "freq"
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                        } ${isPending ? "pointer-events-none opacity-50" : ""}`}
+                      aria-label="Vista de frecuencia"
+                    >
+                      <Activity className="h-4 w-4" />
+                      <span>Frecuencia</span>
+                    </Link>
+                    <Link
                       href={getViewUrl("charts")}
                       prefetch={false}
                       onClick={(e) => handleLinkClick(e, getViewUrl("charts"))}
@@ -507,7 +536,13 @@ export function SearchInterface({
               groupBy={groupBy}
               onGroupByChange={handleGroupByChange}
             />
-          ) : isPending || (viewMode === "charts" && !chartData) ? (
+          ) : viewMode === "freq" && !isPending ? (
+            <OffenseFreq 
+              data={freqData} 
+              isLoading={chartsLoading} 
+              isYearFiltered={searchParams.has(Dimension.Year)} 
+            />
+          ) : isPending || (viewMode === "charts" && !chartData) || (viewMode === "freq" && !freqData) ? (
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {Array.from({ length: 8 }).map((_, i) => (
                 <OffenseCardSkeleton key={`skeleton-${i}`} />

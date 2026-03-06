@@ -117,6 +117,7 @@ export function OffensesFeedClient() {
             initialArticles={(data as any).articles || {}}
             initialSummary={data.summary}
             initialChartData={(data as any).chartData}
+            initialFreqData={(data as any).freqData}
         />
     )
 }
