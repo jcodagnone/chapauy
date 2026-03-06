@@ -324,6 +324,19 @@ describe("OffenseRepository", () => {
       const code13 = articleCodeFacet?.values.find((v) => v.value === "13")
       expect(code13?.label).toBe("13 - De las velocidades")
     })
+
+    it("searches articles by text correctly", async () => {
+      const dimensions = [Dimension.ArticleID]
+      const queries = { [Dimension.ArticleID]: "velocidades" }
+      const results = await getDimensionResults([], dimensions, queries)
+
+      const articleIDFacet = results[0]
+      expect(articleIDFacet.values).toHaveLength(1)
+      expect(articleIDFacet.values[0].value).toBe("13.3.A")
+      expect(articleIDFacet.values[0].label).toBe(
+        "13.3.A - Superar las velocidades máximas permitidas: hasta 20 km"
+      )
+    })
   })
 
   describe("getChartDataByDayOfYear", () => {

@@ -396,9 +396,18 @@ export async function getDimensionResults(
       if (dim === Dimension.ArticleID || dim === Dimension.ArticleCode) {
         // Article Logic
         const predWhere = where ? `WHERE ${where}` : ""
-        const searchClause = searchQuery ? `WHERE value::VARCHAR ILIKE ?` : ""
+        let searchClause = ""
+        let joinClause = ""
+        if (searchQuery) {
+          if (dim === Dimension.ArticleID) {
+            joinClause = "LEFT JOIN articles a ON sub.value = a.id"
+            searchClause = "WHERE (sub.value::VARCHAR ILIKE ? OR a.text ILIKE ?)"
+          } else {
+            searchClause =
+              "WHERE (sub.value::VARCHAR ILIKE ? OR sub.value IN (SELECT code FROM articles WHERE title ILIKE ?))"
+          }
+        }
         let innerSql = `SELECT UNNEST(${column}) as value FROM offenses ${predWhere}`
-
 
         queryPart = `
             SELECT 
@@ -406,6 +415,7 @@ export async function getDimensionResults(
               value::VARCHAR as value,
               COUNT(*) as count
             FROM (${innerSql}) sub
+            ${joinClause}
             ${searchClause}
             GROUP BY value
             ORDER BY count DESC, value ASC
@@ -416,12 +426,17 @@ export async function getDimensionResults(
               '${dim}' as dimension,
               COUNT(DISTINCT value) as total
             FROM (${innerSql}) sub
+            ${joinClause}
             ${searchClause}
          `
         valueArgs.push(...(args || []))
-        if (searchQuery) valueArgs.push(`%${searchQuery}%`)
+        if (searchQuery) {
+          valueArgs.push(`%${searchQuery}%`, `%${searchQuery}%`)
+        }
         totalArgs.push(...(args || []))
-        if (searchQuery) totalArgs.push(`%${searchQuery}%`)
+        if (searchQuery) {
+          totalArgs.push(`%${searchQuery}%`, `%${searchQuery}%`)
+        }
       } else {
 
         queryPart = `
