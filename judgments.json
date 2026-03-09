@@ -3427,6 +3427,17 @@
     },
     {
       "id": 0,
+      "description": "14.6 Adelantamiento no permitido en vías de 2 sentidos",
+      "article_ids": [
+        "14.6"
+      ],
+      "article_codes": [
+        14
+      ],
+      "updated_at": "2026-03-09T12:57:02.931356Z"
+    },
+    {
+      "id": 0,
       "description": "14.7 Adelantar en intersecciones",
       "article_ids": [
         "14.7"
@@ -4120,6 +4131,17 @@
     },
     {
       "id": 0,
+      "description": "15.9.1 No dar preferencia a peaton en cruce sesñalizado",
+      "article_ids": [
+        "15.9.1"
+      ],
+      "article_codes": [
+        15
+      ],
+      "updated_at": "2026-03-09T12:56:14.54486Z"
+    },
+    {
+      "id": 0,
       "description": "15.9.1 No dar preferencia a peaton en cruce señalizado",
       "article_ids": [
         "15.9.1"
@@ -4131,6 +4153,17 @@
     },
     {
       "id": 0,
+      "description": "15.9.1 No dar preferencia a peaton en cruce señlizado",
+      "article_ids": [
+        "15.9.1"
+      ],
+      "article_codes": [
+        15
+      ],
+      "updated_at": "2026-03-09T12:56:56.952161Z"
+    },
+    {
+      "id": 0,
       "description": "15.9.1 No dar preferencia a peatonen cruce señalizado",
       "article_ids": [
         "15.9.1"
@@ -4139,6 +4172,17 @@
         15
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "15.9.1 No dar preferencia a peatón en cruce señalizado",
+      "article_ids": [
+        "15.9.1"
+      ],
+      "article_codes": [
+        15
+      ],
+      "updated_at": "2026-03-09T12:54:52.347392Z"
     },
     {
       "id": 0,
@@ -4597,6 +4641,17 @@
     },
     {
       "id": 0,
+      "description": "16.5 NO RESPETAR GIROS O INVERSIONES CIRCUNTANCIALES",
+      "article_ids": [
+        "16.5"
+      ],
+      "article_codes": [
+        16
+      ],
+      "updated_at": "2026-03-09T12:56:42.497048Z"
+    },
+    {
+      "id": 0,
       "description": "16.5 No respetar giros o inversiones circunstanciales",
       "article_ids": [
         "16.5"
@@ -4693,6 +4748,17 @@
         17
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "17.2 Circular marcha atrás innecesariamente",
+      "article_ids": [
+        "17.2"
+      ],
+      "article_codes": [
+        17
+      ],
+      "updated_at": "2026-03-09T12:56:47.172962Z"
     },
     {
       "id": 0,
@@ -5433,6 +5499,17 @@
     },
     {
       "id": 0,
+      "description": "18.8 Operaciones de carga y descarga dificultando la circulación",
+      "article_ids": [
+        "18.8"
+      ],
+      "article_codes": [
+        18
+      ],
+      "updated_at": "2026-03-09T12:54:59.37561Z"
+    },
+    {
+      "id": 0,
       "description": "18.8 Operaciones de carga y descarga dificultando la cirulacion",
       "article_ids": [
         "18.8"
@@ -5606,6 +5683,17 @@
         18
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "18.9.1-ESTACIONAR EN LUGAR PRO",
+      "article_ids": [
+        "18.9.1"
+      ],
+      "article_codes": [
+        18
+      ],
+      "updated_at": "2026-03-09T12:55:02.767342Z"
     },
     {
       "id": 0,
@@ -6244,6 +6332,17 @@
         21
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "21.3.1 Conductor o acompañante sin casco- Bicicleta 1 UR - decreto 81/014",
+      "article_ids": [
+        "21.3.1"
+      ],
+      "article_codes": [
+        21
+      ],
+      "updated_at": "2026-03-09T12:52:24.833225Z"
     },
     {
       "id": 0,
@@ -8426,6 +8525,17 @@
     },
     {
       "id": 0,
+      "description": "4.1.1 No exhibir documentación del vehículo o el conductor",
+      "article_ids": [
+        "4.1.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-09T12:56:32.503921Z"
+    },
+    {
+      "id": 0,
       "description": "4.1.1-NO EXHIBIR DOCUMENTACIÓN",
       "article_ids": [
         "4.1.1"
@@ -8654,6 +8764,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "4.1.2 No portar documentacion del vehIculo o el conductor",
+      "article_ids": [
+        "4.1.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-09T12:53:13.527325Z"
     },
     {
       "id": 0,
@@ -10076,6 +10197,17 @@
     },
     {
       "id": 0,
+      "description": "4.8 Conductor o pasajeros no usancinturon de seguridad",
+      "article_ids": [
+        "4.8"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-09T12:45:10.424324Z"
+    },
+    {
+      "id": 0,
       "description": "4.8 NO USA CINTURON DE SEGURIDAD",
       "article_ids": [
         "4.8"
@@ -10425,6 +10557,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "4.9.2 Menor de 12 años sin Sistema de Retención Infantil reglamentario",
+      "article_ids": [
+        "4.9.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-09T12:55:47.488005Z"
     },
     {
       "id": 0,
@@ -10799,6 +10942,17 @@
         7
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "7.1-CARECER DE FAROS DELANTERO",
+      "article_ids": [
+        "7.1"
+      ],
+      "article_codes": [
+        7
+      ],
+      "updated_at": "2026-03-09T12:55:57.327678Z"
     },
     {
       "id": 0,
@@ -26898,6 +27052,17 @@
     },
     {
       "id": 0,
+      "description": "Conducir manipulando telefono Celular",
+      "article_ids": [
+        "4.4.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-03-09T12:57:16.510726Z"
+    },
+    {
+      "id": 0,
       "description": "Conducir manipulando telefono celular",
       "article_ids": [
         "4.4.2"
@@ -27922,6 +28087,17 @@
         18
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "EST.PTES., TUNEL, VIAD. *MIN",
+      "article_ids": [
+        "18.2.4"
+      ],
+      "article_codes": [
+        18
+      ],
+      "updated_at": "2026-03-09T12:52:55.739731Z"
     },
     {
       "id": 0,
@@ -31862,6 +32038,17 @@
     },
     {
       "id": 0,
+      "description": "GIRO INCORRECTO A LA DER*MIN",
+      "article_ids": [
+        "16.2"
+      ],
+      "article_codes": [
+        16
+      ],
+      "updated_at": "2026-03-09T12:53:50.910742Z"
+    },
+    {
+      "id": 0,
       "description": "GIRO INCORRECTO A LA IZQ*MIN",
       "article_ids": [
         "16.5"
@@ -33422,6 +33609,17 @@
         15
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "NO CIRCULAR POR LA DEREC*MIN",
+      "article_ids": [
+        "12.5"
+      ],
+      "article_codes": [
+        12
+      ],
+      "updated_at": "2026-03-09T12:54:10.026768Z"
     },
     {
       "id": 0,
@@ -84735,15 +84933,16 @@
       "db_id": 6,
       "location": "CDRO COE y PEDRO BUSTAMANTE",
       "point": {
-        "lat": -34.89221885893901,
-        "lng": -56.1377763748169
+        "lat": -34.89219905869231,
+        "lng": -56.137800514698036
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Pedro Bustamante, Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-01-21T14:17:10.726218Z",
-      "updated_at": "2026-01-21T14:17:10.726218Z"
+      "updated_at": "2026-03-09T12:34:40.772329Z",
+      "canonical_location": "PEDRO BUSTAMANTE y CDRO COE"
     },
     {
       "db_id": 6,
@@ -91927,15 +92126,16 @@
       "db_id": 6,
       "location": "CNO LECOCQ y CNEL PEDRO DE LEON",
       "point": {
-        "lat": -34.8167776,
-        "lng": -56.233514
+        "lat": -34.8167739301367,
+        "lng": -56.23357146978379
       },
       "is_electronic": false,
       "geocoding_method": "google_maps",
       "confidence": "medium",
       "notes": "Coronel Pedro de León \u0026 Camino Francisco Lecocq, 12900 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-01-21T14:25:44.799279Z",
-      "updated_at": "2026-01-21T14:25:44.799279Z"
+      "updated_at": "2026-03-09T12:34:40.01045Z",
+      "canonical_location": "PLA A RUBIO y CNO LECOCQ"
     },
     {
       "db_id": 6,
@@ -104509,15 +104709,16 @@
       "db_id": 6,
       "location": "DR MAGESTED y DR HERMOGENES ALVAREZ",
       "point": {
-        "lat": -34.86637327638379,
-        "lng": -56.17655038833619
+        "lat": -34.86635126919048,
+        "lng": -56.176502108573914
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Dr. Hermogenes Alvarez, Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-18T12:18:33.242994Z",
-      "updated_at": "2026-02-18T12:18:33.242994Z"
+      "updated_at": "2026-03-09T12:34:40.561028Z",
+      "canonical_location": "REGIMIENTO 9 y DR MANUEL LANDEIRA"
     },
     {
       "db_id": 6,
@@ -112656,7 +112857,8 @@
       "confidence": "medium",
       "notes": "Francisco Piria \u0026 Juan Antonio Artigas, 11900 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-18T12:28:16.143414Z",
-      "updated_at": "2026-02-18T12:28:16.143414Z"
+      "updated_at": "2026-03-09T12:34:40.495333Z",
+      "canonical_location": "JUAN ANTONIO ARTIGAS y FRANCISCO PIRIA"
     },
     {
       "db_id": 6,
@@ -127646,6 +127848,21 @@
     },
     {
       "db_id": 6,
+      "location": "JOSE LLUPES y YUGOESLAVIA",
+      "point": {
+        "lat": -34.842836,
+        "lng": -56.24339459999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "José Llupes \u0026 Yugoeslavia, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:23.626747Z",
+      "updated_at": "2026-03-09T12:34:40.05492Z",
+      "canonical_location": "YUGOESLAVIA y JOSE LLUPES"
+    },
+    {
+      "db_id": 6,
       "location": "JOSE LLUPES yFARAMIÑAN",
       "point": {
         "lat": -34.8446862,
@@ -128222,6 +128439,20 @@
     },
     {
       "db_id": 6,
+      "location": "JOSE NASAZZI y RBLA DR BALTASAR BRUM",
+      "point": {
+        "lat": -34.8779793,
+        "lng": -56.20611479999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Rambla Doctor Baltasar Brum \u0026 Jose Nasazzi, 11800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:38.468098Z",
+      "updated_at": "2026-03-09T12:23:38.468098Z"
+    },
+    {
+      "db_id": 6,
       "location": "JOSE PIENDIBENE y AV ACROPOLIS",
       "point": {
         "lat": -34.8404738,
@@ -128247,6 +128478,91 @@
       "notes": "Jose Prat \u0026 Faramiñan, 11900 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-13T11:58:34.389704Z",
       "updated_at": "2026-02-13T11:58:34.389704Z"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE PRAT y TRIUNFO",
+      "point": {
+        "lat": -34.84706,
+        "lng": -56.23947219999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jose Prat \u0026 Triunfo, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:42.701407Z",
+      "updated_at": "2026-03-09T12:23:42.701407Z"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE REVUELTA y ALEJANDRIA",
+      "point": {
+        "lat": -34.8575031,
+        "lng": -56.1741611
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Doctor José Revuelta \u0026 Alejandría, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:50.38179Z",
+      "updated_at": "2026-03-09T12:23:50.38179Z"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE REVUELTA y AV GRAL SAN MARTIN",
+      "point": {
+        "lat": -34.85719,
+        "lng": -56.1754449
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Dr. José Revuelta \u0026 Av. Gral. San Martín, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:52.682359Z",
+      "updated_at": "2026-03-09T12:34:39.095475Z",
+      "canonical_location": "AV GRAL SAN MARTIN y JOSE REVUELTA"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE REVUELTA y FRANCISCO ROMERO",
+      "point": {
+        "lat": -34.8577351,
+        "lng": -56.1731178
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Doctor José Revuelta \u0026 Francisco Romero, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:54.530666Z",
+      "updated_at": "2026-03-09T12:23:54.530666Z"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE REVUELTA y JUAN ACOSTA",
+      "point": {
+        "lat": -34.8586654,
+        "lng": -56.1688777
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Doctor José Revuelta \u0026 Juan Acosta, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:23:56.754868Z",
+      "updated_at": "2026-03-09T12:23:56.754868Z"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE SALGADO y CNO JOSE DURAN",
+      "point": {
+        "lat": -34.8024319,
+        "lng": -56.2208585
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "José Salgado \u0026 Camino Jose Duran, 12400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:01.084537Z",
+      "updated_at": "2026-03-09T12:24:01.084537Z"
     },
     {
       "db_id": 6,
@@ -128277,6 +128593,20 @@
       "created_at": "2025-11-29T17:54:01.39124Z",
       "updated_at": "2025-11-29T18:06:07.692722Z",
       "canonical_location": "OSVALDO CRUZ y JOSE VASCONCELLOS"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSE VAZQUEZ LEDESMA y DR JUAN A APOLANT",
+      "point": {
+        "lat": -34.9197777,
+        "lng": -56.1551151
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "José Vázquez Ledesma \u0026 Doctor Juan Alejandro Apolant, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:07.464755Z",
+      "updated_at": "2026-03-09T12:24:07.464755Z"
     },
     {
       "db_id": 6,
@@ -128456,6 +128786,50 @@
     },
     {
       "db_id": 6,
+      "location": "JOSELLUPES y VITORIA",
+      "point": {
+        "lat": -34.8515039,
+        "lng": -56.2280768
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "José Llupes \u0026 Vitoria, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:10.402921Z",
+      "updated_at": "2026-03-09T12:34:38.093842Z",
+      "canonical_location": "JOSE LLUPES y VITORIA"
+    },
+    {
+      "db_id": 6,
+      "location": "JOSÉ LLUPES y VITORIA",
+      "point": {
+        "lat": -34.8515039,
+        "lng": -56.2280768
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "José Llupes \u0026 Vitoria, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:11.648622Z",
+      "updated_at": "2026-03-09T12:34:38.065534Z",
+      "canonical_location": "JOSE LLUPES y VITORIA"
+    },
+    {
+      "db_id": 6,
+      "location": "JUAN A GOLFARINI y GRAL DE DIVISION ROBERTO P RIVEROS",
+      "point": {
+        "lat": -34.9035601,
+        "lng": -56.1282721
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Gral. de Division Roberto P. Riveros, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:16.33701Z",
+      "updated_at": "2026-03-09T12:24:16.33701Z"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN A GUZMAN y ACOSTA Y LARA",
       "point": {
         "lat": -34.8839597,
@@ -128499,6 +128873,20 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN ANTONIO ARTIGAS y FRANCISCO PIRIA",
+      "point": {
+        "lat": -34.8580515,
+        "lng": -56.2172972
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Francisco Piria \u0026 Juan Antonio Artigas, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:22.915858Z",
+      "updated_at": "2026-03-09T12:24:22.915858Z"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN ARRIETA y BV JOSE BATLLE Y ORDOÑEZ",
       "point": {
         "lat": -34.8704448,
@@ -128511,6 +128899,20 @@
       "created_at": "2026-01-27T12:39:58.876787Z",
       "updated_at": "2026-01-27T12:45:30.760828Z",
       "canonical_location": "BV JOSE BATLLE Y ORDOÑEZ y JUAN ARRIETA"
+    },
+    {
+      "db_id": 6,
+      "location": "JUAN ARRIETA y TRENTO",
+      "point": {
+        "lat": -34.869552,
+        "lng": -56.1585791
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Juan Arrieta \u0026 Trento, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:26.402633Z",
+      "updated_at": "2026-03-09T12:24:26.402633Z"
     },
     {
       "db_id": 6,
@@ -128616,6 +129018,21 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN B VIACABA y GRECIA",
+      "point": {
+        "lat": -34.88749966518177,
+        "lng": -56.24863207340241
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Grecia y Juan B Viacaba, 12800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:32.914048Z",
+      "updated_at": "2026-03-09T12:34:39.748886Z",
+      "canonical_location": "GRECIA y JUAN B VIACABA"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN B VIACABA y RIO DE JANEIRO",
       "point": {
         "lat": -34.888091504345255,
@@ -128717,6 +129134,21 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN BENITO BLANCO y FEDERICO N ABADIE",
+      "point": {
+        "lat": -34.9172233,
+        "lng": -56.1503409
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Juan Benito Blanco \u0026 Federico N. Abadie, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:37.98921Z",
+      "updated_at": "2026-03-09T12:34:39.589473Z",
+      "canonical_location": "FEDERICO N ABADIE y JUAN BENITO BLANCO"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN BENITO BLANCO y FRANCISCO SOLANO ANTUÑA",
       "point": {
         "lat": -34.9189802,
@@ -128804,6 +129236,20 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN BENITO BLANCO y LUIS CINCINATO BOLLO",
+      "point": {
+        "lat": -34.916776,
+        "lng": -56.15018749999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "C. Luis C. Bollo \u0026 Juan Benito Blanco, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:41.159375Z",
+      "updated_at": "2026-03-09T12:24:41.159375Z"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN BENITO BLANCO y MANUEL V PAGOLA",
       "point": {
         "lat": -34.910102,
@@ -128844,6 +129290,20 @@
       "created_at": "2025-12-12T12:41:32.361244Z",
       "updated_at": "2025-12-12T13:02:36.004201Z",
       "canonical_location": "RAMON MASINI y JUAN BENITO BLANCO"
+    },
+    {
+      "db_id": 6,
+      "location": "JUAN BONMESADRI y ANDRES",
+      "point": {
+        "lat": -34.7998812,
+        "lng": -56.2336581
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Andrés \u0026 Juan Bonmesadri, 12500 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:24:44.596355Z",
+      "updated_at": "2026-03-09T12:24:44.596355Z"
     },
     {
       "db_id": 6,
@@ -130878,6 +131338,21 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN PAULLIER y D. ARAMBURU",
+      "point": {
+        "lat": -34.8833244,
+        "lng": -56.1714224
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Juan Paullier, Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:25:10.79781Z",
+      "updated_at": "2026-03-09T12:34:40.325548Z",
+      "canonical_location": "D. ARAMBURU y JUAN PAULLIER"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN PAULLIER y DANIEL MUÑOZ",
       "point": {
         "lat": -34.8960502,
@@ -131543,6 +132018,20 @@
     },
     {
       "db_id": 6,
+      "location": "JUAN SEBASTIAN DE ELCANO y AV DAMASO ANTONIO LARRAÑAGA",
+      "point": {
+        "lat": -34.859843,
+        "lng": -56.1508531
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Avenida Dámaso A. Larrañaga \u0026 Juan Sebastian Elcano, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:25:15.864983Z",
+      "updated_at": "2026-03-09T12:25:15.864983Z"
+    },
+    {
+      "db_id": 6,
       "location": "JUAN SPIKERMAN y AV ITALIA",
       "point": {
         "lat": -34.8895135,
@@ -131901,6 +132390,20 @@
     },
     {
       "db_id": 6,
+      "location": "JULIO CESAR GRAUERT y ALICANTE",
+      "point": {
+        "lat": -34.888971,
+        "lng": -56.1428644
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Doctor Julio César Grauert \u0026 Alicante, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:25:26.342421Z",
+      "updated_at": "2026-03-09T12:25:26.342421Z"
+    },
+    {
+      "db_id": 6,
       "location": "JULIO CESAR GRAUERT y FRANCISCO SIMON",
       "point": {
         "lat": -34.888971,
@@ -131911,7 +132414,8 @@
       "confidence": "medium",
       "notes": "Dr Julio César Grauert \u0026 Dr. Francisco Simón, 11600 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-01-09T11:05:47.155031Z",
-      "updated_at": "2026-01-09T11:05:47.155031Z"
+      "updated_at": "2026-03-09T12:34:40.193642Z",
+      "canonical_location": "JULIO CESAR GRAUERT y ALICANTE"
     },
     {
       "db_id": 6,
@@ -132286,7 +132790,8 @@
       "confidence": "medium",
       "notes": "Julio Herrera y Obes \u0026 Rbla. Sud América, 11800 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-28T12:20:38.763447Z",
-      "updated_at": "2026-02-28T12:20:38.763447Z"
+      "updated_at": "2026-03-09T12:34:40.396509Z",
+      "canonical_location": "RBLA SUD AMERICA y JULIO HERRERA Y OBES"
     },
     {
       "db_id": 6,
@@ -133734,6 +134239,20 @@
     },
     {
       "db_id": 6,
+      "location": "L A DE HERRERA y MARGARITA URIARTE DE HERRERA",
+      "point": {
+        "lat": -34.8641704,
+        "lng": -56.1763252
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Margarita Uriarte de Herrera \u0026 Avenida Luis Alberto de Herrera, 11700 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:25:48.898608Z",
+      "updated_at": "2026-03-09T12:25:48.898608Z"
+    },
+    {
+      "db_id": 6,
       "location": "L A DE HERRERA y MARIANO SOLER",
       "point": {
         "lat": -34.8627889,
@@ -134724,6 +135243,20 @@
       "notes": "La Paz \u0026 República, 11200 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2025-11-29T17:58:53.815065Z",
       "updated_at": "2025-11-29T17:58:53.815065Z"
+    },
+    {
+      "db_id": 6,
+      "location": "LA PAZ y RIO BRANCO",
+      "point": {
+        "lat": -34.899615017236464,
+        "lng": -56.19645237922669
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Río Branco, 11100 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:34:22.439378Z",
+      "updated_at": "2026-03-09T12:34:22.439378Z"
     },
     {
       "db_id": 6,
@@ -137777,7 +138310,8 @@
       "confidence": "medium",
       "notes": "C. Luis C. Bollo \u0026 Juan Benito Blanco, 11300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-22T13:19:13.142547Z",
-      "updated_at": "2026-02-22T13:19:13.142547Z"
+      "updated_at": "2026-03-09T12:34:40.720454Z",
+      "canonical_location": "JUAN BENITO BLANCO y LUIS CINCINATO BOLLO"
     },
     {
       "db_id": 6,
@@ -144496,7 +145030,8 @@
       "confidence": "medium",
       "notes": "General de Division Roberto P. Riveros \u0026 Miguel Grau, 11300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-22T13:40:02.660515Z",
-      "updated_at": "2026-02-22T13:40:02.660515Z"
+      "updated_at": "2026-03-09T12:34:40.888083Z",
+      "canonical_location": "JUAN A GOLFARINI y GRAL DE DIVISION ROBERTO P RIVEROS"
     },
     {
       "db_id": 6,
@@ -146664,6 +147199,21 @@
       "notes": "Juan Rodríguez Correa, 11700 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-23T12:50:17.068042Z",
       "updated_at": "2026-02-23T12:50:17.068042Z"
+    },
+    {
+      "db_id": 6,
+      "location": "NELSON y L A DE HERRERA",
+      "point": {
+        "lat": -34.8606229,
+        "lng": -56.1871887
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Gral. Flores Y Luis A. De Herrera, 11700 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:33:40.576778Z",
+      "updated_at": "2026-03-09T12:34:39.639194Z",
+      "canonical_location": "L A DE HERRERA y NELSON"
     },
     {
       "db_id": 6,
@@ -150847,6 +151397,20 @@
     },
     {
       "db_id": 6,
+      "location": "PEDRO BUSTAMANTE y CDRO COE",
+      "point": {
+        "lat": -34.89219905869231,
+        "lng": -56.137800514698036
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Pedro Bustamante, Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:27:15.835771Z",
+      "updated_at": "2026-03-09T12:27:15.835771Z"
+    },
+    {
+      "db_id": 6,
       "location": "PEDRO BUSTAMANTE y FRANCISCO BAUZA",
       "point": {
         "lat": -34.8988127,
@@ -151838,6 +152402,20 @@
     },
     {
       "db_id": 6,
+      "location": "PEREZ CASTELLANO y SARANDI",
+      "point": {
+        "lat": -34.9091504,
+        "lng": -56.2098223
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Calle Perez Castellano \u0026 Sarandí, 11000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:27:39.289754Z",
+      "updated_at": "2026-03-09T12:27:39.289754Z"
+    },
+    {
+      "db_id": 6,
       "location": "PEREZ CASTELLANO y WASHINGTON",
       "point": {
         "lat": -34.90829068480437,
@@ -151853,6 +152431,21 @@
     },
     {
       "db_id": 6,
+      "location": "PEREZ CASTELLANO y YACARE",
+      "point": {
+        "lat": -34.9059545,
+        "lng": -56.21126270000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Yacaré \u0026 Pérez Castellano, 11000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:27:47.526028Z",
+      "updated_at": "2026-03-09T12:34:38.451044Z",
+      "canonical_location": "YACARE y PIEDRAS"
+    },
+    {
+      "db_id": 6,
       "location": "PEREZ GALDOS y ISLA DE GASPAR",
       "point": {
         "lat": -34.8743398,
@@ -151864,6 +152457,20 @@
       "notes": "Isla de Gaspar \u0026 Benito Pérez Galdós, 11400 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-16T12:59:37.430086Z",
       "updated_at": "2026-02-16T12:59:37.430086Z"
+    },
+    {
+      "db_id": 6,
+      "location": "PEREZ GOMAR y RAMOS",
+      "point": {
+        "lat": -34.89172569999999,
+        "lng": -56.1173723
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Pérez Gomar \u0026 Ramos, 11400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:27:51.442949Z",
+      "updated_at": "2026-03-09T12:27:51.442949Z"
     },
     {
       "db_id": 6,
@@ -152562,6 +153169,20 @@
     },
     {
       "db_id": 6,
+      "location": "PILAR COSTA y BV MANUEL HERRERA Y OBES",
+      "point": {
+        "lat": -34.8620624,
+        "lng": -56.21925700000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Pilar Costa \u0026 Bulevar Manuel Herrera y Obes, 11900 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:27:57.389155Z",
+      "updated_at": "2026-03-09T12:27:57.389155Z"
+    },
+    {
+      "db_id": 6,
       "location": "PILAR COSTA y CARLOS DE LA VEGA",
       "point": {
         "lat": -34.86033020000001,
@@ -152705,6 +153326,20 @@
     },
     {
       "db_id": 6,
+      "location": "PINTA y DR ANTONIO ANZALONE",
+      "point": {
+        "lat": -34.79821960754975,
+        "lng": -56.24737143516541
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Dr. Antonio Anzalone, 12500 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:28:02.930802Z",
+      "updated_at": "2026-03-09T12:28:02.930802Z"
+    },
+    {
+      "db_id": 6,
       "location": "PIRARAJA y YUQUERI",
       "point": {
         "lat": -34.7881349,
@@ -152776,6 +153411,21 @@
     },
     {
       "db_id": 6,
+      "location": "PIRINEOS y CNO MALDONADO",
+      "point": {
+        "lat": -34.8560268,
+        "lng": -56.1322199
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Cno. Maldonado, Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:28:22.220697Z",
+      "updated_at": "2026-03-09T12:34:38.81874Z",
+      "canonical_location": "AV 8 DE OCTUBRE y PIRINEOS"
+    },
+    {
+      "db_id": 6,
       "location": "PITAGORAS y ALBERTO ZUM FELDE",
       "point": {
         "lat": -34.8789881,
@@ -152802,6 +153452,20 @@
       "created_at": "2026-02-22T13:53:34.592464Z",
       "updated_at": "2026-02-22T14:08:16.345148Z",
       "canonical_location": "DR ALEJANDRO GALLINAL y PITAGORAS"
+    },
+    {
+      "db_id": 6,
+      "location": "PLA A RUBIO y CNO LECOCQ",
+      "point": {
+        "lat": -34.8167739301367,
+        "lng": -56.23357146978379
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Cno. Lecocq, Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:28:38.776826Z",
+      "updated_at": "2026-03-09T12:28:38.776826Z"
     },
     {
       "db_id": 6,
@@ -154594,6 +155258,20 @@
     },
     {
       "db_id": 6,
+      "location": "PTE ORIBE y ANZANI",
+      "point": {
+        "lat": -34.8955828,
+        "lng": -56.1346356
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Francisco Anzani \u0026 Pdte. Oribe, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:29:09.929993Z",
+      "updated_at": "2026-03-09T12:29:09.929993Z"
+    },
+    {
+      "db_id": 6,
       "location": "PTE ORIBE y AV RIVERA",
       "point": {
         "lat": -34.9009802,
@@ -154606,6 +155284,21 @@
       "created_at": "2025-11-25T16:05:46.436217Z",
       "updated_at": "2025-11-25T17:11:07.934317Z",
       "canonical_location": "AV RIVERA y PTE ORIBE"
+    },
+    {
+      "db_id": 6,
+      "location": "PTE ORIBE y BV JOSE BATLLE Y ORDOÑEZ",
+      "point": {
+        "lat": -34.891703,
+        "lng": -56.131614
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Bv. José Batlle y Ordóñez \u0026 Pdte. Oribe, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:29:12.897134Z",
+      "updated_at": "2026-03-09T12:34:39.927257Z",
+      "canonical_location": "BV JOSE BATLLE Y ORDOÑEZ y PTE ORIBE"
     },
     {
       "db_id": 6,
@@ -156112,6 +156805,20 @@
     },
     {
       "db_id": 6,
+      "location": "RAFAEL HORTIGUERA y JUAN ARTEAGA",
+      "point": {
+        "lat": -34.8553527,
+        "lng": -56.1711938
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Rafael Hortiguera \u0026 Juan Arteaga, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:33:14.089365Z",
+      "updated_at": "2026-03-09T12:33:14.089365Z"
+    },
+    {
+      "db_id": 6,
       "location": "RAFAEL HORTIGUERA y ORTIZ DE ZARATE",
       "point": {
         "lat": -34.8537992,
@@ -156123,6 +156830,20 @@
       "notes": "Ortiz de Zárate \u0026 Rafael Hortiguera, 12300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-16T13:03:42.210835Z",
       "updated_at": "2026-02-16T13:03:42.210835Z"
+    },
+    {
+      "db_id": 6,
+      "location": "RAFAEL HORTIGUERA y SANTIAGO FIGUEREDO",
+      "point": {
+        "lat": -34.8546601,
+        "lng": -56.1743288
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Santiago Figueredo \u0026 Rafael Hortiguera, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:33:10.37476Z",
+      "updated_at": "2026-03-09T12:33:10.37476Z"
     },
     {
       "db_id": 6,
@@ -156153,6 +156874,20 @@
       "created_at": "2025-11-25T13:49:43.763451Z",
       "updated_at": "2025-11-25T17:11:06.788698Z",
       "canonical_location": "AV RIVERA y RAFAEL PASTORIZA"
+    },
+    {
+      "db_id": 6,
+      "location": "RAFAEL PASTORIZA y CAP VIDELA",
+      "point": {
+        "lat": -34.9008201,
+        "lng": -56.1521971
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Capitán Videla \u0026 Rafael Pastoriza, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:33:04.312343Z",
+      "updated_at": "2026-03-09T12:33:04.312343Z"
     },
     {
       "db_id": 6,
@@ -156196,6 +156931,20 @@
       "created_at": "2025-12-16T11:48:57.166064Z",
       "updated_at": "2025-12-20T13:02:11.406315Z",
       "canonical_location": "MANUEL HAEDO y RAFAEL PASTORIZA"
+    },
+    {
+      "db_id": 6,
+      "location": "RAFAEL PEREZ y GAUNA",
+      "point": {
+        "lat": -34.8858367,
+        "lng": -56.1301651
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Gauna \u0026 Rafael Pérez, 11400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:32:58.61908Z",
+      "updated_at": "2026-03-09T12:32:58.61908Z"
     },
     {
       "db_id": 6,
@@ -159134,6 +159883,20 @@
     },
     {
       "db_id": 6,
+      "location": "RBLA SUD AMERICA y JULIO HERRERA Y OBES",
+      "point": {
+        "lat": -34.8993391,
+        "lng": -56.19552419999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Julio Herrera y Obes \u0026 Rbla. Sud América, 11800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:31:17.778202Z",
+      "updated_at": "2026-03-09T12:31:17.778202Z"
+    },
+    {
+      "db_id": 6,
       "location": "RBLA SUD AMERICA y RIO NEGRO",
       "point": {
         "lat": -34.89836550482232,
@@ -159841,6 +160604,20 @@
     },
     {
       "db_id": 6,
+      "location": "REGIMIENTO 9 y DR MANUEL LANDEIRA",
+      "point": {
+        "lat": -34.86635126919048,
+        "lng": -56.176502108573914
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Dr Manuel Landeira, 11700 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:31:47.651207Z",
+      "updated_at": "2026-03-09T12:31:47.651207Z"
+    },
+    {
+      "db_id": 6,
       "location": "REGIMIENTO 9 y NELSON",
       "point": {
         "lat": -34.8626945,
@@ -159853,6 +160630,20 @@
       "created_at": "2026-01-15T14:45:07.783354Z",
       "updated_at": "2026-02-05T17:39:15.55159Z",
       "canonical_location": "NELSON y REGIMIENTO 9"
+    },
+    {
+      "db_id": 6,
+      "location": "REGIMIENTO 9 y RAMON MARQUEZ",
+      "point": {
+        "lat": -34.863373,
+        "lng": -56.1852439
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Ramón Márquez \u0026 Regimiento 9, 11700 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:31:51.898341Z",
+      "updated_at": "2026-03-09T12:31:51.898341Z"
     },
     {
       "db_id": 6,
@@ -159897,6 +160688,21 @@
       "notes": "Santiago Figueredo \u0026 Rep. De Chipre, 12300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2025-12-25T11:41:57.205476Z",
       "updated_at": "2025-12-25T11:41:57.205476Z"
+    },
+    {
+      "db_id": 6,
+      "location": "REPUBLICA DEL SALVADOR y JULIO CESAR GRAUERT",
+      "point": {
+        "lat": -34.8906162,
+        "lng": -56.1439719
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Dr Julio César Grauert \u0026 República de El Salvador, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:31:57.482324Z",
+      "updated_at": "2026-03-09T12:34:40.637301Z",
+      "canonical_location": "WASHINGTON BELTRAN y REPUBLICA DEL SALVADOR"
     },
     {
       "db_id": 6,
@@ -162035,6 +162841,20 @@
     },
     {
       "db_id": 6,
+      "location": "RUBEN PALEO UNION VECINAL COTRAVI y JOSE GUTIERREZ COTRAVI",
+      "point": {
+        "lat": -34.86502,
+        "lng": -56.2780921
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jose Gutierrez, 12800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:30:53.920821Z",
+      "updated_at": "2026-03-09T12:30:53.920821Z"
+    },
+    {
+      "db_id": 6,
       "location": "RUFINO BAUZA y GRAL JOSE ESTEBAN BRITO DEL PINO",
       "point": {
         "lat": -34.9108352,
@@ -162501,6 +163321,20 @@
       "notes": "Uruguay, Departamento de Montevideo, Montevideo, チャピクイ \u0026 サイン・ボイス",
       "created_at": "2026-01-17T14:23:28.746251Z",
       "updated_at": "2026-01-17T14:23:28.746251Z"
+    },
+    {
+      "db_id": 6,
+      "location": "SAINT BOIS y GRONARDO",
+      "point": {
+        "lat": -34.8440359,
+        "lng": -56.1508261
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Saint Bois \u0026 Gronardo, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:32:15.029009Z",
+      "updated_at": "2026-03-09T12:32:15.029009Z"
     },
     {
       "db_id": 6,
@@ -165421,7 +166255,8 @@
       "confidence": "medium",
       "notes": "Calle Perez Castellano \u0026 Sarandí, 11000 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-19T13:28:13.386957Z",
-      "updated_at": "2026-02-19T13:28:13.386957Z"
+      "updated_at": "2026-03-09T12:34:41.146989Z",
+      "canonical_location": "PEREZ CASTELLANO y SARANDI"
     },
     {
       "db_id": 6,
@@ -165553,6 +166388,21 @@
       "notes": "Schiller \u0026 Gustavo Adolfo Becquer, 12900 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-19T13:28:35.714653Z",
       "updated_at": "2026-02-19T13:28:35.714653Z"
+    },
+    {
+      "db_id": 6,
+      "location": "SDA PROF DR ADOLFO AGUIRRE GONZALEZ y TOMAS BASAÑEZ",
+      "point": {
+        "lat": -34.90411090000001,
+        "lng": -56.1255366
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Tomas Basañez \u0026 Senda Prof. Emèrito Dr. Adolfo Aguirre González, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:30:15.698433Z",
+      "updated_at": "2026-03-09T12:34:40.257818Z",
+      "canonical_location": "TOMAS BASAÑEZ y JUAN A GOLFARINI"
     },
     {
       "db_id": 6,
@@ -167796,6 +168646,20 @@
       "created_at": "2026-01-27T12:37:35.671751Z",
       "updated_at": "2026-01-27T12:45:29.769584Z",
       "canonical_location": "AV.GRAL. FLORES y TOBAS"
+    },
+    {
+      "db_id": 6,
+      "location": "TOBAS y CORUMBE",
+      "point": {
+        "lat": -34.8596024,
+        "lng": -56.1593238
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Tobas \u0026 Corumbe, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-09T12:30:20.583735Z",
+      "updated_at": "2026-03-09T12:30:20.583735Z"
     },
     {
       "db_id": 6,
@@ -176476,6 +177340,20 @@
     },
     {
       "db_id": 43,
+      "location": "Enrique Chaplin y Ayacucho",
+      "point": {
+        "lat": -32.3145792,
+        "lng": -58.0579798
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Continuacion Ayacucho \u0026 Avenida Enrique Chaplin, 60000 Paysandú, Departamento de Paysandú, Uruguay",
+      "created_at": "2026-03-09T12:21:40.301328Z",
+      "updated_at": "2026-03-09T12:21:40.301328Z"
+    },
+    {
+      "db_id": 43,
       "location": "RUTA NACIONAL 3 y km 383",
       "point": {
         "lat": -32.20729438,
@@ -177570,6 +178448,21 @@
     },
     {
       "db_id": 45,
+      "location": "ACUÑA DE FIGUEROA FCO. AVDA. Y VEINTICINCO (25) DE MAYO, MALDONADO",
+      "point": {
+        "lat": -34.90914852302572,
+        "lng": -54.95655834674836
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "25 de Mayo, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:16.627605Z",
+      "updated_at": "2026-03-09T12:22:30.477764Z",
+      "canonical_location": "VEINTICINCO (25) DE MAYO Y GUERRA ROMAN"
+    },
+    {
+      "db_id": 45,
       "location": "ACUÑADE FIGUEROA FCO. AVDA. Y BURNETT  ENRIQUE",
       "point": {
         "lat": -34.91487161428806,
@@ -177974,6 +178867,21 @@
       "notes": "20500 Aiguá, Maldonado Department, Uruguay",
       "created_at": "2026-02-20T12:42:05.266463Z",
       "updated_at": "2026-02-20T12:46:00.40391Z",
+      "canonical_location": "DEL PINO SIMON Y AIGUA AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "AIGUA AVDA. Y DEL PINO SIMON, MALDONADO",
+      "point": {
+        "lat": -34.9080839224567,
+        "lng": -54.945507645606995
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Aigua, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:54.080369Z",
+      "updated_at": "2026-03-09T12:22:31.075043Z",
       "canonical_location": "DEL PINO SIMON Y AIGUA AVDA."
     },
     {
@@ -178875,6 +179783,20 @@
     },
     {
       "db_id": 45,
+      "location": "ARAUJO BASILIO Y BARREIRO MIGUEL, MALDONADO",
+      "point": {
+        "lat": -34.9048429,
+        "lng": -54.9505806
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Basilio Araujo \u0026 Barreiro, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:36.047808Z",
+      "updated_at": "2026-03-09T12:18:36.047808Z"
+    },
+    {
+      "db_id": 45,
       "location": "ARAZA Y EDYE DR. JUAN T.",
       "point": {
         "lat": -34.90565112636947,
@@ -179044,6 +179966,21 @@
       "notes": "20000 Maldonado, Maldonado Department, Uruguay",
       "created_at": "2025-11-25T16:58:59.330194Z",
       "updated_at": "2025-11-25T16:58:59.330194Z"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y BIARRITZ AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.949023703362315,
+        "lng": -54.93694871664048
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av. Biarritz, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:05:12.953484Z",
+      "updated_at": "2026-03-09T12:22:31.824952Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y BIARRITZ AVDA."
     },
     {
       "db_id": 45,
@@ -180143,6 +181080,21 @@
     },
     {
       "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y MIRANDA CAP. DE NAVIO FRANCISC",
+      "point": {
+        "lat": -34.96719635082437,
+        "lng": -54.95454274009408
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado, Maldonado Department, Uruguay",
+      "created_at": "2026-03-09T12:35:18.206904Z",
+      "updated_at": "2026-03-09T12:37:57.771436Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y MIRANDA CAP. DE NAVIO FRANCISC, PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
       "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y MIRANDA CAP. DE NAVIO FRANCISC, PUNTA DEL ESTE",
       "point": {
         "lat": -34.96719635082437,
@@ -180157,6 +181109,21 @@
     },
     {
       "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y OBENQUE",
+      "point": {
+        "lat": -34.96722969876706,
+        "lng": -54.94710355997086
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av. Gral. José G. Artigas, 55000 Artigas, Departamento de Artigas, Uruguay",
+      "created_at": "2026-03-09T12:35:43.982704Z",
+      "updated_at": "2026-03-09T12:37:57.296925Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y OBENQUE, PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
       "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y OBENQUE, PUNTA DEL ESTE",
       "point": {
         "lat": -34.96722969876706,
@@ -180168,6 +181135,20 @@
       "notes": "Obenque, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-02-23T12:28:57.122052Z",
       "updated_at": "2026-02-23T12:28:57.122052Z"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y PUESTA DE SOL",
+      "point": {
+        "lat": -34.969403508299735,
+        "lng": -54.954181909561164
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado Department, Uruguay",
+      "created_at": "2026-03-09T12:35:56.731054Z",
+      "updated_at": "2026-03-09T12:35:56.731054Z"
     },
     {
       "db_id": 45,
@@ -180212,6 +181193,51 @@
       "created_at": "2025-12-05T01:50:23.203477Z",
       "updated_at": "2025-12-05T11:14:40.773568Z",
       "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y VIRAZON"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y VIRAZON, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.96536356145861,
+        "lng": -54.94947195053101
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Virazon, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:36:03.267779Z",
+      "updated_at": "2026-03-09T12:37:56.609452Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y VIRAZON, PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y BATLLE PACHECO LORENZO (RBLA.)",
+      "point": {
+        "lat": -34.956186,
+        "lng": -54.9366272
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Rbla. Lorenzo Batlle Pacheco, Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:36:30.31206Z",
+      "updated_at": "2026-03-09T12:37:57.002134Z",
+      "canonical_location": "BATLLE PACHECO LORENZO (RBLA.) Y ARTIGAS GRAL. JOSE G. RBLA. MA"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y BATLLE PACHECO LORENZO (RBLA.), PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.956186,
+        "lng": -54.9366272
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Rbla. Lorenzo Batlle Pacheco, Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:36:38.791961Z",
+      "updated_at": "2026-03-09T12:37:57.025615Z",
+      "canonical_location": "BATLLE PACHECO LORENZO (RBLA.) Y ARTIGAS GRAL. JOSE G. RBLA. MA"
     },
     {
       "db_id": 45,
@@ -180815,15 +181841,16 @@
       "db_id": 45,
       "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y PUESTA DE SOL",
       "point": {
-        "lat": -34.969412825450625,
-        "lng": -54.95418460639448
+        "lat": -34.969403508299735,
+        "lng": -54.954181909561164
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "low",
       "notes": "Maldonado Department, Uruguay",
       "created_at": "2026-02-28T11:57:38.201596Z",
-      "updated_at": "2026-02-28T11:57:38.201596Z"
+      "updated_at": "2026-03-09T12:37:57.552952Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y PUESTA DE SOL"
     },
     {
       "db_id": 45,
@@ -181620,6 +182647,20 @@
       "notes": "Avenida Franklin Delano Roosevelt \u0026 Luxemburgo, 20005 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-12T19:00:17.729891Z",
       "updated_at": "2025-11-12T19:00:17.729891Z"
+    },
+    {
+      "db_id": 45,
+      "location": "AV FRANKLIN ROOSEVELT Y LUXEMBURGO, MALDONADO",
+      "point": {
+        "lat": -34.9210559,
+        "lng": -54.9538947
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Avenida Franklin Delano Roosevelt \u0026 Luxemburgo, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:20:19.159774Z",
+      "updated_at": "2026-03-09T12:20:19.159774Z"
     },
     {
       "db_id": 45,
@@ -185030,6 +186071,20 @@
     },
     {
       "db_id": 45,
+      "location": "BERRETA PTE. TOMAS (CALLE) Y ROCHA AVDA., SAN CARLOS",
+      "point": {
+        "lat": -34.7977177,
+        "lng": -54.9105456
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Rocha \u0026 Pdte. Tomas Berreta, 20400 San Carlos, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:06.651119Z",
+      "updated_at": "2026-03-09T12:19:06.651119Z"
+    },
+    {
+      "db_id": 45,
       "location": "BERRETA PTE. TOMAS (CALLE) Y SOLER MONS. MARIANO, SAN CARLOS",
       "point": {
         "lat": -34.7973785,
@@ -186896,6 +187951,21 @@
     },
     {
       "db_id": 45,
+      "location": "CACHIMBA DEL REY AVDA. Y YERBAL, MALDONADO",
+      "point": {
+        "lat": -34.9142338,
+        "lng": -54.9501425
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Yerbal \u0026 Avenida Cachimba del Rey, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:13.198945Z",
+      "updated_at": "2026-03-09T12:22:31.790799Z",
+      "canonical_location": "CACHIMBA DEL REY AVDA. Y YERBAL"
+    },
+    {
+      "db_id": 45,
       "location": "CAIRO MEDINA MTRO. GINES Y ARAZA",
       "point": {
         "lat": -34.91084500000001,
@@ -187898,6 +188968,21 @@
     },
     {
       "db_id": 45,
+      "location": "CAMACHO ANTONIO AVDA. Y HERMIDA DOMINGO, MALDONADO",
+      "point": {
+        "lat": -34.9217093,
+        "lng": -54.9623546
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Domingo Hermida \u0026 Avenida Antonio Camacho, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:05:36.475539Z",
+      "updated_at": "2026-03-09T12:22:32.013492Z",
+      "canonical_location": "CAMACHO ANTONIO AVDA. Y HERMIDA DOMINGO"
+    },
+    {
+      "db_id": 45,
       "location": "CAMACHO ANTONIO AVDA. Y JAMAICA",
       "point": {
         "lat": -34.9163216,
@@ -188630,6 +189715,21 @@
       "notes": "Enrique Burnett, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-12-25T12:21:04.994842Z",
       "updated_at": "2025-12-25T12:56:22.52239Z",
+      "canonical_location": "CHIOSSI PROF. ALFREDO Y BURNETT  ENRIQUE"
+    },
+    {
+      "db_id": 45,
+      "location": "CHIOSSI MARTINIANO AVDA. Y BURNETT ENRIQUE, MALDONADO",
+      "point": {
+        "lat": -34.91503877006509,
+        "lng": -54.95296955108643
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Enrique Burnett, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:05:07.075644Z",
+      "updated_at": "2026-03-09T12:22:31.908495Z",
       "canonical_location": "CHIOSSI PROF. ALFREDO Y BURNETT  ENRIQUE"
     },
     {
@@ -189732,6 +190832,21 @@
       "notes": "20000 Maldonado, Maldonado Department, Uruguay",
       "created_at": "2025-11-10T13:46:04.774797Z",
       "updated_at": "2025-11-10T13:46:04.774797Z"
+    },
+    {
+      "db_id": 45,
+      "location": "CORDOBA AVDA. Y PRADO, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.92352587712829,
+        "lng": -54.94343429803849
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Córdoba \u0026 Prado, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:27.745463Z",
+      "updated_at": "2026-03-09T12:22:31.864512Z",
+      "canonical_location": "CORDOBA AVDA. Y PRADO"
     },
     {
       "db_id": 45,
@@ -191684,6 +192799,20 @@
     },
     {
       "db_id": 45,
+      "location": "DEL PINO SIMON Y CARACARA JUAN ALBERTO, MALDONADO",
+      "point": {
+        "lat": -34.8979167316397,
+        "lng": -54.944643974304206
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Alberto Supicci, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:05:32.919162Z",
+      "updated_at": "2026-03-09T12:05:32.919162Z"
+    },
+    {
+      "db_id": 45,
       "location": "DEL PINO SIMON Y CHIOSSI STAGNARO ELIAS L.",
       "point": {
         "lat": -34.90033655800083,
@@ -192763,6 +193892,20 @@
       "created_at": "2026-01-27T12:21:00.164268Z",
       "updated_at": "2026-01-27T12:27:04.656399Z",
       "canonical_location": "SANTANA ARTURO Y DIECIOCHO (18) DE JULIO"
+    },
+    {
+      "db_id": 45,
+      "location": "DIECIOCHO (18) DE JULIO Y TAMARO RIVERO DR. ANTONIO, MALDONADO",
+      "point": {
+        "lat": -34.901075690747724,
+        "lng": -54.95892405509949
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "18 de Julio, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:51.86074Z",
+      "updated_at": "2026-03-09T12:18:51.86074Z"
     },
     {
       "db_id": 45,
@@ -196296,6 +197439,21 @@
     },
     {
       "db_id": 45,
+      "location": "FRANCIA AVDA. Y REPUBLICA ARGENTINA AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.93027270990662,
+        "lng": -54.95336383581162
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "República Argentina, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:22.207734Z",
+      "updated_at": "2026-03-09T12:22:31.975639Z",
+      "canonical_location": "FRANCIA AVDA. Y REPUBLICA ARGENTINA AVDA."
+    },
+    {
+      "db_id": 45,
       "location": "FRANCIA AVDA. Y RIO BRANCO AVDA.",
       "point": {
         "lat": -34.939426667856324,
@@ -199349,6 +200507,20 @@
       "created_at": "2025-11-11T02:04:39.796136Z",
       "updated_at": "2025-11-11T02:28:40.742689Z",
       "canonical_location": "Ruta Interbalnearia y Rosa de los Vientos"
+    },
+    {
+      "db_id": 45,
+      "location": "JACARANDA Y PEREZ DEL PUERTO RAFAEL, MALDONADO",
+      "point": {
+        "lat": -34.9103137,
+        "lng": -54.9643386
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jacarandá \u0026 Rafael Perez del Puerto, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:20:10.65435Z",
+      "updated_at": "2026-03-09T12:20:10.65435Z"
     },
     {
       "db_id": 45,
@@ -202461,6 +203633,21 @@
     },
     {
       "db_id": 45,
+      "location": "LUSSICH ANTONIO AVDA. Y LAVALLEJA GRAL. JUAN A. AVDA., MALDONADO",
+      "point": {
+        "lat": -34.90188080992054,
+        "lng": -54.963462352752686
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Francisco Maldonado, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:20:43.074312Z",
+      "updated_at": "2026-03-09T12:22:29.980405Z",
+      "canonical_location": "DE VIANA JOSE JOAQUIN AVDA. Y LAVALLEJA GRAL. JUAN A. AVDA."
+    },
+    {
+      "db_id": 45,
       "location": "LUSSICH ANTONIO AVDA. Y LOPEZ FORMOSO MTRO. JUAN",
       "point": {
         "lat": -34.8890516,
@@ -203444,6 +204631,21 @@
       "created_at": "2025-11-11T01:49:24.247512Z",
       "updated_at": "2025-11-25T17:12:33.990071Z",
       "canonical_location": "ISLA DE FLORES Y PAYSANDU"
+    },
+    {
+      "db_id": 45,
+      "location": "MELENDEZ MANUEL Y DE LOS GAUCHOS AVDA., MALDONADO",
+      "point": {
+        "lat": -34.9015948395335,
+        "lng": -54.94374393874699
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Manuel Melendez, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:44.026294Z",
+      "updated_at": "2026-03-09T12:22:32.1303Z",
+      "canonical_location": "DE LOS GAUCHOS AVDA. Y MELENDEZ MANUEL"
     },
     {
       "db_id": 45,
@@ -205978,6 +207180,21 @@
     },
     {
       "db_id": 45,
+      "location": "RAMBLA CLAUDIO WILLIMAN Y BIARRITZ AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9495199,
+        "lng": -54.9402534
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Biarritz \u0026 Rb. Dr. Claudio Williman, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:57.778356Z",
+      "updated_at": "2026-03-09T12:22:30.848494Z",
+      "canonical_location": "WILLIMAN DR. CLAUDIO RBLA. Y BIARRITZ AVDA."
+    },
+    {
+      "db_id": 45,
       "location": "RAMBLA CLAUDIO WILLIMAN Y BOGOTA",
       "point": {
         "lat": -34.923791,
@@ -207924,6 +209141,20 @@
     },
     {
       "db_id": 45,
+      "location": "RODO JOSE ENRIQUE AVDA. Y LAVAGNA CARLOS, SAN CARLOS",
+      "point": {
+        "lat": -34.792809988464064,
+        "lng": -54.93396878242493
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av. Jose Enrique Rodo, 20400 Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:04:30.538595Z",
+      "updated_at": "2026-03-09T12:04:30.538595Z"
+    },
+    {
+      "db_id": 45,
       "location": "ROMEO Y JULIETA Y LUSSICH ANTONIO AVDA.",
       "point": {
         "lat": -34.8856453,
@@ -208026,6 +209257,21 @@
       "created_at": "2026-01-15T10:57:47.010292Z",
       "updated_at": "2026-01-15T14:52:26.090188Z",
       "canonical_location": "Av. Roosevelt  y Av Buenos Aires"
+    },
+    {
+      "db_id": 45,
+      "location": "ROOSEVELT FRANKLIN D. AVDA. Y ACUÑA DE FIGUEROA FCO. AVDA., MALDONADO",
+      "point": {
+        "lat": -34.91891404936284,
+        "lng": -54.95627403259278
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "high",
+      "notes": "Leonardo da Vinci International Airport (FCO), Via Pierpaolo Racchetti, 1, 00054 Fiumicino RM, Italy",
+      "created_at": "2026-03-09T12:19:00.288554Z",
+      "updated_at": "2026-03-09T12:22:05.896151Z",
+      "canonical_location": "Av Franklin Roosevelt y Av. Fco. Acuña de Figueroa"
     },
     {
       "db_id": 45,
@@ -209021,6 +210267,20 @@
       "created_at": "2025-12-05T02:06:33.308083Z",
       "updated_at": "2025-12-05T11:15:04.790657Z",
       "canonical_location": "ROOSEVELT FRANKLIN D. AVDA. Y GATTAS PASCUAL"
+    },
+    {
+      "db_id": 45,
+      "location": "ROOSEVELT FRANKLIN D. AVDA. Y SAN CIRO, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.941110902427646,
+        "lng": -54.932187795639045
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av. Franklin Delano Roosevelt, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:18:04.133607Z",
+      "updated_at": "2026-03-09T12:18:04.133607Z"
     },
     {
       "db_id": 45,
@@ -211995,6 +213255,21 @@
     },
     {
       "db_id": 45,
+      "location": "SAN CARLOS Y ALEGRE VENTURA RAMON, MALDONADO",
+      "point": {
+        "lat": -34.90645180139365,
+        "lng": -54.95443803497376
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Ventura Alegre \u0026 San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:36.047174Z",
+      "updated_at": "2026-03-09T12:22:32.071189Z",
+      "canonical_location": "ALEGRE VENTURA RAMON Y SAN CARLOS"
+    },
+    {
+      "db_id": 45,
       "location": "SAN CARLOS Y BERGALLI DR, ROMAN",
       "point": {
         "lat": -34.90463707344407,
@@ -212248,15 +213523,16 @@
       "db_id": 45,
       "location": "SAN CIRO Y ROOSEVELT FRANKLIN D. AVDA., PUNTA DEL ESTE",
       "point": {
-        "lat": -34.941178,
-        "lng": -54.9321422
+        "lat": -34.941110902427646,
+        "lng": -54.932187795639045
       },
       "is_electronic": false,
       "geocoding_method": "google_maps",
       "confidence": "medium",
       "notes": "Avenida Franklin Delano Roosevelt \u0026 San Ciro, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-01-09T12:40:07.522867Z",
-      "updated_at": "2026-01-09T12:40:07.522867Z"
+      "updated_at": "2026-03-09T12:22:32.176817Z",
+      "canonical_location": "ROOSEVELT FRANKLIN D. AVDA. Y SAN CIRO, PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
@@ -213096,6 +214372,21 @@
       "notes": "Dr. Roman Bergalli, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-11T02:01:34.597224Z",
       "updated_at": "2025-11-11T02:01:34.597224Z"
+    },
+    {
+      "db_id": 45,
+      "location": "SANTANA ARTURO Y GUERRA ROMAN, MALDONADO",
+      "point": {
+        "lat": -34.91098294699134,
+        "lng": -54.956499338150024
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Dr. Roman Bergalli, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:19:29.54062Z",
+      "updated_at": "2026-03-09T12:22:31.290819Z",
+      "canonical_location": "SANTANA ARTURO Y GUERRA ROMAN"
     },
     {
       "db_id": 45,
@@ -214959,6 +216250,20 @@
     },
     {
       "db_id": 45,
+      "location": "TREINTA Y TRES Y MICHELINI ZELMAR, MALDONADO",
+      "point": {
+        "lat": -34.9119576,
+        "lng": -54.96086140000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Zelmar Michelini \u0026 Treinta Y Tres, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:04:39.782008Z",
+      "updated_at": "2026-03-09T12:04:39.782008Z"
+    },
+    {
+      "db_id": 45,
       "location": "TREINTA Y TRES Y RINCON",
       "point": {
         "lat": -34.911796767039874,
@@ -216542,6 +217847,21 @@
       "notes": "Copiapo \u0026 Rambla Doctor Claudio Williman, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-11T02:26:00.137546Z",
       "updated_at": "2025-11-11T02:27:54.941619Z",
+      "canonical_location": "Rambla Claudio Williman E y Copiapo"
+    },
+    {
+      "db_id": 45,
+      "location": "WILLIMAN DR. CLAUDIO RBLA. Y COPIAPO, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.941788104489376,
+        "lng": -54.94579732418061
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Copiapo \u0026 Rambla Doctor Claudio Williman, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-09T12:20:16.317308Z",
+      "updated_at": "2026-03-09T12:22:09.568551Z",
       "canonical_location": "Rambla Claudio Williman E y Copiapo"
     },
     {
