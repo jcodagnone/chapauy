@@ -283,7 +283,7 @@ body {
 }
 .container {
     display: grid;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 1fr 1fr;
     height: calc(100vh - 120px);
     gap: 0;
 }
@@ -296,10 +296,10 @@ body {
     padding: 1rem;
 }
 .description-item { /* Changed from .location-item */
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -309,15 +309,17 @@ body {
 }
 .description-item.active { /* Changed from .location-item.active */
     border-color: #3498db;
-    background: #e3f2fd;
+    background: #bbdefb;
+    border-width: 2px;
 }
 .description-name { /* Changed from .location-name */
     font-weight: 600;
     color: #2c3e50;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
+    font-size: 0.85rem;
 }
 .description-meta { /* Changed from .location-meta */
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #7f8c8d;
 }
 .description-count { /* Changed from .offense-count */
@@ -334,11 +336,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     z-index: 1000;
-    max-width: 700px; /* Adjusted max-width */
+    width: 100%;
     min-height: 450px;
     display: flex;
     flex-direction: column;
-    margin: 0 auto; /* Center the card */
 }
 .card-title {
     font-weight: 600;
@@ -400,9 +401,7 @@ button {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     margin-top: 1rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 80%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -464,7 +463,7 @@ button {
     background-color: #2c3e50;
     border: 1px solid #495057;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .dark-mode .description-item {
@@ -473,7 +472,15 @@ button {
 
 .dark-mode .description-item.active {
     border-color: #007bff;
-    background-color: #3a3a3a;
+    background-color: #4a4a4a; /* Un gris más claro para mejor contraste */
+    border-width: 2px;
+}
+
+#article-search {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .dark-mode #description-search {
