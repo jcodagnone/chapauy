@@ -5,10 +5,10 @@
 
 import { defineConfig } from "vitest/config"
 import react from "@vitejs/plugin-react"
-import path from "path"
 
 export default defineConfig({
   plugins: [react()],
+  devtools: true,
   test: {
     environment: "jsdom",
     globals: true,
@@ -17,8 +17,6 @@ export default defineConfig({
     exclude: ["node_modules", ".next", "backend"],
   },
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./"),
-    },
+    tsconfigPaths: true,
   },
 })
