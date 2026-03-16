@@ -4,14 +4,29 @@
  */
 
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Suspense } from "react"
+import { StructuredData } from "@/components/structured-data"
 import "./globals.css"
+
+export const viewport: Viewport = {
+  themeColor: "#09090b", // Matches background
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chapa.uy"),
+  alternates: {
+    canonical: "/",
+  },
   title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
   description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
+  keywords: ["infracciones", "multas", "tránsito", "Uruguay", "sucive", "patente", "matrícula", "chapa", "transparencia", "datos abiertos"],
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
     description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
@@ -43,6 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
+      <head>
+        <StructuredData />
+      </head>
       <body className="font-sans antialiased">
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
       </body>
