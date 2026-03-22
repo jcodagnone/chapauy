@@ -252,14 +252,17 @@ func (c *Client) downloadMissing() error {
 			)
 
 			log.Printf("[%d/%d] Reading completely: %s", i+1, n, err)
+
 			continue
 		}
 
 		if bytes.Contains(bodyBytes, []byte("Este contenido se publicará en la edición del Diario Oficial")) {
 			// This document is not yet published. Just close and skip saving.
 			_ = resp.Body.Close()
+
 			errs = append(errs, fmt.Errorf("document %q: %w", id, ErrNotYetPublished))
 			log.Printf("[%d/%d] Skipped %s: %v", i+1, n, id, ErrNotYetPublished)
+
 			continue
 		}
 
@@ -298,11 +301,13 @@ func (c *Client) downloadMissing() error {
 
 	if len(errs) > 0 {
 		var finalErrs []error
+
 		for _, err := range errs {
 			if !errors.Is(err, ErrNotYetPublished) {
 				finalErrs = append(finalErrs, err)
 			}
 		}
+
 		if len(finalErrs) > 0 {
 			return errors.Join(finalErrs...)
 		}

@@ -1,3 +1,6 @@
+// Copyright 2026 The ChapaUY Authors
+// SPDX-License-Identifier: Apache-2.0
+
 package impo
 
 import (
@@ -11,7 +14,8 @@ import (
 func TestClient_downloadMissing_NotYetPublished(t *testing.T) {
 	// Create a mock server
 	htmlContent := `<html><title>Test</title><body><h4>Este contenido se publicará en la edición del Diario Oficial del día 23/02/2026</h4></body></html>`
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte(htmlContent))
@@ -29,7 +33,7 @@ func TestClient_downloadMissing_NotYetPublished(t *testing.T) {
 		ID:   48,
 		Name: "Test DB",
 		id2file: []func(string) ([]string, error){
-			func(id string) ([]string, error) {
+			func(_ string) ([]string, error) {
 				return []string{"test_doc"}, nil
 			},
 		},
@@ -51,10 +55,12 @@ func TestClient_downloadMissing_NotYetPublished(t *testing.T) {
 	if err != nil {
 		t.Fatalf("dbDirMustExists failed: %v", err)
 	}
+
 	data, err := json.MarshalIndent(entries, "", "  ")
 	if err != nil {
 		t.Fatalf("MarshalIndent failed: %v", err)
 	}
+
 	err = os.WriteFile(store.dbpath(), data, 0o644)
 	if err != nil {
 		t.Fatalf("WriteFile failed: %v", err)
@@ -71,6 +77,7 @@ func TestClient_downloadMissing_NotYetPublished(t *testing.T) {
 	if client.Metrics.DownloadsErr != 1 {
 		t.Errorf("Expected 1 download error, got %d", client.Metrics.DownloadsErr)
 	}
+
 	if client.Metrics.DownloadsOk != 0 {
 		t.Errorf("Expected 0 downloads ok, got %d", client.Metrics.DownloadsOk)
 	}
