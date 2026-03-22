@@ -1,4 +1,4 @@
-.PHONY: all clean lint test testcov security vuln license addlicense build sbom sign
+.PHONY: all clean lint test testcov security vuln license addlicense build sbom sign update
 
 # Variables
 BINARY_NAME=chapa
@@ -94,9 +94,10 @@ deps:
 
 update:
 	@echo "Updating all dependencies..."
+	cd web && pnpm up --latest && pnpm up next@latest eslint-config-next@latest vitest@latest @vitest/ui@latest @vitest/browser-playwright@latest @vitest/browser-preview@latest @vitest/browser-webdriverio@latest --save-exact
 	go get -u  && go mod tidy
 	cd .dagger && go get -u ./... && go mod tidy
-	cd web && pnpm up --latest
+
 
 #########################
 # Frontend (Web)        #
