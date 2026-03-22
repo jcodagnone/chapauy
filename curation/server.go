@@ -555,10 +555,7 @@ func (s *Server) getProgress(ctx *gin.Context) {
 
 	db := sqlRepo.DB()
 
-	// Build filter conditions
-	var whereClause string
-
-	var args []any
+	var dbIDArgs []any
 
 	if dbIDParam != "" {
 		var dbID int
@@ -568,9 +565,7 @@ func (s *Server) getProgress(ctx *gin.Context) {
 			return
 		}
 
-		whereClause = " AND o.db_id = ?"
-
-		args = append(args, dbID)
+		dbIDArgs = append(dbIDArgs, dbID)
 	}
 
 	// Total unique locations
@@ -579,9 +574,13 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	query := `
 		SELECT COUNT(DISTINCT o.location || '|' || o.db_id)
 		FROM offenses o
-		WHERE o.location IS NOT NULL AND o.location != ''` + whereClause
+		WHERE o.location IS NOT NULL AND o.location != ''`
 
-	err := db.QueryRow(query, args...).Scan(&totalLocations)
+	if dbIDParam != "" {
+		query += " AND o.db_id = ?"
+	}
+
+	err := db.QueryRow(query, dbIDArgs...).Scan(&totalLocations)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
@@ -600,17 +599,13 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	if dbIDParam != "" {
 		judgmentQuery += ` AND lj.db_id = ?`
 
-		judgmentArgs = append(judgmentArgs, args...)
+		judgmentArgs = append(judgmentArgs, dbIDArgs...)
 	}
 
 	judgmentQuery += ` AND EXISTS (
 			SELECT 1 FROM offenses o
-			WHERE o.db_id = lj.db_id AND o.location = lj.location` + whereClause + `
+			WHERE o.db_id = lj.db_id AND o.location = lj.location
 		)`
-
-	if whereClause != "" {
-		judgmentArgs = append(judgmentArgs, args...)
-	}
 
 	err = db.QueryRow(judgmentQuery, judgmentArgs...).Scan(&geocodedLocations)
 	if err != nil {
@@ -625,9 +620,13 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	offenseQuery := `
 		SELECT COUNT(*)
 		FROM offenses o
-		WHERE o.location IS NOT NULL AND o.location != ''` + whereClause
+		WHERE o.location IS NOT NULL AND o.location != ''`
 
-	err = db.QueryRow(offenseQuery, args...).Scan(&totalOffenses)
+	if dbIDParam != "" {
+		offenseQuery += " AND o.db_id = ?"
+	}
+
+	err = db.QueryRow(offenseQuery, dbIDArgs...).Scan(&totalOffenses)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
@@ -642,11 +641,15 @@ func (s *Server) getProgress(ctx *gin.Context) {
 		FROM offenses o
 		INNER JOIN locations lj
 			ON o.db_id = lj.db_id AND o.location = lj.location
-		WHERE 1=1` + whereClause
+		WHERE 1=1`
+
+	if dbIDParam != "" {
+		geocodedQuery += " AND o.db_id = ?"
+	}
 
 	geocodedArgs := []any{}
 	if dbIDParam != "" {
-		geocodedArgs = append(geocodedArgs, args...)
+		geocodedArgs = append(geocodedArgs, dbIDArgs...)
 	}
 
 	err = db.QueryRow(geocodedQuery, geocodedArgs...).Scan(&geocodedOffenses)
@@ -667,18 +670,14 @@ func (s *Server) getProgress(ctx *gin.Context) {
 	if dbIDParam != "" {
 		methodQuery += ` AND lj.db_id = ?`
 
-		methodArgs = append(methodArgs, args...)
+		methodArgs = append(methodArgs, dbIDArgs...)
 	}
 
 	methodQuery += ` AND EXISTS (
 			SELECT 1 FROM offenses o
-			WHERE o.db_id = lj.db_id AND o.location = lj.location` + whereClause + `
+			WHERE o.db_id = lj.db_id AND o.location = lj.location
 		)
 		GROUP BY geocoding_method`
-
-	if whereClause != "" {
-		methodArgs = append(methodArgs, args...)
-	}
 
 	rows, err := db.Query(methodQuery, methodArgs...)
 	if err != nil {
