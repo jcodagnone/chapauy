@@ -10,11 +10,15 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import { FileCode } from "lucide-react"
 
+type FootnoteSectionProps = React.HTMLAttributes<HTMLElement> & {
+  "data-footnotes"?: string
+}
+
 const components = {
-  section: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+  section: ({ className, ...props }: FootnoteSectionProps) => {
     if (
       className === "footnotes" ||
-      (props as any)["data-footnotes"] !== undefined
+      props["data-footnotes"] !== undefined
     ) {
       return (
         <section className={cn("mt-10 border-t pt-8", className)} {...props}>
@@ -175,7 +179,7 @@ const components = {
             xDisplay = `${domain}/${username}`
           }
         }
-      } catch (e) {
+      } catch {
         // ignore invalid urls
       }
 

@@ -123,7 +123,7 @@ INSERT INTO offenses (db_id, doc_source, doc_id, doc_date, record_id, offense_id
 
 let dbInstance: duckdb.Database | null = null
 let resolveInit: () => void
-let rejectInit: (err: any) => void
+let rejectInit: (err: unknown) => void
 const readyPromise = new Promise<void>((resolve, reject) => {
   resolveInit = resolve
   rejectInit = reject

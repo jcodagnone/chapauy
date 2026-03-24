@@ -78,6 +78,53 @@ function ColorBox({ val, max, label, size = "h-[14px] w-[14px]" }: { val: number
 }
 
 export function OffenseFreq({ data, isLoading, isYearFiltered }: OffenseFreqProps) {
+  const currentYear = new Date().getFullYear()
+
+  const years = useMemo(() => {
+    if (!data) return []
+
+    const allYears = new Set<string>()
+    Object.keys(data.dow).forEach((y) => allYears.add(y))
+    Object.keys(data.month).forEach((y) => allYears.add(y))
+    Object.keys(data.hour).forEach((y) => allYears.add(y))
+
+    let sorted = Array.from(allYears).sort().reverse()
+    if (!isYearFiltered) {
+      sorted = sorted.filter((y) => parseInt(y) <= currentYear)
+      if (sorted.length > 4) return sorted.slice(0, 4)
+    }
+    return sorted
+  }, [data, isYearFiltered, currentYear])
+
+  const maxDow = useMemo(() => {
+    if (!data) return 1
+    return getLocalMax(data.dow, years)
+  }, [data, years])
+
+  const maxMonth = useMemo(() => {
+    if (!data) return 1
+    return getLocalMax(data.month, years)
+  }, [data, years])
+
+  const maxHour = useMemo(() => {
+    if (!data) return 1
+    return getLocalMax(data.hour, years)
+  }, [data, years])
+
+  // Daily max excluding future unless filtered
+  const rollingMaxDaily = useMemo(() => {
+    if (!data) return 1
+
+    let max = 0
+    Object.entries(data.daily).forEach(([year, yd]) => {
+      if (!isYearFiltered && parseInt(year) > currentYear) return
+      Object.values(yd).forEach((v) => {
+        if (v > max) max = v
+      })
+    })
+    return max || 1
+  }, [data, isYearFiltered, currentYear])
+
   if (isLoading) {
     return (
       <div className="flex h-96 w-full items-center justify-center">
@@ -88,42 +135,13 @@ export function OffenseFreq({ data, isLoading, isYearFiltered }: OffenseFreqProp
 
   if (!data) return null
 
-  const currentYear = new Date().getFullYear()
-
-  const years = useMemo(() => {
-    const allYears = new Set<string>()
-    Object.keys(data.dow).forEach(y => allYears.add(y))
-    Object.keys(data.month).forEach(y => allYears.add(y))
-    Object.keys(data.hour).forEach(y => allYears.add(y))
-    let sorted = Array.from(allYears).sort().reverse()
-    if (!isYearFiltered) {
-      sorted = sorted.filter(y => parseInt(y) <= currentYear)
-      if (sorted.length > 4) return sorted.slice(0, 4)
-    }
-    return sorted
-  }, [data, isYearFiltered, currentYear])
-
-  const maxDow = useMemo(() => getLocalMax(data.dow, years), [data.dow, years])
-  const maxMonth = useMemo(() => getLocalMax(data.month, years), [data.month, years])
-  const maxHour = useMemo(() => getLocalMax(data.hour, years), [data.hour, years])
-  
-  // Daily max excluding future unless filtered
-  const rollingMaxDaily = useMemo(() => {
-    let max = 0
-    Object.entries(data.daily).forEach(([year, yd]) => {
-      if (!isYearFiltered && parseInt(year) > currentYear) return
-      Object.values(yd).forEach(v => { if (v > max) max = v })
-    })
-    return max || 1
-  }, [data.daily, isYearFiltered, currentYear])
-
   return (
     <TooltipProvider delayDuration={0}>
       <div className="space-y-8 py-4">
-        <div className="flex flex-wrap gap-6 items-start">
+        <div className="flex flex-wrap items-start gap-6">
           {/* Day of Week Matrix */}
-          <Card className="p-4 w-fit min-w-0 border-muted/20 shadow-none">
-            <h3 className="mb-6 text-sm font-medium text-muted-foreground uppercase tracking-wider text-sm">Día</h3>
+          <Card className="w-fit min-w-0 border-muted/20 p-4 shadow-none">
+            <h3 className="mb-6 text-sm font-medium uppercase tracking-wider text-muted-foreground">Día</h3>
             <div className="space-y-2">
               <div className="flex gap-1.5 text-[11px] text-muted-foreground">
                 <div className="w-12 shrink-0" />
@@ -147,7 +165,7 @@ export function OffenseFreq({ data, isLoading, isYearFiltered }: OffenseFreqProp
           </Card>
 
           {/* Month Matrix */}
-          <Card className="p-4 w-fit min-w-0 border-muted/20 shadow-none">
+          <Card className="w-fit min-w-0 border-muted/20 p-4 shadow-none">
             <h3 className="mb-6 text-sm font-medium text-muted-foreground uppercase tracking-wider">Mes</h3>
             <div className="space-y-2">
               <div className="flex gap-1.5 text-[11px] text-muted-foreground">
@@ -175,7 +193,7 @@ export function OffenseFreq({ data, isLoading, isYearFiltered }: OffenseFreqProp
           </Card>
 
           {/* Hour Matrix */}
-          <Card className="p-4 w-fit min-w-0 overflow-hidden border-muted/20 shadow-none">
+          <Card className="w-fit min-w-0 overflow-hidden border-muted/20 p-4 shadow-none">
             <h3 className="mb-6 text-sm font-medium text-muted-foreground uppercase tracking-wider">Hora (24h)</h3>
             <div className="overflow-x-auto pb-2">
               <div className="space-y-2 min-w-max">
@@ -204,7 +222,7 @@ export function OffenseFreq({ data, isLoading, isYearFiltered }: OffenseFreqProp
         </div>
 
         {/* Sliding Heatmap */}
-        <Card className="p-4 border-muted/20 shadow-none">
+        <Card className="border-muted/20 p-4 shadow-none">
           <h3 className="mb-6 text-sm font-medium text-muted-foreground uppercase tracking-wider">
             {isYearFiltered ? "Actividad en el período seleccionado" : "Actividad en los últimos 12 meses"}
           </h3>
@@ -242,7 +260,7 @@ function SlidingHeatmap({ data, max, isYearFiltered, currentYear }: { data: Reco
     start.setFullYear(start.getFullYear() - 1)
     start.setDate(start.getDate() - start.getDay())
     const weeks = []
-    let current = new Date(start)
+    const current = new Date(start)
     while (current <= end) {
       const week = []
       for (let i = 0; i < 7; i++) {

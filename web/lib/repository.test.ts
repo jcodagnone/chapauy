@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { describe, it, expect, beforeEach, vi, afterEach } from "vitest"
+import { describe, it, expect, beforeEach, vi } from "vitest"
 import duckdb from "duckdb"
 import {
   getOffenses,
@@ -25,7 +25,7 @@ vi.mock("./duckdb", () => ({
 
 vi.mock("next/cache", () => ({
   cacheLife: () => {},
-  unstable_cache: (fn: any) => fn,
+  unstable_cache: <T extends (...args: never[]) => unknown>(fn: T): T => fn,
 }))
 
 vi.mock("h3-js", async () => {
@@ -46,7 +46,7 @@ vi.mock("h3-js", async () => {
 const runQuery = (
   db: duckdb.Database,
   sql: string,
-  params: any[] = []
+  params: unknown[] = []
 ): Promise<void> => {
   return new Promise((resolve, reject) => {
     db.run(sql, ...params, (err) => {

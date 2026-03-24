@@ -96,62 +96,78 @@ function LocationMarker({
       if (loadedLocationRef.current !== props.location) {
         // Set ref immediately to prevent double requests
         loadedLocationRef.current = props.location
-        setIsLoading(true)
+        let cancelled = false
+        const timeoutId = window.setTimeout(() => {
+          if (cancelled) return
 
-        // Construct params for the specific location
-        const params: OffensesParams = {
-          predicates: [],
-        }
+          setIsLoading(true)
 
-        // Reconstruct predicates from searchParams
-        Object.values(Dimension).forEach((dim) => {
-          const d = dim as Dimension
-          const values = searchParams.getAll(d)
-          if (values.length > 0) {
-            params.predicates.push({ dimension: d, values })
+          // Construct params for the specific location
+          const params: OffensesParams = {
+            predicates: [],
           }
-        })
 
-        // Add location predicate
-        params.predicates.push({
-          dimension: Dimension.Location,
-          values: [props.location],
-        })
-
-        // Determine which dimension to fetch
-        // If we are already filtering by ArticleCode, show ArticleID (articles) instead
-        const isFilteringByCode = searchParams.has(Dimension.ArticleCode)
-        const targetDimension = isFilteringByCode
-          ? Dimension.ArticleID
-          : Dimension.ArticleCode
-
-        fetchFacetValues(params, targetDimension)
-          .then((facet) => {
-            if (facet && facet.values) {
-              let sorted = [...facet.values]
-
-              // Check if any value is selected
-              const hasSelected = sorted.some((v) => v.selected)
-
-              if (hasSelected) {
-                // If selected, show only selected values
-                sorted = sorted.filter((v) => v.selected)
-              } else {
-                // Otherwise, sort by count descending and take top 5
-                sorted = sorted.sort((a, b) => b.count - a.count).slice(0, 5)
-              }
-
-              setArticleData(sorted)
+          // Reconstruct predicates from searchParams
+          Object.values(Dimension).forEach((dim) => {
+            const d = dim as Dimension
+            const values = searchParams.getAll(d)
+            if (values.length > 0) {
+              params.predicates.push({ dimension: d, values })
             }
           })
-          .catch((err) => {
-            console.error("Error fetching location details:", err)
-            // Reset ref on error to allow retry if needed, or handle otherwise
-            loadedLocationRef.current = null
+
+          // Add location predicate
+          params.predicates.push({
+            dimension: Dimension.Location,
+            values: [props.location],
           })
-          .finally(() => {
-            setIsLoading(false)
-          })
+
+          // Determine which dimension to fetch
+          // If we are already filtering by ArticleCode, show ArticleID (articles) instead
+          const isFilteringByCode = searchParams.has(Dimension.ArticleCode)
+          const targetDimension = isFilteringByCode
+            ? Dimension.ArticleID
+            : Dimension.ArticleCode
+
+          fetchFacetValues(params, targetDimension)
+            .then((facet) => {
+              if (cancelled) return
+
+              if (facet && facet.values) {
+                let sorted = [...facet.values]
+
+                // Check if any value is selected
+                const hasSelected = sorted.some((v) => v.selected)
+
+                if (hasSelected) {
+                  // If selected, show only selected values
+                  sorted = sorted.filter((v) => v.selected)
+                } else {
+                  // Otherwise, sort by count descending and take top 5
+                  sorted = sorted.sort((a, b) => b.count - a.count).slice(0, 5)
+                }
+
+                setArticleData(sorted)
+              }
+            })
+            .catch((err) => {
+              if (cancelled) return
+
+              console.error("Error fetching location details:", err)
+              // Reset ref on error to allow retry if needed, or handle otherwise
+              loadedLocationRef.current = null
+            })
+            .finally(() => {
+              if (!cancelled) {
+                setIsLoading(false)
+              }
+            })
+        }, 0)
+
+        return () => {
+          cancelled = true
+          window.clearTimeout(timeoutId)
+        }
       }
     } else if (markerRef.current && markerRef.current.isPopupOpen()) {
       markerRef.current.closePopup()
@@ -175,7 +191,7 @@ function LocationMarker({
     return null
   }
 
-  const totalOffenses = (props as any).offenses || props.count || 0
+  const totalOffenses = props.count || 0
 
   // Calculate others
   const displayedCount = articleData.reduce((acc, item) => acc + item.count, 0)
@@ -439,13 +455,17 @@ function MapEventHandler({
       console.log(
         "[v0] Filter params changed, clearing cache and refetching cells"
       )
-      // Clear all cached data
-      setMapData({})
-      loadedCellsRef.current.clear()
-      paramsRef.current = predicates
+      const frameId = window.requestAnimationFrame(() => {
+        // Clear all cached data
+        setMapData({})
+        loadedCellsRef.current.clear()
+        paramsRef.current = predicates
 
-      // Refetch visible cells with new predicates
-      updateMap()
+        // Refetch visible cells with new predicates
+        updateMap()
+      })
+
+      return () => window.cancelAnimationFrame(frameId)
     }
   }, [params, updateMap])
 
@@ -458,9 +478,13 @@ function MapEventHandler({
 
   // Initial map load
   useEffect(() => {
-    updateMap()
-    // Focus map on load to enable keyboard navigation immediately
-    map.getContainer().focus()
+    const frameId = window.requestAnimationFrame(() => {
+      updateMap()
+      // Focus map on load to enable keyboard navigation immediately
+      map.getContainer().focus()
+    })
+
+    return () => window.cancelAnimationFrame(frameId)
   }, [updateMap, map])
 
   // Update hash when selection changes
@@ -525,16 +549,6 @@ function MapEventHandler({
               ;[lng, lat] = feature.geometry.coordinates as number[]
             } else {
               return null
-            }
-
-            const createLocationHref = () => {
-              const newParams = new URLSearchParams(searchParams.toString())
-              const existing = newParams.getAll("location")
-              if (!existing.includes(props.location)) {
-                newParams.append("location", props.location)
-              }
-              newParams.delete("view")
-              return `?${newParams.toString()}`
             }
 
             return (

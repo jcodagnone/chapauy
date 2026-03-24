@@ -12,9 +12,13 @@ import type { MapFeatureCollection, OffensesParams } from "@/lib/types"
 import type { Map as LeafletMap } from "leaflet"
 import * as h3 from "h3-js"
 
+type OffenseMapSummaryData = {
+  viewport_h3_index?: string | null
+}
+
 interface OffenseMapProps {
   params: OffensesParams
-  summaryData: any
+  summaryData: OffenseMapSummaryData | null
 }
 
 export const ZOOM_TO_PARENT_RES: Record<number, number> = {

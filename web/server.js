@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 const http = require('http')
 const path = require('path')
 const NextServer = require('next/dist/server/next-server').default

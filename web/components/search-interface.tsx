@@ -245,7 +245,6 @@ export function SearchInterface({
             setAccumulatedOffenses((prev) => [...prev, ...list.offenses])
             setPagination(list.pagination)
             setRepos((prev) => ({ ...prev, ...(list.repos || {}) }))
-            // @ts-ignore
             setArticles((prev) => ({ ...prev, ...(list.articles || {}) }))
             setCurrentPage(nextPage)
           } catch (error) {
@@ -318,7 +317,6 @@ export function SearchInterface({
       setAccumulatedOffenses((prev) => [...prev, ...list.offenses])
       setPagination(list.pagination)
       setRepos((prev) => ({ ...prev, ...(list.repos || {}) }))
-      // @ts-ignore
       setArticles((prev) => ({ ...prev, ...(list.articles || {}) }))
       setCurrentPage(nextPage)
     } catch (error) {

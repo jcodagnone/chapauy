@@ -48,8 +48,12 @@ export function FacetFilter({
   }
 
   useEffect(() => {
-    setDisplayTotalValues(totalValues)
-    setDisplayShownCount(facets.length)
+    const timeoutId = window.setTimeout(() => {
+      setDisplayTotalValues(totalValues)
+      setDisplayShownCount(facets.length)
+    }, 0)
+
+    return () => window.clearTimeout(timeoutId)
   }, [totalValues, facets.length])
 
   const config = getDimensionConfig(dimension)

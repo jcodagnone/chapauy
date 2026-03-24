@@ -30,7 +30,7 @@ interface OffenseCardProps {
 }
 
 const getVehicleIcon = (vehicleType: string) => {
-  var ret
+  let ret
   if (vehicleType === "Moto") {
     ret = <Bike className="h-3 w-3" />
   } else if (vehicleType === "Auto") {

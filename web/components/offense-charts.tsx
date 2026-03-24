@@ -59,6 +59,25 @@ const groupColors = [
   "hsl(340, 65%, 50%)", // Pink
 ]
 
+type ChartRow = {
+  name: string
+  [key: string]: string | number | null
+}
+
+type TooltipPayloadItem = {
+  color?: string
+  dataKey?: string | number
+  value?: number | string | null
+  payload: {
+    name?: string
+  }
+}
+
+type CustomTooltipProps = {
+  active?: boolean
+  payload?: TooltipPayloadItem[]
+}
+
 function transformChartData(
   data: Record<string, Record<string, number>> | null
 ) {
@@ -94,7 +113,7 @@ function transformChartData(
   const sortedKeys = Array.from(allKeys).sort()
 
   const chartData = sortedKeys.map((key) => {
-    const row: any = { name: key }
+    const row: ChartRow = { name: key }
     groups.forEach((group) => {
       row[group] = data[group]?.[key] ?? null
     })
@@ -125,7 +144,7 @@ function ChartSkeleton() {
   )
 }
 
-function CustomTooltip({ active, payload }: any) {
+function CustomTooltip({ active, payload }: CustomTooltipProps) {
   if (active && payload && payload.length) {
     return (
       <div className="bg-background rounded-lg border p-2 shadow-sm">
@@ -133,7 +152,7 @@ function CustomTooltip({ active, payload }: any) {
           <span className="text-muted-foreground text-[0.70rem] uppercase">
             {payload[0].payload.name}
           </span>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <div
                 className="h-2 w-2 rounded-full"
@@ -143,7 +162,7 @@ function CustomTooltip({ active, payload }: any) {
                 {entry.dataKey}:
               </span>
               <span className="text-foreground font-bold">
-                {formatNumberFull(entry.value)}
+                {formatNumberFull(Number(entry.value ?? 0))}
               </span>
             </div>
           ))}

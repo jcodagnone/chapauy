@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { getDuckDB, waitForDB } from "./duckdb"
 import { getDBName, databases, countryDisplay } from "./db-refs"
 import {
@@ -407,7 +409,7 @@ export async function getDimensionResults(
               "WHERE (sub.value::VARCHAR ILIKE ? OR sub.value IN (SELECT code FROM articles WHERE title ILIKE ?))"
           }
         }
-        let innerSql = `SELECT UNNEST(${column}) as value FROM offenses ${predWhere}`
+        const innerSql = `SELECT UNNEST(${column}) as value FROM offenses ${predWhere}`
 
         queryPart = `
             SELECT 
@@ -950,7 +952,8 @@ function chartBuildWhereClause(predicates: InPredicate[]): {
   where: string
   args: any[]
 } {
-  let { where, args } = buildWhereClause(predicates)
+  const { where: initialWhere, args } = buildWhereClause(predicates)
+  let where = initialWhere
   if (where) {
     where += " AND error IS NULL"
   } else {
@@ -1060,7 +1063,8 @@ async function getChartDataByDimension(
 ): Promise<Record<string, Record<string, number>>> {
   await waitForDB()
   const db = getDuckDB()
-  let { where, args } = chartBuildWhereClause(predicates)
+  const { where: initialWhere, args } = chartBuildWhereClause(predicates)
+  let where = initialWhere
 
   let dimExpr = ""
   if (dimension === "dayOfWeek") {
