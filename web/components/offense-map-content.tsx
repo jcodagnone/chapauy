@@ -9,8 +9,6 @@ import { useEffect, useState, useRef, useCallback } from "react"
 import {
   MapContainer,
   TileLayer,
-  GeoJSON,
-  CircleMarker,
   Popup,
   useMap,
   useMapEvents,
@@ -30,7 +28,6 @@ import type {
 import { Dimension } from "@/lib/types"
 import { useOffenseSearchParams } from "@/lib/search-params"
 import L from "leaflet"
-import type { Map as LeafletMap, LatLngBounds, PathOptions } from "leaflet"
 import "leaflet/dist/leaflet.css"
 
 interface MapContentProps {
@@ -347,7 +344,7 @@ function MapEventHandler({
   const loadedCellsRef = useRef<Set<string>>(new Set())
   const paramsRef = useRef<string>(JSON.stringify(params))
   const currentParamsRef = useRef(params)
-  const { applyUpdates, searchParams } = useOffenseSearchParams()
+  const { searchParams } = useOffenseSearchParams()
 
   useEffect(() => {
     currentParamsRef.current = params
@@ -543,14 +540,6 @@ function MapEventHandler({
               />
             )
           } else if (feature.properties.type === "location") {
-            const props = feature.properties as LocationProperties
-            let lat, lng
-            if (feature.geometry.type === "Point") {
-              ;[lng, lat] = feature.geometry.coordinates as number[]
-            } else {
-              return null
-            }
-
             return (
               <LocationMarker
                 key={`${h3Index}-${index}`}

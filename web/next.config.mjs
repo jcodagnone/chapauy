@@ -15,13 +15,15 @@ if (gitCommitSha === 'dev') {
     if (fs.existsSync(gitShaPath)) {
       gitCommitSha = fs.readFileSync(gitShaPath, 'utf-8').trim();
     }
-  } catch (e) { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
 }
 
 if (gitCommitSha === 'dev') {
   try {
     gitCommitSha = execSync('git rev-parse --short HEAD').toString().trim();
-  } catch (e) {
+  } catch {
     // console.warn('Could not get git commit sha', e);
   }
 }

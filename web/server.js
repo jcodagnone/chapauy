@@ -14,7 +14,7 @@ const server = http.createServer(async (req, res) => {
     try {
         // Monkey-patch setHeader to strip x-nextjs-* headers
         const originalSetHeader = res.setHeader;
-        res.setHeader = function (key, value) {
+        res.setHeader = function (key) {
             if (typeof key === 'string' && key.toLowerCase().startsWith('x-nextjs-')) {
                 return;
             }
@@ -34,7 +34,6 @@ const server = http.createServer(async (req, res) => {
 let handler
 
 async function start() {
-    const nextConfig = require('./package.json') // Standalone output puts package.json here? No, let's verify.
     // Actually, standalone relies on .next being present.
 
     const app = new NextServer({

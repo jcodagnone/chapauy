@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import { MdxContent } from "@/components/mdx-content"
 import { Metadata } from "next"
-import { getDocBySlug, getAllDocSlugs, getDocPages } from "@/lib/docs"
+import { getDocBySlug, getAllDocSlugs } from "@/lib/docs"
 import { Edit } from "lucide-react"
 import { TableOfContents } from "@/components/toc"
 

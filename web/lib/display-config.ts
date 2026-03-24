@@ -9,11 +9,9 @@ import {
   Globe,
   Truck,
   Car,
-  FileText,
   MapPin,
   AlignLeft,
   File,
-  Hash,
   Clock,
 } from "lucide-react"
 import { Dimension } from "@/lib/types"

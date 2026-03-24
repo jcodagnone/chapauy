@@ -4,8 +4,6 @@
  */
 
 import type {
-  OffensesListResponse,
-  OffensesSummaryResponse,
   OffensesParams,
   Dimension,
   Facet,

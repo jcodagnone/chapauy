@@ -8,7 +8,6 @@ import { getDocPages } from "@/lib/docs"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
-import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default async function DocsLayout({
   children,

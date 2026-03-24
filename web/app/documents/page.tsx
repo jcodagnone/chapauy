@@ -5,7 +5,6 @@
 
 import { Suspense } from "react"
 import { OffensesSidebarClient } from "@/components/offenses-sidebar-client"
-import { OffensesSidebarSkeleton } from "@/components/offenses-sidebar-skeleton"
 import { DocumentsList } from "./documents-list"
 import DocumentsLoading from "./loading"
 import { Dimension, SidebarMode } from "@/lib/types"

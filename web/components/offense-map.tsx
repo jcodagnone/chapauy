@@ -5,11 +5,9 @@
 
 "use client"
 
-import { useEffect, useState, useCallback, useRef } from "react"
+import { useState, useCallback } from "react"
 import dynamic from "next/dynamic"
-import { fetchMapData } from "@/lib/api/client"
-import type { MapFeatureCollection, OffensesParams } from "@/lib/types"
-import type { Map as LeafletMap } from "leaflet"
+import type { OffensesParams } from "@/lib/types"
 import * as h3 from "h3-js"
 
 type OffenseMapSummaryData = {

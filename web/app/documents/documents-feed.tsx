@@ -5,10 +5,10 @@
 
 "use client"
 
-import { useEffect, useState, useRef, useTransition } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useOffenseSearchParams } from "@/lib/search-params"
 import { offensesParamsFromQueryParams } from "@/lib/url-utils"
-import { OffenseDocument, OffensesParams } from "@/lib/types"
+import { OffenseDocument } from "@/lib/types"
 import { DocumentCard } from "@/components/document-card"
 import { OffenseCardSkeleton } from "@/components/offense-card-skeleton"
 import { Button } from "@/components/ui/button"

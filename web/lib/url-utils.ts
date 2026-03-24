@@ -13,7 +13,7 @@
  * By extracting these pure functions here, we can share logic between Server and Client components
  * without violating the "use client" boundary.
  */
-import { Dimension, type OffensesParams, type Facet } from "@/lib/types"
+import { Dimension, type OffensesParams } from "@/lib/types"
 import { ReadonlyURLSearchParams } from "next/navigation"
 
 export function offensesParamsFromQueryParams(

@@ -16,7 +16,7 @@ export function OffensesFeedClient() {
     const searchParams = useSearchParams()
     const [data, setData] = useState<OffensesResponse | null>(null)
     const [error, setError] = useState<string | null>(null)
-    const [isPending, startTransition] = useTransition()
+    const [, startTransition] = useTransition()
 
     // Stable dependency key for fetching: only include params that affect the feed
     const feedQueryString = useMemo(() => {
@@ -32,14 +32,12 @@ export function OffensesFeedClient() {
     }, [searchParams])
 
     useEffect(() => {
-        // Collect all search params
         const params: Record<string, string | string[]> = {}
-        searchParams.forEach((value, key) => {
-            if (key === "facet" || key === "facets" || key === "mode") return
-
+        const filteredSearchParams = new URLSearchParams(feedQueryString)
+        filteredSearchParams.forEach((value, key) => {
             if (params[key]) {
                 if (Array.isArray(params[key])) {
-                    ; (params[key] as string[]).push(value)
+                    ;(params[key] as string[]).push(value)
                 } else {
                     params[key] = [params[key] as string, value]
                 }
@@ -76,7 +74,7 @@ export function OffensesFeedClient() {
         // This gives the user immediate feedback that the list is changing
         setData(null)
         fetchData()
-    }, [feedQueryString])
+    }, [feedQueryString, startTransition])
 
     if (error) {
         return (

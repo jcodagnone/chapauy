@@ -5,6 +5,7 @@
 
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
@@ -98,9 +99,22 @@ const components = {
   img: ({
     className,
     alt,
+    src,
+    width,
+    height,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    <img className={cn("rounded-md border", className)} alt={alt} {...props} />
+    <Image
+      className={cn("rounded-md border", className)}
+      alt={alt || ""}
+      src={typeof src === "string" ? src : ""}
+      width={typeof width === "number" ? width : 1200}
+      height={typeof height === "number" ? height : 800}
+      sizes="100vw"
+      unoptimized
+      style={{ height: "auto", width: "100%" }}
+      {...props}
+    />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (

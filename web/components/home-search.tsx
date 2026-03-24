@@ -11,7 +11,7 @@ import { Search, Loader2, ChevronDown, X } from "lucide-react"
 import { Dimension } from "@/lib/types"
 import type { FacetValue, Facet } from "@/lib/types"
 import { getDimensionConfig } from "@/lib/display-config"
-import { cn, normalizeVehicleId } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,

@@ -1,4 +1,4 @@
-import { OffensesResponse, Facet, SidebarMode, Dimension } from '../../lib/types';
+import { OffensesResponse, Facet, Dimension } from '../../lib/types';
 
 export const mockFacets: Facet[] = [
     {

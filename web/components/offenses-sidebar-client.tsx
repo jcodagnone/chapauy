@@ -5,7 +5,7 @@
 
 "use client"
 
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState, useMemo, useRef } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Dimension, SidebarMode, Facet } from "@/lib/types"
@@ -46,6 +46,7 @@ export function OffensesSidebarClient({
     const [loading, setLoading] = useState(true)
     const [isUpdating, setIsUpdating] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const hasLoadedFacetsRef = useRef(false)
 
     // Create a stable dependency that ignores map viewport parameters
     const sidebarQueryString = useMemo(() => {
@@ -62,21 +63,23 @@ export function OffensesSidebarClient({
     useEffect(() => {
         const fetchFacets = async () => {
             // If we already have data, we are updating (not initial load)
-            if (facets.length > 0) {
+            if (hasLoadedFacetsRef.current) {
                 setIsUpdating(true)
             }
             // Don't set loading(true) here to avoid full sidebar skeleton flash on updates
             // We rely on stale-while-revalidate UI + local optimistic feedback in SidebarItem
             try {
-                // Build params from searchParams
+                const filteredSearchParams = new URLSearchParams(sidebarQueryString)
+
+                // Build params from the filtered search params
                 const params: Record<string, string | string[]> = {
                     mode: mode,
                 }
 
-                searchParams.forEach((value, key) => {
+                filteredSearchParams.forEach((value, key) => {
                     if (params[key]) {
                         if (Array.isArray(params[key])) {
-                            ; (params[key] as string[]).push(value)
+                            ;(params[key] as string[]).push(value)
                         } else {
                             params[key] = [params[key] as string, value]
                         }
@@ -107,12 +110,14 @@ export function OffensesSidebarClient({
 
                 // Detect active dimensions from searchParams and ensure their data is fetched
                 // This auto-expands the facet in the UI since the API will return data for it
-                const activeDimensions = visibleDimensions.filter(dim => searchParams.has(dim))
+                const activeDimensions = visibleDimensions.filter((dim) =>
+                    filteredSearchParams.has(dim)
+                )
 
                 const facetParams = new Set<string>()
 
                 // Add explicit 'facet' params from URL
-                const updates = searchParams.getAll("facet")
+                const updates = filteredSearchParams.getAll("facet")
                 updates.forEach(f => facetParams.add(f))
 
                 // Add active dimensions
@@ -132,6 +137,7 @@ export function OffensesSidebarClient({
 
                 const data = await res.json()
                 setFacets(data)
+                hasLoadedFacetsRef.current = true
                 setError(null)
             } catch (err) {
                 console.error("Failed to load sidebar facets:", err)

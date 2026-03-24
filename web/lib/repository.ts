@@ -8,15 +8,11 @@
 import { getDuckDB, waitForDB } from "./duckdb"
 import { getDBName, databases, countryDisplay } from "./db-refs"
 import {
-  OffensesParams,
   OffenseDocument,
-  OffensesListResponse,
   InPredicate,
   SortBy,
-  Repo,
   Dimension,
   Facet,
-  FacetValue,
 } from "@/lib/types"
 import * as h3 from "h3-js"
 import { unstable_cache, cacheLife } from "next/cache"
@@ -318,15 +314,12 @@ export async function getDimensionResults(
       const searchQuery = queries ? queries[dim] : undefined
 
       let selectVal = ""
-      let fromClause = ""
 
       // Base query construction
       if (dim === Dimension.ArticleID || dim === Dimension.ArticleCode) {
         selectVal = "value"
-        fromClause = `(SELECT UNNEST(${column}) as value FROM offenses) sub`
       } else {
         selectVal = `${column}::VARCHAR` // Force varchar for union compatibility
-        fromClause = "offenses"
       }
 
       // Apply filters

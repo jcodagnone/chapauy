@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Skeleton } from "@/components/ui/skeleton"
 import Link from "next/link"
 import { FacetFilterSkeleton } from "@/components/facet-filter-skeleton"
 

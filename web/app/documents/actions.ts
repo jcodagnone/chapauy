@@ -5,7 +5,7 @@
 
 "use server"
 
-import { getDocumentFacets, getDocuments } from "@/lib/repository"
+import { getDocuments } from "@/lib/repository"
 import { OffensesParams, InPredicate, OffenseDocument } from "@/lib/types"
 
 export interface DocumentsListResponse {

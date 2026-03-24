@@ -4,7 +4,7 @@
  */
 
 "use client"
-import { Plus, X, AlertCircle, BarChart3, List, MapPin, Activity } from "lucide-react"
+import { X, AlertCircle, BarChart3, List, MapPin, Activity } from "lucide-react"
 import {
   useCallback,
   useEffect,
@@ -13,7 +13,6 @@ import {
   useMemo,
   useTransition,
 } from "react"
-import { } from "@/lib/api/client"
 import { buildApiUrl } from "@/lib/api-utils"
 import type {
   OffensesListResponse,
@@ -21,13 +20,11 @@ import type {
   ActiveFilter,
 } from "@/lib/types"
 import { Dimension } from "@/lib/types"
-import { FacetFilter } from "@/components/facet-filter"
 import { OffenseCard } from "@/components/offense-card"
 import { OffenseCardSkeleton } from "@/components/offense-card-skeleton"
-import { FacetFilterSkeleton } from "@/components/facet-filter-skeleton"
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import { ReadonlyURLSearchParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { formatUR } from "@/lib/utils"
 import { useOffenseSearchParams } from "@/lib/search-params"
 import {
@@ -73,18 +70,6 @@ const OffenseFreq = dynamic(
   }
 )
 
-const allDimensions: Dimension[] = [
-  Dimension.Database,
-  Dimension.Year,
-  Dimension.Country,
-  Dimension.VehicleType,
-  Dimension.ArticleCode,
-  Dimension.ArticleID,
-  Dimension.Description,
-  Dimension.Location,
-  Dimension.Vehicle,
-]
-
 interface SearchInterfaceProps {
   initialOffenses: OffensesListResponse["offenses"]
   initialPagination: OffensesListResponse["pagination"]
@@ -110,11 +95,6 @@ export function SearchInterface({
 }: SearchInterfaceProps) {
   const {
     searchParams,
-    updateURL,
-    addFilter,
-    removeFilter,
-    clearAllFilters,
-    setViewMode,
     setGroupBy,
     getActiveFilters,
     viewMode,
@@ -123,15 +103,6 @@ export function SearchInterface({
 
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
-
-  const handleViewChange = (newView: "list" | "charts" | "map") => {
-    startTransition(() => {
-      const params = new URLSearchParams(searchParams.toString())
-      params.set("view", newView)
-      params.sort()
-      router.push(`?${params.toString()}`)
-    })
-  }
 
   const getViewUrl = (view: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -176,10 +147,6 @@ export function SearchInterface({
   const [freqData, setFreqData] = useState<import("@/lib/types").FreqData | null>(initialFreqData)
   const [chartsLoading, setChartsLoading] = useState(false)
 
-  const lastLoadedListKeyRef = useRef<string>("")
-  const lastLoadedSummaryKeyRef = useRef<string>("")
-  const lastLoadedChartsKeyRef = useRef<string>("")
-
   // Sync state with props when they change (e.g. on navigation)
   useEffect(() => {
     setAccumulatedOffenses(initialOffenses)
@@ -218,7 +185,6 @@ export function SearchInterface({
         ) {
           setIsLoadingMore(true)
           try {
-            const params = offensesParamsFromQueryParams(searchParams)
             const nextPage = currentPage + 1
 
             // Convert params to Record<string, string | string[]>
@@ -273,13 +239,6 @@ export function SearchInterface({
     loadMoreError,
   ])
 
-  const toggleViewMode = useCallback(
-    (mode: "list" | "charts" | "map") => {
-      setViewMode(mode)
-    },
-    [setViewMode]
-  )
-
   const handleGroupByChange = useCallback(
     (value: string) => {
       setGroupBy(value)
@@ -326,22 +285,6 @@ export function SearchInterface({
       setIsLoadingMore(false)
     }
   }, [pagination, isLoadingMore, searchParams, currentPage])
-
-  const handleFilterClick = useCallback(
-    async (filterType: string, value: string) => {
-      addFilter(filterType, value)
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    },
-    [addFilter]
-  )
-
-  const hasActiveFilters = Object.keys(searchParams).some(
-    (key) => key !== "facet" && searchParams.getAll(key).length > 0
-  )
-
-  const handleRemoveFilter = (dimension: string, value: string) => {
-    removeFilter(dimension, value)
-  }
 
   const activeFilters = useMemo<ActiveFilter[]>(() => {
     return getActiveFilters(summaryData)

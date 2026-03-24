@@ -9,7 +9,6 @@ import { useState, useEffect } from "react"
 import { Search, Loader2, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { Facet, FacetValue } from "@/lib/types"
-import { getDimensionConfig } from "@/lib/display-config"
 import { FacetItem } from "./facet-item"
 
 interface FilterSearchProps {
