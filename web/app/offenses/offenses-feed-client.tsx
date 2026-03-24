@@ -7,7 +7,7 @@
 
 import { useEffect, useState, useTransition, useMemo } from "react"
 import { useSearchParams } from "next/navigation"
-import { OffensesResponse, OffensesListResponse } from "@/lib/types"
+import { OffensesResponse } from "@/lib/types"
 import { SearchInterface } from "@/components/search-interface"
 import OffensesLoading from "./loading"
 import { buildApiUrl } from "@/lib/api-utils"
@@ -97,27 +97,21 @@ export function OffensesFeedClient() {
         return <OffensesLoading />
     }
 
+    const initialChartData = data.chartData ?? {
+        dayOfWeek: null,
+        dayOfYear: null,
+        timeOfDay: null,
+    }
+
     return (
         <SearchInterface
             initialOffenses={data.offenses}
             initialPagination={data.pagination}
             initialRepos={data.repos}
-            initialRepos={data.repos}
-            // Actually SearchInterface expects `initialArticles: Record<string, string>`
-            // and checking route.ts, we DO return `articles`.
-            // The `OffensesResponse` type might be missing this field or I need to cast/extend it?
-            // Let's assume for now and fix type if needed.
-            // Wait, OffensesResponse has `offenses`, `pagination`, `repos`, `summary`...
-            // `SearchInterface` props: `initialArticles`
-            // My API returns `articles` too. 
-            // I probably need to cast `data` or pass `data.articles` if it exists on the type.
-            // Let's fix the API return type first or use `any` to unblock if type is strict.
-            // The `OffensesResponse` type in lib/types.ts might not have `articles` or `chartData`.
-
-            initialArticles={(data as any).articles || {}}
+            initialArticles={data.articles ?? {}}
             initialSummary={data.summary}
-            initialChartData={(data as any).chartData}
-            initialFreqData={(data as any).freqData}
+            initialChartData={initialChartData}
+            initialFreqData={data.freqData ?? null}
         />
     )
 }

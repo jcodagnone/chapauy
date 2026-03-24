@@ -10,6 +10,7 @@ import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { OffensesSidebarClient } from "@/components/offenses-sidebar-client"
+import { SidebarMode } from "@/lib/types"
 
 export function MobileNav() {
     const [open, setOpen] = useState(false)
@@ -29,7 +30,7 @@ export function MobileNav() {
                     <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
                     <OffensesSidebarClient
                         onClose={() => setOpen(false)}
-                        mode="mobile"
+                        mode={SidebarMode.Offenses}
                     />
                 </SheetContent>
             </Sheet>
