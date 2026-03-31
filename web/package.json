@@ -33,7 +33,7 @@
     "gray-matter": "^4.0.3",
     "h3-js": "latest",
     "leaflet": "latest",
-    "lucide-react": "^1.0.1",
+    "lucide-react": "^1.7.0",
     "next": "16.2.1",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "latest",
