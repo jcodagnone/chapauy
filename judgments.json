@@ -113409,6 +113409,20 @@
     },
     {
       "db_id": 6,
+      "location": "FRAY FRAY BENTOS y COMERCIO",
+      "point": {
+        "lat": -34.8741311,
+        "lng": -56.14482220000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Comerció \u0026 Fray Bentos, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-03-22T11:55:31.755468Z",
+      "updated_at": "2026-03-22T11:55:31.755468Z"
+    },
+    {
+      "db_id": 6,
       "location": "FRAY FRAY BENTOS y HABANA",
       "point": {
         "lat": -34.8607232,
@@ -180117,6 +180131,50 @@
     },
     {
       "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G, RBLA. MA Y PEDRAGOSA SIERRA ORLANDO AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9455565878327,
+        "lng": -54.9367368221283
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Ave Pedragosa Sierra, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:08:37.14451Z",
+      "updated_at": "2026-04-07T11:59:53.712766Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y PEDRAGOSA SIERRA ORLANDO AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G, RBLA. MA Y RIO BRANCO AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.93473525458025,
+        "lng": -54.93834809077695
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av. Rio Branco, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:08:51.280225Z",
+      "updated_at": "2026-03-26T11:08:51.280225Z"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G, RBLA. MA Y RISSO PEDRO, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.95418343196757,
+        "lng": -54.9387001991272
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Pedro Risso, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:08:59.386147Z",
+      "updated_at": "2026-04-07T11:59:50.60654Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y RISSO PEDRO, PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
       "location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y ALONSOPEREZ LAUREANO AVDA.",
       "point": {
         "lat": -34.93389879333399,
@@ -180128,6 +180186,21 @@
       "notes": "Maldonado Department, Uruguay",
       "created_at": "2026-01-14T12:13:57.435201Z",
       "updated_at": "2026-01-14T12:13:57.435201Z"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y BATLLE PACHECO LORENZO (RBLA.)",
+      "point": {
+        "lat": -34.95779386006352,
+        "lng": -54.93845695156887
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "55000 Artigas, Artigas Department, Uruguay",
+      "created_at": "2026-03-26T11:09:25.399717Z",
+      "updated_at": "2026-04-07T11:59:55.522034Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y ARTIGAS GRAL. JOSE G. (BULEVAR"
     },
     {
       "db_id": 45,
@@ -182872,6 +182945,21 @@
     },
     {
       "db_id": 45,
+      "location": "AV FRANKLIN ROOSEVELT Y LITMAN MAURICIO AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9259767,
+        "lng": -54.94870650000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Franklin Delano Roosevelt \u0026 Avenida Mauricio Litman, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:10:21.745333Z",
+      "updated_at": "2026-04-07T11:59:46.363426Z",
+      "canonical_location": "Av. Roosevelt  y Av. M. Litman"
+    },
+    {
+      "db_id": 45,
       "location": "AV FRANKLIN ROOSEVELT Y LUXEMBURGO",
       "point": {
         "lat": -34.9209418,
@@ -184817,6 +184905,20 @@
     },
     {
       "db_id": 45,
+      "location": "BATLLE PACHECO LORENZO (RBLA.) Y GARCIA LORCA FEDERICO",
+      "point": {
+        "lat": -34.9298689,
+        "lng": -54.89383729999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Federico Garcia Lorca \u0026 Rambla Lorenzo Batlle Pacheco, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:11:18.781825Z",
+      "updated_at": "2026-03-26T11:11:18.781825Z"
+    },
+    {
+      "db_id": 45,
       "location": "BATLLE PACHECO LORENZO (RBLA.) Y GARCIA LORCA FEDERICO, PUNTA DEL ESTE",
       "point": {
         "lat": -34.9298689,
@@ -184827,7 +184929,8 @@
       "confidence": "medium",
       "notes": "Federico Garcia Lorca \u0026 Rambla Lorenzo Batlle Pacheco, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-01-21T11:33:26.820128Z",
-      "updated_at": "2026-01-21T11:33:26.820128Z"
+      "updated_at": "2026-04-07T11:59:56.458699Z",
+      "canonical_location": "BATLLE PACHECO LORENZO (RBLA.) Y GARCIA LORCA FEDERICO"
     },
     {
       "db_id": 45,
@@ -184842,6 +184945,20 @@
       "notes": "Lenguas de Diamante \u0026 Rambla Lorenzo Batlle Pacheco, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2025-12-25T12:36:27.515652Z",
       "updated_at": "2025-12-25T12:36:27.515652Z"
+    },
+    {
+      "db_id": 45,
+      "location": "BATLLE PACHECO LORENZO (RBLA.) Y LENGUAS DE DIAMANTE, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9508452,
+        "lng": -54.92820589999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Lenguas de Diamante \u0026 Rambla Lorenzo Batlle Pacheco, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-03-26T11:11:32.511598Z",
+      "updated_at": "2026-03-26T11:11:32.511598Z"
     },
     {
       "db_id": 45,
@@ -214152,15 +214269,16 @@
       "db_id": 45,
       "location": "SADER EMILIO Y ARTIGAS GRAL. JOSE G. (BULEVAR, PUNTA DEL ESTE",
       "point": {
-        "lat": -34.9541669,
-        "lng": -54.9385822
+        "lat": -34.95418343196757,
+        "lng": -54.9387001991272
       },
       "is_electronic": false,
       "geocoding_method": "google_maps",
       "confidence": "medium",
       "notes": "Bulevar General Jose Gervasio Artigas \u0026 Emilio Sader, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-01-27T12:08:38.451041Z",
-      "updated_at": "2026-01-27T12:08:38.451041Z"
+      "updated_at": "2026-04-07T11:59:50.587652Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y RISSO PEDRO, PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
