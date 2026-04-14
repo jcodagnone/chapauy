@@ -14,7 +14,7 @@ require (
 	github.com/uber/h3-go/v4 v4.4.0
 	golang.org/x/net v0.52.0
 	golang.org/x/oauth2 v0.36.0
-	golang.org/x/text v0.35.0
+	golang.org/x/text v0.36.0
 	google.golang.org/api v0.274.0
 )
 
