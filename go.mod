@@ -3,7 +3,7 @@ module github.com/jcodagnone/chapauy
 go 1.25.5
 
 require (
-	cloud.google.com/go/apikeys v1.3.0
+	cloud.google.com/go/apikeys v1.5.0
 	github.com/duckdb/duckdb-go/v2 v2.10501.0
 	github.com/gin-gonic/gin v1.12.0
 	github.com/google/go-cmp v0.7.0
