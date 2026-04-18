@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { getDocBySlug, getAllDocSlugs } from "@/lib/docs"
 import { Edit } from "lucide-react"
 import { TableOfContents } from "@/components/toc"
+import { BASE_URL } from "@/lib/config"
 
 export async function generateStaticParams() {
   const slugs = getAllDocSlugs()
@@ -83,7 +84,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       title,
       description,
       type: "article",
-      url: `https://chapa.uy/docs/${slug.join("/")}`,
+      url: `${BASE_URL}/docs/${slug.join("/")}`,
     },
     twitter: {
       card: "summary_large_image",

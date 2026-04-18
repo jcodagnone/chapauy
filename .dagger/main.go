@@ -54,6 +54,8 @@ func (c *Chapauy) BuildAndPublish(
 	token *dagger.Secret,
 	// +optional
 	gitSha string,
+	// +optional
+	baseUrl string,
 ) error {
 	cli := c.BuildCli(ctx, src.
 		WithoutDirectory("web").
@@ -65,6 +67,7 @@ func (c *Chapauy) BuildAndPublish(
 		WithoutDirectory("chapauy.duckdb").
 		WithoutDirectory(".next"),
 		gitSha,
+		baseUrl,
 	)
 
 	accessToken, err := extractToken(ctx, token)

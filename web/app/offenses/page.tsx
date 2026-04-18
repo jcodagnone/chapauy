@@ -6,6 +6,7 @@ import { OffensesSidebarClient } from "@/components/offenses-sidebar-client"
 import { MobileNav } from "@/components/mobile-nav"
 import { OffensesFeedClient } from "./offenses-feed-client"
 import { Metadata } from "next"
+import { BASE_URL } from "@/lib/config"
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -46,7 +47,7 @@ export async function generateMetadata(
     openGraph: {
       title,
       description,
-      url: vehicle ? `https://chapa.uy/offenses?vehicle=${vehicle}` : "https://chapa.uy/offenses",
+      url: vehicle ? `${BASE_URL}/offenses?vehicle=${vehicle}` : `${BASE_URL}/offenses`,
     },
   }
 }

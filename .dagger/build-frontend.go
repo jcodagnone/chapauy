@@ -22,6 +22,8 @@ func (c *Chapauy) BuildFrontend(
 	src *dagger.Directory,
 	// +optional
 	gitSha string,
+	// +optional
+	baseUrl string,
 ) *dagger.Container {
 	// Stage 1: Builder
 	builder := dag.Container().
@@ -32,6 +34,7 @@ func (c *Chapauy) BuildFrontend(
 		WithFile("pnpm-lock.yaml", src.File("pnpm-lock.yaml")).
 		WithNewFile("GIT_SHA", gitSha).
 		WithEnvVariable("GIT_COMMIT_SHA", gitSha).
+		WithEnvVariable("NEXT_PUBLIC_BASE_URL", baseUrl).
 		WithFile("pnpm-workspace.yaml", src.File("pnpm-workspace.yaml")).
 		WithDirectory("patches", src.Directory("patches")).
 		WithMountedCache("/root/.local/share/pnpm", dag.CacheVolume("pnpm-data")).

@@ -4,9 +4,10 @@
  */
 
 import { MetadataRoute } from 'next'
+import { BASE_URL } from '@/lib/config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://chapa.uy'
+  const baseUrl = BASE_URL
 
   return [
     {

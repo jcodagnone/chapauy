@@ -7,6 +7,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Suspense } from "react"
 import { StructuredData } from "@/components/structured-data"
+import { BASE_URL } from "@/lib/config"
 import "./globals.css"
 
 export const viewport: Viewport = {
@@ -16,7 +17,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chapa.uy"),
+  metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: "/",
   },
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ChapaUY - Búsqueda de Infracciones de Tránsito",
     description: "Consultá y analizá infracciones de tránsito en Uruguay de forma transparente.",
-    url: "https://chapa.uy",
+    url: BASE_URL,
     siteName: "ChapaUY",
     images: [
       {

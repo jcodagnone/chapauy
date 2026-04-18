@@ -9,6 +9,7 @@ import { DocumentsList } from "./documents-list"
 import DocumentsLoading from "./loading"
 import { Dimension, SidebarMode } from "@/lib/types"
 import { Metadata } from "next"
+import { BASE_URL } from "@/lib/config"
 
 export const metadata: Metadata = {
   title: "Documentos Originales | ChapaUY",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Documentos Originales | ChapaUY",
     description: "Navegá los documentos oficiales del IMPO con las notificaciones de infracciones.",
-    url: "https://chapa.uy/documents",
+    url: `${BASE_URL}/documents`,
   },
 }
 
