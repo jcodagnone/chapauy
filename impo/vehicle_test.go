@@ -248,7 +248,7 @@ func TestNormalizeCountryName(t *testing.T) {
 		{"Chile", ISOChile, false},
 		{"OTRO", "", false},
 		{"Unknown", "", true},
-		{"", "", true},
+		{"", "", false},
 	}
 
 	for _, tt := range tests {

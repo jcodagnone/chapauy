@@ -393,6 +393,8 @@ func normalizeCountryName(name string) (string, error) {
 		return ISOChile, nil
 	case "otro":
 		return "", nil
+	case "":
+		return "", nil
 	}
 
 	return "", fmt.Errorf("unknown country: %q", name)

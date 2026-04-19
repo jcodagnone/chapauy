@@ -321,9 +321,7 @@ func (record *TrafficOffense) set(i OffenseProperty, s string) error {
 	case propCountry:
 		country, err := normalizeCountryName(s)
 		if err != nil {
-			// preferimos cortar ejecución para poder cargar el País, en vez
-			// de almacenarlo con error o ignorarlo
-			panic(err)
+			return err
 		}
 
 		if country != "" {
