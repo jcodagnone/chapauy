@@ -198,6 +198,10 @@
                         <option value="name">Name (A-Z)</option>
                     </select>
                     <span style="margin-left:0.5rem; color:#7f8c8d; font-size:0.85rem;">? Hover to see meaning</span>
+                    <label style="margin-left:1rem; display:flex; align-items:center; gap:0.3rem; color:white; font-size:0.9rem; cursor:pointer;">
+                        <input type="checkbox" id="toggle-reference" style="cursor:pointer;">
+                        🟢 Curados
+                    </label>
                 </div>
             </div>
             <div>
@@ -311,6 +315,47 @@
         let viewMode = 'queue'; // 'queue', 'review', or 'cluster'
         let databases = [];
         let selectedDatabaseId = null;
+        let referenceLayer = L.layerGroup();
+
+        async function loadReferenceLayer(dbId) {
+            referenceLayer.clearLayers();
+            if (!dbId) return;
+
+            try {
+                const response = await fetch(`/api/locations/judgments?db_id=${dbId}&per_page=0`);
+                const data = await response.json();
+                if (!data.judgments) return;
+
+                data.judgments.forEach(j => {
+                    if (!j.point) return;
+                    const lat = j.point.lat ?? j.latitude;
+                    const lng = j.point.lng ?? j.longitude;
+                    if (!lat || !lng) return;
+                    L.circleMarker([lat, lng], {
+                        radius: 6,
+                        fillColor: '#27ae60',
+                        color: '#1e8449',
+                        weight: 1,
+                        fillOpacity: 0.75,
+                        interactive: true,
+                    }).bindPopup(`<b>${j.location}</b><br>${lat.toFixed(6)}, ${lng.toFixed(6)}<br><small>${j.geocoding_method}</small>`)
+                      .addTo(referenceLayer);
+                });
+            } catch (error) {
+                console.error('Error loading reference layer:', error);
+            }
+        }
+
+        document.getElementById('toggle-reference').addEventListener('change', async (e) => {
+            if (e.target.checked) {
+                if (referenceLayer.getLayers().length === 0 && selectedDatabaseId) {
+                    await loadReferenceLayer(selectedDatabaseId);
+                }
+                referenceLayer.addTo(map);
+            } else {
+                map.removeLayer(referenceLayer);
+            }
+        });
 
         // Load available databases
         async function loadDatabases() {
@@ -345,7 +390,7 @@
          document.getElementById('database-select').addEventListener('change', (e) => {
              const dbId = e.target.value;
              selectedDatabaseId = dbId ? parseInt(dbId) : null;
- 
+
              // Update URL
              const url = new URL(window.location);
              if (dbId) {
@@ -354,7 +399,10 @@
                  url.searchParams.delete('db_id');
              }
              window.history.pushState({}, '', url);
- 
+
+             // Reset reference layer when db changes (reload lazily on toggle)
+             referenceLayer.clearLayers();
+
              // Reload current view
              if (viewMode === 'queue') {
                  loadQueue();
@@ -1022,6 +1070,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const view = urlParams.get('view') || 'queue';
             switchView(view);
+
         }
 
         // Keyboard shortcuts
