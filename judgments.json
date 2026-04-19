@@ -224096,6 +224096,936 @@
     },
     {
       "db_id": 68,
+      "location": "R uta 200 y 064K000_D",
+      "point": {
+        "lat": -34.7705,
+        "lng": -55.5748
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Luis",
+      "created_at": "2026-04-19T13:22:30.959107Z",
+      "updated_at": "2026-04-19T13:23:00.956432Z",
+      "canonical_location": "Ruta 200 y 064K000_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 001K530C",
+      "point": {
+        "lat": -34.902506,
+        "lng": -56.20486778
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juan Carlos Gomez",
+      "created_at": "2026-04-19T13:18:04.502591Z",
+      "updated_at": "2026-04-19T13:23:05.79993Z",
+      "canonical_location": "Ruta 000 y 001K530_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 001K570D",
+      "point": {
+        "lat": -34.902506,
+        "lng": -56.20486778
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juan Carlos Gomez",
+      "created_at": "2026-04-19T13:14:48.107821Z",
+      "updated_at": "2026-04-19T13:23:05.667524Z",
+      "canonical_location": "Ruta 000 y 001K530_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 002K220C",
+      "point": {
+        "lat": -34.870273,
+        "lng": -56.21911356
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Capurro",
+      "created_at": "2026-04-19T13:18:14.128236Z",
+      "updated_at": "2026-04-19T13:23:08.757817Z",
+      "canonical_location": "Ruta 000 y 002K220_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 003K650C",
+      "point": {
+        "lat": -34.871988,
+        "lng": -56.23325887
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Refineria",
+      "created_at": "2026-04-19T13:18:16.847291Z",
+      "updated_at": "2026-04-19T13:23:09.058292Z",
+      "canonical_location": "Ruta 000 y 003K650_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 003K750D",
+      "point": {
+        "lat": -34.871988,
+        "lng": -56.23325887
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Refineria",
+      "created_at": "2026-04-19T13:18:43.182396Z",
+      "updated_at": "2026-04-19T13:23:09.162589Z",
+      "canonical_location": "Ruta 000 y 003K650_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 005K100D",
+      "point": {
+        "lat": -34.866987,
+        "lng": -56.2462024
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Pantanoso E",
+      "created_at": "2026-04-19T13:20:00.456091Z",
+      "updated_at": "2026-04-19T13:23:11.516982Z",
+      "canonical_location": "Ruta 000 y 005K100_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 005K600C",
+      "point": {
+        "lat": -34.86451,
+        "lng": -56.250175
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Pantanoso S",
+      "created_at": "2026-04-19T13:16:08.65937Z",
+      "updated_at": "2026-04-19T13:23:06.909588Z",
+      "canonical_location": "Ruta 000 y 005K600_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 005K845D",
+      "point": {
+        "lat": -34.864133,
+        "lng": -56.25269787
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Santin Carlos Rossi",
+      "created_at": "2026-04-19T13:18:02.91013Z",
+      "updated_at": "2026-04-19T13:23:09.211655Z",
+      "canonical_location": "Ruta 000 y 005K845_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 019K865C",
+      "point": {
+        "lat": -34.800605,
+        "lng": -56.345928
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Basilio Muñoz",
+      "created_at": "2026-04-19T13:13:15.861306Z",
+      "updated_at": "2026-04-19T13:23:11.602337Z",
+      "canonical_location": "Ruta 001 y 019K865_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 019K865_C",
+      "point": {
+        "lat": -34.800605,
+        "lng": -56.345928
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Basilio Muñoz",
+      "created_at": "2026-04-19T13:18:56.625961Z",
+      "updated_at": "2026-04-19T13:23:11.715251Z",
+      "canonical_location": "Ruta 001 y 019K865_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 020K070D",
+      "point": {
+        "lat": -34.800605,
+        "lng": -56.345928
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Basilio Muñoz",
+      "created_at": "2026-04-19T13:14:37.08438Z",
+      "updated_at": "2026-04-19T13:23:11.702063Z",
+      "canonical_location": "Ruta 001 y 019K865_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 020K070_D",
+      "point": {
+        "lat": -34.800605,
+        "lng": -56.345928
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Basilio Muñoz",
+      "created_at": "2026-04-19T13:18:54.434927Z",
+      "updated_at": "2026-04-19T13:23:11.731998Z",
+      "canonical_location": "Ruta 001 y 019K865_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 029K000C",
+      "point": {
+        "lat": -34.7415,
+        "lng": -56.4445
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Penino a +",
+      "created_at": "2026-04-19T13:13:52.586601Z",
+      "updated_at": "2026-04-19T13:22:59.650003Z",
+      "canonical_location": "Ruta 001 y 029K000_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 029K360D",
+      "point": {
+        "lat": -34.7547,
+        "lng": -56.4243
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Penino a -",
+      "created_at": "2026-04-19T13:14:09.874504Z",
+      "updated_at": "2026-04-19T13:23:00.511151Z",
+      "canonical_location": "Ruta 001 y 029K360_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 051K278C",
+      "point": {
+        "lat": -34.6448,
+        "lng": -56.6209
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso Mauricio",
+      "created_at": "2026-04-19T13:13:44.24994Z",
+      "updated_at": "2026-04-19T13:22:57.57239Z",
+      "canonical_location": "Ruta 001 y 051K278_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 051K571D",
+      "point": {
+        "lat": -34.6448,
+        "lng": -56.6209
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso Mauricio",
+      "created_at": "2026-04-19T13:15:08.374426Z",
+      "updated_at": "2026-04-19T13:22:57.585064Z",
+      "canonical_location": "Ruta 001 y 051K278_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 061K178C",
+      "point": {
+        "lat": -34.5905,
+        "lng": -56.7052
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Valdez",
+      "created_at": "2026-04-19T13:17:28.259781Z",
+      "updated_at": "2026-04-19T13:23:00.176378Z",
+      "canonical_location": "Ruta 001 y 061K336_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 061K336D",
+      "point": {
+        "lat": -34.5905,
+        "lng": -56.7052
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Valdez",
+      "created_at": "2026-04-19T13:15:34.695122Z",
+      "updated_at": "2026-04-19T13:23:00.164672Z",
+      "canonical_location": "Ruta 001 y 061K336_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 120K987",
+      "point": {
+        "lat": -34.3362,
+        "lng": -57.2603
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Colonia Valdense",
+      "created_at": "2026-04-19T13:18:43.96658Z",
+      "updated_at": "2026-04-19T13:23:11.06136Z",
+      "canonical_location": "Ruta 001 y 120K987"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 174K210",
+      "point": {
+        "lat": -34.4556,
+        "lng": -57.8156
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Colonia del Sacramento",
+      "created_at": "2026-04-19T13:18:00.038893Z",
+      "updated_at": "2026-04-19T13:23:07.91998Z",
+      "canonical_location": "Ruta 001 y 174K210"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 R / 101K738",
+      "point": {
+        "lat": -34.366281,
+        "lng": -57.051803
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Ecilda Paullier S-E",
+      "created_at": "2026-04-19T13:18:11.945268Z",
+      "updated_at": "2026-04-19T13:23:09.477966Z",
+      "canonical_location": "Ruta 001 R y 101K738"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 002 / 181K957",
+      "point": {
+        "lat": -33.8773,
+        "lng": -57.3724
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Florencio Sanchez",
+      "created_at": "2026-04-19T13:20:56.024963Z",
+      "updated_at": "2026-04-19T13:23:10.044952Z",
+      "canonical_location": "Ruta 002 y 181K957"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 071K150C",
+      "point": {
+        "lat": -34.518,
+        "lng": -56.7613
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Villa Marí­a Acceso",
+      "created_at": "2026-04-19T13:14:23.067093Z",
+      "updated_at": "2026-04-19T13:23:00.729543Z",
+      "canonical_location": "Ruta 003 y 071K150_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 071K785D",
+      "point": {
+        "lat": -34.5123,
+        "lng": -56.7623
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Villa Marí­a Acceso",
+      "created_at": "2026-04-19T13:14:27.52328Z",
+      "updated_at": "2026-04-19T13:23:06.40041Z",
+      "canonical_location": "Ruta 003 y 071K785_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 092K275",
+      "point": {
+        "lat": -34.3339,
+        "lng": -56.7311
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San José-Pque Rodó",
+      "created_at": "2026-04-19T13:18:14.833749Z",
+      "updated_at": "2026-04-19T13:23:07.500608Z",
+      "canonical_location": "Ruta 003 y 092K275"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 187K090",
+      "point": {
+        "lat": -33.5363,
+        "lng": -56.8887
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Trinidad Acceso Sur",
+      "created_at": "2026-04-19T13:20:47.615515Z",
+      "updated_at": "2026-04-19T13:23:10.526558Z",
+      "canonical_location": "Ruta 003 y 187K090"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 191K370",
+      "point": {
+        "lat": -33.5128,
+        "lng": -56.9124
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Trinidad Acceso N-O",
+      "created_at": "2026-04-19T13:17:03.12853Z",
+      "updated_at": "2026-04-19T13:23:05.488843Z",
+      "canonical_location": "Ruta 003 y 191K370"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 383K490",
+      "point": {
+        "lat": -32.20729438,
+        "lng": -58.00402873
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Constancia",
+      "created_at": "2026-04-19T13:17:07.973382Z",
+      "updated_at": "2026-04-19T13:23:07.268053Z",
+      "canonical_location": "Ruta 003 y 383K490"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 478K265",
+      "point": {
+        "lat": -31.449712,
+        "lng": -57.9142569
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Termas Dayman Norte",
+      "created_at": "2026-04-19T13:18:35.215444Z",
+      "updated_at": "2026-04-19T13:23:08.554758Z",
+      "canonical_location": "Ruta 003 y 478K265"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 482K920",
+      "point": {
+        "lat": -31.416148,
+        "lng": -57.94101192
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Salto Sur",
+      "created_at": "2026-04-19T13:17:39.933112Z",
+      "updated_at": "2026-04-19T13:23:07.337056Z",
+      "canonical_location": "Ruta 003 y 482K920"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 624K037",
+      "point": {
+        "lat": -30.24854,
+        "lng": -57.58785
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Bella Unión",
+      "created_at": "2026-04-19T13:18:50.674985Z",
+      "updated_at": "2026-04-19T13:23:12.025777Z",
+      "canonical_location": "Ruta 003 y 624K037"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 626K411",
+      "point": {
+        "lat": -30.2631,
+        "lng": -57.5901
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Bella Unión - Barrio las Láminas",
+      "created_at": "2026-04-19T13:16:54.32471Z",
+      "updated_at": "2026-04-19T13:23:02.701074Z",
+      "canonical_location": "Ruta 003 y 626K411"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 037K480C",
+      "point": {
+        "lat": -34.5971,
+        "lng": -56.2619
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juanicó",
+      "created_at": "2026-04-19T13:15:15.475008Z",
+      "updated_at": "2026-04-19T13:23:02.486801Z",
+      "canonical_location": "Ruta 005 y 037K480_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 038K131D",
+      "point": {
+        "lat": -34.5912,
+        "lng": -56.2629
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juanicó",
+      "created_at": "2026-04-19T13:15:32.901836Z",
+      "updated_at": "2026-04-19T13:23:03.618153Z",
+      "canonical_location": "Ruta 005 y 038K131_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 186K392",
+      "point": {
+        "lat": -33.3661,
+        "lng": -56.5091
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Santa Bernardina",
+      "created_at": "2026-04-19T13:16:18.940057Z",
+      "updated_at": "2026-04-19T13:23:05.077965Z",
+      "canonical_location": "Ruta 005 y 186K392"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 248K000",
+      "point": {
+        "lat": -32.8251,
+        "lng": -56.4987
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Pueblo Centenario",
+      "created_at": "2026-04-19T13:18:13.47739Z",
+      "updated_at": "2026-04-19T13:23:11.153788Z",
+      "canonical_location": "Ruta 005 y 248K000"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 377K354",
+      "point": {
+        "lat": -31.8105,
+        "lng": -55.9755
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso Bonilla",
+      "created_at": "2026-04-19T13:15:26.580733Z",
+      "updated_at": "2026-04-19T13:23:03.172045Z",
+      "canonical_location": "Ruta 005 y 377K354"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 385K972",
+      "point": {
+        "lat": -31.7414,
+        "lng": -55.9825
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Tacuarembó / Ruta 26 S",
+      "created_at": "2026-04-19T13:18:10.715989Z",
+      "updated_at": "2026-04-19T13:23:08.637245Z",
+      "canonical_location": "Ruta 005 y 385K972"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 393K605",
+      "point": {
+        "lat": -31.6939,
+        "lng": -55.9387
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Tacuarembó / Ruta 26 N b",
+      "created_at": "2026-04-19T13:17:19.709456Z",
+      "updated_at": "2026-04-19T13:23:06.211884Z",
+      "canonical_location": "Ruta 005 y 393K605"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 001K136",
+      "point": {
+        "lat": -32.3603,
+        "lng": -54.153
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Melo / Ruta 7 NE",
+      "created_at": "2026-04-19T13:17:34.400164Z",
+      "updated_at": "2026-04-19T13:23:08.011152Z",
+      "canonical_location": "Ruta 007 y 001K136"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 052K528",
+      "point": {
+        "lat": -34.549511,
+        "lng": -55.876389
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Jacinto S-O",
+      "created_at": "2026-04-19T13:17:36.198257Z",
+      "updated_at": "2026-04-19T13:23:07.822423Z",
+      "canonical_location": "Ruta 007 y 052K528"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 079K500",
+      "point": {
+        "lat": -34.341116,
+        "lng": -55.75407306
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Tala NE",
+      "created_at": "2026-04-19T13:18:08.077136Z",
+      "updated_at": "2026-04-19T13:23:11.786633Z",
+      "canonical_location": "Ruta 007 y 079K500"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 094K610",
+      "point": {
+        "lat": -34.20591,
+        "lng": -55.74363995
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Fray Marcos S",
+      "created_at": "2026-04-19T13:18:49.186893Z",
+      "updated_at": "2026-04-19T13:23:09.902455Z",
+      "canonical_location": "Ruta 007 y 094K610"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 110K240",
+      "point": {
+        "lat": -34.104175,
+        "lng": -55.65792811
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Casupá SO",
+      "created_at": "2026-04-19T13:18:05.386452Z",
+      "updated_at": "2026-04-19T13:23:10.136962Z",
+      "canonical_location": "Ruta 007 y 110K240"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 143K910",
+      "point": {
+        "lat": -33.860069,
+        "lng": -55.53642403
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Alejandro Gallinal NE",
+      "created_at": "2026-04-19T13:18:52.763526Z",
+      "updated_at": "2026-04-19T13:23:12.385083Z",
+      "canonical_location": "Ruta 007 y 143K910"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 204K320",
+      "point": {
+        "lat": -33.473438,
+        "lng": -55.1513107
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "José Batlle y Ordoñez Sur",
+      "created_at": "2026-04-19T13:18:44.799958Z",
+      "updated_at": "2026-04-19T13:23:11.418738Z",
+      "canonical_location": "Ruta 007 y 204K320"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 249K960",
+      "point": {
+        "lat": -33.11258,
+        "lng": -55.13255351
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Ruta 7 Cerro Chato Sur",
+      "created_at": "2026-04-19T13:18:47.071056Z",
+      "updated_at": "2026-04-19T13:23:12.114794Z",
+      "canonical_location": "Ruta 007 y 249K960"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 279K880",
+      "point": {
+        "lat": -32.924143,
+        "lng": -54.95534981
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Santa Clara del Olimar Sur",
+      "created_at": "2026-04-19T13:18:47.777511Z",
+      "updated_at": "2026-04-19T13:23:12.201994Z",
+      "canonical_location": "Ruta 007 y 279K880"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 304K835",
+      "point": {
+        "lat": -32.836536,
+        "lng": -54.75462716
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Tupambae Norte",
+      "created_at": "2026-04-19T13:18:51.484309Z",
+      "updated_at": "2026-04-19T13:23:12.291486Z",
+      "canonical_location": "Ruta 007 y 304K835"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 337K215",
+      "point": {
+        "lat": -32.622947,
+        "lng": -54.59184844
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Cerro de las Cuentas",
+      "created_at": "2026-04-19T13:18:48.455809Z",
+      "updated_at": "2026-04-19T13:23:10.405184Z",
+      "canonical_location": "Ruta 007 y 337K215"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 007 / 350K615",
+      "point": {
+        "lat": -32.518086,
+        "lng": -54.54096388
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Fraile Muerto S",
+      "created_at": "2026-04-19T13:18:17.940953Z",
+      "updated_at": "2026-04-19T13:23:10.886682Z",
+      "canonical_location": "Ruta 007 y 350K615"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 013K385C",
+      "point": {
+        "lat": -34.8207,
+        "lng": -56.0999
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:16:44.445161Z",
+      "updated_at": "2026-04-19T13:23:06.021547Z",
+      "canonical_location": "Ruta 008 y 013K385_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 013K385_C",
+      "point": {
+        "lat": -34.8207,
+        "lng": -56.0999
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:18:55.76585Z",
+      "updated_at": "2026-04-19T13:23:06.156668Z",
+      "canonical_location": "Ruta 008 y 013K385_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 013K457D",
+      "point": {
+        "lat": -34.8207,
+        "lng": -56.0999
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:17:25.825194Z",
+      "updated_at": "2026-04-19T13:23:06.13918Z",
+      "canonical_location": "Ruta 008 y 013K385_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 023K479C",
+      "point": {
+        "lat": -34.8222,
+        "lng": -56.1005
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:15:31.052779Z",
+      "updated_at": "2026-04-19T13:23:05.848198Z",
+      "canonical_location": "Ruta 008 y 023K479_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 024K410C",
+      "point": {
+        "lat": -34.7666,
+        "lng": -56.022
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:15:07.153531Z",
+      "updated_at": "2026-04-19T13:23:04.968231Z",
+      "canonical_location": "Ruta 008 y 024K410_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 025K025D",
+      "point": {
+        "lat": -34.7612,
+        "lng": -56.014
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual_click",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-04-19T13:14:32.867898Z",
+      "updated_at": "2026-04-19T13:23:01.107948Z",
+      "canonical_location": "Ruta 008 y 025K025_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 217K132",
+      "point": {
+        "lat": -33.7429,
+        "lng": -54.7538
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Pirarajá / Ruta 8 N",
+      "created_at": "2026-04-19T13:18:06.82018Z",
+      "updated_at": "2026-04-19T13:23:10.616545Z",
+      "canonical_location": "Ruta 008 y 217K132"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 288K645",
+      "point": {
+        "lat": -33.2024,
+        "lng": -54.3831
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Treinta y Tres / Ruta 8 N",
+      "created_at": "2026-04-19T13:16:20.134837Z",
+      "updated_at": "2026-04-19T13:23:08.353285Z",
+      "canonical_location": "Ruta 008 y 288K645"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 391K991",
+      "point": {
+        "lat": -32.3904,
+        "lng": -54.1386
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Melo / Ruta 8 S",
+      "created_at": "2026-04-19T13:17:56.625873Z",
+      "updated_at": "2026-04-19T13:23:06.704244Z",
+      "canonical_location": "Ruta 008 y 391K991"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 401K886",
+      "point": {
+        "lat": -32.3442,
+        "lng": -54.1683
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Melo / Ruta 8 N",
+      "created_at": "2026-04-19T13:18:01.369781Z",
+      "updated_at": "2026-04-19T13:23:05.010658Z",
+      "canonical_location": "Ruta 008 y 401K886"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 009 / 205K518",
       "point": {
         "lat": -34.50490771793442,
@@ -224107,6 +225037,888 @@
       "notes": "Ruta Jones 9, 50000 Laureles, Departamento de Salto, Uruguay",
       "created_at": "2026-03-18T11:35:31.311672Z",
       "updated_at": "2026-03-18T11:35:31.311672Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 009 / 209K409",
+      "point": {
+        "lat": -34.475781,
+        "lng": -54.30481432
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Rocha E",
+      "created_at": "2026-04-19T13:17:09.478757Z",
+      "updated_at": "2026-04-19T13:23:04.154273Z",
+      "canonical_location": "Ruta 009 y 209K409"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 009 / 264K038",
+      "point": {
+        "lat": -34.2051,
+        "lng": -53.8538
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Castillos",
+      "created_at": "2026-04-19T13:15:01.178438Z",
+      "updated_at": "2026-04-19T13:22:58.799665Z",
+      "canonical_location": "Ruta 009 y 264K038"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 009 / 338K106",
+      "point": {
+        "lat": -33.6941,
+        "lng": -53.4476
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Chuy",
+      "created_at": "2026-04-19T13:17:58.449022Z",
+      "updated_at": "2026-04-19T13:23:10.974426Z",
+      "canonical_location": "Ruta 009 y 338K106"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 014K621",
+      "point": {
+        "lat": -34.354737,
+        "lng": -57.03899063
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Ecilda Paullier N-E",
+      "created_at": "2026-04-19T13:18:16.195396Z",
+      "updated_at": "2026-04-19T13:23:09.654198Z",
+      "canonical_location": "Ruta 011 y 014K621"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 038K923",
+      "point": {
+        "lat": -34.321397,
+        "lng": -56.808275
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juan Soler",
+      "created_at": "2026-04-19T13:17:11.008904Z",
+      "updated_at": "2026-04-19T13:22:59.840339Z",
+      "canonical_location": "Ruta 011 y 038K923"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 039K646",
+      "point": {
+        "lat": -34.324803,
+        "lng": -56.801061
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juan Soler",
+      "created_at": "2026-04-19T13:16:02.403651Z",
+      "updated_at": "2026-04-19T13:23:05.313175Z",
+      "canonical_location": "Ruta 011 y 039K646"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 086K573",
+      "point": {
+        "lat": -34.461197,
+        "lng": -56.378031
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Santa Lucí­a S-E",
+      "created_at": "2026-04-19T13:17:35.416203Z",
+      "updated_at": "2026-04-19T13:23:05.940147Z",
+      "canonical_location": "Ruta 011 y 086K573"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 096K586",
+      "point": {
+        "lat": -34.520708,
+        "lng": -56.301072
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Canelones N-O",
+      "created_at": "2026-04-19T13:18:20.303806Z",
+      "updated_at": "2026-04-19T13:23:10.317665Z",
+      "canonical_location": "Ruta 011 y 096K586"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 138K372",
+      "point": {
+        "lat": -34.545617,
+        "lng": -55.878122
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Jacinto O",
+      "created_at": "2026-04-19T13:15:27.543062Z",
+      "updated_at": "2026-04-19T13:23:06.98869Z",
+      "canonical_location": "Ruta 011 y 138K372"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 011 / 139K390",
+      "point": {
+        "lat": -34.550381,
+        "lng": -55.86885
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Jacinto S-E",
+      "created_at": "2026-04-19T13:18:45.661072Z",
+      "updated_at": "2026-04-19T13:23:09.965985Z",
+      "canonical_location": "Ruta 011 y 139K390"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 015 / 027K482",
+      "point": {
+        "lat": -34.492374,
+        "lng": -54.31464892
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Rocha S",
+      "created_at": "2026-04-19T13:18:06.19347Z",
+      "updated_at": "2026-04-19T13:23:08.429261Z",
+      "canonical_location": "Ruta 015 y 027K482"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 017 / 289K350",
+      "point": {
+        "lat": -33.215,
+        "lng": -54.3696
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Treinta y Tres",
+      "created_at": "2026-04-19T13:17:57.459571Z",
+      "updated_at": "2026-04-19T13:23:06.638784Z",
+      "canonical_location": "Ruta 017 y 289K350"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 019 / 009K970",
+      "point": {
+        "lat": -33.684483,
+        "lng": -53.55135212
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "18 de Julio",
+      "created_at": "2026-04-19T13:20:54.099714Z",
+      "updated_at": "2026-04-19T13:23:12.568906Z",
+      "canonical_location": "Ruta 019 y 009K970"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 021 / 178K500",
+      "point": {
+        "lat": -34.445898,
+        "lng": -57.8375289
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Colonia N",
+      "created_at": "2026-04-19T13:18:50.020976Z",
+      "updated_at": "2026-04-19T13:23:12.478638Z",
+      "canonical_location": "Ruta 021 y 178K500"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 021 / 322K880",
+      "point": {
+        "lat": -33.517139,
+        "lng": -58.19957759
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Puente s/Rio San Salvador",
+      "created_at": "2026-04-19T13:17:59.153658Z",
+      "updated_at": "2026-04-19T13:23:06.777121Z",
+      "canonical_location": "Ruta 021 y 323K100"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 021 / 323K100",
+      "point": {
+        "lat": -31.499841,
+        "lng": -57.5240851
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "high",
+      "notes": "Ruta Jones 21, 50000 Laureles, Departamento de Salto, Uruguay",
+      "created_at": "2026-04-19T13:22:49.4643Z",
+      "updated_at": "2026-04-19T13:22:49.4643Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 023 / 149K485",
+      "point": {
+        "lat": -33.9655,
+        "lng": -57.0923
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Ismael Cortinas",
+      "created_at": "2026-04-19T13:18:46.313068Z",
+      "updated_at": "2026-04-19T13:23:11.935238Z",
+      "canonical_location": "Ruta 023 y 149K485"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 030 / 128K280",
+      "point": {
+        "lat": -30.4187,
+        "lng": -56.4897
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Artigas (Acceso Ruta 4)",
+      "created_at": "2026-04-19T13:18:03.692102Z",
+      "updated_at": "2026-04-19T13:23:05.397635Z",
+      "canonical_location": "Ruta 030 y 128K280"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 030 / 130K890",
+      "point": {
+        "lat": -30.4224,
+        "lng": -56.4663
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Artigas (Bypass O-E)",
+      "created_at": "2026-04-19T13:21:00.498562Z",
+      "updated_at": "2026-04-19T13:23:08.289411Z",
+      "canonical_location": "Ruta 030 y 130K890"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 030 / 132K715",
+      "point": {
+        "lat": -30.4341,
+        "lng": -56.4531
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Artigas (Pintado Grande)",
+      "created_at": "2026-04-19T13:18:28.840377Z",
+      "updated_at": "2026-04-19T13:23:09.563707Z",
+      "canonical_location": "Ruta 030 y 132K715"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 034 / 041K090",
+      "point": {
+        "lat": -34.72812259578752,
+        "lng": -55.87630391120911
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual_click",
+      "confidence": "high",
+      "notes": "La Montañesa",
+      "created_at": "2026-04-19T13:15:56.707218Z",
+      "updated_at": "2026-04-19T13:23:10.70529Z",
+      "canonical_location": "Ruta 034 y 041K090"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 034 / 042K190",
+      "point": {
+        "lat": -34.72600633276644,
+        "lng": -55.876797437667854
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual_click",
+      "confidence": "high",
+      "notes": "La Montañesa",
+      "created_at": "2026-04-19T13:15:24.171395Z",
+      "updated_at": "2026-04-19T13:23:07.705296Z",
+      "canonical_location": "Ruta 034 y 042K190"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 055 / 013K340",
+      "point": {
+        "lat": -34.032187,
+        "lng": -57.89992289
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Campana",
+      "created_at": "2026-04-19T13:18:00.691511Z",
+      "updated_at": "2026-04-19T13:23:08.967984Z",
+      "canonical_location": "Ruta 055 y 013K340"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 067 / 024K850",
+      "point": {
+        "lat": -34.707379,
+        "lng": -56.205205
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Las Piedras N-E",
+      "created_at": "2026-04-19T13:18:18.542067Z",
+      "updated_at": "2026-04-19T13:23:10.227972Z",
+      "canonical_location": "Ruta 067 y 024K850"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 067 / 039K395",
+      "point": {
+        "lat": -34.653248,
+        "lng": -56.074948
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Sauce S-O",
+      "created_at": "2026-04-19T13:20:57.952553Z",
+      "updated_at": "2026-04-19T13:23:11.24363Z",
+      "canonical_location": "Ruta 067 y 039K395"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 074 / 025K135",
+      "point": {
+        "lat": -34.754179,
+        "lng": -56.019186
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Barros Blancos",
+      "created_at": "2026-04-19T13:16:51.708619Z",
+      "updated_at": "2026-04-19T13:23:07.403088Z",
+      "canonical_location": "Ruta 074 y 025K135"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 074 / 030K510",
+      "point": {
+        "lat": -34.715624,
+        "lng": -56.051481
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Ruta 6",
+      "created_at": "2026-04-19T13:18:15.383952Z",
+      "updated_at": "2026-04-19T13:23:09.283279Z",
+      "canonical_location": "Ruta 074 y 030K510"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 075 / 035K175",
+      "point": {
+        "lat": -34.686634,
+        "lng": -55.968091
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Villa Jardines de Pando",
+      "created_at": "2026-04-19T13:18:02.127621Z",
+      "updated_at": "2026-04-19T13:23:09.355474Z",
+      "canonical_location": "Ruta 075 y 035K175"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 081 / 009K815",
+      "point": {
+        "lat": -34.427996,
+        "lng": -56.2877075
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso a Pache O",
+      "created_at": "2026-04-19T13:18:21.309873Z",
+      "updated_at": "2026-04-19T13:23:11.32953Z",
+      "canonical_location": "Ruta 081 y 009K815"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 081 / 010K390",
+      "point": {
+        "lat": -34.42530101,
+        "lng": -56.28259996
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso a Pache E",
+      "created_at": "2026-04-19T13:18:52.137893Z",
+      "updated_at": "2026-04-19T13:23:11.849403Z",
+      "canonical_location": "Ruta 081 y 010K390"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 090 / 005K435",
+      "point": {
+        "lat": -32.32337319,
+        "lng": -58.04637908
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paysandú",
+      "created_at": "2026-04-19T13:17:20.696264Z",
+      "updated_at": "2026-04-19T13:23:07.621339Z",
+      "canonical_location": "Ruta 090 y 005K435"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 093 / 109K603C",
+      "point": {
+        "lat": -34.8652,
+        "lng": -55.1396
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "La Capuera",
+      "created_at": "2026-04-19T13:19:27.410538Z",
+      "updated_at": "2026-04-19T13:19:27.410538Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 093 / 109K900D",
+      "point": {
+        "lat": -34.8645,
+        "lng": -55.136464
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "La Capuera",
+      "created_at": "2026-04-19T13:17:55.456902Z",
+      "updated_at": "2026-04-19T13:17:55.456902Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 093R / 002K552",
+      "point": {
+        "lat": -34.867467,
+        "lng": -55.240903
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Arrayanes",
+      "created_at": "2026-04-19T13:15:29.522073Z",
+      "updated_at": "2026-04-19T13:23:05.578688Z",
+      "canonical_location": "Ruta 093R y 002K552"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 101 / 024K825C",
+      "point": {
+        "lat": -34.7961,
+        "lng": -56.0031
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Barrio Aeroparque",
+      "created_at": "2026-04-19T13:18:09.279658Z",
+      "updated_at": "2026-04-19T13:23:10.79695Z",
+      "canonical_location": "Ruta 101 y 024K825_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 101 / 025K541D",
+      "point": {
+        "lat": -34.7898,
+        "lng": -56.0016
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Barrio Aeroparque",
+      "created_at": "2026-04-19T13:19:41.417066Z",
+      "updated_at": "2026-04-19T13:23:08.85434Z",
+      "canonical_location": "Ruta 101 y 025K541_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 022K900C",
+      "point": {
+        "lat": -34.8184,
+        "lng": -56.015
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Leopolis",
+      "created_at": "2026-04-19T13:14:17.396274Z",
+      "updated_at": "2026-04-19T13:23:05.158133Z",
+      "canonical_location": "Ruta 102 y 022K900_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 024K220D",
+      "point": {
+        "lat": -34.8161,
+        "lng": -56.0292
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Parque Martinelli",
+      "created_at": "2026-04-19T13:13:23.714999Z",
+      "updated_at": "2026-04-19T13:22:59.434355Z",
+      "canonical_location": "Ruta 102 y 024K220_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 024K950C",
+      "point": {
+        "lat": -34.8124,
+        "lng": -56.0374
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Los Paraisos",
+      "created_at": "2026-04-19T13:13:59.074467Z",
+      "updated_at": "2026-04-19T13:23:00.35205Z",
+      "canonical_location": "Ruta 102 y 024K950_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 025K085D",
+      "point": {
+        "lat": -34.8124,
+        "lng": -56.0374
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Los Paraisos",
+      "created_at": "2026-04-19T13:16:59.815394Z",
+      "updated_at": "2026-04-19T13:23:00.364556Z",
+      "canonical_location": "Ruta 102 y 024K950_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 027K840C",
+      "point": {
+        "lat": -34.7972,
+        "lng": -56.0627
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Campeón del Siglo",
+      "created_at": "2026-04-19T13:14:56.114606Z",
+      "updated_at": "2026-04-19T13:23:03.912079Z",
+      "canonical_location": "Ruta 102 y 027K840_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 031K517C",
+      "point": {
+        "lat": -34.792479,
+        "lng": -56.09787652
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Camino Cruz del Sur",
+      "created_at": "2026-04-19T13:17:16.810075Z",
+      "updated_at": "2026-04-19T13:23:06.276686Z",
+      "canonical_location": "Ruta 102 y 031K517_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 031K618D",
+      "point": {
+        "lat": -34.792479,
+        "lng": -56.09787652
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Camino Cruz del Sur",
+      "created_at": "2026-04-19T13:18:07.475247Z",
+      "updated_at": "2026-04-19T13:23:06.355359Z",
+      "canonical_location": "Ruta 102 y 031K517_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 036K636C",
+      "point": {
+        "lat": -34.797045,
+        "lng": -56.15244519
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Av de las Instrucciones",
+      "created_at": "2026-04-19T13:18:33.71016Z",
+      "updated_at": "2026-04-19T13:23:09.746129Z",
+      "canonical_location": "Ruta 102 y 036K636_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 036K750D",
+      "point": {
+        "lat": -34.797045,
+        "lng": -56.15244519
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Av de las Instrucciones",
+      "created_at": "2026-04-19T13:18:53.808417Z",
+      "updated_at": "2026-04-19T13:23:09.858356Z",
+      "canonical_location": "Ruta 102 y 036K636_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 045K900",
+      "point": {
+        "lat": -34.782826,
+        "lng": -56.24666315
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Camino Fauquet",
+      "created_at": "2026-04-19T13:13:28.857775Z",
+      "updated_at": "2026-04-19T13:22:58.378797Z",
+      "canonical_location": "Ruta 102 y 045K900"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 021K826C",
+      "point": {
+        "lat": -34.8263,
+        "lng": -56.0005
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Almenara",
+      "created_at": "2026-04-19T13:20:51.141408Z",
+      "updated_at": "2026-04-19T13:23:08.133076Z",
+      "canonical_location": "Ruta 200 y 021K826_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 022K079D",
+      "point": {
+        "lat": -34.8263,
+        "lng": -56.0005
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Almenara",
+      "created_at": "2026-04-19T13:20:45.077724Z",
+      "updated_at": "2026-04-19T13:23:08.23174Z",
+      "canonical_location": "Ruta 200 y 021K826_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 027K093C",
+      "point": {
+        "lat": -34.8031,
+        "lng": -55.9538
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Colinas de Solymar",
+      "created_at": "2026-04-19T13:18:08.704976Z",
+      "updated_at": "2026-04-19T13:23:04.480142Z",
+      "canonical_location": "Ruta 200 y 027K442_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 027K442D",
+      "point": {
+        "lat": -34.8031,
+        "lng": -55.9538
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Colinas de Solymar",
+      "created_at": "2026-04-19T13:16:21.124303Z",
+      "updated_at": "2026-04-19T13:23:04.46768Z",
+      "canonical_location": "Ruta 200 y 027K442_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 035K210C",
+      "point": {
+        "lat": -34.7806,
+        "lng": -55.8738
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Neptunia",
+      "created_at": "2026-04-19T13:15:28.557316Z",
+      "updated_at": "2026-04-19T13:23:00.000858Z",
+      "canonical_location": "Ruta 200 y 035K210_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 035K210_C",
+      "point": {
+        "lat": -34.7806,
+        "lng": -55.8738
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Neptunia",
+      "created_at": "2026-04-19T13:18:54.9836Z",
+      "updated_at": "2026-04-19T13:23:00.022907Z",
+      "canonical_location": "Ruta 200 y 035K210_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 035K369D",
+      "point": {
+        "lat": -34.7806,
+        "lng": -55.8738
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Neptunia",
+      "created_at": "2026-04-19T13:15:32.016276Z",
+      "updated_at": "2026-04-19T13:23:00.01339Z",
+      "canonical_location": "Ruta 200 y 035K210_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 036K800C",
+      "point": {
+        "lat": -34.7778,
+        "lng": -55.8571
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Av. Nogueira y Colón",
+      "created_at": "2026-04-19T13:18:09.829134Z",
+      "updated_at": "2026-04-19T13:23:06.585062Z",
+      "canonical_location": "Ruta 200 y 036K800_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 037K698D",
+      "point": {
+        "lat": -34.7778,
+        "lng": -55.8571
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Av. Nogueira y Colón",
+      "created_at": "2026-04-19T13:17:37.136829Z",
+      "updated_at": "2026-04-19T13:23:06.470604Z",
+      "canonical_location": "Ruta 200 y 036K800_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 040K091C",
+      "point": {
+        "lat": -34.7718,
+        "lng": -55.8221
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Marindia",
+      "created_at": "2026-04-19T13:18:11.317765Z",
+      "updated_at": "2026-04-19T13:23:07.234917Z",
+      "canonical_location": "Ruta 200 y 040K435_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 040K435D",
+      "point": {
+        "lat": -34.7718,
+        "lng": -55.8221
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Marindia",
+      "created_at": "2026-04-19T13:17:33.077648Z",
+      "updated_at": "2026-04-19T13:23:07.110267Z",
+      "canonical_location": "Ruta 200 y 040K435_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 063K000C",
+      "point": {
+        "lat": -34.762,
+        "lng": -55.5882
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Luis",
+      "created_at": "2026-04-19T13:13:35.57106Z",
+      "updated_at": "2026-04-19T13:22:59.039569Z",
+      "canonical_location": "Ruta 200 y 063K000_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 064K000D",
+      "point": {
+        "lat": -34.7705,
+        "lng": -55.5748
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "San Luis",
+      "created_at": "2026-04-19T13:14:04.954655Z",
+      "updated_at": "2026-04-19T13:23:00.944654Z",
+      "canonical_location": "Ruta 200 y 064K000_D"
     },
     {
       "db_id": 68,
@@ -224152,6 +225964,36 @@
       "created_at": "2025-11-25T12:32:38.846233Z",
       "updated_at": "2025-11-25T12:45:53.098756Z",
       "canonical_location": "Ruta 026 y 001K976"
+    },
+    {
+      "db_id": 68,
+      "location": "Ru ta 102 y 022K900_C",
+      "point": {
+        "lat": -34.8184,
+        "lng": -56.015
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Leopolis",
+      "created_at": "2026-04-19T13:22:26.16573Z",
+      "updated_at": "2026-04-19T13:23:05.268604Z",
+      "canonical_location": "Ruta 102 y 022K900_C"
+    },
+    {
+      "db_id": 68,
+      "location": "Ru ta 102 y 045K900",
+      "point": {
+        "lat": -34.782826,
+        "lng": -56.24666315
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Camino Fauquet",
+      "created_at": "2026-04-19T13:22:28.627075Z",
+      "updated_at": "2026-04-19T13:22:58.394254Z",
+      "canonical_location": "Ruta 102 y 045K900"
     },
     {
       "db_id": 68,
