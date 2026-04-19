@@ -40,6 +40,8 @@ func Node2string(n *html.Node, sb *strings.Builder) (err error) {
 			{"Ã³", "ó"},
 			{"Ã¡", "á"},
 			{"Ãƒ?", "Ñ"},
+			{"ÃÑ", "Ñ"},
+
 			{"\xC3\x83\x3F", "Ñ"},
 			{"hÃc", "híc"},
 			{"mÃnimo", "mínimo"},
