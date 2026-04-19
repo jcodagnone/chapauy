@@ -121,6 +121,9 @@ func normalizeProgresiva(prog string) string {
 // Returns nil if the location doesn't match a RUTA pattern.
 func ParseRutaLocation(location string) *RutaPattern {
 	location = strings.TrimSpace(location)
+	// Normalize broken "Ruta" spellings: "R uta" → "Ruta", "Ru ta" → "Ruta"
+	location = strings.ReplaceAll(location, "R uta", "Ruta")
+	location = strings.ReplaceAll(location, "Ru ta", "Ruta")
 
 	patterns := []*regexp.Regexp{
 		// Pattern 1: "Ruta NNN y NNNKNNN_D/C" or "Ruta NNN y NNNKNNN"
@@ -131,9 +134,14 @@ func ParseRutaLocation(location string) *RutaPattern {
 		// Pattern 3: "NNN y NNNKNNN_D/C" or "NNN y NNNKNNN" (without "Ruta" prefix)
 		// Allows for spaces within the route number and progresiva, and optional 'R'
 		regexp.MustCompile(`(?i)^([\d\s]+)\s*R?\s+[yY]\s*([\d\s]+)\s*k\s*([\d\s]+)(?:_([cd]))?$`),
+		// Pattern 4: "RUTA NNN / NNNKNNN[_][D/C]" — slash separator, direction optional with or without underscore
+		// e.g., "RUTA 102 / 024K220D", "RUTA 001 / 019K865_C", "RUTA 001 R / 101K738"
+		regexp.MustCompile(`(?i)ruta\s*([\d\s]+)\s*R?\s*/\s*([\d\s]+)\s*k\s*([\d\s]+)(?:_?([cd]))?`),
 	}
 
-	for _, pattern := range patterns {
+	kmMetersPatterns := map[int]bool{0: true, 2: true, 3: true} // patterns that capture km and meters separately
+
+	for i, pattern := range patterns {
 		if matches := pattern.FindStringSubmatch(location); matches != nil {
 			var ruta int
 
@@ -146,7 +154,7 @@ func ParseRutaLocation(location string) *RutaPattern {
 			cleanedRoute = strings.ReplaceAll(cleanedRoute, "R", "")
 			ruta, _ = strconv.Atoi(cleanedRoute)
 
-			if pattern == patterns[0] || pattern == patterns[2] { // Pattern 1 and 3
+			if kmMetersPatterns[i] {
 				// Format: NNNkNNN
 				cleanedKm := strings.ReplaceAll(matches[2], " ", "")
 				cleanedMeters := strings.ReplaceAll(matches[3], " ", "")
@@ -155,7 +163,7 @@ func ParseRutaLocation(location string) *RutaPattern {
 				if len(matches) >= 5 { // Check if direction group exists
 					direction = strings.ToUpper(matches[4])
 				}
-			} else if pattern == patterns[1] { // Pattern 2
+			} else { // Pattern 2: km NNN
 				// Format: km NNN
 				cleanedKm := strings.ReplaceAll(matches[2], " ", "")
 				progresiva = cleanedKm + "k000"
