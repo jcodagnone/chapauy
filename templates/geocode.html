@@ -332,7 +332,7 @@
                     const lat = j.point.lat ?? j.latitude;
                     const lng = j.point.lng ?? j.longitude;
                     if (!lat || !lng) return;
-                    L.circleMarker([lat, lng], {
+                    const marker = L.circleMarker([lat, lng], {
                         radius: 6,
                         fillColor: '#27ae60',
                         color: '#1e8449',
@@ -345,11 +345,66 @@
                         <button onclick="removeJudgment(${j.db_id}, '${j.location.replace(/'/g, "\\'")}', this)" style="margin-top: 0.5rem; padding: 0.25rem 0.5rem; background: #e74c3c; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.75rem;">
                             🗑️ Remove
                         </button>
-                    `)
-                      .addTo(referenceLayer);
+                    `);
+
+                    marker.on('click', () => {
+                        selectReferenceLocation(j);
+                    });
+
+                    marker.addTo(referenceLayer);
                 });
             } catch (error) {
                 console.error('Error loading reference layer:', error);
+            }
+        }
+
+        function selectReferenceLocation(j) {
+            resetCardView();
+
+            // Clear active state from any list items
+            document.querySelectorAll('.location-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Show location card with existing judgment
+            document.getElementById('location-card').style.display = 'block';
+            document.getElementById('card-location').textContent = j.location;
+            document.getElementById('card-db').textContent = `DB ${j.db_id}`;
+            document.getElementById('card-offenses').textContent = '-';
+
+            const lat = j.point ? j.point.lat : j.latitude;
+            const lng = j.point ? j.point.lng : j.longitude;
+
+            if (lat !== undefined && lng !== undefined) {
+                document.getElementById('card-coordinates').textContent =
+                    `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                document.getElementById('card-method').textContent = j.geocoding_method;
+
+                const confidenceBadge = document.getElementById('card-confidence');
+                confidenceBadge.textContent = j.confidence;
+                confidenceBadge.className = `badge badge-${j.confidence}`;
+
+                const electronicContainer = document.getElementById('card-electronic-container');
+                electronicContainer.style.display = j.is_electronic ? 'block' : 'none';
+
+                const notesContainer = document.getElementById('card-notes-container');
+                if (j.notes) {
+                    notesContainer.style.display = 'block';
+                    document.getElementById('card-notes').textContent = j.notes;
+                } else {
+                    notesContainer.style.display = 'none';
+                }
+
+                // We don't change the currentMarker here to avoid removing the referenceLayer highlight
+                // But we store the data for potential editing
+                currentSuggestion = {
+                    latitude: lat,
+                    longitude: lng,
+                    is_electronic: j.is_electronic,
+                    geocoding_method: j.geocoding_method,
+                    confidence: j.confidence,
+                    notes: j.notes
+                };
             }
         }
 
@@ -501,6 +556,15 @@
             url.searchParams.set('view', newMode);
             window.history.pushState({}, '', url);
 
+            // Reset current selection state
+            currentIndex = 0;
+            currentSuggestion = null;
+            document.getElementById('location-card').style.display = 'none';
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+                currentMarker = null;
+            }
+
             // Sync dropdown
             document.getElementById('view-select').value = newMode;
 
@@ -558,7 +622,7 @@
                 }
 
                 container.innerHTML = locations.map((loc, idx) => `
-                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectListLocation(${idx})">
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectGeocodedLocation(${idx}, false)">
                         <div class="location-name">${loc.location}</div>
                         <div class="location-meta">
                             DB ${loc.db_id} | ${loc.judgment.geocoding_method}
@@ -568,7 +632,7 @@
                 `).join('');
 
                 if (locations.length > 0) {
-                    selectListLocation(0);
+                    selectGeocodedLocation(0, false);
                 }
             } catch (error) {
                 console.error('Error loading list:', error);
@@ -577,69 +641,6 @@
             }
         }
 
-        async function selectListLocation(index) {
-            resetCardView();
-            currentIndex = index;
-            const loc = locations[index];
-
-            // Update UI
-            document.querySelectorAll('.location-item').forEach((el, idx) => {
-                el.classList.toggle('active', idx === index);
-            });
-
-            // Show location card with existing judgment
-            const j = loc.judgment;
-            document.getElementById('location-card').style.display = 'block';
-            document.getElementById('card-location').textContent = loc.location;
-            document.getElementById('card-db').textContent = `DB ${loc.db_id}`;
-            document.getElementById('card-offenses').textContent = '-';
-
-            if (j.latitude && j.longitude) {
-                document.getElementById('card-coordinates').textContent =
-                    `${j.latitude.toFixed(6)}, ${j.longitude.toFixed(6)}`;
-                document.getElementById('card-method').textContent = j.geocoding_method;
-
-                const confidenceBadge = document.getElementById('card-confidence');
-                confidenceBadge.textContent = j.confidence;
-                confidenceBadge.className = `badge badge-${j.confidence}`;
-
-                const electronicContainer = document.getElementById('card-electronic-container');
-                electronicContainer.style.display = j.is_electronic ? 'block' : 'none';
-
-                const notesContainer = document.getElementById('card-notes-container');
-                if (j.notes) {
-                    notesContainer.style.display = 'block';
-                    document.getElementById('card-notes').textContent = j.notes;
-                } else {
-                    notesContainer.style.display = 'none';
-                }
-
-                // Show marker on map
-                if (currentMarker) {
-                    map.removeLayer(currentMarker);
-                }
-
-                currentMarker = L.marker([j.latitude, j.longitude])
-                    .addTo(map)
-                    .bindPopup(`${loc.location}<br>Geocoded: ${j.created_at}`)
-                    .openPopup();
-
-                // Just pan, don't zoom in list mode
-                map.panTo([j.latitude, j.longitude]);
-
-                // Store as current suggestion for editing
-                currentSuggestion = {
-                    latitude: j.latitude,
-                    longitude: j.longitude,
-                    is_electronic: j.is_electronic,
-                    geocoding_method: j.geocoding_method,
-                    confidence: j.confidence,
-                    notes: j.notes
-                };
-            }
-        }
-
-        // Load previously geocoded locations for review
         async function loadReview() {
             try {
                 const params = new URLSearchParams();
@@ -670,7 +671,7 @@
                 }
 
                 container.innerHTML = locations.map((loc, idx) => `
-                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectReviewLocation(${idx})">
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectGeocodedLocation(${idx}, true)">
                         <div class="location-name">${loc.location}</div>
                         <div class="location-meta">
                             DB ${loc.db_id} | ${loc.judgment.geocoding_method}
@@ -682,7 +683,7 @@
                 updateProgress();
 
                 if (locations.length > 0) {
-                    selectReviewLocation(0);
+                    selectGeocodedLocation(0, true);
                 }
             } catch (error) {
                 console.error('Error loading judgments:', error);
@@ -691,7 +692,7 @@
             }
         }
 
-        async function selectReviewLocation(index) {
+        async function selectGeocodedLocation(index, zoom = true) {
             resetCardView();
             currentIndex = index;
             const loc = locations[index];
@@ -708,9 +709,12 @@
             document.getElementById('card-db').textContent = `DB ${loc.db_id}`;
             document.getElementById('card-offenses').textContent = '-';
 
-            if (j.latitude && j.longitude) {
+            const lat = j.point ? j.point.lat : j.latitude;
+            const lng = j.point ? j.point.lng : j.longitude;
+
+            if (lat !== undefined && lng !== undefined) {
                 document.getElementById('card-coordinates').textContent =
-                    `${j.latitude.toFixed(6)}, ${j.longitude.toFixed(6)}`;
+                    `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
                 document.getElementById('card-method').textContent = j.geocoding_method;
 
                 const confidenceBadge = document.getElementById('card-confidence');
@@ -733,17 +737,21 @@
                     map.removeLayer(currentMarker);
                 }
 
-                currentMarker = L.marker([j.latitude, j.longitude])
+                currentMarker = L.marker([lat, lng])
                     .addTo(map)
                     .bindPopup(`${loc.location}<br>Geocoded: ${j.created_at}`)
                     .openPopup();
 
-                map.setView([j.latitude, j.longitude], 17);
+                if (zoom) {
+                    map.setView([lat, lng], 17);
+                } else {
+                    map.panTo([lat, lng]);
+                }
 
                 // Store as current suggestion for editing
                 currentSuggestion = {
-                    latitude: j.latitude,
-                    longitude: j.longitude,
+                    latitude: lat,
+                    longitude: lng,
                     is_electronic: j.is_electronic,
                     geocoding_method: j.geocoding_method,
                     confidence: j.confidence,
