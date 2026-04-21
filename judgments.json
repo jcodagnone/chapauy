@@ -156326,6 +156326,20 @@
     },
     {
       "db_id": 6,
+      "location": "QUERETARO y ANTILLAS",
+      "point": {
+        "lat": -34.8252917,
+        "lng": -56.17992109999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Antillas \u0026 Queretaro, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-21T13:01:48.253079Z",
+      "updated_at": "2026-04-21T13:01:48.253079Z"
+    },
+    {
+      "db_id": 6,
       "location": "QUERETARO y CHICAGO",
       "point": {
         "lat": -34.822098,
@@ -158105,15 +158119,16 @@
       "db_id": 6,
       "location": "RAMBLA M. GANDHI y R REP DEL PERU",
       "point": {
-        "lat": -34.9120898,
-        "lng": -56.1459322
+        "lat": -34.919455078341386,
+        "lng": -56.14884853363038
       },
       "is_electronic": false,
-      "geocoding_method": "google_maps",
+      "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Rbla. República del Perú, 11300 Montevideo, Departamento de Montevideo, Uruguay",
-      "created_at": "2026-02-20T12:35:25.692633Z",
-      "updated_at": "2026-02-20T12:35:25.692633Z"
+      "created_at": "2026-04-21T13:26:30.850787Z",
+      "updated_at": "2026-04-21T13:26:47.072406Z",
+      "canonical_location": "FRANCISCO SOLANO ANTUÑA y R REP DEL PERU"
     },
     {
       "db_id": 6,
