@@ -308,6 +308,9 @@
                 <div class="keybinding-tip">
                     Tip: ESC to Skip, Ctrl+Enter to Accept/Merge
                 </div>
+                <button id="btn-remove-judgment" style="display: none; margin-top: 0.5rem; padding: 0.5rem; width: 100%; background: #e74c3c; color: white; border: none; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">
+                    🗑️ Remove judgment (re-geocode from scratch)
+                </button>
             </div>
         </div>
     </div>
@@ -689,15 +692,9 @@
                     notesContainer.style.display = 'none';
                 }
 
-                // Show marker on map
-                if (currentMarker) {
-                    map.removeLayer(currentMarker);
-                }
-
-                currentMarker = L.marker([lat, lng])
-                    .addTo(map)
-                    .bindPopup(`${loc.location}<br>Geocoded: ${j.created_at}`)
-                    .openPopup();
+                // Show draggable marker on map (same as Pending Locations)
+                placeMarker(lat, lng);
+                updateCoordinatesDisplay(lat, lng);
 
                 if (zoom) {
                     map.setView([lat, lng], 17);
@@ -714,6 +711,17 @@
                     confidence: j.confidence,
                     notes: j.notes
                 };
+
+                // In review mode, change button labels and show remove button
+                if (viewMode === 'review') {
+                    document.getElementById('btn-accept').textContent = '✏️ Update';
+                    document.getElementById('btn-skip').textContent = '→ Next';
+                    document.getElementById('btn-remove-judgment').style.display = 'block';
+                } else {
+                    document.getElementById('btn-accept').textContent = '✓ Accept';
+                    document.getElementById('btn-skip').textContent = '→ Skip';
+                    document.getElementById('btn-remove-judgment').style.display = 'none';
+                }
             }
         }
 
@@ -1135,27 +1143,56 @@
                     throw new Error('Failed to save judgment');
                 }
 
-                // Remove from locations array
-                locations.splice(currentIndex, 1);
+                if (viewMode === 'queue') {
+                    // Queue mode: remove from locations array (geocoded successfully)
+                    locations.splice(currentIndex, 1);
 
-                // Update queue UI
-                const container = document.getElementById('queue-container');
-                if (locations.length === 0) {
-                    container.innerHTML = '<div class="loading">No locations to geocode 🎉</div>';
-                    document.getElementById('location-card').style.display = 'none';
-                    alert('🎉 All locations geocoded!');
-                } else {
-                    container.innerHTML = locations.map((loc, idx) => `
-                        <div class="location-item ${idx === currentIndex ? 'active' : ''}" onclick="selectLocation(${idx})">
-                            <div class="location-name">${loc.location}</div>
-                            <div class="location-meta">
-                                ${loc.db_name} | <span class="offense-count">${loc.offense_count.toLocaleString()} offenses</span>
+                    // Update queue UI
+                    const container = document.getElementById('queue-container');
+                    if (locations.length === 0) {
+                        container.innerHTML = '<div class="loading">No locations to geocode 🎉</div>';
+                        document.getElementById('location-card').style.display = 'none';
+                        alert('🎉 All locations geocoded!');
+                    } else {
+                        container.innerHTML = locations.map((loc, idx) => `
+                            <div class="location-item ${idx === currentIndex ? 'active' : ''}" onclick="selectLocation(${idx})">
+                                <div class="location-name">${loc.location}</div>
+                                <div class="location-meta">
+                                    ${loc.db_name} | <span class="offense-count">${loc.offense_count.toLocaleString()} offenses</span>
+                                </div>
                             </div>
-                        </div>
-                    `).join('');
+                        `).join('');
 
-                    // Select next location (now at same index since we removed one)
-                    selectLocation(Math.min(currentIndex, locations.length - 1));
+                        // Select next location (now at same index since we removed one)
+                        selectLocation(Math.min(currentIndex, locations.length - 1));
+                    }
+                } else if (viewMode === 'review') {
+                    // Review mode: update judgment in place, move to next
+                    const loc = locations[currentIndex];
+                    loc.judgment.point = {
+                        lat: currentSuggestion.latitude,
+                        lng: currentSuggestion.longitude
+                    };
+                    loc.judgment.latitude = currentSuggestion.latitude;
+                    loc.judgment.longitude = currentSuggestion.longitude;
+
+                    // Refresh reference layer to reflect updated coordinate
+                    await loadReferenceLayer(selectedDatabaseId || null);
+                    if (document.getElementById('toggle-reference').checked) {
+                        referenceLayer.addTo(map);
+                    }
+
+                    // Move to next item if available
+                    if (currentIndex < locations.length - 1) {
+                        selectGeocodedLocation(currentIndex + 1, true);
+                    } else {
+                        document.getElementById('location-card').style.display = 'none';
+                        if (currentMarker) {
+                            map.removeLayer(currentMarker);
+                            currentMarker = null;
+                        }
+                        alert('🎉 All judgments reviewed!');
+                    }
                 }
 
                 updateProgress();
@@ -1169,8 +1206,75 @@
         });
 
         document.getElementById('btn-skip').addEventListener('click', () => {
-            if (currentIndex < locations.length - 1) {
-                selectLocation(currentIndex + 1);
+            if (viewMode === 'review') {
+                if (currentIndex < locations.length - 1) {
+                    selectGeocodedLocation(currentIndex + 1);
+                }
+            } else {
+                if (currentIndex < locations.length - 1) {
+                    selectLocation(currentIndex + 1);
+                }
+            }
+        });
+
+        document.getElementById('btn-remove-judgment').addEventListener('click', async () => {
+            if (!confirm('Remove this judgment? This will return it to Pending Locations for re-geocoding.')) {
+                return;
+            }
+
+            const loc = locations[currentIndex];
+            const removeBtn = document.getElementById('btn-remove-judgment');
+            removeBtn.disabled = true;
+            removeBtn.textContent = '⏳ Removing...';
+
+            try {
+                const response = await fetch(`/api/locations/judgment/${loc.db_id}/${encodeURIComponent(loc.location)}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to remove judgment');
+                }
+
+                // Close any open popups
+                map.closePopup();
+
+                // Remove from locations array
+                locations.splice(currentIndex, 1);
+
+                // Reload reference layer
+                await loadReferenceLayer(selectedDatabaseId || null);
+                if (document.getElementById('toggle-reference').checked) {
+                    referenceLayer.addTo(map);
+                }
+
+                // Update UI
+                const container = document.getElementById('queue-container');
+                if (locations.length === 0) {
+                    container.innerHTML = '<div class="loading">All judgments reviewed! 🎉</div>';
+                    document.getElementById('location-card').style.display = 'none';
+                } else {
+                    // Re-render list without the removed item
+                    container.innerHTML = locations.map((loc, idx) => `
+                        <div class="location-item ${idx === currentIndex ? 'active' : ''}" onclick="selectGeocodedLocation(${idx}, true)">
+                            <div class="location-name">${loc.location}</div>
+                            <div class="location-meta">
+                                DB ${loc.db_id} | ${loc.judgment.geocoding_method}
+                                ${loc.judgment.is_electronic ? '📷' : ''}
+                            </div>
+                        </div>
+                    `).join('');
+
+                    // Select next item (now at same index since we removed one)
+                    selectGeocodedLocation(Math.min(currentIndex, locations.length - 1), true);
+                }
+
+                updateProgress();
+            } catch (error) {
+                console.error('Error removing judgment:', error);
+                alert('Error removing judgment. Please try again.');
+                removeBtn.disabled = false;
+                removeBtn.textContent = '🗑️ Remove judgment (re-geocode from scratch)';
             }
         });
 
