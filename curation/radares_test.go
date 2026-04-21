@@ -103,6 +103,8 @@ func TestParseRutaLocation(t *testing.T) {
 
 			if pattern == nil {
 				t.Fatalf("ParseRutaLocation(%q) returned nil, expected pattern", tt.location)
+
+				return
 			}
 
 			if pattern.RouteNumber != tt.wantRoute {
