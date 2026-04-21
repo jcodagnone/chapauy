@@ -197,6 +197,9 @@
                         <option value="window_30">Most incidents in last 30 days</option>
                         <option value="name">Name (A-Z)</option>
                     </select>
+
+                    <input type="text" id="search-input" placeholder="Search location..." style="padding: 0.4rem 0.8rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; min-width: 200px; margin-left: 0.5rem;">
+
                     <span style="margin-left:0.5rem; color:#7f8c8d; font-size:0.85rem;">? Hover to see meaning</span>
                     <label style="margin-left:1rem; display:flex; align-items:center; gap:0.3rem; color:white; font-size:0.9rem; cursor:pointer;">
                         <input type="checkbox" id="toggle-reference" style="cursor:pointer;" checked>
@@ -468,11 +471,25 @@
          });
 
          // Wire sort and window controls
-                 document.getElementById('sort-select').addEventListener('change', () => {
-             loadQueue();
+         document.getElementById('sort-select').addEventListener('change', () => {
+             if (viewMode === 'queue') {
+                 loadQueue();
+             } else if (viewMode === 'review') {
+                 loadReview();
+             }
          });
 
-
+         let searchTimeout = null;
+         document.getElementById('search-input').addEventListener('input', (e) => {
+             clearTimeout(searchTimeout);
+             searchTimeout = setTimeout(() => {
+                 if (viewMode === 'queue') {
+                     loadQueue();
+                 } else if (viewMode === 'review') {
+                     loadReview();
+                 }
+             }, 300);
+         });
 
         function switchView(newMode) {
             viewMode = newMode;
@@ -504,7 +521,17 @@
         // Load previously geocoded locations for review
         async function loadReview() {
             try {
-                const response = await fetch('/api/locations/judgments?per_page=100');
+                const params = new URLSearchParams();
+                params.set('per_page', '100');
+                if (selectedDatabaseId) {
+                    params.set('db_id', selectedDatabaseId);
+                }
+                const search = document.getElementById('search-input').value;
+                if (search) {
+                    params.set('search', search);
+                }
+
+                const response = await fetch(`/api/locations/judgments?${params.toString()}`);
                 const data = await response.json();
                 locations = data.judgments.map(j => ({
                     db_id: j.db_id,
@@ -517,7 +544,7 @@
                 const container = document.getElementById('queue-container');
 
                 if (locations.length === 0) {
-                    container.innerHTML = '<div class="loading">No geocoded locations yet</div>';
+                    container.innerHTML = `<div class="loading">No geocoded locations found ${search ? 'matching your search' : ''}</div>`;
                     return;
                 }
 
@@ -729,19 +756,24 @@
                  const sort = document.getElementById('sort-select') ? document.getElementById('sort-select').value : 'frequency';
                  if (sort && sort !== 'frequency') params.set('sort', sort);
 
+                 const search = document.getElementById('search-input').value;
+                 if (search) {
+                     params.set('search', search);
+                 }
+
                  const qs = params.toString();
                  if (qs) url += `?${qs}`;
 
                  const response = await fetch(url);
                  locations = await response.json();
 
-
-
                 const container = document.getElementById('queue-container');
 
-                if (locations.length === 0) {
-                    container.innerHTML = '<div class="loading">No locations to geocode 🎉</div>';
-                    document.getElementById('btn-toggle-cluster').click();
+                if (!locations || locations.length === 0) {
+                    container.innerHTML = `<div class="loading">No locations to geocode found ${search ? 'matching your search' : '🎉'}</div>`;
+                    if (!search) {
+                        document.getElementById('btn-toggle-cluster').click();
+                    }
                     return;
                 }
 

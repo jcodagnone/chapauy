@@ -291,7 +291,7 @@ func TestCountJudgments(t *testing.T) {
 	defer db.Close()
 
 	// Initial count
-	count, err := repo.CountJudgments(nil)
+	count, err := repo.CountJudgments(nil, nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
@@ -314,7 +314,7 @@ func TestCountJudgments(t *testing.T) {
 	}
 
 	// Count all
-	count, err = repo.CountJudgments(nil)
+	count, err = repo.CountJudgments(nil, nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
@@ -323,14 +323,33 @@ func TestCountJudgments(t *testing.T) {
 		t.Errorf("Expected 3 judgments, got %d", count)
 	}
 
-	// Filtered count
+	// Filtered count by dbID
 	dbID := 6
-	count, err = repo.CountJudgments(&dbID)
+	count, err = repo.CountJudgments(&dbID, nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
 	if count != 2 {
 		t.Errorf("Expected 2 judgments for dbID 6, got %d", count)
+	}
+
+	// Filtered count by location
+	search := "Loc"
+	count, err = repo.CountJudgments(nil, &search)
+	if err != nil {
+		t.Fatalf("CountJudgments() error = %v", err)
+	}
+	if count != 3 {
+		t.Errorf("Expected 3 judgments for 'Loc', got %d", count)
+	}
+
+	search = "1"
+	count, err = repo.CountJudgments(nil, &search)
+	if err != nil {
+		t.Fatalf("CountJudgments() error = %v", err)
+	}
+	if count != 1 {
+		t.Errorf("Expected 1 judgment for '1', got %d", count)
 	}
 }
 
@@ -579,7 +598,7 @@ func TestDeleteJudgment(t *testing.T) {
 	}
 
 	// Verify it exists
-	count, _ := repo.CountJudgments(nil)
+	count, _ := repo.CountJudgments(nil, nil)
 	if count != 1 {
 		t.Fatalf("Expected 1 judgment, got %d", count)
 	}
@@ -590,7 +609,7 @@ func TestDeleteJudgment(t *testing.T) {
 	}
 
 	// Verify it's gone
-	count, _ = repo.CountJudgments(nil)
+	count, _ = repo.CountJudgments(nil, nil)
 	if count != 0 {
 		t.Errorf("Expected 0 judgments after delete, got %d", count)
 	}

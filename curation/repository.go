@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"log"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/jcodagnone/chapauy/spatial"
@@ -115,8 +116,8 @@ type LocationRepository interface {
 	// BulkInsertJudgments inserts a slice of judgments into the database
 	BulkInsertJudgments(judgments []*Location) error
 
-	// CountJudgments returns the total number of judgments, optionally filtered by db_id.
-	CountJudgments(dbID *int) (int, error)
+	// CountJudgments returns the total number of judgments, optionally filtered by db_id and location.
+	CountJudgments(dbID *int, location *string) (int, error)
 
 	// GetLocationClusters retrieves a list of location clusters.
 	GetLocationClusters(dbID *int) ([]*LocationCluster, error)
@@ -495,16 +496,21 @@ func (r *sqlJudgmentRepository) ListJudgments(dbID *int, location *string, limit
 
 	args := []any{}
 
+	whereClauses := []string{}
+
 	if dbID != nil {
-		query += " WHERE db_id = ?"
+		whereClauses = append(whereClauses, "db_id = ?")
 
 		args = append(args, *dbID)
+	}
 
-		if nil != location {
-			query += " AND location = ?"
+	if location != nil {
+		whereClauses = append(whereClauses, "location ILIKE ?")
+		args = append(args, "%"+*location+"%")
+	}
 
-			args = append(args, *location)
-		}
+	if len(whereClauses) > 0 {
+		query += " WHERE " + strings.Join(whereClauses, " AND ")
 	}
 
 	query += " ORDER BY updated_at DESC"
@@ -518,17 +524,28 @@ func (r *sqlJudgmentRepository) ListJudgments(dbID *int, location *string, limit
 	return r.list(query, args)
 }
 
-func (r *sqlJudgmentRepository) CountJudgments(dbID *int) (int, error) {
+func (r *sqlJudgmentRepository) CountJudgments(dbID *int, location *string) (int, error) {
 	var count int
 
 	query := "SELECT COUNT(*) FROM locations"
 
 	args := []any{}
 
+	whereClauses := []string{}
+
 	if dbID != nil {
-		query += " WHERE db_id = ?"
+		whereClauses = append(whereClauses, "db_id = ?")
 
 		args = append(args, *dbID)
+	}
+
+	if location != nil {
+		whereClauses = append(whereClauses, "location ILIKE ?")
+		args = append(args, "%"+*location+"%")
+	}
+
+	if len(whereClauses) > 0 {
+		query += " WHERE " + strings.Join(whereClauses, " AND ")
 	}
 
 	err := r.db.QueryRow(query, args...).Scan(&count)

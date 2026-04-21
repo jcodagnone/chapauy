@@ -282,6 +282,7 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 
 	// Check for database filter
 	dbIDParam := ctx.Query("db_id")
+	search := ctx.Query("search")
 
 	// Sorting params: support fixed window options
 	sort := ctx.Query("sort") // "frequency" (default), "newest", "window_7", "window_30"
@@ -313,6 +314,11 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 		whereClause = " AND o.db_id = ?"
 
 		args = append(args, dbID)
+	}
+
+	if search != "" {
+		whereClause += " AND o.location ILIKE ?"
+		args = append(args, "%"+search+"%")
 	}
 
 	// Compute cutoff using Go and pass as SQL parameter (DuckDB supports casting)
@@ -792,16 +798,21 @@ func (s *Server) listJudgments(ctx *gin.Context) {
 		}
 	}
 
+	var search *string
+	if s := ctx.Query("search"); s != "" {
+		search = &s
+	}
+
 	offset := (page - 1) * perPage
 
-	judgments, err := s.geocodeRepo.ListJudgments(dbID, nil, perPage, offset)
+	judgments, err := s.geocodeRepo.ListJudgments(dbID, search, perPage, offset)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
 		return
 	}
 
-	total, err := s.geocodeRepo.CountJudgments(dbID)
+	total, err := s.geocodeRepo.CountJudgments(dbID, search)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 

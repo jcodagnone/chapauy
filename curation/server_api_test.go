@@ -31,7 +31,7 @@ func (m *MockLocationRepository) GetJudgment(_ int, _ string) (*Location, error)
 func (m *MockLocationRepository) ListJudgments(_ *int, _ *string, _, _ int) ([]*Location, error) {
 	return nil, nil
 }
-func (m *MockLocationRepository) CountJudgments(_ *int) (int, error) { return 0, nil }
+func (m *MockLocationRepository) CountJudgments(_ *int, _ *string) (int, error) { return 0, nil }
 func (m *MockLocationRepository) MergeLocations(_ int, _, _ string) error {
 	return nil
 }
