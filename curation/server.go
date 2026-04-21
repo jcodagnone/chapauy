@@ -142,6 +142,7 @@ func (s *Server) Run() error {
 	r.POST("/api/locations/accept/:db_id/*location", s.acceptJudgment)
 	r.GET("/api/locations/progress", s.getProgress)
 	r.GET("/api/locations/judgments", s.listJudgments)
+	r.DELETE("/api/locations/judgment/:db_id/*location", s.deleteJudgment)
 	r.GET("/api/descriptions/unclassified", s.getUnclassifiedDescriptions)
 	r.GET("/api/descriptions/articles", s.listArticles)
 	r.POST("/api/descriptions/classify", s.classifyDescription)
@@ -522,6 +523,26 @@ func (s *Server) acceptJudgment(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"success": true})
 }
 
+func (s *Server) deleteJudgment(ctx *gin.Context) {
+	dbIDStr := ctx.Param("db_id")
+	location := strings.TrimPrefix(ctx.Param("location"), "/")
+
+	var dbID int
+	if _, err := fmt.Sscanf(dbIDStr, "%d", &dbID); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid db_id"})
+
+		return
+	}
+
+	if err := s.geocodeRepo.DeleteJudgment(dbID, location); err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("error al eliminar: %v", err)})
+
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"success": true})
+}
+
 type ProgressResponse struct {
 	TotalLocations      int            `json:"total_locations"`
 	GeocodedLocations   int            `json:"geocoded_locations"`
@@ -763,16 +784,24 @@ func (s *Server) listJudgments(ctx *gin.Context) {
 		}
 	}
 
+	var dbID *int
+	if p := ctx.Query("db_id"); p != "" {
+		var id int
+		if _, err := fmt.Sscanf(p, "%d", &id); err == nil {
+			dbID = &id
+		}
+	}
+
 	offset := (page - 1) * perPage
 
-	judgments, err := s.geocodeRepo.ListJudgments(nil, nil, perPage, offset)
+	judgments, err := s.geocodeRepo.ListJudgments(dbID, nil, perPage, offset)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
 		return
 	}
 
-	total, err := s.geocodeRepo.CountJudgments()
+	total, err := s.geocodeRepo.CountJudgments(dbID)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 

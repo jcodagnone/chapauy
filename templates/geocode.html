@@ -338,11 +338,62 @@
                         weight: 1,
                         fillOpacity: 0.75,
                         interactive: true,
-                    }).bindPopup(`<b>${j.location}</b><br>${lat.toFixed(6)}, ${lng.toFixed(6)}<br><small>${j.geocoding_method}</small>`)
+                    }).bindPopup(`
+                        <b>${j.location}</b><br>${lat.toFixed(6)}, ${lng.toFixed(6)}<br>
+                        <small>${j.geocoding_method}</small><br>
+                        <button onclick="removeJudgment(${j.db_id}, '${j.location.replace(/'/g, "\\'")}', this)" style="margin-top: 0.5rem; padding: 0.25rem 0.5rem; background: #e74c3c; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.75rem;">
+                            🗑️ Remove
+                        </button>
+                    `)
                       .addTo(referenceLayer);
                 });
             } catch (error) {
                 console.error('Error loading reference layer:', error);
+            }
+        }
+
+        async function removeJudgment(dbId, location, btn) {
+            if (!confirm(`Are you sure you want to remove the judgment for "${location}"?`)) {
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Removing...';
+
+            try {
+                const response = await fetch(`/api/locations/judgment/${dbId}/${encodeURIComponent(location)}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to remove judgment');
+                }
+
+                // Remove the marker from referenceLayer
+                const popup = btn.closest('.leaflet-popup');
+                if (popup) {
+                    map.closePopup();
+                }
+
+                // Reload the reference layer to be sure (or just find and remove the marker)
+                await loadReferenceLayer(dbId);
+                if (document.getElementById('toggle-reference').checked) {
+                    referenceLayer.addTo(map);
+                }
+
+                // Refresh queue and progress
+                if (viewMode === 'queue') {
+                    loadQueue();
+                } else if (viewMode === 'review') {
+                    loadReview();
+                }
+                updateProgress();
+
+            } catch (error) {
+                console.error('Error removing judgment:', error);
+                alert('Error removing judgment. Please try again.');
+                btn.disabled = false;
+                btn.textContent = '🗑️ Remove';
             }
         }
 

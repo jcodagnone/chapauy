@@ -70,7 +70,7 @@ func ImportFromJSON(repo LocationRepository, filepath string) (int, error) {
 
 // SeedIfEmpty seeds the database from a JSON file if no judgments exist.
 func SeedIfEmpty(repo LocationRepository, filepath string) (bool, int, error) {
-	count, err := repo.CountJudgments()
+	count, err := repo.CountJudgments(nil)
 	if err != nil {
 		return false, 0, fmt.Errorf("counting judgments: %w", err)
 	}

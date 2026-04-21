@@ -291,7 +291,7 @@ func TestCountJudgments(t *testing.T) {
 	defer db.Close()
 
 	// Initial count
-	count, err := repo.CountJudgments()
+	count, err := repo.CountJudgments(nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
@@ -314,13 +314,23 @@ func TestCountJudgments(t *testing.T) {
 	}
 
 	// Count all
-	count, err = repo.CountJudgments()
+	count, err = repo.CountJudgments(nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
 
 	if count != 3 {
 		t.Errorf("Expected 3 judgments, got %d", count)
+	}
+
+	// Filtered count
+	dbID := 6
+	count, err = repo.CountJudgments(&dbID)
+	if err != nil {
+		t.Fatalf("CountJudgments() error = %v", err)
+	}
+	if count != 2 {
+		t.Errorf("Expected 2 judgments for dbID 6, got %d", count)
 	}
 }
 
@@ -545,5 +555,43 @@ func TestMergeLocations(t *testing.T) {
 	// 5. Check if the coordinates are updated
 	if updatedTarget.Point.Lat != 10.0 || updatedTarget.Point.Lng != 20.0 {
 		t.Errorf("Expected target coordinates to be (10.0, 20.0), got (%f, %f)", updatedTarget.Point.Lat, updatedTarget.Point.Lng)
+	}
+}
+
+func TestDeleteJudgment(t *testing.T) {
+	db, repo := setupTestDB(t)
+	defer db.Close()
+
+	judgment := &Location{
+		DbID:     6,
+		Location: "Test Location",
+		Point: &spatial.Point{
+			Lat: 1.0,
+			Lng: 2.0,
+		},
+		GeocodingMethod: "manual",
+		Confidence:      "high",
+		Notes:           "Test",
+	}
+
+	if err := repo.SaveJudgment(judgment); err != nil {
+		t.Fatalf("SaveJudgment() error = %v", err)
+	}
+
+	// Verify it exists
+	count, _ := repo.CountJudgments(nil)
+	if count != 1 {
+		t.Fatalf("Expected 1 judgment, got %d", count)
+	}
+
+	// Delete
+	if err := repo.DeleteJudgment(6, "Test Location"); err != nil {
+		t.Fatalf("DeleteJudgment() error = %v", err)
+	}
+
+	// Verify it's gone
+	count, _ = repo.CountJudgments(nil)
+	if count != 0 {
+		t.Errorf("Expected 0 judgments after delete, got %d", count)
 	}
 }

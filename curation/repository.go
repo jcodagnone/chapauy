@@ -115,14 +115,17 @@ type LocationRepository interface {
 	// BulkInsertJudgments inserts a slice of judgments into the database
 	BulkInsertJudgments(judgments []*Location) error
 
-	// CountJudgments returns the total number of judgments
-	CountJudgments() (int, error)
+	// CountJudgments returns the total number of judgments, optionally filtered by db_id.
+	CountJudgments(dbID *int) (int, error)
 
 	// GetLocationClusters retrieves a list of location clusters.
 	GetLocationClusters(dbID *int) ([]*LocationCluster, error)
 
 	// MergeLocations merges a list of locations into a single location.
 	MergeLocations(dbID int, targetLocation, canonicalLocation string) error
+
+	// DeleteJudgment removes a location judgment.
+	DeleteJudgment(dbID int, location string) error
 
 	// DB returns the underlying database connection
 	DB() *sql.DB
@@ -515,11 +518,20 @@ func (r *sqlJudgmentRepository) ListJudgments(dbID *int, location *string, limit
 	return r.list(query, args)
 }
 
-func (r *sqlJudgmentRepository) CountJudgments() (int, error) {
+func (r *sqlJudgmentRepository) CountJudgments(dbID *int) (int, error) {
 	var count int
-	err := r.db.QueryRow(
-		"SELECT COUNT(*) FROM locations",
-	).Scan(&count)
+
+	query := "SELECT COUNT(*) FROM locations"
+
+	args := []any{}
+
+	if dbID != nil {
+		query += " WHERE db_id = ?"
+
+		args = append(args, *dbID)
+	}
+
+	err := r.db.QueryRow(query, args...).Scan(&count)
 
 	return count, err
 }
@@ -730,4 +742,13 @@ func (r *sqlJudgmentRepository) MergeLocations(dbID int, targetLocation, canonic
 
 	// Save the updated target judgment
 	return r.SaveJudgment(targetJudgment)
+}
+
+func (r *sqlJudgmentRepository) DeleteJudgment(dbID int, location string) error {
+	_, err := r.db.Exec(`
+		DELETE FROM locations
+		WHERE db_id = ? AND location = ?
+	`, dbID, location)
+
+	return err
 }
