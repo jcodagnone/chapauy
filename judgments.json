@@ -6996,6 +6996,39 @@
     },
     {
       "id": 0,
+      "description": "25.1 No retirar vehículos, animales u objetos que obstaculicen el tránsito en foma inmediata o el tiempo mínimo necesario",
+      "article_ids": [
+        "25.1"
+      ],
+      "article_codes": [
+        25
+      ],
+      "updated_at": "2026-04-21T12:45:18.209974Z"
+    },
+    {
+      "id": 0,
+      "description": "25.1 No retirar vehículos, animales u objetos que obstaculicen el tránsito en forma inmediata o el tiempo mínimo necesario",
+      "article_ids": [
+        "25.1"
+      ],
+      "article_codes": [
+        25
+      ],
+      "updated_at": "2026-04-21T12:45:11.603065Z"
+    },
+    {
+      "id": 0,
+      "description": "25.1 No retirar vehículos. animales u objetos que obstaculicen el tránsito en forma inmediata o el tiempo mínimo necesario",
+      "article_ids": [
+        "25.1"
+      ],
+      "article_codes": [
+        25
+      ],
+      "updated_at": "2026-04-21T12:45:26.889939Z"
+    },
+    {
+      "id": 0,
       "description": "25.1 No retirarvehiculos, animales u objetos que obstaculicen el Transito en foma inmediata o el tiempo maximo necesario",
       "article_ids": [
         "25.1"
@@ -7004,6 +7037,17 @@
         25
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "25.1 VEHICULO ABANDONADO VIA PUBLICA",
+      "article_ids": [
+        "25.1"
+      ],
+      "article_codes": [
+        25
+      ],
+      "updated_at": "2026-04-21T12:45:37.105945Z"
     },
     {
       "id": 0,
@@ -18239,6 +18283,17 @@
         25
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "ART. 25.1: No r etirar vehículos u objetos que obstaculicen el tránsito",
+      "article_ids": [
+        "25.1"
+      ],
+      "article_codes": [
+        25
+      ],
+      "updated_at": "2026-04-21T12:45:45.31524Z"
     },
     {
       "id": 0,
