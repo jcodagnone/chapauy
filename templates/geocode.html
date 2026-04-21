@@ -222,13 +222,14 @@
     <div class="container">
         <div class="sidebar">
             <div class="location-queue">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <select id="view-select" style="padding: 0.5rem; font-size: 0.85rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; cursor: pointer; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; width: 100%;">
+                    <select id="view-select" style="padding: 0.5rem; font-size: 0.85rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; cursor: pointer; width: 100%;">
                         <option value="queue">📍 Pending Locations</option>
                         <option value="review">📝 Review Judgments</option>
                         <option value="cluster">✨ Clusters</option>
                         <option value="list">📋 Judgments (List)</option>
                     </select>
+                    <div id="view-description" style="font-size: 0.75rem; color: #7f8c8d; padding: 0 0.25rem;"></div>
                 </div>
                 <div id="queue-container" class="loading">
                     Loading locations...
@@ -502,6 +503,15 @@
 
             // Sync dropdown
             document.getElementById('view-select').value = newMode;
+
+            // Update description
+            const descriptions = {
+                'queue': 'Identify and geolocate new locations found in the records.',
+                'review': 'Review and verify recently geocoded locations on the map.',
+                'cluster': 'Merge similar location descriptions to improve data consistency.',
+                'list': 'Browse and search through the complete list of geocoded entries.'
+            };
+            document.getElementById('view-description').textContent = descriptions[newMode] || '';
 
             if (newMode === 'queue') {
                 loadQueue();
