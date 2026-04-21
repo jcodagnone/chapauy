@@ -223,15 +223,12 @@
         <div class="sidebar">
             <div class="location-queue">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <h3 style="color: #2c3e50; margin: 0;">
-                        <span id="queue-title">📍 Location Queue</span>
-                    </h3>
-                    <button id="btn-toggle-view" style="padding: 0.5rem; font-size: 0.85rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                        👁️ Review
-                    </button>
-                    <button id="btn-toggle-cluster" style="padding: 0.5rem; font-size: 0.85rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                        ✨ Cluster
-                    </button>
+                    <select id="view-select" style="padding: 0.5rem; font-size: 0.85rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; cursor: pointer; flex-grow: 1;">
+                        <option value="queue">📍 Pending Locations</option>
+                        <option value="review">📝 Review Judgments</option>
+                        <option value="cluster">✨ Clusters</option>
+                        <option value="list">📋 Judgments (List)</option>
+                    </select>
                 </div>
                 <div id="queue-container" class="loading">
                     Loading locations...
@@ -389,6 +386,8 @@
                     loadQueue();
                 } else if (viewMode === 'review') {
                     loadReview();
+                } else if (viewMode === 'list') {
+                    loadList();
                 }
                 updateProgress();
 
@@ -487,6 +486,10 @@
                      loadQueue();
                  } else if (viewMode === 'review') {
                      loadReview();
+                 } else if (viewMode === 'cluster') {
+                     loadClusters();
+                 } else if (viewMode === 'list') {
+                     loadList();
                  }
              }, 300);
          });
@@ -497,26 +500,134 @@
             url.searchParams.set('view', newMode);
             window.history.pushState({}, '', url);
 
+            // Sync dropdown
+            document.getElementById('view-select').value = newMode;
+
             if (newMode === 'queue') {
-                document.getElementById('queue-title').textContent = '📍 Location Queue';
                 loadQueue();
             } else if (newMode === 'review') {
-                document.getElementById('queue-title').textContent = '📝 Geocoded Locations';
                 loadReview();
             } else if (newMode === 'cluster') {
-                document.getElementById('queue-title').textContent = '✨ Location Clusters';
                 loadClusters();
+            } else if (newMode === 'list') {
+                loadList();
             }
         }
 
-        // Toggle between queue and review modes
-        document.getElementById('btn-toggle-view').addEventListener('click', () => {
-            switchView(viewMode === 'review' ? 'queue' : 'review');
+        document.getElementById('view-select').addEventListener('change', (e) => {
+            switchView(e.target.value);
         });
 
-        document.getElementById('btn-toggle-cluster').addEventListener('click', () => {
-            switchView(viewMode === 'cluster' ? 'queue' : 'cluster');
-        });
+        async function loadList() {
+            try {
+                const params = new URLSearchParams();
+                params.set('per_page', '100');
+                if (selectedDatabaseId) {
+                    params.set('db_id', selectedDatabaseId);
+                }
+                const search = document.getElementById('search-input').value;
+                if (search) {
+                    params.set('search', search);
+                }
+
+                const response = await fetch(`/api/locations/judgments?${params.toString()}`);
+                const data = await response.json();
+                locations = data.judgments.map(j => ({
+                    db_id: j.db_id,
+                    db_name: '', // TODO: lookup
+                    location: j.location,
+                    offense_count: 0,
+                    judgment: j
+                }));
+
+                const container = document.getElementById('queue-container');
+
+                if (locations.length === 0) {
+                    container.innerHTML = `<div class="loading">No judgments found ${search ? 'matching your search' : ''}</div>`;
+                    return;
+                }
+
+                container.innerHTML = locations.map((loc, idx) => `
+                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectListLocation(${idx})">
+                        <div class="location-name">${loc.location}</div>
+                        <div class="location-meta">
+                            DB ${loc.db_id} | ${loc.judgment.geocoding_method}
+                            ${loc.judgment.is_electronic ? '📷' : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                if (locations.length > 0) {
+                    selectListLocation(0);
+                }
+            } catch (error) {
+                console.error('Error loading list:', error);
+                document.getElementById('queue-container').innerHTML =
+                    '<div class="loading">Error loading judgments list</div>';
+            }
+        }
+
+        async function selectListLocation(index) {
+            resetCardView();
+            currentIndex = index;
+            const loc = locations[index];
+
+            // Update UI
+            document.querySelectorAll('.location-item').forEach((el, idx) => {
+                el.classList.toggle('active', idx === index);
+            });
+
+            // Show location card with existing judgment
+            const j = loc.judgment;
+            document.getElementById('location-card').style.display = 'block';
+            document.getElementById('card-location').textContent = loc.location;
+            document.getElementById('card-db').textContent = `DB ${loc.db_id}`;
+            document.getElementById('card-offenses').textContent = '-';
+
+            if (j.latitude && j.longitude) {
+                document.getElementById('card-coordinates').textContent =
+                    `${j.latitude.toFixed(6)}, ${j.longitude.toFixed(6)}`;
+                document.getElementById('card-method').textContent = j.geocoding_method;
+
+                const confidenceBadge = document.getElementById('card-confidence');
+                confidenceBadge.textContent = j.confidence;
+                confidenceBadge.className = `badge badge-${j.confidence}`;
+
+                const electronicContainer = document.getElementById('card-electronic-container');
+                electronicContainer.style.display = j.is_electronic ? 'block' : 'none';
+
+                const notesContainer = document.getElementById('card-notes-container');
+                if (j.notes) {
+                    notesContainer.style.display = 'block';
+                    document.getElementById('card-notes').textContent = j.notes;
+                } else {
+                    notesContainer.style.display = 'none';
+                }
+
+                // Show marker on map
+                if (currentMarker) {
+                    map.removeLayer(currentMarker);
+                }
+
+                currentMarker = L.marker([j.latitude, j.longitude])
+                    .addTo(map)
+                    .bindPopup(`${loc.location}<br>Geocoded: ${j.created_at}`)
+                    .openPopup();
+
+                // Just pan, don't zoom in list mode
+                map.panTo([j.latitude, j.longitude]);
+
+                // Store as current suggestion for editing
+                currentSuggestion = {
+                    latitude: j.latitude,
+                    longitude: j.longitude,
+                    is_electronic: j.is_electronic,
+                    geocoding_method: j.geocoding_method,
+                    confidence: j.confidence,
+                    notes: j.notes
+                };
+            }
+        }
 
         // Load previously geocoded locations for review
         async function loadReview() {
@@ -772,7 +883,7 @@
                 if (!locations || locations.length === 0) {
                     container.innerHTML = `<div class="loading">No locations to geocode found ${search ? 'matching your search' : '🎉'}</div>`;
                     if (!search) {
-                        document.getElementById('btn-toggle-cluster').click();
+                        switchView('cluster');
                     }
                     return;
                 }
