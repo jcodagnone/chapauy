@@ -237,7 +237,6 @@
                         <option value="queue">📍 Pending Locations</option>
                         <option value="review">📝 Review Judgments</option>
                         <option value="cluster">✨ Clusters</option>
-                        <option value="list">📋 Judgments (List)</option>
                     </select>
                     <div id="view-description" style="font-size: 0.8rem; color: #7f8c8d; line-height: 1.3; padding: 0 0.2rem;"></div>
                     <div style="position: relative; margin-top: 0.2rem;">
@@ -456,8 +455,6 @@
                     loadQueue();
                 } else if (viewMode === 'review') {
                     loadReview();
-                } else if (viewMode === 'list') {
-                    loadList();
                 }
                 updateProgress();
 
@@ -558,8 +555,6 @@
                      loadReview();
                  } else if (viewMode === 'cluster') {
                      loadClusters();
-                 } else if (viewMode === 'list') {
-                     loadList();
                  }
              }, 300);
          });
@@ -586,8 +581,7 @@
             const descriptions = {
                 'queue': 'Identify and geolocate new locations found in the records.',
                 'review': 'Review and verify recently geocoded locations on the map.',
-                'cluster': 'Merge similar location descriptions to improve data consistency.',
-                'list': 'Browse and search through the complete list of geocoded entries.'
+                'cluster': 'Merge similar location descriptions to improve data consistency.'
             };
             document.getElementById('view-description').textContent = descriptions[newMode] || '';
 
@@ -597,63 +591,12 @@
                 loadReview();
             } else if (newMode === 'cluster') {
                 loadClusters();
-            } else if (newMode === 'list') {
-                loadList();
             }
         }
 
         document.getElementById('view-select').addEventListener('change', (e) => {
             switchView(e.target.value);
         });
-
-        async function loadList() {
-            try {
-                const params = new URLSearchParams();
-                params.set('per_page', '100');
-                if (selectedDatabaseId) {
-                    params.set('db_id', selectedDatabaseId);
-                }
-                const search = document.getElementById('search-input').value;
-                if (search) {
-                    params.set('search', search);
-                }
-
-                const response = await fetch(`/api/locations/judgments?${params.toString()}`);
-                const data = await response.json();
-                locations = data.judgments.map(j => ({
-                    db_id: j.db_id,
-                    db_name: '', // TODO: lookup
-                    location: j.location,
-                    offense_count: 0,
-                    judgment: j
-                }));
-
-                const container = document.getElementById('queue-container');
-
-                if (locations.length === 0) {
-                    container.innerHTML = `<div class="loading">No judgments found ${search ? 'matching your search' : ''}</div>`;
-                    return;
-                }
-
-                container.innerHTML = locations.map((loc, idx) => `
-                    <div class="location-item ${idx === 0 ? 'active' : ''}" onclick="selectGeocodedLocation(${idx}, false)">
-                        <div class="location-name">${loc.location}</div>
-                        <div class="location-meta">
-                            DB ${loc.db_id} | ${loc.judgment.geocoding_method}
-                            ${loc.judgment.is_electronic ? '📷' : ''}
-                        </div>
-                    </div>
-                `).join('');
-
-                if (locations.length > 0) {
-                    selectGeocodedLocation(0, false);
-                }
-            } catch (error) {
-                console.error('Error loading list:', error);
-                document.getElementById('queue-container').innerHTML =
-                    '<div class="loading">Error loading judgments list</div>';
-            }
-        }
 
         async function loadReview() {
             try {
