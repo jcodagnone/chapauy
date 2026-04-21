@@ -41,10 +41,22 @@
         .sidebar {
             background: white;
             border-right: 1px solid #ddd;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .sidebar-header {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            background: #fcfcfc;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .location-queue {
             padding: 1rem;
+            overflow-y: auto;
+            flex-grow: 1;
         }
         .location-item {
             padding: 0.75rem;
@@ -198,8 +210,6 @@
                         <option value="name">Name (A-Z)</option>
                     </select>
 
-                    <input type="text" id="search-input" placeholder="Search location..." style="padding: 0.4rem 0.8rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; min-width: 200px; margin-left: 0.5rem;">
-
                     <span style="margin-left:0.5rem; color:#7f8c8d; font-size:0.85rem;">? Hover to see meaning</span>
                     <label style="margin-left:1rem; display:flex; align-items:center; gap:0.3rem; color:white; font-size:0.9rem; cursor:pointer;">
                         <input type="checkbox" id="toggle-reference" style="cursor:pointer;" checked>
@@ -221,19 +231,23 @@
 
     <div class="container">
         <div class="sidebar">
-            <div class="location-queue">
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; width: 100%;">
-                    <select id="view-select" style="padding: 0.5rem; font-size: 0.85rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; cursor: pointer; width: 100%;">
+            <div class="sidebar-header">
+                <div style="display: flex; flex-direction: column; gap: 0.6rem; width: 100%;">
+                    <select id="view-select" style="padding: 0.6rem; font-size: 0.9rem; font-weight: 600; border: 1px solid #bdc3c7; border-radius: 4px; background: white; cursor: pointer; width: 100%; color: #2c3e50;">
                         <option value="queue">📍 Pending Locations</option>
                         <option value="review">📝 Review Judgments</option>
                         <option value="cluster">✨ Clusters</option>
                         <option value="list">📋 Judgments (List)</option>
                     </select>
-                    <div id="view-description" style="font-size: 0.75rem; color: #7f8c8d; padding: 0 0.25rem;"></div>
+                    <div id="view-description" style="font-size: 0.8rem; color: #7f8c8d; line-height: 1.3; padding: 0 0.2rem;"></div>
+                    <div style="position: relative; margin-top: 0.2rem;">
+                        <input type="text" id="search-input" placeholder="Filter by location name..." style="padding: 0.6rem 0.8rem; border: 1px solid #bdc3c7; border-radius: 4px; background: white; width: 100%; font-size: 0.85rem;">
+                        <span style="position: absolute; right: 0.8rem; top: 50%; transform: translateY(-50%); color: #bdc3c7; pointer-events: none;">🔍</span>
+                    </div>
                 </div>
-                <div id="queue-container" class="loading">
-                    Loading locations...
-                </div>
+            </div>
+            <div id="queue-container" class="location-queue">
+                <div class="loading">Loading locations...</div>
             </div>
         </div>
 
