@@ -199,7 +199,7 @@
                     </select>
                     <span style="margin-left:0.5rem; color:#7f8c8d; font-size:0.85rem;">? Hover to see meaning</span>
                     <label style="margin-left:1rem; display:flex; align-items:center; gap:0.3rem; color:white; font-size:0.9rem; cursor:pointer;">
-                        <input type="checkbox" id="toggle-reference" style="cursor:pointer;">
+                        <input type="checkbox" id="toggle-reference" style="cursor:pointer;" checked>
                         🟢 Curados
                     </label>
                 </div>
@@ -402,6 +402,11 @@
 
              // Reset reference layer when db changes (reload lazily on toggle)
              referenceLayer.clearLayers();
+             if (document.getElementById('toggle-reference').checked && selectedDatabaseId) {
+                 loadReferenceLayer(selectedDatabaseId).then(() => {
+                     referenceLayer.addTo(map);
+                 });
+             }
 
              // Reload current view
              if (viewMode === 'queue') {
@@ -1071,6 +1076,10 @@
             const view = urlParams.get('view') || 'queue';
             switchView(view);
 
+            if (document.getElementById('toggle-reference').checked && selectedDatabaseId) {
+                await loadReferenceLayer(selectedDatabaseId);
+                referenceLayer.addTo(map);
+            }
         }
 
         // Keyboard shortcuts
