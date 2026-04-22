@@ -46577,6 +46577,20 @@
     },
     {
       "db_id": 6,
+      "location": "AMERICO VESPUCIO y VENANCIO BENAVIDEZ",
+      "point": {
+        "lat": -34.868632,
+        "lng": -56.1948058
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Venancio Benavídez \u0026 Americo Vespucio, 11700 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T14:25:48.03847Z",
+      "updated_at": "2026-04-22T14:25:48.03847Z"
+    },
+    {
+      "db_id": 6,
       "location": "AMIENS y AV GRAL EUGENIO GARZON",
       "point": {
         "lat": -34.8289553,
@@ -47467,6 +47481,34 @@
       "notes": "Angel Salvo \u0026 Vicente Basagoity, 11900 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2025-12-12T12:17:56.133366Z",
       "updated_at": "2025-12-12T12:17:56.133366Z"
+    },
+    {
+      "db_id": 6,
+      "location": "ANGEL ZANELLI y DOMINGO MORA",
+      "point": {
+        "lat": -34.79389223435125,
+        "lng": -56.08333289623261
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Domingo Mora \u0026 Angel Zanelli, 13000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T14:25:59.631605Z",
+      "updated_at": "2026-04-22T14:25:59.631605Z"
+    },
+    {
+      "db_id": 6,
+      "location": "ANGEL ZANELLI y JUAN JOSE SEVERINO",
+      "point": {
+        "lat": -34.7963358,
+        "lng": -56.0813453
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Juan José Severino \u0026 Angel Zanelli, 13000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T14:26:03.439924Z",
+      "updated_at": "2026-04-22T14:26:03.439924Z"
     },
     {
       "db_id": 6,
@@ -65000,6 +65042,21 @@
       "notes": "Av. Gonzalo Ramírez \u0026 Av. Julio Herrera y Reissig, 11200 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2025-11-11T19:46:23.933215Z",
       "updated_at": "2025-11-11T19:46:23.933215Z"
+    },
+    {
+      "db_id": 6,
+      "location": "AV JULIO HERRERA Y REISSIG y AV JOSE G REQUENA GARCIA",
+      "point": {
+        "lat": -34.9142234,
+        "lng": -56.165856
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Av Tomas Giribaldi \u0026 Av. Julio Herrera y Reissig, 11200 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T12:10:43.221643Z",
+      "updated_at": "2026-04-22T14:26:41.787894Z",
+      "canonical_location": "AV JULIO HERRERA Y REISSIG y AV TOMAS GIRIBALDI"
     },
     {
       "db_id": 6,
@@ -113946,15 +114003,16 @@
       "db_id": 6,
       "location": "FRANCISCO SOLANO ANTUÑA y R REP DEL PERU",
       "point": {
-        "lat": -34.919455078341386,
-        "lng": -56.14884853363038
+        "lat": -34.91948302717802,
+        "lng": -56.14884872278052
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Francisco Solano Antuña, 11300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2025-12-20T12:54:55.990227Z",
-      "updated_at": "2025-12-20T12:54:55.990227Z"
+      "updated_at": "2026-04-21T14:42:24.022168Z",
+      "canonical_location": "RAMBLA M. GANDHI y FRANCISCO SOLANO ANTUÑA"
     },
     {
       "db_id": 6,
@@ -153094,6 +153152,20 @@
     },
     {
       "db_id": 6,
+      "location": "PEDRO RICALDONI y DIONISIO LOPEZ",
+      "point": {
+        "lat": -34.8851911,
+        "lng": -56.1347912
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Dionisio López \u0026 Pedro Ricaldoni, 11400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:32:50.533035Z",
+      "updated_at": "2026-04-22T13:32:50.533035Z"
+    },
+    {
+      "db_id": 6,
       "location": "PEDRO RICALDONI y IRLANDA",
       "point": {
         "lat": -34.8858427,
@@ -153236,6 +153308,21 @@
       "created_at": "2025-11-25T14:18:24.754086Z",
       "updated_at": "2025-11-25T17:10:36.414004Z",
       "canonical_location": "YACARE y PIEDRAS"
+    },
+    {
+      "db_id": 6,
+      "location": "PEREZ CASTELLANO y RBLA 25 DE AGOSTO DE 1825",
+      "point": {
+        "lat": -34.90514080195058,
+        "lng": -56.21167927980424
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Rambla 25 de Agosto de 1825, 11000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:33:12.737558Z",
+      "updated_at": "2026-04-22T14:26:40.433701Z",
+      "canonical_location": "RBLA 25 DE AGOSTO DE 1825 y PEREZ CASTELLANO"
     },
     {
       "db_id": 6,
@@ -157356,21 +157443,6 @@
     },
     {
       "db_id": 6,
-      "location": "R REP DEL PERU y FRANCISCO SOLANO ANTUÑA",
-      "point": {
-        "lat": -34.9194618,
-        "lng": -56.1489628
-      },
-      "is_electronic": false,
-      "geocoding_method": "google_maps",
-      "confidence": "medium",
-      "notes": "Rambla República del Perú \u0026 Francisco Solano Antuña, 11300 Montevideo, Departamento de Montevideo, Uruguay",
-      "created_at": "2025-11-25T15:42:08.744404Z",
-      "updated_at": "2025-11-25T17:12:20.642154Z",
-      "canonical_location": "RAMBLA M. GANDHI y FRANCISCO SOLANO ANTUÑA"
-    },
-    {
-      "db_id": 6,
       "location": "R REP DEL PERU y GABRIEL A PEREIRA",
       "point": {
         "lat": -34.91169558985136,
@@ -158021,15 +158093,15 @@
       "db_id": 6,
       "location": "RAMBLA M. GANDHI y FRANCISCO SOLANO ANTUÑA",
       "point": {
-        "lat": -34.9194618,
-        "lng": -56.1489628
+        "lat": -34.91948302717802,
+        "lng": -56.14884872278052
       },
       "is_electronic": false,
-      "geocoding_method": "google_maps",
+      "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Francisco Solano Antuña \u0026 Rambla Mahatma Gandhi, 11300 Montevideo, Departamento de Montevideo, Uruguay",
-      "created_at": "2025-11-25T15:08:23.967943Z",
-      "updated_at": "2025-11-25T15:08:23.967943Z"
+      "created_at": "2026-04-21T14:42:09.66944Z",
+      "updated_at": "2026-04-21T14:42:09.66944Z"
     },
     {
       "db_id": 6,
@@ -158119,16 +158191,16 @@
       "db_id": 6,
       "location": "RAMBLA M. GANDHI y R REP DEL PERU",
       "point": {
-        "lat": -34.919455078341386,
-        "lng": -56.14884853363038
+        "lat": -34.91948302717802,
+        "lng": -56.14884872278052
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
-      "notes": "Rbla. República del Perú, 11300 Montevideo, Departamento de Montevideo, Uruguay",
+      "notes": "Rambla República del Perú \u0026 Francisco Solano Antuña, 11300 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-04-21T13:26:30.850787Z",
-      "updated_at": "2026-04-21T13:26:47.072406Z",
-      "canonical_location": "FRANCISCO SOLANO ANTUÑA y R REP DEL PERU"
+      "updated_at": "2026-04-21T14:44:10.579009Z",
+      "canonical_location": "RAMBLA M. GANDHI y FRANCISCO SOLANO ANTUÑA"
     },
     {
       "db_id": 6,
@@ -163345,6 +163417,20 @@
     },
     {
       "db_id": 6,
+      "location": "ROCHA y MARCELINO BERTHELOT",
+      "point": {
+        "lat": -34.8835825,
+        "lng": -56.1852952
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Marcelino Berthelot \u0026 Rocha, 11800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:32:31.586339Z",
+      "updated_at": "2026-04-22T13:32:31.586339Z"
+    },
+    {
+      "db_id": 6,
       "location": "ROCHA y MARTIN GARCIA",
       "point": {
         "lat": -34.8880086,
@@ -163990,6 +164076,21 @@
       "notes": "RN5, Argentina",
       "created_at": "2025-11-29T17:30:19.53386Z",
       "updated_at": "2025-11-29T17:30:19.53386Z"
+    },
+    {
+      "db_id": 6,
+      "location": "RUTA NAL CESAR MAYO GUTIERREZ y AV GRAL EUGENIO GARZON",
+      "point": {
+        "lat": -34.797475,
+        "lng": -56.2245049
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Gral. Eugenio Garzón \u0026 Ruta Nal. César Mayo Gutiérrez, 12400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T12:11:04.82929Z",
+      "updated_at": "2026-04-22T14:26:42.080733Z",
+      "canonical_location": "RUTA NAL CESAR MAYO GUTIERREZ y CNO COLMAN"
     },
     {
       "db_id": 6,
@@ -167761,6 +167862,21 @@
       "notes": "Cam. Paso del Sauce, 12400 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-16T12:57:07.34029Z",
       "updated_at": "2026-02-16T12:57:07.34029Z"
+    },
+    {
+      "db_id": 6,
+      "location": "SITIO GRANDE y ABAYUBA",
+      "point": {
+        "lat": -34.8744589,
+        "lng": -56.19232659999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Abayubá \u0026 Sitio Grande, 11800 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:31:57.866063Z",
+      "updated_at": "2026-04-22T14:26:39.171034Z",
+      "canonical_location": "ABAYUBA y SITIO GRANDE"
     },
     {
       "db_id": 6,
@@ -173167,6 +173283,21 @@
     },
     {
       "db_id": 6,
+      "location": "VIRREY ELIO y BESARES",
+      "point": {
+        "lat": -34.8522067,
+        "lng": -56.1352169
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Virrey Elío \u0026 Besares, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:32:11.003456Z",
+      "updated_at": "2026-04-22T14:26:38.222631Z",
+      "canonical_location": "BESARES y VIRREY ELIO"
+    },
+    {
+      "db_id": 6,
       "location": "VIRREY ELIO y DR RICARDO COSSIO",
       "point": {
         "lat": -34.8537469,
@@ -173846,6 +173977,21 @@
       "created_at": "2025-12-19T12:33:50.412728Z",
       "updated_at": "2025-12-19T12:37:50.205298Z",
       "canonical_location": "RBLA REPUBLICA DE CHILE y YACO"
+    },
+    {
+      "db_id": 6,
+      "location": "YAGUARI y BV ARTIGAS",
+      "point": {
+        "lat": -34.8757882,
+        "lng": -56.16696100000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Bulevar General Artigas \u0026 Yaguarí, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-04-22T13:32:18.19551Z",
+      "updated_at": "2026-04-22T14:26:37.552861Z",
+      "canonical_location": "BV ARTIGAS y YAGUARI"
     },
     {
       "db_id": 6,
@@ -176260,6 +176406,20 @@
     },
     {
       "db_id": 26,
+      "location": "Belloni y Av.de las Instrucciones, Minas",
+      "point": {
+        "lat": -34.3741661,
+        "lng": -55.2172181
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jose Belloni \u0026 Av. de las Instrucciones, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-04-21T14:38:41.179815Z",
+      "updated_at": "2026-04-21T14:38:41.179815Z"
+    },
+    {
+      "db_id": 26,
       "location": "CALLEJON VIDAL Y FUENTES, MINAS",
       "point": {
         "lat": -34.3778781,
@@ -178306,6 +178466,20 @@
       "notes": "Avenida Doctor Alberto D. Roldan \u0026 Juan C. Henderson, 60000 Paysandú, Departamento de Paysandú, Uruguay",
       "created_at": "2026-02-22T12:34:42.143312Z",
       "updated_at": "2026-02-22T12:34:42.143312Z"
+    },
+    {
+      "db_id": 43,
+      "location": "Doctor Roldan y Proyectada 100-N",
+      "point": {
+        "lat": -32.2733172,
+        "lng": -58.07499549999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Avenida Doctor Alberto D. Roldan \u0026 Proyectada 100, 60000 Nuevo Paysandu, Departamento de Paysandú, Uruguay",
+      "created_at": "2026-04-22T12:09:35.498543Z",
+      "updated_at": "2026-04-22T12:09:35.498543Z"
     },
     {
       "db_id": 43,
@@ -215309,6 +215483,20 @@
       "notes": "Mapuches \u0026 Ruta 39, 20000 Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-08T19:42:14.536043Z",
       "updated_at": "2025-11-08T19:42:14.536043Z"
+    },
+    {
+      "db_id": 45,
+      "location": "Ruta 39 y Marelli",
+      "point": {
+        "lat": -34.8477002,
+        "lng": -54.9419381
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Ruta 39, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-22T12:09:59.091141Z",
+      "updated_at": "2026-04-22T12:09:59.091141Z"
     },
     {
       "db_id": 45,
