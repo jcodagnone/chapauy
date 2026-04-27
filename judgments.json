@@ -176416,7 +176416,8 @@
       "confidence": "medium",
       "notes": "Jose Belloni \u0026 Av. de las Instrucciones, 30000 Minas, Departamento de Lavalleja, Uruguay",
       "created_at": "2026-04-21T14:38:41.179815Z",
-      "updated_at": "2026-04-21T14:38:41.179815Z"
+      "updated_at": "2026-04-27T12:59:44.829978Z",
+      "canonical_location": "AV. INSTRUCCIONES Y BELLONI, MINAS"
     },
     {
       "db_id": 26,
@@ -180410,6 +180411,21 @@
     },
     {
       "db_id": 45,
+      "location": "ALEGRE VENTURA RAMON Y MICHELINI ZELMAR, MALDONADO",
+      "point": {
+        "lat": -34.9064415,
+        "lng": -54.96092429999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Zelmar Michelini, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:55:35.45178Z",
+      "updated_at": "2026-04-27T12:59:45.547248Z",
+      "canonical_location": "MICHELINI ZELMAR Y ALEGRE VENTURA RAMON"
+    },
+    {
+      "db_id": 45,
       "location": "ALEGRE VENTURA RAMON Y MONTERROSO JOSE",
       "point": {
         "lat": -34.9064786,
@@ -181187,16 +181203,16 @@
       "db_id": 45,
       "location": "ARTIGAS GRAL, JOSE G, (BULEVAR Y CORDOBA AVDA,, PUNTA DEL ESTE",
       "point": {
-        "lat": -34.92557769430009,
-        "lng": -54.94122053016993
+        "lat": -34.92567885437693,
+        "lng": -54.941151738166816
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Córdoba, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-04-20T12:57:09.987402Z",
-      "updated_at": "2026-04-20T13:02:20.379117Z",
-      "canonical_location": "ARTIGAS GRAL, JOSE G, (BULEVAR Y CORDOBA AVDA,"
+      "updated_at": "2026-04-27T12:59:44.327508Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y CORDOBA AVDA., PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
@@ -181346,6 +181362,20 @@
       "created_at": "2026-04-20T12:23:28.593094Z",
       "updated_at": "2026-04-20T13:01:37.942501Z",
       "canonical_location": "LAS FOCAS Y GORLERO JUAN AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL, JOSE G, RBLA, MA Y LOS MUERGOS, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.95976269628909,
+        "lng": -54.9453628063202
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Los Muergos, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:57:41.668712Z",
+      "updated_at": "2026-04-27T12:57:41.668712Z"
     },
     {
       "db_id": 45,
@@ -183133,6 +183163,20 @@
     },
     {
       "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y GATTAS PASCUAL, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.943395,
+        "lng": -54.9370376
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Pascual Gattas, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:55:40.149688Z",
+      "updated_at": "2026-04-27T12:55:40.149688Z"
+    },
+    {
+      "db_id": 45,
       "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y ISLA DE LOBOS",
       "point": {
         "lat": -34.970480966101285,
@@ -183378,6 +183422,21 @@
       "created_at": "2026-02-28T11:57:11.480187Z",
       "updated_at": "2026-02-28T12:41:20.180963Z",
       "canonical_location": "ARTIGAS GRAL. JOSE G. RBLA. BR Y OBENQUE, PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
+      "location": "ARTIGAS GRAL. JOSE G. RBLA. MA Y PARIS AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.93753131291543,
+        "lng": -54.9376380443573
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Punta del Este, Maldonado Department, Uruguay",
+      "created_at": "2026-04-27T12:55:52.167804Z",
+      "updated_at": "2026-04-27T12:59:45.368551Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y PARIS AVDA."
     },
     {
       "db_id": 45,
@@ -191492,6 +191551,20 @@
     },
     {
       "db_id": 45,
+      "location": "CEBERIO DR. ANDRES (CALLE) Y REYLES CARLOS, SAN CARLOS",
+      "point": {
+        "lat": -34.79366903148637,
+        "lng": -54.922057092189796
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "high",
+      "notes": "633H+65C, Pdte. Tomas Berreta, 20400 San Carlos, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:56:40.132052Z",
+      "updated_at": "2026-04-27T12:56:40.132052Z"
+    },
+    {
+      "db_id": 45,
       "location": "CEBERIO DR. ANDRES AVDA. Y BERRETA PTE. TOMAS (CALLE), SAN CARLOS",
       "point": {
         "lat": -34.7971139243642,
@@ -191508,15 +191581,16 @@
       "db_id": 45,
       "location": "CEBERIO DR. ANDRES AVDA. Y REYLES CARLOS",
       "point": {
-        "lat": -34.7936524,
-        "lng": -54.9220818
+        "lat": -34.79366903148637,
+        "lng": -54.922057092189796
       },
       "is_electronic": false,
       "geocoding_method": "google_maps",
       "confidence": "medium",
       "notes": "Doctor Andres Ceberio \u0026 Carlos Reyles, 20400 San Carlos, Departamento de Maldonado, Uruguay",
       "created_at": "2025-12-05T02:23:36.006314Z",
-      "updated_at": "2025-12-05T02:23:36.006314Z"
+      "updated_at": "2026-04-27T12:59:45.894702Z",
+      "canonical_location": "CEBERIO DR. ANDRES (CALLE) Y REYLES CARLOS, SAN CARLOS"
     },
     {
       "db_id": 45,
@@ -192796,6 +192870,21 @@
     },
     {
       "db_id": 45,
+      "location": "CORDOBA AVDA, Y ARTIGAS GRAL, JOSE G, (BULEVAR, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.92567885437693,
+        "lng": -54.941151738166816
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Córdoba \u0026 Bulevar General Jose Gervasio Artigas, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:58:44.34879Z",
+      "updated_at": "2026-04-27T12:59:44.31527Z",
+      "canonical_location": "ARTIGAS GRAL. JOSE G. (BULEVAR Y CORDOBA AVDA., PUNTA DEL ESTE"
+    },
+    {
+      "db_id": 45,
       "location": "CORDOBA AVDA, Y BOLIVAR SIMON",
       "point": {
         "lat": -34.91638920030666,
@@ -193484,6 +193573,21 @@
     },
     {
       "db_id": 45,
+      "location": "DE HERRERA DR, LUIS ALBERTO AV Y LUSSICH ANTONIO AVDA,, MALDONADO",
+      "point": {
+        "lat": -34.88707283429173,
+        "lng": -54.97964948415757
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Cam. Antonio Lussich, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:57:34.574263Z",
+      "updated_at": "2026-04-27T12:59:43.935211Z",
+      "canonical_location": "LUSSICH ANTONIO AVDA. Y DE HERRERA DR. LUIS ALBERTO AV"
+    },
+    {
+      "db_id": 45,
       "location": "DE HERRERA DR, LUIS ALBERTO AV Y RUTA 39, MALDONADO",
       "point": {
         "lat": -34.88229613737768,
@@ -194105,6 +194209,20 @@
       "created_at": "2026-04-20T12:56:07.595643Z",
       "updated_at": "2026-04-20T13:01:39.458674Z",
       "canonical_location": "DE VIANA JOSE JOAQUIN AVDA. Y ALEGRE VENTURA RAMON"
+    },
+    {
+      "db_id": 45,
+      "location": "DE VIANA JOSE JOAQUIN AVDA, Y ESPAÑA AVDA,, MALDONADO",
+      "point": {
+        "lat": -34.91065741671307,
+        "lng": -54.963178038597114
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado, Maldonado Department, Uruguay",
+      "created_at": "2026-04-27T12:58:40.093021Z",
+      "updated_at": "2026-04-27T12:58:40.093021Z"
     },
     {
       "db_id": 45,
@@ -195852,6 +195970,21 @@
       "created_at": "2025-12-25T12:34:20.426798Z",
       "updated_at": "2025-12-25T12:56:15.753261Z",
       "canonical_location": "DIECINUEVE (19) DE ABRIL Y CACHIMBA DEL REY AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "DIECINUEVE (19) DE ABRIL Y VARELA JOSE PEDRO, MALDONADO",
+      "point": {
+        "lat": -34.903696,
+        "lng": -54.9535555
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Jose Pedro Varela \u0026 Avenida José Batlle y Ordoñez, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:55:24.319461Z",
+      "updated_at": "2026-04-27T12:59:45.729374Z",
+      "canonical_location": "VARELA JOSE PEDRO Y BATLLE Y ORDOÑEZ JOSE AVDA."
     },
     {
       "db_id": 45,
@@ -206387,6 +206520,21 @@
     },
     {
       "db_id": 45,
+      "location": "LUSSICH ANTONIO AVDA, Y LAVALLEJA FRANCISCO, MALDONADO",
+      "point": {
+        "lat": -34.90188080992054,
+        "lng": -54.963462352752686
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Avenue J. Antonio Lavalleja, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:58:07.573046Z",
+      "updated_at": "2026-04-27T12:59:43.402625Z",
+      "canonical_location": "DE VIANA JOSE JOAQUIN AVDA. Y LAVALLEJA GRAL. JUAN A. AVDA."
+    },
+    {
+      "db_id": 45,
       "location": "LUSSICH ANTONIO AVDA, Y MESINA",
       "point": {
         "lat": -34.89933563846988,
@@ -206429,6 +206577,21 @@
       "created_at": "2026-04-20T12:33:30.158887Z",
       "updated_at": "2026-04-20T13:01:44.826977Z",
       "canonical_location": "LUSSICH ANTONIO AVDA. Y MIGUEZ JOSE"
+    },
+    {
+      "db_id": 45,
+      "location": "LUSSICH ANTONIO AVDA, Y MUÑOZ JUAN JOSE, MALDONADO",
+      "point": {
+        "lat": -34.8931223,
+        "lng": -54.9748285
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Juan José Muñoz \u0026 Av. Antonio Lussich, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:58:01.931766Z",
+      "updated_at": "2026-04-27T12:59:45.014257Z",
+      "canonical_location": "LUSSICH ANTONIO AVDA. Y MUÑOZ JUAN JOSE"
     },
     {
       "db_id": 45,
@@ -209501,6 +209664,21 @@
       "created_at": "2026-04-20T12:57:56.484477Z",
       "updated_at": "2026-04-20T13:02:20.954174Z",
       "canonical_location": "PEDRAGOSA SIERRA ORLANDO AVDA. Y SAN CIRO"
+    },
+    {
+      "db_id": 45,
+      "location": "PEDRAGOSA SIERRA ORLANDO AVDA, Y WILLIMAN DR, CLAUDIO RBLA,, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.94772217813329,
+        "lng": -54.940811097621925
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Orlando, FL, USA",
+      "created_at": "2026-04-27T12:58:21.055096Z",
+      "updated_at": "2026-04-27T12:59:44.672401Z",
+      "canonical_location": "WILLIMAN DR. CLAUDIO RBLA. Y PEDRAGOSA SIERRA ORLANDO AVDA., PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
@@ -217421,6 +217599,21 @@
     },
     {
       "db_id": 45,
+      "location": "SAN CARLOS Y EDYE DR. JUAN T., MALDONADO",
+      "point": {
+        "lat": -34.90551914622035,
+        "lng": -54.954450130462654
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Doctor Edye \u0026 San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:56:13.24355Z",
+      "updated_at": "2026-04-27T12:59:45.178734Z",
+      "canonical_location": "EDYE DR. JUAN T. Y SAN CARLOS"
+    },
+    {
+      "db_id": 45,
       "location": "SAN CARLOS Y FLORIDA",
       "point": {
         "lat": -34.90823789446723,
@@ -222794,6 +222987,21 @@
     },
     {
       "db_id": 45,
+      "location": "WILLIMAN DR. CLAUDIO RBLA. Y LA PAZ, MALDONADO",
+      "point": {
+        "lat": -34.9243601,
+        "lng": -54.9657293
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "La Paz \u0026 Rambla Doctor Claudio Williman, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-04-27T12:57:05.61349Z",
+      "updated_at": "2026-04-27T12:59:44.472689Z",
+      "canonical_location": "RAMBLA CLAUDIO WILLIMAN Y LA PAZ"
+    },
+    {
+      "db_id": 45,
       "location": "WILLIMAN DR. CLAUDIO RBLA. Y LA PLATA",
       "point": {
         "lat": -34.9395309,
@@ -225176,7 +225384,7 @@
       "confidence": "low",
       "notes": "Uruguay",
       "created_at": "2025-12-12T11:06:40.044144Z",
-      "updated_at": "2025-12-12T11:06:40.044144Z"
+      "updated_at": "2026-04-27T12:54:26.909465Z"
     },
     {
       "db_id": 65,
@@ -227107,6 +227315,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 000 / 002K210D",
+      "point": {
+        "lat": -34.870273,
+        "lng": -56.21911356
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Capurro",
+      "created_at": "2026-04-27T12:53:08.883582Z",
+      "updated_at": "2026-04-27T12:53:52.775072Z",
+      "canonical_location": "Ruta 000 y 002K220_C"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 000 / 002K220C",
       "point": {
         "lat": -34.870273,
@@ -227272,6 +227495,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 001 / 029K000_C",
+      "point": {
+        "lat": -34.7415,
+        "lng": -56.4445
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Penino a +",
+      "created_at": "2026-04-27T12:53:27.556083Z",
+      "updated_at": "2026-04-27T12:53:51.604365Z",
+      "canonical_location": "Ruta 001 y 029K000_C"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 001 / 029K360D",
       "point": {
         "lat": -34.7547,
@@ -227298,6 +227536,21 @@
       "notes": "Paso Mauricio",
       "created_at": "2026-04-19T13:13:44.24994Z",
       "updated_at": "2026-04-19T13:22:57.57239Z",
+      "canonical_location": "Ruta 001 y 051K278_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 / 051K5 71D",
+      "point": {
+        "lat": -34.6448,
+        "lng": -56.6209
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Paso Mauricio",
+      "created_at": "2026-04-27T12:53:43.483335Z",
+      "updated_at": "2026-04-27T12:53:51.190193Z",
       "canonical_location": "Ruta 001 y 051K278_C"
     },
     {
@@ -227422,6 +227675,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 003 / 071K150_C",
+      "point": {
+        "lat": -34.518,
+        "lng": -56.7613
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Villa Marí­a Acceso",
+      "created_at": "2026-04-27T12:53:19.789143Z",
+      "updated_at": "2026-04-27T12:53:52.010549Z",
+      "canonical_location": "Ruta 003 y 071K150_C"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 003 / 071K785D",
       "point": {
         "lat": -34.5123,
@@ -227494,6 +227762,21 @@
       "created_at": "2026-04-19T13:17:07.973382Z",
       "updated_at": "2026-04-19T13:23:07.268053Z",
       "canonical_location": "Ruta 003 y 383K490"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 003 / 432K005",
+      "point": {
+        "lat": -31.839938,
+        "lng": -57.88638027
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Termas Guaviyu",
+      "created_at": "2026-04-27T12:52:58.012206Z",
+      "updated_at": "2026-04-27T12:53:52.558854Z",
+      "canonical_location": "Ruta 003 y 432K005"
     },
     {
       "db_id": 68,
@@ -228033,6 +228316,21 @@
       "created_at": "2026-04-19T13:15:01.178438Z",
       "updated_at": "2026-04-19T13:22:58.799665Z",
       "canonical_location": "Ruta 009 y 264K038"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 009 / 33 8K106",
+      "point": {
+        "lat": -33.6941,
+        "lng": -53.4476
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Chuy",
+      "created_at": "2026-04-27T12:53:39.304372Z",
+      "updated_at": "2026-04-27T12:53:53.027111Z",
+      "canonical_location": "Ruta 009 y 338K106"
     },
     {
       "db_id": 68,
@@ -228839,6 +229137,21 @@
       "notes": "Marindia",
       "created_at": "2026-04-19T13:18:11.317765Z",
       "updated_at": "2026-04-19T13:23:07.234917Z",
+      "canonical_location": "Ruta 200 y 040K435_D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 200 / 040K091_C",
+      "point": {
+        "lat": -34.7718,
+        "lng": -55.8221
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Marindia",
+      "created_at": "2026-04-27T12:53:30.011056Z",
+      "updated_at": "2026-04-27T12:53:52.299338Z",
       "canonical_location": "Ruta 200 y 040K435_D"
     },
     {
