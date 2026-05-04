@@ -318,6 +318,7 @@ func (s *Server) getLocationQueue(ctx *gin.Context) {
 
 	if search != "" {
 		whereClause += " AND o.location ILIKE ?"
+
 		args = append(args, "%"+search+"%")
 	}
 
@@ -791,6 +792,7 @@ func (s *Server) listJudgments(ctx *gin.Context) {
 	}
 
 	var dbID *int
+
 	if p := ctx.Query("db_id"); p != "" {
 		var id int
 		if _, err := fmt.Sscanf(p, "%d", &id); err == nil {

@@ -325,29 +325,35 @@ func TestCountJudgments(t *testing.T) {
 
 	// Filtered count by dbID
 	dbID := 6
+
 	count, err = repo.CountJudgments(&dbID, nil)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
+
 	if count != 2 {
 		t.Errorf("Expected 2 judgments for dbID 6, got %d", count)
 	}
 
 	// Filtered count by location
 	search := "Loc"
+
 	count, err = repo.CountJudgments(nil, &search)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
+
 	if count != 3 {
 		t.Errorf("Expected 3 judgments for 'Loc', got %d", count)
 	}
 
 	search = "1"
+
 	count, err = repo.CountJudgments(nil, &search)
 	if err != nil {
 		t.Fatalf("CountJudgments() error = %v", err)
 	}
+
 	if count != 1 {
 		t.Errorf("Expected 1 judgment for '1', got %d", count)
 	}
