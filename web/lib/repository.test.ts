@@ -338,6 +338,71 @@ describe("OffenseRepository", () => {
         "13.3.A - Superar las velocidades máximas permitidas: hasta 20 km"
       )
     })
+
+    it("includes sliding window facets for Dimension.Year", async () => {
+      // Clear and setup fresh data for sliding window tests
+      await runQuery(testDB, `DELETE FROM offenses`)
+      
+      // Use fixed relative dates for predictability in tests if possible, 
+      // but DuckDB's current_timestamp is 'now'.
+      // We can use CAST(now() AS DATE) to be safe.
+      await runQuery(
+        testDB,
+        `
+              INSERT INTO offenses (db_id, doc_source, doc_id, record_id, time, time_year) VALUES
+              (1, 'd', '1', 1, current_timestamp, 2026),
+              (1, 'd', '1', 2, current_timestamp - INTERVAL '2 days', 2026),
+              (1, 'd', '1', 3, current_timestamp - INTERVAL '15 days', 2026),
+              (1, 'd', '1', 4, current_timestamp - INTERVAL '2 months', 2026),
+              (1, 'd', '1', 5, current_timestamp - INTERVAL '2 years', 2024)
+          `
+      )
+
+      const results = await getDimensionResults([], [Dimension.Year])
+      const yearFacet = results[0]
+
+      // We expect 3 sliding window values + years (2026, 2024)
+      const lastWeek = yearFacet.values.find((v) => v.value === "last_week")
+      const lastMonth = yearFacet.values.find((v) => v.value === "last_month")
+      const lastYear = yearFacet.values.find((v) => v.value === "last_year")
+
+      expect(lastWeek).toBeDefined()
+      expect(lastWeek?.label).toBe("Última semana")
+      expect(lastWeek?.count).toBe(2) // 0 and 2 days ago
+
+      expect(lastMonth).toBeDefined()
+      expect(lastMonth?.label).toBe("Último mes")
+      expect(lastMonth?.count).toBe(3) // 0, 2, and 15 days ago
+
+      expect(lastYear).toBeDefined()
+      expect(lastYear?.label).toBe("Último año")
+      expect(lastYear?.count).toBe(4) // 0, 2, 15 days, 2 months ago
+
+      // Check regular years are still there
+      expect(yearFacet.values.find((v) => v.value === "2026")).toBeDefined()
+      expect(yearFacet.values.find((v) => v.value === "2024")).toBeDefined()
+    })
+
+    it("filters by sliding window correctly", async () => {
+      await runQuery(testDB, `DELETE FROM offenses`)
+      await runQuery(
+        testDB,
+        `
+              INSERT INTO offenses (db_id, doc_source, doc_id, record_id, time, time_year) VALUES
+              (1, 'd', '1', 1, current_timestamp, 2026),
+              (1, 'd', '1', 2, current_timestamp - INTERVAL '10 days', 2026)
+          `
+      )
+
+      // Filter by last_week
+      const filters: InPredicate[] = [
+        { dimension: Dimension.Year, values: ["last_week"] },
+      ]
+
+      const offenses = await getOffenses(filters, SortBy.Vehicle, 1, 10)
+      expect(offenses).toHaveLength(1)
+      expect(new Date(offenses[0].time).getFullYear()).toBe(2026)
+    })
   })
 
   describe("getChartDataByDayOfYear", () => {

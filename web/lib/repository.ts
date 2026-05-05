@@ -106,7 +106,6 @@ function buildWhereClause(
 
     switch (p.dimension) {
       case Dimension.Database:
-      case Dimension.Year:
       case Dimension.Country:
       case Dimension.Vehicle:
       case Dimension.DocSource:
@@ -114,6 +113,31 @@ function buildWhereClause(
       case Dimension.Date:
         clauses.push(`${column} IN (${placeholders})`)
         args.push(...p.values)
+        break
+      case Dimension.Year:
+        const realYears = p.values.filter((v) => /^\d{4}$/.test(v))
+        const specialYears = p.values.filter((v) => !/^\d{4}$/.test(v))
+
+        const yearClauses: string[] = []
+        if (realYears.length > 0) {
+          const yearPlaceholders = realYears.map(() => "?").join(",")
+          yearClauses.push(`${column} IN (${yearPlaceholders})`)
+          args.push(...realYears)
+        }
+
+        specialYears.forEach((v) => {
+          if (v === "last_year") {
+            yearClauses.push("time >= current_timestamp - INTERVAL '1 year'")
+          } else if (v === "last_month") {
+            yearClauses.push("time >= current_timestamp - INTERVAL '1 month'")
+          } else if (v === "last_week") {
+            yearClauses.push("time >= current_timestamp - INTERVAL '1 week'")
+          }
+        })
+
+        if (yearClauses.length > 0) {
+          clauses.push(`(${yearClauses.join(" OR ")})`)
+        }
         break
       case Dimension.Description:
         const likeClauses = p.values.map(() => `${column} LIKE ?`)
@@ -307,6 +331,42 @@ export async function getDimensionResults(
           valueArgs.push(...args)
         })
         continue
+      }
+
+      // Special handling for Year dimension: Include sliding windows
+      if (dim === Dimension.Year) {
+        const { where, args } = buildWhereClause(predicates || [], dim)
+        const whereClause = where ? `WHERE ${where}` : ""
+
+        const slidingWindows = [
+          {
+            label: "last_year",
+            expr: "time >= current_timestamp - INTERVAL '1 year'",
+          },
+          {
+            label: "last_month",
+            expr: "time >= current_timestamp - INTERVAL '1 month'",
+          },
+          {
+            label: "last_week",
+            expr: "time >= current_timestamp - INTERVAL '1 week'",
+          },
+        ]
+
+        slidingWindows.forEach((sw) => {
+          const clause = whereClause
+            ? `${whereClause} AND ${sw.expr}`
+            : `WHERE ${sw.expr}`
+          valueQueries.push(`
+            SELECT 
+              '${Dimension.Year}' as dimension,
+              '${sw.label}' as value,
+              COUNT(*) as count
+            FROM offenses
+            ${clause}
+          `)
+          valueArgs.push(...args)
+        })
       }
 
       const { where, args } = buildWhereClause(predicates || [], dim)
@@ -521,6 +581,13 @@ export async function getDimensionResults(
         no_ur: "Sin UR",
       }
       label = labels[row.value] || row.value
+    } else if (dim === Dimension.Year) {
+      const yearLabels: Record<string, string> = {
+        last_year: "Último año",
+        last_month: "Último mes",
+        last_week: "Última semana",
+      }
+      label = yearLabels[row.value] || row.value
     }
 
     resultsMap[dim].values.push({
@@ -579,6 +646,13 @@ export async function getDimensionResults(
               no_ur: "Sin UR",
             }
             label = labels[val] || val
+          } else if (dim === Dimension.Year) {
+            const yearLabels: Record<string, string> = {
+              last_year: "Último año",
+              last_month: "Último mes",
+              last_week: "Última semana",
+            }
+            label = yearLabels[val] || val
           }
 
           facet.values.push({
@@ -594,6 +668,18 @@ export async function getDimensionResults(
     // Sort
     facet.values.sort((a, b) => {
       if (a.selected !== b.selected) return a.selected ? -1 : 1
+
+      if (dim === Dimension.Year) {
+        const order: Record<string, number> = {
+          last_week: 1,
+          last_month: 2,
+          last_year: 3,
+        }
+        const orderA = order[a.value] || 99
+        const orderB = order[b.value] || 99
+        if (orderA !== orderB) return orderA - orderB
+      }
+
       if (a.count !== b.count) return b.count - a.count
       return (a.label || "").localeCompare(b.label || "")
     })
@@ -649,6 +735,43 @@ export async function getDocumentFacets(
         valueArgs.push(...args)
       })
       continue
+    }
+
+    // Special handling for Year dimension: Include sliding windows
+    if (dim === Dimension.Year) {
+      const { where, args } = buildWhereClause(predicates || [], dim)
+      const whereClause = where ? `WHERE ${where}` : ""
+      const distinctDocExpr = "CAST(db_id AS VARCHAR) || '-' || doc_id"
+
+      const slidingWindows = [
+        {
+          label: "last_year",
+          expr: "time >= current_timestamp - INTERVAL '1 year'",
+        },
+        {
+          label: "last_month",
+          expr: "time >= current_timestamp - INTERVAL '1 month'",
+        },
+        {
+          label: "last_week",
+          expr: "time >= current_timestamp - INTERVAL '1 week'",
+        },
+      ]
+
+      slidingWindows.forEach((sw) => {
+        const clause = whereClause
+          ? `${whereClause} AND ${sw.expr}`
+          : `WHERE ${sw.expr}`
+        valueQueries.push(`
+            SELECT 
+              '${Dimension.Year}' as dimension,
+              '${sw.label}' as value,
+              COUNT(DISTINCT ${distinctDocExpr}) as count
+            FROM offenses
+            ${clause}
+          `)
+        valueArgs.push(...args)
+      })
     }
 
     const { where, args } = buildWhereClause(predicates || [], dim)
@@ -731,6 +854,13 @@ export async function getDocumentFacets(
         no_ur: "Sin UR",
       }
       label = labels[row.value] || row.value
+    } else if (dim === Dimension.Year) {
+      const yearLabels: Record<string, string> = {
+        last_year: "Último año",
+        last_month: "Último mes",
+        last_week: "Última semana",
+      }
+      label = yearLabels[row.value] || row.value
     }
 
     resultsMap[dim].values.push({
@@ -764,6 +894,13 @@ export async function getDocumentFacets(
               no_ur: "Sin UR",
             }
             label = labels[val] || val
+          } else if (dim === Dimension.Year) {
+            const yearLabels: Record<string, string> = {
+              last_year: "Último año",
+              last_month: "Último mes",
+              last_week: "Última semana",
+            }
+            label = yearLabels[val] || val
           }
           facet.values.push({
             value: val,
@@ -777,6 +914,18 @@ export async function getDocumentFacets(
 
     facet.values.sort((a, b) => {
       if (a.selected !== b.selected) return a.selected ? -1 : 1
+
+      if (dim === Dimension.Year) {
+        const order: Record<string, number> = {
+          last_week: 1,
+          last_month: 2,
+          last_year: 3,
+        }
+        const orderA = order[a.value] || 99
+        const orderB = order[b.value] || 99
+        if (orderA !== orderB) return orderA - orderB
+      }
+
       if (a.count !== b.count) return b.count - a.count
       return (a.label || "").localeCompare(b.label || "")
     })

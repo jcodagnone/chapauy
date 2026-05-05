@@ -44,7 +44,7 @@ export default function Home() {
           {/* Action Links */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Button variant="secondary" asChild>
-              <Link href="/offenses?facet=features&features=no_error">
+              <Link href="/offenses?facet=features&features=no_error&year=last_year">
                 Explorar todas las infracciones
               </Link>
             </Button>

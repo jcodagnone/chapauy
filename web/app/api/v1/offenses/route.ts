@@ -140,6 +140,19 @@ export async function GET(request: NextRequest) {
                                 break
                         }
                         break
+                    case Dimension.Year:
+                        switch (val) {
+                            case "last_year":
+                                label = "Último año"
+                                break
+                            case "last_month":
+                                label = "Último mes"
+                                break
+                            case "last_week":
+                                label = "Última semana"
+                                break
+                        }
+                        break
                 }
 
                 return {

@@ -81,29 +81,28 @@ export function HomeSearch() {
 
     const handleSearch = (value?: string) => {
         const searchTerm = value !== undefined ? value : query
-        // ... (existing logic)
-        // Check if value is undefined and we have a selected index
+        
+        const params = new URLSearchParams()
+        
+        // If we have a selected index and no explicit value was passed
         if (value === undefined && selectedIndex >= 0 && suggestions[selectedIndex]) {
             const selectedItem = suggestions[selectedIndex]
             const finalTerm = selectedItem.value
-            // Update input to match selected item
             setQuery(finalTerm)
-
-            const params = new URLSearchParams()
-            // Standard search will handle normalization on the server
-            params.set(dimension, finalTerm) // Use finalTerm not searchTerm (which is just query)
-
-            router.push(`/offenses?${params.toString()}`)
-            setIsOpen(false)
+            params.set(dimension, finalTerm)
+        } else if (searchTerm) {
+            params.set(dimension, searchTerm)
+        } else if (value === undefined && !query) {
             return
         }
 
-        // ... (rest of existing logic using searchTerm)
-        if (value === undefined && !query) return
+        // Add default "last_year" filter if not searching by year or vehicle (plate)
+        if (dimension !== Dimension.Year && dimension !== Dimension.Vehicle) {
+            params.set(Dimension.Year, "last_year")
+        }
 
-        const params = new URLSearchParams()
-        params.set(dimension, searchTerm)
         router.push(`/offenses?${params.toString()}`)
+        setIsOpen(false)
     }
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
