@@ -96,6 +96,9 @@ func (c *Chapauy) DataRefresh(
 	// Dry run mode (builds but does not publish)
 	// +optional
 	dryRun bool,
+	// Force reload of curation data and backfill all offenses
+	// +optional
+	force bool,
 ) error {
 	log.Printf("Starting Data Update...\n CLI: %s\n Data: %s\n Web: %s\n", infra.Images.CLI, infra.Images.Data, infra.Images.Web)
 
@@ -116,12 +119,17 @@ func (c *Chapauy) DataRefresh(
 	// We run as root to ensure we can write to the mounted volume and avoid permission issues.
 	// We expect the entrypoint to be compatible or we override it.
 	// The binary is at /app/chapa.
+	updateCmd := []string{"/app/chapa", "impo", "update"}
+	if force {
+		updateCmd = append(updateCmd, "--force")
+	}
+
 	cliCtr := dag.Container().
 		WithRegistryAuth(infra.Images.RegistryAddr, "oauth2accesstoken", tokenSecret).
 		From(infra.Images.CLI).
 		WithUser("root").
 		WithDirectory("/app/db", dataCtr.Directory("/app/db")).
-		WithExec([]string{"/app/chapa", "impo", "update"})
+		WithExec(updateCmd)
 
 	// Force execution to verify the update command runs successfully
 	if _, err := cliCtr.Sync(ctx); err != nil {
