@@ -14,7 +14,7 @@ steps:
       - '-c'
       - |
         set -e
-        curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.20.6 sh
+        curl -L https://dl.dagger.io/dagger/install.sh | DAGGER_VERSION=0.20.7 sh
         export GCP_ACCESS_TOKEN=$(cat token)
 
         # 1. Build CLI and Web
