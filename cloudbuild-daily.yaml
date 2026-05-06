@@ -24,7 +24,7 @@ steps:
         
         # 1. Refresh Data (Builds & Publishes 'data' image)
         echo "Running Data Refresh..."
-        ./bin/dagger call data-refresh --token=env:GCP_ACCESS_TOKEN --force
+        ./bin/dagger call data-refresh --token=env:GCP_ACCESS_TOKEN
 
         # 2. Build Web+Data
         echo "Building Web+Data..."
