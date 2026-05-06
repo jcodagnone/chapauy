@@ -29,9 +29,9 @@ type OffenseRepository interface {
 
 	//////// Geocoding Integration
 	// BackfillGeocodingData updates offenses with geocoding data from location_judgments table
-	BackfillGeocodingData() (int64, error)
+	BackfillGeocodingData(force bool) (int64, error)
 	// BackportDescriptionArticles updates offenses with curated article and section data
-	BackportDescriptionArticles() (int64, error)
+	BackportDescriptionArticles(force bool) (int64, error)
 }
 
 // ArticleLabel represents a label for an article.
@@ -443,11 +443,11 @@ func (r *sqlOffenseRepository) SaveTrafficOffenses(offenses []*TrafficOffense) e
 	return tx.Commit()
 }
 
-func (r *sqlOffenseRepository) BackfillGeocodingData() (int64, error) {
+func (r *sqlOffenseRepository) BackfillGeocodingData(force bool) (int64, error) {
 	var n int64
 
-	for _, q := range []string{
-		// first we apply the canonical names
+	queries := []string{
+		// 1. apply canonical names
 		`
 		UPDATE offenses
 		SET
@@ -459,9 +459,9 @@ func (r *sqlOffenseRepository) BackfillGeocodingData() (int64, error) {
 		        lj.canonical_location IS NOT NULL
 			AND offenses.db_id = lj.db_id
 			AND offenses.location = lj.location
-			AND offenses.display_location IS NULL
+			AND (offenses.display_location IS NULL OR ? = true)
 		`,
-		// then we apply the geocoding information
+		// 2. apply geocoding information
 		`
 			UPDATE offenses
 			SET
@@ -478,11 +478,13 @@ func (r *sqlOffenseRepository) BackfillGeocodingData() (int64, error) {
 				locations lj
 			WHERE
 				offenses.db_id = lj.db_id
-				AND offenses.location = lj.location
-				AND offenses.point IS NULL
+				AND (offenses.location = lj.location OR offenses.display_location = lj.location)
+				AND (offenses.point IS NULL OR ? = true)
 		`,
-	} {
-		result, err := r.db.Exec(q)
+	}
+
+	for _, q := range queries {
+		result, err := r.db.Exec(q, force)
 		if err != nil {
 			return n, fmt.Errorf("backfilling geocoding data: %w", err)
 		}
@@ -499,7 +501,7 @@ func (r *sqlOffenseRepository) BackfillGeocodingData() (int64, error) {
 }
 
 // BackportDescriptionArticles updates offenses with curated article and section data.
-func (r *sqlOffenseRepository) BackportDescriptionArticles() (int64, error) {
+func (r *sqlOffenseRepository) BackportDescriptionArticles(force bool) (int64, error) {
 	var totalRowsAffected int64
 
 	queries := []string{
@@ -511,14 +513,14 @@ func (r *sqlOffenseRepository) BackportDescriptionArticles() (int64, error) {
 			article_codes = d.article_codes
 		FROM descriptions d
 		WHERE
-			offenses.article_ids IS NULL
+			(offenses.article_ids IS NULL OR ? = true)
 			AND offenses.description IS NOT NULL
 			AND offenses.description = d.description
 		`,
 	}
 
 	for _, query := range queries {
-		result, err := r.db.Exec(query)
+		result, err := r.db.Exec(query, force)
 		if err != nil {
 			return totalRowsAffected, fmt.Errorf("backporting curation data: %w", err)
 		}
@@ -532,7 +534,7 @@ func (r *sqlOffenseRepository) BackportDescriptionArticles() (int64, error) {
 	}
 
 	// 2. Update multi-article descriptions
-	multiAffected, err := r.backportMultiArticleDescriptions()
+	multiAffected, err := r.backportMultiArticleDescriptions(force)
 	if err != nil {
 		return totalRowsAffected, fmt.Errorf("backporting multi-article descriptions: %w", err)
 	}
@@ -542,7 +544,7 @@ func (r *sqlOffenseRepository) BackportDescriptionArticles() (int64, error) {
 	return totalRowsAffected, nil
 }
 
-func (r *sqlOffenseRepository) backportMultiArticleDescriptions() (int64, error) {
+func (r *sqlOffenseRepository) backportMultiArticleDescriptions(force bool) (int64, error) {
 	// 1. Load all classified descriptions into memory
 	rows, err := r.db.Query("SELECT description, article_ids, article_codes FROM descriptions")
 	if err != nil {
@@ -585,11 +587,11 @@ func (r *sqlOffenseRepository) backportMultiArticleDescriptions() (int64, error)
 	pendingQuery := `
 		SELECT DISTINCT description
 		FROM offenses
-		WHERE article_ids IS NULL
+		WHERE (article_ids IS NULL OR ? = true)
 		AND description LIKE '%,%'
 	`
 
-	pendingRows, err := r.db.Query(pendingQuery)
+	pendingRows, err := r.db.Query(pendingQuery, force)
 	if err != nil {
 		return 0, fmt.Errorf("getting pending descriptions: %w", err)
 	}
