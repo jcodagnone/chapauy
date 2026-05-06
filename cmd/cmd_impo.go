@@ -59,7 +59,8 @@ var impoUpdateCmd = &cobra.Command{
 	Use:   "update <db>",
 	Short: "Actualiza el contenido local para una base de datos",
 	Args:  dbArg,
-	RunE: func(_ *cobra.Command, args []string) error {
+	RunE: func(cmd *cobra.Command, args []string) error {
+		force, _ := cmd.Flags().GetBool("force")
 		var metrics impo.ClientMetrics
 		var err error
 
@@ -69,7 +70,7 @@ var impoUpdateCmd = &cobra.Command{
 		}
 		defer db.Close()
 
-		if err := ensureCurationDataLoaded(db); err != nil {
+		if err := ensureCurationDataLoaded(db, force); err != nil {
 			return fmt.Errorf("loading curation data: %w", err)
 		}
 
@@ -149,7 +150,7 @@ var impoUpdateCmd = &cobra.Command{
 		}
 
 		if err == nil {
-			if bfErr := backfillCurationData(db); bfErr != nil {
+			if bfErr := backfillCurationData(db, force); bfErr != nil {
 				return fmt.Errorf("backfilling curation data: %w", bfErr)
 			}
 		}
@@ -209,6 +210,12 @@ func init() {
 		"dry-run",
 		false,
 		"No persiste ningun cambio",
+	)
+	impoUpdateCmd.PersistentFlags().BoolP(
+		"force",
+		"f",
+		false,
+		"Force reload of curation data and backfill all offenses",
 	)
 
 	impoUpdateCmd.PersistentFlags().IntVar(

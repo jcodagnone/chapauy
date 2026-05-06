@@ -156,7 +156,8 @@ var curationLoadCmd = &cobra.Command{
 	Long: `Imports judgments from the local JSON file into the database if the judgments table is empty.
 After importing, it updates the offenses table with the geocoding information.`,
 	Args: cobra.NoArgs,
-	RunE: func(_ *cobra.Command, _ []string) error {
+	RunE: func(cmd *cobra.Command, _ []string) error {
+		force, _ := cmd.Flags().GetBool("force")
 		dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
 		db, err := sql.Open("duckdb", dbpath)
 		if err != nil {
@@ -164,15 +165,15 @@ After importing, it updates the offenses table with the geocoding information.`,
 		}
 		defer db.Close()
 
-		if err := ensureCurationDataLoaded(db); err != nil {
+		if err := ensureCurationDataLoaded(db, force); err != nil {
 			return err
 		}
 
-		return backfillCurationData(db)
+		return backfillCurationData(db, force)
 	},
 }
 
-func ensureCurationDataLoaded(db *sql.DB) error {
+func ensureCurationDataLoaded(db *sql.DB, force bool) error {
 	locRepo := curation.NewLocationRepository(db, nil)
 	if err := locRepo.CreateSchema(); err != nil {
 		return fmt.Errorf("creating geocoding schema: %w", err)
@@ -246,7 +247,7 @@ func ensureCurationDataLoaded(db *sql.DB) error {
 		isUnsafe = true
 	}
 
-	if isUnsafe {
+	if isUnsafe && !force {
 		log.Println("🛑 Skipping reload to prevent data loss. Run 'curation store' to save local changes first.")
 
 		return nil
@@ -255,7 +256,9 @@ func ensureCurationDataLoaded(db *sql.DB) error {
 	// Freshness Check: Reload only if the file has MORE data than the DB.
 	needsReload := false
 
-	if targetLocCount > dbLocCount {
+	if force {
+		needsReload = true
+	} else if targetLocCount > dbLocCount {
 		log.Printf("ℹ️  New location judgments available (%d > %d). Reloading...", targetLocCount, dbLocCount)
 
 		needsReload = true
@@ -314,13 +317,13 @@ func ensureCurationDataLoaded(db *sql.DB) error {
 	return nil
 }
 
-func backfillCurationData(db *sql.DB) error {
+func backfillCurationData(db *sql.DB, force bool) error {
 	repo, err := impo.NewSQLOffenseRepository(db)
 	if err != nil {
 		return fmt.Errorf("initializing repository: %w", err)
 	}
 
-	affected, err := repo.BackfillGeocodingData()
+	affected, err := repo.BackfillGeocodingData(force)
 	if err != nil {
 		return fmt.Errorf("backfilling geocoding data: %w", err)
 	}
@@ -347,7 +350,7 @@ func backfillCurationData(db *sql.DB) error {
 		utils.FormatInt(int64(pendingGeocodingOffenses)),
 		utils.FormatInt(int64(pendingGeocodingLocations)))
 
-	affected, err = repo.BackportDescriptionArticles()
+	affected, err = repo.BackportDescriptionArticles(force)
 	if err != nil {
 		return fmt.Errorf("backporting curation data: %w", err)
 	}
@@ -382,4 +385,5 @@ func init() {
 	curationCmd.AddCommand(curationServeCmd)
 	curationCmd.AddCommand(curationStoreCmd)
 	curationCmd.AddCommand(curationLoadCmd)
+	curationLoadCmd.Flags().BoolP("force", "f", false, "Force reload of curation data and backfill all offenses")
 }
