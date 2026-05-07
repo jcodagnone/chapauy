@@ -7,7 +7,11 @@ import { NextRequest, NextResponse } from "next/server"
 import { getAppVersion } from "./version"
 
 export const CACHE_HEADERS = {
-    "Cache-Control": "public, max-age=300, stale-while-revalidate=604800",
+    "Cache-Control": "public, s-maxage=300, stale-while-revalidate=86400",
+}
+
+export const SUGGEST_CACHE_HEADERS = {
+    "Cache-Control": "public, s-maxage=600, stale-while-revalidate=86400",
 }
 
 export interface ETagResult {

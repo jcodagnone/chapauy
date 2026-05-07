@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getDimensionResults } from "@/lib/repository"
 import { Dimension, InPredicate } from "@/lib/types"
-import { checkETag } from "@/lib/etag"
+import { checkETag, SUGGEST_CACHE_HEADERS } from "@/lib/etag"
 import { normalizeVehicleId } from "@/lib/utils"
 
 export async function GET(request: NextRequest) {
@@ -15,7 +15,10 @@ export async function GET(request: NextRequest) {
     if (etagCheck.response) {
       return etagCheck.response
     }
-    const { headers } = etagCheck.options!
+    const headers = {
+      ...etagCheck.options!.headers as Record<string, string>,
+      ...SUGGEST_CACHE_HEADERS,
+    }
 
     const searchParams = request.nextUrl.searchParams
     const predicates: InPredicate[] = []
