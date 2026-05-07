@@ -241,6 +241,7 @@ func (r *sqlOffenseRepository) CreateSchema() error {
 		ALTER TABLE offenses ADD COLUMN IF NOT EXISTS article_ids VARCHAR[];
 		ALTER TABLE offenses ADD COLUMN IF NOT EXISTS article_codes TINYINT[];
 
+		CREATE INDEX IF NOT EXISTS idx_offenses_vehicle ON offenses(vehicle);
 	`)
 
 	return err
