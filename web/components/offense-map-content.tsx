@@ -89,87 +89,67 @@ function LocationMarker({
         markerRef.current.openPopup()
       }
 
-      // Fetch article codes if not already loaded for this location
       if (loadedLocationRef.current !== props.location) {
-        // Set ref immediately to prevent double requests
         loadedLocationRef.current = props.location
         let cancelled = false
-        const timeoutId = window.setTimeout(() => {
-          if (cancelled) return
 
-          setIsLoading(true)
+        setIsLoading(true)
 
-          // Construct params for the specific location
-          const params: OffensesParams = {
-            predicates: [],
+        const params: OffensesParams = { predicates: [] }
+
+        Object.values(Dimension).forEach((dim) => {
+          const d = dim as Dimension
+          const values = searchParams.getAll(d)
+          if (values.length > 0) {
+            params.predicates.push({ dimension: d, values })
           }
+        })
 
-          // Reconstruct predicates from searchParams
-          Object.values(Dimension).forEach((dim) => {
-            const d = dim as Dimension
-            const values = searchParams.getAll(d)
-            if (values.length > 0) {
-              params.predicates.push({ dimension: d, values })
+        params.predicates.push({
+          dimension: Dimension.Location,
+          values: [props.location],
+        })
+
+        const isFilteringByCode = searchParams.has(Dimension.ArticleCode)
+        const targetDimension = isFilteringByCode
+          ? Dimension.ArticleID
+          : Dimension.ArticleCode
+
+        fetchFacetValues(params, targetDimension)
+          .then((facet) => {
+            if (cancelled) return
+            if (facet && facet.values) {
+              let sorted = [...facet.values]
+              const hasSelected = sorted.some((v) => v.selected)
+              if (hasSelected) {
+                sorted = sorted.filter((v) => v.selected)
+              } else {
+                sorted = sorted.sort((a, b) => b.count - a.count).slice(0, 5)
+              }
+              setArticleData(sorted)
             }
           })
-
-          // Add location predicate
-          params.predicates.push({
-            dimension: Dimension.Location,
-            values: [props.location],
+          .catch((err) => {
+            if (cancelled) return
+            console.error("Error fetching location details:", err)
+            loadedLocationRef.current = null
           })
-
-          // Determine which dimension to fetch
-          // If we are already filtering by ArticleCode, show ArticleID (articles) instead
-          const isFilteringByCode = searchParams.has(Dimension.ArticleCode)
-          const targetDimension = isFilteringByCode
-            ? Dimension.ArticleID
-            : Dimension.ArticleCode
-
-          fetchFacetValues(params, targetDimension)
-            .then((facet) => {
-              if (cancelled) return
-
-              if (facet && facet.values) {
-                let sorted = [...facet.values]
-
-                // Check if any value is selected
-                const hasSelected = sorted.some((v) => v.selected)
-
-                if (hasSelected) {
-                  // If selected, show only selected values
-                  sorted = sorted.filter((v) => v.selected)
-                } else {
-                  // Otherwise, sort by count descending and take top 5
-                  sorted = sorted.sort((a, b) => b.count - a.count).slice(0, 5)
-                }
-
-                setArticleData(sorted)
-              }
-            })
-            .catch((err) => {
-              if (cancelled) return
-
-              console.error("Error fetching location details:", err)
-              // Reset ref on error to allow retry if needed, or handle otherwise
-              loadedLocationRef.current = null
-            })
-            .finally(() => {
-              if (!cancelled) {
-                setIsLoading(false)
-              }
-            })
-        }, 0)
+          .finally(() => {
+            setIsLoading(false)
+          })
 
         return () => {
           cancelled = true
-          window.clearTimeout(timeoutId)
+          loadedLocationRef.current = null
         }
       }
     } else if (markerRef.current && markerRef.current.isPopupOpen()) {
       markerRef.current.closePopup()
     }
-  }, [selectedLocation, props.location, searchParams, isDarkMode])
+  // searchParams is intentionally excluded: the fetch captures it at call time,
+  // and re-fetching on every filter change would fight with the loadedLocationRef cache.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLocation, props.location])
 
   const createLocationHref = () => {
     const newParams = new URLSearchParams(searchParams.toString())
