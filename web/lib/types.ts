@@ -180,7 +180,7 @@ export interface ClusterProperties {
 export interface LocationProperties {
   type: "location"
   location: string
-  count: number
+  offenses: number
 }
 
 export interface MapFeatureCollection {

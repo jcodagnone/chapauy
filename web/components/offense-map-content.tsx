@@ -188,7 +188,7 @@ function LocationMarker({
     return null
   }
 
-  const totalOffenses = props.count || 0
+  const totalOffenses = props.offenses || 0
 
   // Calculate others
   const displayedCount = articleData.reduce((acc, item) => acc + item.count, 0)
