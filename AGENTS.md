@@ -39,10 +39,13 @@ La fuente de verdad para la lógica del sistema y su arquitectura se encuentra e
 La historia de commits debe contar una historia clara y lineal. Preferimos múltiples commits pequeños y atómicos en lugar de uno solo monolítico.
 
 - **Commits Atómicos**: Si una funcionalidad requiere una refactorización previa, realice el commit de la refactorización **primero** y la funcionalidad **después**. No los mezcle.
-- **Staging Selectivo**: Evite `git add .`. Use `git add -p` para revisar y confirmar cada cambio.
+- **Staging Selectivo**: Evite `git add .`. Use staging manual o `git add -p` para revisar y confirmar cada cambio.
 - **Historia Lineal (Rebase)**: Mantenga una historia limpia. Al actualizar su rama, use siempre `git pull --rebase`.
 - **Sin Firma**: Los agentes no tienen acceso a claves privadas. Use explícitamente el flag `--no-gpg-sign`.
-- **Mensajes de Commit**: Explique el *porqué* del cambio, no solo el *qué*. Limite las líneas del cuerpo del mensaje a 80 columnas.
+- **Mensajes de Commit**: 
+  - **Asunto**: Máximo 50 caracteres.
+  - **Cuerpo**: Explique el *porqué* del cambio, no solo el *qué*. Ajuste el texto a 72 columnas.
+  - **Trailer**: Incluya `Co-authored-by:` cuando la participación del agente sea relevante.
 
 ## Calidad de Código y Dependencias
 
