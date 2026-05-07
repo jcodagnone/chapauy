@@ -422,11 +422,18 @@ export async function getDimensionResults(
             dim === Dimension.ArticleID || dim === Dimension.ArticleCode
               ? "value"
               : column
-          const searchClause = `${searchCol} ILIKE ?`
+          let searchClause: string
+          if (dim === Dimension.Vehicle) {
+            // vehicle is pre-normalized to uppercase; use prefix LIKE so the ART index is used
+            searchClause = `${searchCol} LIKE ?`
+            finalArgs.push(`${searchQuery}%`)
+          } else {
+            searchClause = `${searchCol} ILIKE ?`
+            finalArgs.push(`%${searchQuery}%`)
+          }
           finalWhere = finalWhere
             ? `${finalWhere} AND ${searchClause}`
             : searchClause
-          finalArgs.push(`%${searchQuery}%`)
         }
       }
 
