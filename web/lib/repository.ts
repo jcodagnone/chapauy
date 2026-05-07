@@ -277,6 +277,17 @@ export const getArticles = unstable_cache(
   { revalidate: 3600 }
 )
 
+// Simple dimensions eligible for GROUPING SETS (single-column GROUP BY, no special predicates).
+// Year, Features, ArticleID, ArticleCode are handled separately.
+const SIMPLE_DIMS = new Set([
+  Dimension.Database,
+  Dimension.VehicleType,
+  Dimension.Country,
+  Dimension.Vehicle,
+  Dimension.Location,
+  Dimension.Description,
+])
+
 export async function getDimensionResults(
   predicates: InPredicate[],
   dimensions: Dimension[],
@@ -288,23 +299,131 @@ export async function getDimensionResults(
   await waitForDB()
   const db = getDuckDB()
 
-  // We will build two big UNION ALL queries:
-  // 1. To get the top N values for each dimension (Values Query)
-  // 2. To get the total count of distinct values for each dimension (Totals Query)
-
   const valueQueries: string[] = []
   const valueArgs: any[] = []
 
   const totalQueries: string[] = []
   const totalArgs: any[] = []
 
-  // Keep track of which dimensions we are processing to map results back
-  // Features dimension is special, it essentially contributes multiple "virtual" dimensions or values
-  // but here it behaves as one Dimension.Features with static values.
+  // Partition dimensions: simple ones (eligible for GROUPING SETS) vs special ones.
+  // A simple dim loses its eligibility if:
+  //   - it has a searchQuery (filter is per-dim, can't be shared)
+  //   - it has an active predicate (its query must exclude its own filter so all values show)
+  const activeDimSet = new Set((predicates || []).map((p) => p.dimension))
+  const simpleDimsEligible = dimensions.filter(
+    (d) =>
+      SIMPLE_DIMS.has(d) &&
+      !(queries && queries[d]) &&
+      !activeDimSet.has(d)
+  )
+  const specialDims = dimensions.filter(
+    (d) =>
+      !SIMPLE_DIMS.has(d) ||
+      (queries && queries[d]) ||
+      activeDimSet.has(d)
+  )
 
-  for (const dim of dimensions) {
+  // --- GROUPING SETS path for simple dims ---
+  if (simpleDimsEligible.length > 0) {
+    // All simple dims share the same predicates (none of them is excluded by their own filter).
+    // The WHERE uses predicates excluding each dim's own filter — but since none has a search
+    // query, we can use a single shared WHERE without any per-dim exclusion.
+    // (Active filter predicates for a dim are intentionally kept, per existing behaviour.)
+    const { where, args } = buildWhereClause(predicates || [])
+    const whereSql = where ? `WHERE ${where}` : ""
+
+    // Build column list and GROUPING SETS clause
+    const dimColMap: Record<string, string> = {
+      [Dimension.Database]:    "db_id::VARCHAR",
+      [Dimension.VehicleType]: "vehicle_type",
+      [Dimension.Country]:     "vehicle_country",
+      [Dimension.Vehicle]:     "vehicle",
+      [Dimension.Location]:    "location",
+      [Dimension.Description]: "description",
+    }
+    const dimNameMap: Record<string, string> = {
+      [Dimension.Database]:    "db_id",
+      [Dimension.VehicleType]: "vehicle_type",
+      [Dimension.Country]:     "vehicle_country",
+      [Dimension.Vehicle]:     "vehicle",
+      [Dimension.Location]:    "location",
+      [Dimension.Description]: "description",
+    }
+    const limitMap: Record<string, number> = {
+      [Dimension.Vehicle]: 30,
+    }
+
+    const groupingSets = simpleDimsEligible
+      .map((d) => `(${dimNameMap[d]})`)
+      .join(", ")
+
+    // CASE expression to recover which dimension a row belongs to.
+    // We rely on the fact that GROUPING() = 0 means "this column is in the current grouping set".
+    const dimCaseExpr = simpleDimsEligible
+      .map((d) => `WHEN GROUPING(${dimNameMap[d]}) = 0 THEN '${d}'`)
+      .join("\n        ")
+
+    const valueCaseExpr = simpleDimsEligible
+      .map((d) => `WHEN GROUPING(${dimNameMap[d]}) = 0 THEN ${dimColMap[d]}`)
+      .join("\n        ")
+
+    // Per-dim LIMIT via QUALIFY + ROW_NUMBER
+    // Build a CASE expression for the per-dim limit used in QUALIFY.
+    const maxLimit = Math.max(...simpleDimsEligible.map((d) => limitMap[d] ?? 10))
+    const limitCaseExpr =
+      simpleDimsEligible.length === 1
+        ? String(limitMap[simpleDimsEligible[0]] ?? 10)
+        : simpleDimsEligible
+            .filter((d) => (limitMap[d] ?? 10) !== 10)
+            .map((d) => `WHEN '${d}' THEN ${limitMap[d]}`)
+            .reduce(
+              (acc, c) => `CASE dimension ${c} ELSE 10 END`,
+              ""
+            ) || "10"
+
+    const groupingValuesSql = `
+      SELECT dimension, value, count FROM (
+        SELECT
+          CASE ${dimCaseExpr} END AS dimension,
+          CASE ${valueCaseExpr} END::VARCHAR AS value,
+          COUNT(*) AS count,
+          ROW_NUMBER() OVER (
+            PARTITION BY CASE ${dimCaseExpr} END
+            ORDER BY COUNT(*) DESC, CASE ${valueCaseExpr} END::VARCHAR ASC
+          ) AS rn
+        FROM offenses
+        ${whereSql}
+        GROUP BY GROUPING SETS (${groupingSets})
+      ) t
+      WHERE value IS NOT NULL AND rn <= ${maxLimit}
+    `
+
+    // For totals: use approx_count_distinct except for low-cardinality dims (Database)
+    const totalUnionParts = simpleDimsEligible.map((d) => {
+      const col = dimColMap[d]
+      const countExpr =
+        d === Dimension.Database
+          ? `COUNT(DISTINCT COALESCE(${col}, ''))`
+          : `approx_count_distinct(${col})`
+      return `(SELECT '${d}' AS dimension, ${countExpr} AS total FROM offenses ${whereSql})`
+    })
+    const groupingTotalsSql = totalUnionParts.join(" UNION ALL ")
+
+    // Each total part uses the same args; multiply accordingly
+    const totalArgsForGrouping = Array(simpleDimsEligible.length).fill(args).flat()
+
+    valueQueries.push(`(${groupingValuesSql})`)
+    // Push args twice: once for inner subquery (values), but actually the args appear
+    // once in the WHERE of the subquery.
+    valueArgs.push(...args)
+
+    totalQueries.push(`(${groupingTotalsSql})`)
+    totalArgs.push(...totalArgsForGrouping)
+  }
+
+  // --- Per-dim path for special dims (Year, Features, ArticleID, ArticleCode, and simple dims with searchQuery) ---
+  for (const dim of specialDims) {
     try {
-      // Special handling for Status dimension: Unpivot into unified structure
       if (dim === Dimension.Features) {
         const { where, args } = buildWhereClause(predicates || [], dim)
         const whereClause = where ? `WHERE ${where}` : ""
@@ -321,7 +440,7 @@ export async function getDimensionResults(
             ? `${whereClause} AND ${part.expr}`
             : `WHERE ${part.expr}`
           valueQueries.push(`
-            SELECT 
+            SELECT
               '${Dimension.Features}' as dimension,
               '${part.label}' as value,
               COUNT(*) as count
@@ -333,7 +452,6 @@ export async function getDimensionResults(
         continue
       }
 
-      // Special handling for Year dimension: Include sliding windows
       if (dim === Dimension.Year) {
         const { where, args } = buildWhereClause(predicates || [], dim)
         const whereClause = where ? `WHERE ${where}` : ""
@@ -358,7 +476,7 @@ export async function getDimensionResults(
             ? `${whereClause} AND ${sw.expr}`
             : `WHERE ${sw.expr}`
           valueQueries.push(`
-            SELECT 
+            SELECT
               '${Dimension.Year}' as dimension,
               '${sw.label}' as value,
               COUNT(*) as count
@@ -375,18 +493,15 @@ export async function getDimensionResults(
 
       let selectVal = ""
 
-      // Base query construction
       if (dim === Dimension.ArticleID || dim === Dimension.ArticleCode) {
         selectVal = "value"
       } else {
-        selectVal = `${column}::VARCHAR` // Force varchar for union compatibility
+        selectVal = `${column}::VARCHAR`
       }
 
-      // Apply filters
       let finalWhere = where
       const finalArgs = [...(args || [])]
 
-      // Add search query filter if present
       if (searchQuery) {
         const qLower = searchQuery.toLowerCase()
         if (dim === Dimension.Database) {
@@ -437,12 +552,10 @@ export async function getDimensionResults(
         }
       }
 
-      // Construct Value Query Part
       const whereSql = finalWhere ? `WHERE ${finalWhere}` : ""
       let queryPart = ""
       let totalPart = ""
 
-      // Standard Dimensions
       let limit: number
       switch (dim) {
         case Dimension.Vehicle:
@@ -456,7 +569,6 @@ export async function getDimensionResults(
       }
 
       if (dim === Dimension.ArticleID || dim === Dimension.ArticleCode) {
-        // Article Logic
         const predWhere = where ? `WHERE ${where}` : ""
         let searchClause = ""
         let joinClause = ""
@@ -472,7 +584,7 @@ export async function getDimensionResults(
         const innerSql = `SELECT UNNEST(${column}) as value FROM offenses ${predWhere}`
 
         queryPart = `
-            SELECT 
+            SELECT
               '${dim}' as dimension,
               value::VARCHAR as value,
               COUNT(*) as count
@@ -500,7 +612,6 @@ export async function getDimensionResults(
           totalArgs.push(`%${searchQuery}%`, `%${searchQuery}%`)
         }
       } else {
-
         queryPart = `
             SELECT
               '${dim}' as dimension,
@@ -513,7 +624,7 @@ export async function getDimensionResults(
             LIMIT ${limit}
          `
         totalPart = `
-            SELECT 
+            SELECT
               '${dim}' as dimension,
               COUNT(DISTINCT COALESCE(${selectVal}, '')) as total
             FROM offenses
