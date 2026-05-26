@@ -150,6 +150,27 @@ func TestFailIfLogin_Fails(t *testing.T) {
 	}
 }
 
+func TestFailIfLogin_SiteError(t *testing.T) {
+	htmlData := `<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>IM.P.O. - Diario Oficial / Mensaje de Error</title>
+  </head>
+</html>`
+
+	n, err := html.Parse(strings.NewReader(htmlData))
+	if nil != err {
+		t.Error(err)
+	}
+
+	err = failIfLogin(n)
+	if err == nil {
+		t.Fatal("was expecting an error")
+	} else if !errors.Is(err, ErrSiteError) {
+		t.Errorf("expect %s got %s", ErrSiteError, err)
+	}
+}
+
 func TestFailIfLogin_Nil(t *testing.T) {
 	htmlData := `<!DOCTYPE html>
 <html lang="es">

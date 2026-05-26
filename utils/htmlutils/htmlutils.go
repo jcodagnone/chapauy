@@ -123,6 +123,9 @@ func AsNode(r io.Reader) (*html.Node, error) {
 // ErrSessionExpired is returned when the session has expired.
 var ErrSessionExpired = errors.New("session expired")
 
+// ErrSiteError is returned when the remote site reports an internal error.
+var ErrSiteError = errors.New("site error")
+
 func failIfLogin(n *html.Node) (err error) {
 	for child := n.FirstChild; child != nil; child = child.NextSibling {
 		if child.Type == html.ElementNode && strings.EqualFold("title", child.Data) {
@@ -133,11 +136,14 @@ func failIfLogin(n *html.Node) (err error) {
 				break
 			}
 
-			if sb.String() == "Ingreso - IMPO" {
+			switch sb.String() {
+			case "Ingreso - IMPO":
 				err = ErrSessionExpired
-
-				break
+			case "IM.P.O. - Diario Oficial / Mensaje de Error":
+				err = ErrSiteError
 			}
+
+			break
 		} else if child.Type == html.ElementNode && strings.EqualFold("body", child.Data) {
 			// we're done
 			break
