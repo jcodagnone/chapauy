@@ -144,14 +144,16 @@ func failIfLogin(n *html.Node) (err error) {
 			}
 
 			break
-		} else if child.Type == html.ElementNode && strings.EqualFold("body", child.Data) {
+		}
+
+		if child.Type == html.ElementNode && strings.EqualFold("body", child.Data) {
 			// we're done
 			break
-		} else {
-			err = failIfLogin(child)
-			if err != nil {
-				break
-			}
+		}
+
+		err = failIfLogin(child)
+		if err != nil {
+			break
 		}
 	}
 
