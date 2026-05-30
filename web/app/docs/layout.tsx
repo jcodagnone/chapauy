@@ -43,7 +43,7 @@ export default async function DocsLayout({
         <aside className="hidden h-full w-64 shrink-0 lg:block">
           <DocsSidebar items={items} />
         </aside>
-        <main className="bg-background flex-1 overflow-y-auto pl-8">
+        <main className="bg-background flex-1 overflow-y-auto px-8">
           <div className="container max-w-5xl py-6 lg:py-10">{children}</div>
         </main>
       </div>
