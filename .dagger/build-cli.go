@@ -28,7 +28,7 @@ func (c *Chapauy) BuildCliBase(
 	return dag.Container().
 		// we use bookworm and not something like alpine because duckdb is
 		// very sensitive to musl
-		From("golang:1.25.5-bookworm").
+		From("golang:1.25.8-bookworm").
 		// Create a non-root user 'appuser' to avoid running the build as root,
 		// trying to improve security (process will have a different uid in the host)
 		WithExec([]string{"useradd", "-m", "-u", "1000", cliUser}).
