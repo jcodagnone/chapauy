@@ -34,7 +34,7 @@
     "h3-js": "latest",
     "leaflet": "latest",
     "lucide-react": "^1.17.0",
-    "next": "16.2.6",
+    "next": "16.2.7",
     "next-mdx-remote": "^6.0.0",
     "next-themes": "latest",
     "react": "^19.2.6",
