@@ -29,6 +29,12 @@ build/
 db/
 .zed
 
+#########################
+# devenv.sh             #
+#########################
+.devenv/
+.devenv.flake.nix
+
 
 backups
 chapauy
