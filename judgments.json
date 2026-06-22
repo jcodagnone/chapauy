@@ -153026,6 +153026,21 @@
     },
     {
       "db_id": 6,
+      "location": "PEDRO BUSTAMANTE y AV RAMON ANADOR",
+      "point": {
+        "lat": -34.8940359,
+        "lng": -56.1365577
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Pedro Bustamante \u0026 Avenida Ramón Anador, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-06-22T12:49:37.441426Z",
+      "updated_at": "2026-06-22T12:50:04.102765Z",
+      "canonical_location": "AV RAMON ANADOR y PEDRO BUSTAMANTE"
+    },
+    {
+      "db_id": 6,
       "location": "PEDRO BUSTAMANTE y AV RIVERA",
       "point": {
         "lat": -34.8998037,
@@ -181644,7 +181659,7 @@
       "confidence": "medium",
       "notes": "San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-06T13:09:34.543177Z",
-      "updated_at": "2026-05-06T13:18:41.311264Z",
+      "updated_at": "2026-06-22T12:51:10.223657Z",
       "canonical_location": "ALEGRE VENTURA RAMON Y SAN CARLOS"
     },
     {
@@ -189602,7 +189617,7 @@
       "confidence": "medium",
       "notes": "De La Virgen, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:15:16.491372Z",
-      "updated_at": "2026-05-06T13:18:28.695937Z",
+      "updated_at": "2026-06-22T12:51:07.522474Z",
       "canonical_location": "BOLIVAR SIMON Y DE LA VIRGEN"
     },
     {
@@ -194749,7 +194764,7 @@
       "confidence": "medium",
       "notes": "Av. Gral. Jose Gervasio Artigas, 20200 Piriápolis, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:21:02.362363Z",
-      "updated_at": "2026-05-06T13:18:40.785945Z",
+      "updated_at": "2026-06-22T12:51:09.670236Z",
       "canonical_location": "CORDOBA AVDA. Y SAN MARTIN GRAL. JOSE DE"
     },
     {
@@ -197185,6 +197200,20 @@
       "notes": "Jacinto Trapani, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-02-07T13:48:36.554579Z",
       "updated_at": "2026-02-07T13:48:36.554579Z"
+    },
+    {
+      "db_id": 45,
+      "location": "DEL PINO SIMON Y ZUFRIATEGUI PABLO, MALDONADO",
+      "point": {
+        "lat": -34.9022293,
+        "lng": -54.9451562
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Pablo Zufriategui, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-06-22T12:47:24.838894Z",
+      "updated_at": "2026-06-22T12:47:24.838894Z"
     },
     {
       "db_id": 45,
@@ -200583,7 +200612,7 @@
       "confidence": "medium",
       "notes": "Guatemala, 20005 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:06:40.93627Z",
-      "updated_at": "2026-05-06T13:18:30.431952Z",
+      "updated_at": "2026-06-22T12:51:08.100165Z",
       "canonical_location": "ESPAÑA AVDA. Y GUATEMALA"
     },
     {
@@ -203635,7 +203664,7 @@
       "confidence": "medium",
       "notes": "Francisco Maldonado, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:10:09.214024Z",
-      "updated_at": "2026-05-06T13:18:36.443603Z",
+      "updated_at": "2026-06-22T12:51:09.070523Z",
       "canonical_location": "GUERRA ROMAN Y LAVALLEJA GRAL. JUAN A. AVDA."
     },
     {
@@ -207234,7 +207263,7 @@
       "confidence": "medium",
       "notes": "18 de Julio, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-05T12:32:23.792863Z",
-      "updated_at": "2026-05-06T13:18:30.904726Z",
+      "updated_at": "2026-06-22T12:51:08.54488Z",
       "canonical_location": "LEDESMA MANUEL ANTONIO Y DIECIOCHO (18) DE JULIO"
     },
     {
@@ -229783,6 +229812,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 00 9 / 205K518",
+      "point": {
+        "lat": -34.501778,
+        "lng": -54.332493
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Rocha O",
+      "created_at": "2026-06-22T12:48:01.977276Z",
+      "updated_at": "2026-06-22T12:50:47.470483Z",
+      "canonical_location": "Ruta 009 y 205K518"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 000 / 001K530C",
       "point": {
         "lat": -34.902506,
@@ -229809,6 +229853,21 @@
       "notes": "Juan Carlos Gomez",
       "created_at": "2026-04-19T13:14:48.107821Z",
       "updated_at": "2026-04-19T13:23:05.667524Z",
+      "canonical_location": "Ruta 000 y 001K530_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 000 / 001K570_D",
+      "point": {
+        "lat": -34.902506,
+        "lng": -56.20486778
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Juan Carlos Gomez",
+      "created_at": "2026-06-22T12:47:59.256866Z",
+      "updated_at": "2026-06-22T12:50:38.137754Z",
       "canonical_location": "Ruta 000 y 001K530_C"
     },
     {
@@ -230008,6 +230067,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 001 / 029K36 0D",
+      "point": {
+        "lat": -34.7547,
+        "lng": -56.4243
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Penino a -",
+      "created_at": "2026-06-22T12:48:08.599443Z",
+      "updated_at": "2026-06-22T12:50:36.431965Z",
+      "canonical_location": "Ruta 001 y 029K360_D"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 001 / 029K360D",
       "point": {
         "lat": -34.7547,
@@ -230098,6 +230172,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 001 / 061K336_D",
+      "point": {
+        "lat": -34.5905,
+        "lng": -56.7052
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Valdez",
+      "created_at": "2026-06-22T12:48:04.609212Z",
+      "updated_at": "2026-06-22T12:50:35.604828Z",
+      "canonical_location": "Ruta 001 y 061K336_D"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 001 / 120K987",
       "point": {
         "lat": -34.3362,
@@ -230125,6 +230214,20 @@
       "created_at": "2026-04-19T13:18:00.038893Z",
       "updated_at": "2026-04-19T13:23:07.91998Z",
       "canonical_location": "Ruta 001 y 174K210"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 001 /019K865_C",
+      "point": {
+        "lat": -34.800605,
+        "lng": -56.345928
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Basilio Muñoz",
+      "created_at": "2026-06-22T12:48:06.698828Z",
+      "updated_at": "2026-06-22T12:48:06.698828Z"
     },
     {
       "db_id": 68,
@@ -230335,6 +230438,64 @@
       "created_at": "2026-04-19T13:16:54.32471Z",
       "updated_at": "2026-04-19T13:23:02.701074Z",
       "canonical_location": "Ruta 003 y 626K411"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 013K323C",
+      "point": {
+        "lat": -34.800805,
+        "lng": -56.264078
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "La Redención",
+      "created_at": "2026-06-22T12:48:26.239335Z",
+      "updated_at": "2026-06-22T12:48:26.239335Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 013K500D",
+      "point": {
+        "lat": -34.800805,
+        "lng": -56.264078
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "La Redención",
+      "created_at": "2026-06-22T12:48:09.667248Z",
+      "updated_at": "2026-06-22T12:50:47.361149Z",
+      "canonical_location": "RUTA 005 / 013K323C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 017K538C",
+      "point": {
+        "lat": -34.767317,
+        "lng": -56.266248
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Fauquet",
+      "created_at": "2026-06-22T12:48:26.781068Z",
+      "updated_at": "2026-06-22T12:50:47.430817Z",
+      "canonical_location": "RUTA 005 / 017K743D"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 005 / 017K743D",
+      "point": {
+        "lat": -34.767317,
+        "lng": -56.266248
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Fauquet",
+      "created_at": "2026-05-28T01:46:16.534099Z",
+      "updated_at": "2026-05-28T01:46:16.534099Z"
     },
     {
       "db_id": 68,
@@ -230698,6 +230859,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 008 / 024K410_C",
+      "point": {
+        "lat": -34.7666,
+        "lng": -56.022
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Punta de Rieles-Barros Blancos",
+      "created_at": "2026-06-22T12:48:03.857618Z",
+      "updated_at": "2026-06-22T12:50:37.764636Z",
+      "canonical_location": "Ruta 008 y 024K410_C"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 008 / 025K025D",
       "point": {
         "lat": -34.7612,
@@ -231056,6 +231232,20 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 026 / 084K870",
+      "point": {
+        "lat": -32.601644,
+        "lng": -53.406697
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Río Branco",
+      "created_at": "2026-06-22T12:48:18.572714Z",
+      "updated_at": "2026-06-22T12:48:18.572714Z"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 030 / 128K280",
       "point": {
         "lat": -30.4187,
@@ -231098,6 +231288,35 @@
       "created_at": "2026-04-19T13:18:28.840377Z",
       "updated_at": "2026-04-19T13:23:09.563707Z",
       "canonical_location": "Ruta 030 y 132K715"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 030 /13 2K715",
+      "point": {
+        "lat": -30.4341,
+        "lng": -56.4531
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Artigas (Pintado Grande)",
+      "created_at": "2026-06-22T12:48:05.230094Z",
+      "updated_at": "2026-06-22T12:50:47.515492Z",
+      "canonical_location": "Ruta 030 y 132K715"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 034 / 04 1K090",
+      "point": {
+        "lat": -34.716944,
+        "lng": -55.879167
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "La Montañesa",
+      "created_at": "2026-06-22T12:48:07.743204Z",
+      "updated_at": "2026-06-22T12:48:07.743204Z"
     },
     {
       "db_id": 68,
@@ -231354,6 +231573,21 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 102 / 022K900_C",
+      "point": {
+        "lat": -34.8184,
+        "lng": -56.015
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Leopolis",
+      "created_at": "2026-06-22T12:48:02.881441Z",
+      "updated_at": "2026-06-22T12:50:38.005989Z",
+      "canonical_location": "Ruta 102 y 022K900_C"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 102 / 024K220D",
       "point": {
         "lat": -34.8161,
@@ -231410,6 +231644,21 @@
       "notes": "Campeón del Siglo",
       "created_at": "2026-04-19T13:14:56.114606Z",
       "updated_at": "2026-04-19T13:23:03.912079Z",
+      "canonical_location": "Ruta 102 y 027K840_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 102 / 027K840_C",
+      "point": {
+        "lat": -34.7972,
+        "lng": -56.0627
+      },
+      "is_electronic": true,
+      "geocoding_method": "radares_rutas",
+      "confidence": "high",
+      "notes": "Campeón del Siglo",
+      "created_at": "2026-06-22T12:48:05.832557Z",
+      "updated_at": "2026-06-22T12:50:36.93485Z",
       "canonical_location": "Ruta 102 y 027K840_C"
     },
     {
