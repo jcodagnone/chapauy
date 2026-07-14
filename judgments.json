@@ -21835,6 +21835,17 @@
     },
     {
       "id": 0,
+      "description": "CARECE LICENCIA DE CONDUCIR",
+      "article_ids": [
+        "3.1.1"
+      ],
+      "article_codes": [
+        3
+      ],
+      "updated_at": "2026-07-14T13:28:18.865262Z"
+    },
+    {
+      "id": 0,
       "description": "CARECE LICENICA",
       "article_ids": [
         "3.1.1"
@@ -25876,6 +25887,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "CONDUCIR MANIPULANDO TEL.",
+      "article_ids": [
+        "4.4.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-07-14T13:26:40.248067Z"
     },
     {
       "id": 0,
@@ -30892,6 +30914,28 @@
     },
     {
       "id": 0,
+      "description": "EXC. VEL. ENTRE 21 y 30 Km/h *",
+      "article_ids": [
+        "13.3.B"
+      ],
+      "article_codes": [
+        13
+      ],
+      "updated_at": "2026-07-14T13:26:34.351859Z"
+    },
+    {
+      "id": 0,
+      "description": "EXC. VEL. MAS DE 30 Km/h *MIN",
+      "article_ids": [
+        "13.3.C"
+      ],
+      "article_codes": [
+        13
+      ],
+      "updated_at": "2026-07-14T13:26:23.136142Z"
+    },
+    {
+      "id": 0,
       "description": "EXCED. 45 KM/H MAS DEL 2*MIN",
       "article_ids": [
         "13.3.B"
@@ -33195,6 +33239,17 @@
     },
     {
       "id": 0,
+      "description": "LICENCIA VENCIDA O FUERA CAT.",
+      "article_ids": [
+        "3.1.2"
+      ],
+      "article_codes": [
+        3
+      ],
+      "updated_at": "2026-07-14T13:27:18.015837Z"
+    },
+    {
+      "id": 0,
       "description": "LICENCIA VENCIDA Y NO HABILITA",
       "article_ids": [
         "3.1.2"
@@ -34806,6 +34861,17 @@
     },
     {
       "id": 0,
+      "description": "NO EXHIBIR DOCUMENTACIÓN",
+      "article_ids": [
+        "4.1.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-07-14T13:27:45.337951Z"
+    },
+    {
+      "id": 0,
       "description": "NO EXHIBIR DOCUMENTACIÓN DEL VEHICULO",
       "article_ids": [
         "4.1.1"
@@ -35100,6 +35166,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "NO PORTA DOCUMENTACIÓN",
+      "article_ids": [
+        "4.1.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-07-14T13:27:04.231471Z"
     },
     {
       "id": 0,
@@ -38494,6 +38571,17 @@
     },
     {
       "id": 0,
+      "description": "NO USAR CINTURON DE SEGURIDAD",
+      "article_ids": [
+        "4.8"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-07-14T13:27:58.016143Z"
+    },
+    {
+      "id": 0,
       "description": "NO USAR LUCES CORTA",
       "article_ids": [
         "7.30"
@@ -38689,6 +38777,17 @@
         7
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "NO USO DE CASCO",
+      "article_ids": [
+        "21.3.1"
+      ],
+      "article_codes": [
+        21
+      ],
+      "updated_at": "2026-07-14T13:28:07.760617Z"
     },
     {
       "id": 0,
@@ -41715,6 +41814,17 @@
         10
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "VEHICULO AUTOMOTOR SIN M*MIN",
+      "article_ids": [
+        "10.13.1"
+      ],
+      "article_codes": [
+        10
+      ],
+      "updated_at": "2026-07-14T13:26:03.242175Z"
     },
     {
       "id": 0,
@@ -160273,6 +160383,21 @@
     },
     {
       "db_id": 6,
+      "location": "RAMON Y CAJAL y GRAL URQUIZA",
+      "point": {
+        "lat": -34.8896749,
+        "lng": -56.1618076
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Gral. Urquiza \u0026 Ramón y Cajal, 11600 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-07-14T13:24:06.630735Z",
+      "updated_at": "2026-07-14T13:25:10.977669Z",
+      "canonical_location": "GRAL URQUIZA y RAMON Y CAJAL"
+    },
+    {
+      "db_id": 6,
       "location": "RAMON Y CAJAL y JUAN RAMON GOMEZ",
       "point": {
         "lat": -34.889109,
@@ -165548,6 +165673,20 @@
       "created_at": "2025-11-09T16:14:37.099986Z",
       "updated_at": "2025-11-11T01:06:34.006226Z",
       "canonical_location": "SORIANO y SALTO"
+    },
+    {
+      "db_id": 6,
+      "location": "SALUSTIO y DR FCO GARCIA DE SALAZAR Y MORALES",
+      "point": {
+        "lat": -34.8401626,
+        "lng": -56.1563914
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Dr. Francisco de Salazar y Morales, 12300 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-07-14T13:24:16.260745Z",
+      "updated_at": "2026-07-14T13:24:16.260745Z"
     },
     {
       "db_id": 6,
@@ -179656,15 +179795,16 @@
       "db_id": 45,
       "location": "A LA LAGUNA AVDA. Y CENTAURO, MALDONADO",
       "point": {
-        "lat": -34.910877369745215,
-        "lng": -54.97982382774354
+        "lat": -34.91088022913747,
+        "lng": -54.9797996878624
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Centauro, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-03-12T11:59:34.533007Z",
-      "updated_at": "2026-03-12T11:59:34.533007Z"
+      "updated_at": "2026-07-14T13:25:28.885698Z",
+      "canonical_location": "Av. a la Laguna y Centauro"
     },
     {
       "db_id": 45,
@@ -181659,7 +181799,7 @@
       "confidence": "medium",
       "notes": "San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-06T13:09:34.543177Z",
-      "updated_at": "2026-06-22T12:51:10.223657Z",
+      "updated_at": "2026-07-14T13:25:32.254661Z",
       "canonical_location": "ALEGRE VENTURA RAMON Y SAN CARLOS"
     },
     {
@@ -186601,6 +186741,20 @@
     },
     {
       "db_id": 45,
+      "location": "Av. Francia y Maipo",
+      "point": {
+        "lat": -34.941313837735514,
+        "lng": -54.941546022892005
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado, Maldonado Department, Uruguay",
+      "created_at": "2026-07-14T13:21:33.76374Z",
+      "updated_at": "2026-07-14T13:21:33.76374Z"
+    },
+    {
+      "db_id": 45,
       "location": "Av. Gral. Juan A. Lavalleja y Sarandi",
       "point": {
         "lat": -34.9019248,
@@ -187053,6 +187207,20 @@
       "notes": "Juana Tabáres \u0026 Avenida Wilson Ferreira Aldunate, 20400 San Carlos, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-08T19:22:17.887617Z",
       "updated_at": "2025-11-08T19:22:17.887617Z"
+    },
+    {
+      "db_id": 45,
+      "location": "Av. a la Laguna y Centauro",
+      "point": {
+        "lat": -34.91088022913747,
+        "lng": -54.9797996878624
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Centauro, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-07-14T13:21:41.087606Z",
+      "updated_at": "2026-07-14T13:21:41.087606Z"
     },
     {
       "db_id": 45,
@@ -189617,7 +189785,7 @@
       "confidence": "medium",
       "notes": "De La Virgen, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:15:16.491372Z",
-      "updated_at": "2026-06-22T12:51:07.522474Z",
+      "updated_at": "2026-07-14T13:25:29.366828Z",
       "canonical_location": "BOLIVAR SIMON Y DE LA VIRGEN"
     },
     {
@@ -194764,7 +194932,7 @@
       "confidence": "medium",
       "notes": "Av. Gral. Jose Gervasio Artigas, 20200 Piriápolis, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:21:02.362363Z",
-      "updated_at": "2026-06-22T12:51:09.670236Z",
+      "updated_at": "2026-07-14T13:25:31.782211Z",
       "canonical_location": "CORDOBA AVDA. Y SAN MARTIN GRAL. JOSE DE"
     },
     {
@@ -197998,6 +198166,20 @@
     },
     {
       "db_id": 45,
+      "location": "DIECIOCHO (18) DE JULIO Y ITUZAINGO, SAN CARLOS",
+      "point": {
+        "lat": -34.792612,
+        "lng": -54.91989650000001
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "18 de Julio \u0026 Ituzaingo, 20400 San Carlos, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-07-14T13:23:49.250088Z",
+      "updated_at": "2026-07-14T13:23:49.250088Z"
+    },
+    {
+      "db_id": 45,
       "location": "DIECIOCHO (18) DE JULIO Y LAVALLEJA GRAL. JUAN A. AVDA.",
       "point": {
         "lat": -34.90193360434465,
@@ -200612,7 +200794,7 @@
       "confidence": "medium",
       "notes": "Guatemala, 20005 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:06:40.93627Z",
-      "updated_at": "2026-06-22T12:51:08.100165Z",
+      "updated_at": "2026-07-14T13:25:29.867988Z",
       "canonical_location": "ESPAÑA AVDA. Y GUATEMALA"
     },
     {
@@ -201376,6 +201558,21 @@
       "notes": "Dr. José Román Cortez, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-11T02:03:27.823948Z",
       "updated_at": "2025-11-11T02:27:45.671356Z",
+      "canonical_location": "Av. Ferreira Aldunate y Dr. José R. Cortez"
+    },
+    {
+      "db_id": 45,
+      "location": "FERREIRA ALDUNATE WILSON AVDA. Y CORTES DR. JOSE ROMAN, MALDONADO",
+      "point": {
+        "lat": -34.8861173,
+        "lng": -54.9675599
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Dr. José Román Cortez, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-07-14T13:23:40.809363Z",
+      "updated_at": "2026-07-14T13:25:28.274001Z",
       "canonical_location": "Av. Ferreira Aldunate y Dr. José R. Cortez"
     },
     {
@@ -203664,7 +203861,7 @@
       "confidence": "medium",
       "notes": "Francisco Maldonado, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:10:09.214024Z",
-      "updated_at": "2026-06-22T12:51:09.070523Z",
+      "updated_at": "2026-07-14T13:25:30.836085Z",
       "canonical_location": "GUERRA ROMAN Y LAVALLEJA GRAL. JUAN A. AVDA."
     },
     {
@@ -205499,14 +205696,15 @@
       "location": "ITUZAINGO Y DIECIOCHO (18) DE JULIO, SAN CARLOS",
       "point": {
         "lat": -34.792612,
-        "lng": -54.9198965
+        "lng": -54.91989650000001
       },
       "is_electronic": false,
       "geocoding_method": "google_maps",
       "confidence": "medium",
       "notes": "18 de Julio, 20400 San Carlos, Departamento de Maldonado, Uruguay",
       "created_at": "2026-01-13T15:34:37.265441Z",
-      "updated_at": "2026-01-13T15:34:37.265441Z"
+      "updated_at": "2026-07-14T13:25:31.313505Z",
+      "canonical_location": "DIECIOCHO (18) DE JULIO Y ITUZAINGO, SAN CARLOS"
     },
     {
       "db_id": 45,
@@ -207263,7 +207461,7 @@
       "confidence": "medium",
       "notes": "18 de Julio, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-05T12:32:23.792863Z",
-      "updated_at": "2026-06-22T12:51:08.54488Z",
+      "updated_at": "2026-07-14T13:25:30.369097Z",
       "canonical_location": "LEDESMA MANUEL ANTONIO Y DIECIOCHO (18) DE JULIO"
     },
     {
