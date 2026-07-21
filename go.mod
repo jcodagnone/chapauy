@@ -7,7 +7,7 @@ require (
 	github.com/duckdb/duckdb-go/v2 v2.10504.0
 	github.com/gin-gonic/gin v1.12.0
 	github.com/google/go-cmp v0.7.0
-	github.com/mattn/go-isatty v0.0.22
+	github.com/mattn/go-isatty v0.0.23
 	github.com/schollz/progressbar/v3 v3.19.1
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
