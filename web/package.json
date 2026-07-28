@@ -65,7 +65,7 @@
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^30.0.0",
     "playwright": "^1.62.0",
-    "postcss": "^8.5.23",
+    "postcss": "^8.5.24",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
