@@ -8305,6 +8305,28 @@
     },
     {
       "id": 0,
+      "description": "4,2,1 Conducir bajo efectos de alcohol o rehusarseal examen (artículo 46 de la Iey 18,191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:50:22.344154Z"
+    },
+    {
+      "id": 0,
+      "description": "4,2,2 Conducir bajo efectos de drogas o rehusarse al examen (artículo 46 de la Iey 18,191)",
+      "article_ids": [
+        "4.2.2"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:50:39.160311Z"
+    },
+    {
+      "id": 0,
       "description": "4,3,1 No respetar señalamiento",
       "article_ids": [
         "4.3.1"
@@ -9416,6 +9438,17 @@
     },
     {
       "id": 0,
+      "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarse al examen (artículo 46 de la Iey 18.191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:50:29.303521Z"
+    },
+    {
+      "id": 0,
       "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarse al examen (artículo 46 de la ley 18.191)",
       "article_ids": [
         "4.2.1"
@@ -9457,6 +9490,17 @@
         4
       ],
       "updated_at": "2025-12-07T16:44:02.462946Z"
+    },
+    {
+      "id": 0,
+      "description": "4.2.1 Conducir bajo efectos de alcohol o rehusarseal examen (artículo 46 de la Iey 18.191)",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:50:09.648282Z"
     },
     {
       "id": 0,
@@ -18484,6 +18528,17 @@
     },
     {
       "id": 0,
+      "description": "ART. 21.3.1 : Conductor o acompañante sin casco",
+      "article_ids": [
+        "21.3.1"
+      ],
+      "article_codes": [
+        21
+      ],
+      "updated_at": "2026-08-01T20:51:04.921069Z"
+    },
+    {
+      "id": 0,
       "description": "ART. 21.3.1: Conductor o acompañante sin casco",
       "article_ids": [
         "21.3.1"
@@ -23261,6 +23316,17 @@
     },
     {
       "id": 0,
+      "description": "CIRCULA SIN CASCO",
+      "article_ids": [
+        "21.3.1"
+      ],
+      "article_codes": [
+        21
+      ],
+      "updated_at": "2026-08-01T20:50:54.864707Z"
+    },
+    {
+      "id": 0,
       "description": "CIRCULA SOBRE MARCA DELIMITADORAS O ISLETAS",
       "article_ids": [
         "12.8"
@@ -24260,6 +24326,17 @@
     },
     {
       "id": 0,
+      "description": "COMPAÑANTE SIN CASCO",
+      "article_ids": [
+        "21.3.1"
+      ],
+      "article_codes": [
+        21
+      ],
+      "updated_at": "2026-08-01T20:51:15.487826Z"
+    },
+    {
+      "id": 0,
       "description": "COMPETENCIA DEPORT. SIN *MIN",
       "article_ids": [
         "2.6"
@@ -25163,6 +25240,28 @@
         4
       ],
       "updated_at": "2026-03-06T13:57:33.344829Z"
+    },
+    {
+      "id": 0,
+      "description": "CONDUCIR BAJO EFECTOS DEL ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:50:04.383968Z"
+    },
+    {
+      "id": 0,
+      "description": "CONDUCIR BAJO LOS EFECTOS DEL ALCOHOL",
+      "article_ids": [
+        "4.2.1"
+      ],
+      "article_codes": [
+        4
+      ],
+      "updated_at": "2026-08-01T20:49:55.695526Z"
     },
     {
       "id": 0,
@@ -73745,6 +73844,20 @@
     },
     {
       "db_id": 6,
+      "location": "BADAJOZ y CNO CASAVALLE",
+      "point": {
+        "lat": -34.8160644,
+        "lng": -56.2146173
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Badajoz \u0026 Camino Casavalle, 12400 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-08-01T20:46:14.676326Z",
+      "updated_at": "2026-08-01T20:46:14.676326Z"
+    },
+    {
+      "db_id": 6,
       "location": "BALBIN Y VALLEJO y AV JACOBO VARELA",
       "point": {
         "lat": -34.8613767,
@@ -90736,7 +90849,8 @@
       "confidence": "medium",
       "notes": "Badajoz \u0026 Camino Casavalle, 12400 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-01-17T15:04:17.729238Z",
-      "updated_at": "2026-01-17T15:04:17.729238Z"
+      "updated_at": "2026-08-01T20:51:48.470672Z",
+      "canonical_location": "BADAJOZ y CNO CASAVALLE"
     },
     {
       "db_id": 6,
@@ -95124,6 +95238,21 @@
       "notes": "Cam. Calchaqui, 12500 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-17T14:18:32.58447Z",
       "updated_at": "2026-02-17T14:18:32.58447Z"
+    },
+    {
+      "db_id": 6,
+      "location": "CNODE LA REDENCION y CNO FOLLE YLLA",
+      "point": {
+        "lat": -34.8001089,
+        "lng": -56.2655653
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "C. De La Redencion y Cno. Folle ylla, 12500 Departamento de Montevideo, Uruguay",
+      "created_at": "2026-08-01T20:47:03.340222Z",
+      "updated_at": "2026-08-01T20:51:38.820669Z",
+      "canonical_location": "CNO DE LA REDENCION y CNO FOLLE YLLA"
     },
     {
       "db_id": 6,
@@ -155834,6 +155963,20 @@
     },
     {
       "db_id": 6,
+      "location": "PORTUGAL y ESTADOS UNIDOS",
+      "point": {
+        "lat": -34.87624510935519,
+        "lng": -56.25313818454743
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Montevideo, Montevideo Department, Uruguay",
+      "created_at": "2026-08-01T20:46:51.780379Z",
+      "updated_at": "2026-08-01T20:46:51.780379Z"
+    },
+    {
+      "db_id": 6,
       "location": "PORTUGAL y JAPON",
       "point": {
         "lat": -34.8753582,
@@ -181799,7 +181942,7 @@
       "confidence": "medium",
       "notes": "San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-06T13:09:34.543177Z",
-      "updated_at": "2026-07-14T13:25:32.254661Z",
+      "updated_at": "2026-08-01T20:52:20.313456Z",
       "canonical_location": "ALEGRE VENTURA RAMON Y SAN CARLOS"
     },
     {
@@ -189785,7 +189928,7 @@
       "confidence": "medium",
       "notes": "De La Virgen, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:15:16.491372Z",
-      "updated_at": "2026-07-14T13:25:29.366828Z",
+      "updated_at": "2026-08-01T20:52:24.267413Z",
       "canonical_location": "BOLIVAR SIMON Y DE LA VIRGEN"
     },
     {
@@ -194126,6 +194269,21 @@
     },
     {
       "db_id": 45,
+      "location": "CHIOSSI PROF. ALFREDO Y TAILANDIA",
+      "point": {
+        "lat": -34.91997411092004,
+        "lng": -54.952942728996284
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado, Maldonado Department, Uruguay",
+      "created_at": "2026-08-01T20:45:38.99426Z",
+      "updated_at": "2026-08-01T20:51:47.897115Z",
+      "canonical_location": "CHIOSSI MARTINIANO AVDA. Y TAILANDIA"
+    },
+    {
+      "db_id": 45,
       "location": "CHIOSSI PROF. ALFREDO Y TRES (3) DE FEBRERO",
       "point": {
         "lat": -34.91285692051659,
@@ -194932,7 +195090,7 @@
       "confidence": "medium",
       "notes": "Av. Gral. Jose Gervasio Artigas, 20200 Piriápolis, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:21:02.362363Z",
-      "updated_at": "2026-07-14T13:25:31.782211Z",
+      "updated_at": "2026-08-01T20:52:21.232251Z",
       "canonical_location": "CORDOBA AVDA. Y SAN MARTIN GRAL. JOSE DE"
     },
     {
@@ -200741,6 +200899,21 @@
     },
     {
       "db_id": 45,
+      "location": "ESPAÑA AVDA. Y ECUADOR, MALDONADO",
+      "point": {
+        "lat": -34.91796174172487,
+        "lng": -54.970875978469856
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Ecuador, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:44:30.202118Z",
+      "updated_at": "2026-08-01T20:52:22.409236Z",
+      "canonical_location": "ESPAÑA AVDA. Y ECUADOR"
+    },
+    {
+      "db_id": 45,
       "location": "ESPAÑA AVDA. Y EL TRIGAL",
       "point": {
         "lat": -34.91860174645902,
@@ -200794,7 +200967,7 @@
       "confidence": "medium",
       "notes": "Guatemala, 20005 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:06:40.93627Z",
-      "updated_at": "2026-07-14T13:25:29.867988Z",
+      "updated_at": "2026-08-01T20:52:23.640968Z",
       "canonical_location": "ESPAÑA AVDA. Y GUATEMALA"
     },
     {
@@ -202062,6 +202235,20 @@
     },
     {
       "db_id": 45,
+      "location": "FRAGOSO DE RIVERA BERNARDINA Y CALLEROS MANUEL, MALDONADO",
+      "point": {
+        "lat": -34.90135960000001,
+        "lng": -54.9509215
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Bernardina Fragoso de Rivera \u0026 Manuel Calleros, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:41:26.51196Z",
+      "updated_at": "2026-08-01T20:41:26.51196Z"
+    },
+    {
+      "db_id": 45,
       "location": "FRANCIA AVDA, Y BRASIL AVDA,, PUNTA DEL ESTE",
       "point": {
         "lat": -34.938085411930146,
@@ -202175,6 +202362,20 @@
       "notes": "Cantos de la Mañana, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-01-15T10:58:11.82255Z",
       "updated_at": "2026-01-15T10:58:11.82255Z"
+    },
+    {
+      "db_id": 45,
+      "location": "FRANCIA AVDA. Y GIBRALTAR, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9447382,
+        "lng": -54.939105
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Gibraltar, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:42:15.936713Z",
+      "updated_at": "2026-08-01T20:42:15.936713Z"
     },
     {
       "db_id": 45,
@@ -202308,6 +202509,20 @@
     },
     {
       "db_id": 45,
+      "location": "FRANCIA AVDA. Y NACIONES UNIDAS AVDA., PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.93647367702335,
+        "lng": -54.946947991848
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Punta del Este, Maldonado Department, Uruguay",
+      "created_at": "2026-08-01T20:43:35.498078Z",
+      "updated_at": "2026-08-01T20:43:35.498078Z"
+    },
+    {
+      "db_id": 45,
       "location": "FRANCIA AVDA. Y PARIS AVDA.",
       "point": {
         "lat": -34.940847055954656,
@@ -202363,6 +202578,20 @@
       "created_at": "2026-01-13T15:34:50.406071Z",
       "updated_at": "2026-01-14T12:45:08.975807Z",
       "canonical_location": "FRANCIA AVDA. Y PEDRAGOSA SIERRA ORLANDO AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "FRANCIA AVDA. Y PERU",
+      "point": {
+        "lat": -34.932891686178365,
+        "lng": -54.950574338436134
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado Department, Uruguay",
+      "created_at": "2026-08-01T20:43:23.371089Z",
+      "updated_at": "2026-08-01T20:43:23.371089Z"
     },
     {
       "db_id": 45,
@@ -202435,6 +202664,21 @@
       "notes": "Punta del Este, Maldonado Department, Uruguay",
       "created_at": "2026-02-12T12:36:25.92203Z",
       "updated_at": "2026-02-12T12:36:25.92203Z"
+    },
+    {
+      "db_id": 45,
+      "location": "FRANCIA AVDA. Y TALCAHUANO",
+      "point": {
+        "lat": -34.938882252508456,
+        "lng": -54.944435644398
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "low",
+      "notes": "Maldonado, Maldonado Department, Uruguay",
+      "created_at": "2026-08-01T20:44:03.608779Z",
+      "updated_at": "2026-08-01T20:51:48.276743Z",
+      "canonical_location": "TALCAHUANO Y FRANCIA AVDA."
     },
     {
       "db_id": 45,
@@ -203861,7 +204105,7 @@
       "confidence": "medium",
       "notes": "Francisco Maldonado, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:10:09.214024Z",
-      "updated_at": "2026-07-14T13:25:30.836085Z",
+      "updated_at": "2026-08-01T20:52:21.779773Z",
       "canonical_location": "GUERRA ROMAN Y LAVALLEJA GRAL. JUAN A. AVDA."
     },
     {
@@ -205267,15 +205511,16 @@
       "db_id": 45,
       "location": "ITALIA AVDA, Y YUCATAN, PUNTA DEL ESTE",
       "point": {
-        "lat": -34.949194969078874,
-        "lng": -54.9342829176441
+        "lat": -34.9492083775655,
+        "lng": -54.93425041437149
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Yucatán, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-04-20T12:54:49.56475Z",
-      "updated_at": "2026-04-20T12:54:49.56475Z"
+      "updated_at": "2026-08-01T20:51:47.527497Z",
+      "canonical_location": "ITALIA AVDA. Y YUCATAN, PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
@@ -205601,6 +205846,20 @@
       "created_at": "2025-11-25T16:38:41.192038Z",
       "updated_at": "2025-12-25T12:56:18.625128Z",
       "canonical_location": "VERA CRUZ Y ITALIA AVDA."
+    },
+    {
+      "db_id": 45,
+      "location": "ITALIA AVDA. Y YUCATAN, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9492083775655,
+        "lng": -54.93425041437149
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Yucatán, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:41:00.320673Z",
+      "updated_at": "2026-08-01T20:41:00.320673Z"
     },
     {
       "db_id": 45,
@@ -207461,7 +207720,7 @@
       "confidence": "medium",
       "notes": "18 de Julio, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-05T12:32:23.792863Z",
-      "updated_at": "2026-07-14T13:25:30.369097Z",
+      "updated_at": "2026-08-01T20:52:23.114397Z",
       "canonical_location": "LEDESMA MANUEL ANTONIO Y DIECIOCHO (18) DE JULIO"
     },
     {
@@ -214110,6 +214369,21 @@
     },
     {
       "db_id": 45,
+      "location": "RAMBLA CLAUDIO WILLIMAN Y LINCOLN ABRAHAM AVDA.",
+      "point": {
+        "lat": -34.9337926,
+        "lng": -54.9544361
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Rb. Dr. Claudio Williman \u0026 Av. Abraham Lincoln, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:45:21.371435Z",
+      "updated_at": "2026-08-01T20:51:46.97997Z",
+      "canonical_location": "WILLIMAN DR. CLAUDIO RBLA. Y LINCOLN ABRAHAM AVDA."
+    },
+    {
+      "db_id": 45,
       "location": "RAMBLA CLAUDIO WILLIMAN Y LOS ALPES AVDA., PUNTA DEL ESTE",
       "point": {
         "lat": -34.94425940482934,
@@ -217144,6 +217418,21 @@
       "notes": "Ruta 10-Juan Diaz de Solis \u0026 El Mate, 20000 Balneario Buenos Aires, Departamento de Maldonado, Uruguay",
       "created_at": "2026-03-12T12:02:05.546422Z",
       "updated_at": "2026-03-12T12:02:05.546422Z"
+    },
+    {
+      "db_id": 45,
+      "location": "RUTA 37 Y VILARDEBO, PIRIAPOLIS",
+      "point": {
+        "lat": -34.8399049,
+        "lng": -55.2661247
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "37 \u0026 Vilardebo, 20200 Piriápolis, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:42:00.76075Z",
+      "updated_at": "2026-08-01T20:51:41.767319Z",
+      "canonical_location": "Bvar. Artigas y Vilardebo"
     },
     {
       "db_id": 45,
@@ -222905,6 +223194,21 @@
       "notes": "Colonia \u0026 Soriano, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-30T01:57:18.882793Z",
       "updated_at": "2025-11-30T01:57:18.882793Z"
+    },
+    {
+      "db_id": 45,
+      "location": "SUAREZ JOAQUIN Y FRAGOSO DE RIVERA BERNARDINA, MALDONADO",
+      "point": {
+        "lat": -34.90135960000001,
+        "lng": -54.9509215
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Bernardina Fragoso de Rivera, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-01T20:41:46.553639Z",
+      "updated_at": "2026-08-01T20:51:46.763578Z",
+      "canonical_location": "FRAGOSO DE RIVERA BERNARDINA Y CALLEROS MANUEL, MALDONADO"
     },
     {
       "db_id": 45,
