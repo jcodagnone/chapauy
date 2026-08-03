@@ -150904,6 +150904,20 @@
     },
     {
       "db_id": 6,
+      "location": "OSVALDO CRUZ y GERONIMO PICCIOLI",
+      "point": {
+        "lat": -34.8541758,
+        "lng": -56.1400519
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Gerónimo Piccioli \u0026 Osvaldo Cruz, 12000 Montevideo, Departamento de Montevideo, Uruguay",
+      "created_at": "2026-08-03T12:30:19.483277Z",
+      "updated_at": "2026-08-03T12:30:19.483277Z"
+    },
+    {
+      "db_id": 6,
       "location": "OSVALDO CRUZ y JOSE VASCONCELLOS",
       "point": {
         "lat": -34.8536236,
@@ -152548,7 +152562,8 @@
       "confidence": "medium",
       "notes": "Gerónimo Piccioli \u0026 Pavon, 12000 Montevideo, Departamento de Montevideo, Uruguay",
       "created_at": "2026-02-02T13:05:26.692034Z",
-      "updated_at": "2026-02-02T13:05:26.692034Z"
+      "updated_at": "2026-08-03T12:55:26.68874Z",
+      "canonical_location": "OSVALDO CRUZ y GERONIMO PICCIOLI"
     },
     {
       "db_id": 6,
@@ -176743,6 +176758,21 @@
     },
     {
       "db_id": 26,
+      "location": "18 DE JULIO ESQ. RODÓ, MINAS",
+      "point": {
+        "lat": -34.37740369782591,
+        "lng": -55.235907733440406
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "18 de Julio \u0026 José Enrique Rodó, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:29:14.461597Z",
+      "updated_at": "2026-08-03T12:55:12.65849Z",
+      "canonical_location": "18 DE JULIO Y RODO, MINAS"
+    },
+    {
+      "db_id": 26,
       "location": "18 DE JULIO Y 25 DE MAYO, MINAS",
       "point": {
         "lat": -34.37685690613427,
@@ -177414,6 +177444,20 @@
     },
     {
       "db_id": 26,
+      "location": "AV. FLORES Y FLORIDA, MINAS",
+      "point": {
+        "lat": -34.3663687,
+        "lng": -55.24402
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Florida \u0026 Avenida Flores, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:39:41.369548Z",
+      "updated_at": "2026-08-03T12:39:41.369548Z"
+    },
+    {
+      "db_id": 26,
       "location": "AV. GARIBALDI Y ANSINA, MINAS",
       "point": {
         "lat": -34.3665159,
@@ -177569,6 +177613,20 @@
     },
     {
       "db_id": 26,
+      "location": "Av. Artigas y Morosoli, Minas",
+      "point": {
+        "lat": -34.358768707641644,
+        "lng": -55.25050163269043
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Juan Jose Morosoli, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:29:43.096671Z",
+      "updated_at": "2026-08-03T12:29:43.096671Z"
+    },
+    {
+      "db_id": 26,
       "location": "Av. Varela y Joaquín Suárez, Minas",
       "point": {
         "lat": -34.3726015,
@@ -177658,6 +177716,21 @@
     },
     {
       "db_id": 26,
+      "location": "BRIGIDO ESQ. 25 DE MAYO, MINAS",
+      "point": {
+        "lat": -34.3747826,
+        "lng": -55.2347048
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "25 de Mayo \u0026 Coronel Brigido Silveira, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:39:21.162841Z",
+      "updated_at": "2026-08-03T12:55:12.44478Z",
+      "canonical_location": "BRIGIDO Y 25 DE MAYO, MINAS"
+    },
+    {
+      "db_id": 26,
       "location": "BRIGIDO Y 25 DE MAYO, MINAS",
       "point": {
         "lat": -34.3747826,
@@ -177669,6 +177742,20 @@
       "notes": "25 de Mayo \u0026 Coronel Brigido Silveira, 30000 Minas, Departamento de Lavalleja, Uruguay",
       "created_at": "2025-11-12T18:29:27.947323Z",
       "updated_at": "2025-11-12T18:29:27.947323Z"
+    },
+    {
+      "db_id": 26,
+      "location": "Batlle y Juan Farina, Minas",
+      "point": {
+        "lat": -34.3721558,
+        "lng": -55.2404573
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Juan Farina \u0026 Jose Batlle y Ordoñez, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:29:02.866257Z",
+      "updated_at": "2026-08-03T12:29:02.866257Z"
     },
     {
       "db_id": 26,
@@ -177845,6 +177932,21 @@
       "created_at": "2025-11-12T18:30:53.044351Z",
       "updated_at": "2025-11-12T18:42:29.664632Z",
       "canonical_location": "TREINTA Y TRES Y DOMINGO PÉREZ, MINAS"
+    },
+    {
+      "db_id": 26,
+      "location": "DE LA LLANA Y ELLAURI, MINAS",
+      "point": {
+        "lat": -34.3750551,
+        "lng": -55.2308849
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Ellauri \u0026 General De la Llana, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:39:16.580771Z",
+      "updated_at": "2026-08-03T12:55:12.849144Z",
+      "canonical_location": "ELLAURI Y DE LA LLANA, MINAS"
     },
     {
       "db_id": 26,
@@ -178110,6 +178212,20 @@
     },
     {
       "db_id": 26,
+      "location": "GARIBALDI Y AMILIVIA, MINAS",
+      "point": {
+        "lat": -34.3738451,
+        "lng": -55.23111729999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Intendente Solano Amilivia \u0026 General Jose Garibaldi, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:40:33.389661Z",
+      "updated_at": "2026-08-03T12:40:33.389661Z"
+    },
+    {
+      "db_id": 26,
       "location": "GRAL. ARTIGAS Y RIVERA, VARELA",
       "point": {
         "lat": -33.4558895,
@@ -178121,6 +178237,35 @@
       "notes": "Avenida General Artigas \u0026 Rivera, 30300 José Pedro Varela, Departamento de Lavalleja, Uruguay",
       "created_at": "2025-11-12T18:31:22.825584Z",
       "updated_at": "2025-11-12T18:31:22.825584Z"
+    },
+    {
+      "db_id": 26,
+      "location": "Gral. Jose Artigas esqui/ Jose Maria Dubra, JOSE BATLLE Y ORDOÑEZ",
+      "point": {
+        "lat": -33.472646,
+        "lng": -55.1467442
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jose Maria Dubra, 34200 José Batlle y Ordóñez, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:40:05.155834Z",
+      "updated_at": "2026-08-03T12:55:13.484406Z",
+      "canonical_location": "Gral.Jose Artigas esqui/ Jose Maria Dubra, JOSE BATLLE Y ORDOÑEZ"
+    },
+    {
+      "db_id": 26,
+      "location": "Gral.Jose Artigas esqui/ Jose Maria Dubra, JOSE BATLLE Y ORDOÑEZ",
+      "point": {
+        "lat": -33.472646,
+        "lng": -55.1467442
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Jose Maria Dubra, 34200 José Batlle y Ordóñez, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:40:09.164478Z",
+      "updated_at": "2026-08-03T12:40:09.164478Z"
     },
     {
       "db_id": 26,
@@ -178378,15 +178523,16 @@
       "db_id": 26,
       "location": "L.A DE HERRERA Y W. BELTRAN, MINAS",
       "point": {
-        "lat": -34.37186699030438,
-        "lng": -55.242803692817695
+        "lat": -34.3718113,
+        "lng": -55.24284609999999
       },
       "is_electronic": false,
       "geocoding_method": "manual_click",
       "confidence": "medium",
       "notes": "Luis Alberto de Herrera, 30000 Minas, Departamento de Lavalleja, Uruguay",
       "created_at": "2026-02-23T12:31:54.768607Z",
-      "updated_at": "2026-02-23T12:31:54.768607Z"
+      "updated_at": "2026-08-03T12:55:13.063171Z",
+      "canonical_location": "WASHINTON BELTRAN Y LUIS ALBERTO DE HERRERA, MINAS"
     },
     {
       "db_id": 26,
@@ -178940,6 +179086,20 @@
     },
     {
       "db_id": 26,
+      "location": "Rivera y 18 de Julio, JOSE BATLLE Y ORDOÑEZ",
+      "point": {
+        "lat": -33.473997,
+        "lng": -55.1473168
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "18 de Julio \u0026 Rivera, 34200 José Batlle y Ordóñez, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:39:35.473072Z",
+      "updated_at": "2026-08-03T12:39:35.473072Z"
+    },
+    {
+      "db_id": 26,
       "location": "Rodó y Batlle, Minas",
       "point": {
         "lat": -34.3760378,
@@ -179056,6 +179216,21 @@
       "created_at": "2025-12-25T11:56:39.653765Z",
       "updated_at": "2025-12-25T11:58:05.367407Z",
       "canonical_location": "TREINTA Y TRES Y SARANDI, MINAS"
+    },
+    {
+      "db_id": 26,
+      "location": "TREINTA Y TRES CASI RODO, MINAS",
+      "point": {
+        "lat": -34.3780428,
+        "lng": -55.2365807
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Treinta y Tres \u0026 José Enrique Rodó, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:40:21.652459Z",
+      "updated_at": "2026-08-03T12:55:12.127174Z",
+      "canonical_location": "TREINTA Y TRES Y RODO, MINAS"
     },
     {
       "db_id": 26,
@@ -179408,6 +179583,35 @@
       "notes": "Ugolini \u0026 Julio Cesar Grauert, 30000 Minas, Departamento de Lavalleja, Uruguay",
       "created_at": "2026-01-15T11:04:47.124184Z",
       "updated_at": "2026-01-15T11:04:47.124184Z"
+    },
+    {
+      "db_id": 26,
+      "location": "WASHINGTON Y 25 DE MAYO, MINAS",
+      "point": {
+        "lat": -34.3762048,
+        "lng": -55.2361156
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "25 de Mayo \u0026 Calle Washington Beltrán, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:28:33.719345Z",
+      "updated_at": "2026-08-03T12:55:11.704247Z",
+      "canonical_location": "25 DE MAYO Y WASHINGTON, MINAS"
+    },
+    {
+      "db_id": 26,
+      "location": "WASHINTON BELTRAN Y LUIS ALBERTO DE HERRERA, MINAS",
+      "point": {
+        "lat": -34.3718113,
+        "lng": -55.24284609999999
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Calle Washington Beltrán \u0026 Luis Alberto de Herrera, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-08-03T12:40:42.70085Z",
+      "updated_at": "2026-08-03T12:40:42.70085Z"
     },
     {
       "db_id": 26,
@@ -181942,7 +182146,7 @@
       "confidence": "medium",
       "notes": "San Carlos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-06T13:09:34.543177Z",
-      "updated_at": "2026-08-01T20:52:20.313456Z",
+      "updated_at": "2026-08-03T12:55:49.194018Z",
       "canonical_location": "ALEGRE VENTURA RAMON Y SAN CARLOS"
     },
     {
@@ -185660,6 +185864,20 @@
     },
     {
       "db_id": 45,
+      "location": "AV FRANKLIN ROOSEVELT Y GALAPAGOS, MALDONADO",
+      "point": {
+        "lat": -34.912991,
+        "lng": -54.9655771
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Avenida Franklin Delano Roosevelt \u0026 Galapagos, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-03T12:50:06.875348Z",
+      "updated_at": "2026-08-03T12:50:06.875348Z"
+    },
+    {
+      "db_id": 45,
       "location": "AV FRANKLIN ROOSEVELT Y GATTAS PASCUAL",
       "point": {
         "lat": -34.9411219,
@@ -187056,6 +187274,21 @@
       "notes": "Francisco Aguilar \u0026 Avenida José Batlle y Ordoñez, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-08T19:56:27.479577Z",
       "updated_at": "2025-11-08T19:56:27.479577Z"
+    },
+    {
+      "db_id": 45,
+      "location": "Av. Pedragosa Sierra Orla ndo y Av. Del Mar",
+      "point": {
+        "lat": -34.938111797504135,
+        "lng": -54.92762804031373
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Ave Pedragosa Sierra, 20100 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-03T12:43:57.670555Z",
+      "updated_at": "2026-08-03T12:54:46.145599Z",
+      "canonical_location": "Av. Pedragosa Sierra Orlando y Av. Del Mar"
     },
     {
       "db_id": 45,
@@ -189928,7 +190161,7 @@
       "confidence": "medium",
       "notes": "De La Virgen, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:15:16.491372Z",
-      "updated_at": "2026-08-01T20:52:24.267413Z",
+      "updated_at": "2026-08-03T12:55:45.802551Z",
       "canonical_location": "BOLIVAR SIMON Y DE LA VIRGEN"
     },
     {
@@ -195090,7 +195323,7 @@
       "confidence": "medium",
       "notes": "Av. Gral. Jose Gervasio Artigas, 20200 Piriápolis, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:21:02.362363Z",
-      "updated_at": "2026-08-01T20:52:21.232251Z",
+      "updated_at": "2026-08-03T12:55:48.621841Z",
       "canonical_location": "CORDOBA AVDA. Y SAN MARTIN GRAL. JOSE DE"
     },
     {
@@ -200909,7 +201142,7 @@
       "confidence": "medium",
       "notes": "Ecuador, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-08-01T20:44:30.202118Z",
-      "updated_at": "2026-08-01T20:52:22.409236Z",
+      "updated_at": "2026-08-03T12:55:47.69371Z",
       "canonical_location": "ESPAÑA AVDA. Y ECUADOR"
     },
     {
@@ -200967,7 +201200,7 @@
       "confidence": "medium",
       "notes": "Guatemala, 20005 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:06:40.93627Z",
-      "updated_at": "2026-08-01T20:52:23.640968Z",
+      "updated_at": "2026-08-03T12:55:46.300226Z",
       "canonical_location": "ESPAÑA AVDA. Y GUATEMALA"
     },
     {
@@ -202070,6 +202303,21 @@
       "notes": "Zelmar Michelini, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-11T01:57:36.140253Z",
       "updated_at": "2025-11-11T01:57:36.140253Z"
+    },
+    {
+      "db_id": 45,
+      "location": "FLORIDA Y MICHELINI ZELMAR, MALDONADO",
+      "point": {
+        "lat": -34.90839406578294,
+        "lng": -54.96089011430741
+      },
+      "is_electronic": false,
+      "geocoding_method": "manual_click",
+      "confidence": "medium",
+      "notes": "Zelmar Michelini, 20000 Maldonado, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-03T12:43:26.481349Z",
+      "updated_at": "2026-08-03T12:55:48.140234Z",
+      "canonical_location": "FLORIDA Y MICHELINI ZELMAR"
     },
     {
       "db_id": 45,
@@ -204105,7 +204353,7 @@
       "confidence": "medium",
       "notes": "Francisco Maldonado, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-04T13:10:09.214024Z",
-      "updated_at": "2026-08-01T20:52:21.779773Z",
+      "updated_at": "2026-08-03T12:55:47.247724Z",
       "canonical_location": "GUERRA ROMAN Y LAVALLEJA GRAL. JUAN A. AVDA."
     },
     {
@@ -207720,7 +207968,7 @@
       "confidence": "medium",
       "notes": "18 de Julio, 20000 Maldonado, Departamento de Maldonado, Uruguay",
       "created_at": "2026-05-05T12:32:23.792863Z",
-      "updated_at": "2026-08-01T20:52:23.114397Z",
+      "updated_at": "2026-08-03T12:55:46.748438Z",
       "canonical_location": "LEDESMA MANUEL ANTONIO Y DIECIOCHO (18) DE JULIO"
     },
     {
@@ -209006,6 +209254,21 @@
       "notes": "Louvre \u0026 Mercedes, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
       "created_at": "2025-11-30T01:34:50.106659Z",
       "updated_at": "2025-11-30T01:34:50.106659Z"
+    },
+    {
+      "db_id": 45,
+      "location": "LOUVRE Y MERCEDES, PUNTA DEL ESTE",
+      "point": {
+        "lat": -34.9208015,
+        "lng": -54.9441166
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Louvre \u0026 Mercedes, 20000 Punta del Este, Departamento de Maldonado, Uruguay",
+      "created_at": "2026-08-03T12:43:36.088806Z",
+      "updated_at": "2026-08-03T12:54:52.980526Z",
+      "canonical_location": "LOUVRE Y MERCEDES, PUNTA DEL ESTE"
     },
     {
       "db_id": 45,
@@ -228160,6 +228423,20 @@
       "notes": "Laguna de las Lavanderas, 45000 Echeverry, Departamento de Tacuarembó, Uruguay",
       "created_at": "2025-11-09T16:03:05.57209Z",
       "updated_at": "2025-11-09T16:03:05.57209Z"
+    },
+    {
+      "db_id": 56,
+      "location": "PABLO RIOS Y LIZARAZOU",
+      "point": {
+        "lat": -31.7237395,
+        "lng": -55.9739596
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Pablo Rios \u0026 Jose Silveira Lizarazou, 45000 Tacuarembó, Departamento de Tacuarembó, Uruguay",
+      "created_at": "2026-08-03T12:28:46.510534Z",
+      "updated_at": "2026-08-03T12:28:46.510534Z"
     },
     {
       "db_id": 56,
