@@ -163,6 +163,7 @@ func NewImpoClient(options *ClientOptions, dbRef *DbReference, repo OffenseRepos
 			// For this kind of program, no redirects is the policy, but in this case
 			// we need to allow redirects during login to get a valid session
 			v := req.Context().Value(allowRedirectKey)
+
 			allowRedirect, ok := v.(bool)
 			if ok && allowRedirect {
 				return nil

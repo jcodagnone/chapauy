@@ -14,9 +14,10 @@ import (
 
 	_ "github.com/duckdb/duckdb-go/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/jcodagnone/chapauy/curation/utils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+
+	"github.com/jcodagnone/chapauy/curation/utils"
 )
 
 // MockLocationRepository is a mock implementation of LocationRepository for testing.
@@ -48,6 +49,7 @@ func (m *MockLocationRepository) GetAllJudgmentsSorted() ([]*Location, error) { 
 // setupServerTest initializes a Gin router and a curation.Server for testing.
 func setupServerTest(t *testing.T) (*gin.Engine, *Server, *sql.DB, DescriptionRepository) {
 	gin.SetMode(gin.TestMode)
+
 	router := gin.Default()
 
 	db, descriptionRepo := setupDescriptionDB(t)
@@ -92,6 +94,7 @@ func TestSuggestClassificationAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var suggestions []Suggestion
+
 	err = json.Unmarshal(w.Body.Bytes(), &suggestions)
 	require.NoError(t, err)
 	assert.Len(t, suggestions, 2)
@@ -134,6 +137,7 @@ func TestGetUnclassifiedDescriptionsAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var descriptions []DescriptionQueueItem
+
 	err = json.Unmarshal(w.Body.Bytes(), &descriptions)
 	require.NoError(t, err)
 	assert.Len(t, descriptions, 3)
@@ -177,6 +181,7 @@ func TestGetDescriptionProgressAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var progress DescriptionProgressResponse
+
 	err = json.Unmarshal(w.Body.Bytes(), &progress)
 	require.NoError(t, err)
 	assert.Equal(t, 4, progress.TotalDescriptions)      // A, B, C, D
@@ -201,6 +206,7 @@ func TestAddArticleAPI(t *testing.T) {
 	var response map[string]bool
 
 	var err error // Declare err here
+
 	err = json.Unmarshal(w.Body.Bytes(), &response)
 	require.NoError(t, err)
 	assert.True(t, response["success"])
@@ -209,6 +215,7 @@ func TestAddArticleAPI(t *testing.T) {
 
 	// Verify it's in the DB
 	var text string
+
 	err = db.QueryRow("SELECT text FROM articles WHERE id = ?", "NEW1").Scan(&text)
 	t.Logf("DB Query Error: %v", err)
 	t.Logf("Scanned Text: %s", text)
@@ -257,6 +264,7 @@ func TestSearchArticlesAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var articles []Article
+
 	err = json.Unmarshal(w.Body.Bytes(), &articles)
 	require.NoError(t, err)
 	assert.Len(t, articles, 2)
@@ -323,12 +331,14 @@ func TestClassifyDescriptionAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var response map[string]bool
+
 	err = json.Unmarshal(w.Body.Bytes(), &response)
 	require.NoError(t, err)
 	assert.True(t, response["success"])
 
 	// Verify classification in DB
 	var scannedArticleIDs any
+
 	err = db.QueryRow("SELECT article_ids FROM descriptions WHERE description = ?", "DESC TO CLASSIFY").Scan(&scannedArticleIDs)
 	require.NoError(t, err)
 
@@ -343,6 +353,7 @@ func TestClassifyDescriptionAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var descriptions []DescriptionQueueItem
+
 	err = json.Unmarshal(w.Body.Bytes(), &descriptions)
 	require.NoError(t, err)
 	assert.Empty(t, descriptions) // Should be empty
@@ -350,6 +361,7 @@ func TestClassifyDescriptionAPI(t *testing.T) {
 
 func TestGetGeocodingProgressAPI(t *testing.T) {
 	gin.SetMode(gin.TestMode)
+
 	router := gin.Default()
 
 	db, _ := setupDescriptionDB(t)
@@ -393,6 +405,7 @@ func TestGetGeocodingProgressAPI(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var progress ProgressResponse
+
 	err = json.Unmarshal(w.Body.Bytes(), &progress)
 	require.NoError(t, err)
 
@@ -467,6 +480,7 @@ func TestGetLocationQueueOrdering(t *testing.T) {
 	assert.Equal(t, http.StatusOK, w.Code)
 
 	var items []LocationQueueItem
+
 	err = json.Unmarshal(w.Body.Bytes(), &items)
 	require.NoError(t, err)
 

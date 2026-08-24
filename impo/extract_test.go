@@ -683,6 +683,7 @@ func TestVisitOffensesTable_WithLocalidadAndHora(t *testing.T) {
 	var tableNode *html.Node
 
 	var findTable func(*html.Node)
+
 	findTable = func(n *html.Node) {
 		if n.Type == html.ElementNode && n.Data == "table" {
 			for _, a := range n.Attr {

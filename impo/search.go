@@ -13,8 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jcodagnone/chapauy/utils/htmlutils"
 	"golang.org/x/net/html"
+
+	"github.com/jcodagnone/chapauy/utils/htmlutils"
 )
 
 // A single search result from the IMPO database.

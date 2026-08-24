@@ -11,8 +11,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/jcodagnone/chapauy/impo"
 	"github.com/spf13/cobra"
+
+	"github.com/jcodagnone/chapauy/impo"
 )
 
 func newSeedCmd() *cobra.Command {
@@ -23,6 +24,7 @@ func newSeedCmd() *cobra.Command {
 			if err := os.MkdirAll(impoOptions.DbPath, 0o750); err != nil {
 				return fmt.Errorf("creating db directory: %w", err)
 			}
+
 			dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
 
 			return seedDatabase(dbpath)

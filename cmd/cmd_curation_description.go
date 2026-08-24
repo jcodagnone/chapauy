@@ -22,8 +22,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/jcodagnone/chapauy/curation"
 	"github.com/spf13/cobra"
+
+	"github.com/jcodagnone/chapauy/curation"
 )
 
 var (
@@ -37,6 +38,7 @@ var curationDescriptionCmd = &cobra.Command{
 	Short: "Interactive batch curation for descriptions",
 	RunE: func(_ *cobra.Command, _ []string) error {
 		dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
+
 		db, err := sql.Open("duckdb", dbpath)
 		if err != nil {
 			return fmt.Errorf("opening database: %w", err)
@@ -44,6 +46,7 @@ var curationDescriptionCmd = &cobra.Command{
 		defer db.Close()
 
 		descrRepo := curation.NewDescriptionRepository(db)
+
 		articles, err := descrRepo.ListArticles()
 		if err != nil {
 			return fmt.Errorf("listing articles: %w", err)
@@ -59,12 +62,16 @@ var curationDescriptionCmd = &cobra.Command{
 		if interactive {
 			// Interactive mode
 			scanner := bufio.NewScanner(os.Stdin)
+
 			fmt.Println("Entering interactive mode. Type 'exit' or 'quit' to stop.")
+
 			for {
 				fmt.Print("> ")
+
 				if !scanner.Scan() {
 					break
 				}
+
 				line := scanner.Text()
 				if line == "exit" || line == "quit" {
 					break
@@ -76,6 +83,7 @@ var curationDescriptionCmd = &cobra.Command{
 				if multiArticle && !isMulti {
 					continue
 				}
+
 				if !multiArticle && isMulti {
 					continue
 				}
@@ -83,9 +91,11 @@ var curationDescriptionCmd = &cobra.Command{
 				if isMulti {
 					// Display multi-article description with breakdown
 					fmt.Printf("# MULTI | %s\n", line)
+
 					breakdown := classifier.SuggestWithBreakdown(line, threshold)
 					for _, bd := range breakdown {
 						fmt.Printf("## %s\n", bd.Part)
+
 						for _, suggestion := range bd.Suggestions {
 							fmt.Printf("%.2f | %s | %s\n", suggestion.Score, suggestion.ArticleID, suggestion.Text)
 						}
@@ -95,6 +105,7 @@ var curationDescriptionCmd = &cobra.Command{
 					suggestions := classifier.Suggest(line, threshold)
 					if len(suggestions) > 0 {
 						fmt.Printf("# %5s%s\n", "", line)
+
 						for _, suggestion := range suggestions {
 							fmt.Printf("%.2f | %4s | %s\n", suggestion.Score, suggestion.ArticleID, suggestion.Text)
 						}
@@ -102,8 +113,10 @@ var curationDescriptionCmd = &cobra.Command{
 						fmt.Println("No suggestions found.")
 					}
 				}
+
 				fmt.Println() // Add a blank line for readability
 			}
+
 			if err := scanner.Err(); err != nil {
 				return fmt.Errorf("reading stdin: %w", err)
 			}
@@ -121,6 +134,7 @@ var curationDescriptionCmd = &cobra.Command{
 				if multiArticle && !isMulti {
 					continue
 				}
+
 				if !multiArticle && isMulti {
 					continue
 				}
@@ -131,6 +145,7 @@ var curationDescriptionCmd = &cobra.Command{
 					if err != nil {
 						return fmt.Errorf("checking multi-article parts classification: %w", err)
 					}
+
 					if allPartsClassified {
 						// Skip if all parts are already classified
 						continue
@@ -138,9 +153,11 @@ var curationDescriptionCmd = &cobra.Command{
 
 					// Display multi-article description with breakdown
 					fmt.Printf("# MULTI | %s\n", item.Description)
+
 					breakdown := classifier.SuggestWithBreakdown(item.Description, threshold)
 					for _, bd := range breakdown {
 						fmt.Printf("## %s\n", bd.Part)
+
 						for _, suggestion := range bd.Suggestions {
 							fmt.Printf("%.2f | %s | %s\n", suggestion.Score, suggestion.ArticleID, suggestion.Text)
 						}
@@ -150,19 +167,24 @@ var curationDescriptionCmd = &cobra.Command{
 					suggestions := classifier.Suggest(item.Description, threshold)
 					if len(suggestions) > 0 {
 						fmt.Printf("# %5s%s\n", "", item.Description)
+
 						for _, suggestion := range suggestions {
 							fmt.Printf("%.2f | %s | %s\n", suggestion.Score, suggestion.ArticleID, suggestion.Text)
 						}
 					}
 				}
+
 				fmt.Println() // Add a blank line for readability
 			}
 		} else {
 			// Ingestion mode
 			scanner := bufio.NewScanner(os.Stdin)
-			var currentDescription string
-			var articleIDs []string
-			var isMultiDescription bool
+
+			var (
+				currentDescription string
+				articleIDs         []string
+				isMultiDescription bool
+			)
 
 			for scanner.Scan() {
 				line := scanner.Text()

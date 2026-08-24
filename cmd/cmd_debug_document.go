@@ -10,9 +10,10 @@ import (
 	"log"
 	"os"
 
+	"github.com/spf13/cobra"
+
 	"github.com/jcodagnone/chapauy/impo"
 	"github.com/jcodagnone/chapauy/utils/htmlutils"
-	"github.com/spf13/cobra"
 )
 
 var debugDocumentCmd = &cobra.Command{
@@ -48,6 +49,7 @@ Ejemplos:
 		}
 
 		var issuers []string
+
 		err = impo.Each(func(db impo.DbReference) error {
 			issuers = append(issuers, db.Issuers...)
 

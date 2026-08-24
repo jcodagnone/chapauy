@@ -12,8 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jcodagnone/chapauy/spatial"
 	"github.com/uber/h3-go/v4"
+
+	"github.com/jcodagnone/chapauy/spatial"
 )
 
 // Location represents a geocoding decision made by a user.

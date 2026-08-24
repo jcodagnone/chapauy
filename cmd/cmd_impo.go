@@ -11,8 +11,9 @@ import (
 	"strings"
 
 	_ "github.com/duckdb/duckdb-go/v2" // register duckdb driver
-	"github.com/jcodagnone/chapauy/impo"
 	"github.com/spf13/cobra"
+
+	"github.com/jcodagnone/chapauy/impo"
 )
 
 var impoCmd = &cobra.Command{
@@ -25,15 +26,18 @@ var impoListCmd = &cobra.Command{
 	Short: "Lista las base de datos disponibles",
 	RunE: func(_ *cobra.Command, _ []string) error {
 		a, b, c := strings.Repeat("─", 2), strings.Repeat("─", 14), strings.Repeat("─", 60)
+
 		fmt.Println("Base de datos disponibles:")
 		fmt.Printf("╭─%2s─┬─%-14s─┬─%-60s╮\n", a, b, c)
 		fmt.Printf("│ %2s │ %-14s │ %-60s│\n", "Id", "Nombre", "Ubicación")
 		fmt.Printf("├─%2s─┼─%-14s─┼─%-60s┤\n", a, b, c)
+
 		err := impo.Each(func(db impo.DbReference) error {
 			fmt.Printf("│ %2d │ %-14s │ %-60s│\n", db.ID, db.Name, db.SeedURL)
 
 			return nil
 		})
+
 		fmt.Printf("╰─%2s─┴─%-14s─┴─%-60s╯\n", a, b, c)
 
 		return err
@@ -61,8 +65,11 @@ var impoUpdateCmd = &cobra.Command{
 	Args:  dbArg,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		force, _ := cmd.Flags().GetBool("force")
-		var metrics impo.ClientMetrics
-		var err error
+
+		var (
+			metrics impo.ClientMetrics
+			err     error
+		)
 
 		db, err := sql.Open("duckdb", filepath.Join(impoOptions.DbPath, "chapauy.duckdb"))
 		if err != nil {
@@ -78,6 +85,7 @@ var impoUpdateCmd = &cobra.Command{
 		if err != nil {
 			return fmt.Errorf("initializing repository: %w", err)
 		}
+
 		if err := repo.CreateSchema(); err != nil {
 			return fmt.Errorf("creating table: %w", err)
 		}
@@ -118,11 +126,13 @@ var impoUpdateCmd = &cobra.Command{
 			if er != nil {
 				return er
 			}
+
 			impoOptions.UserAgent = fmt.Sprintf("chapauy/%s (+https://github.com/jcodagnone/chapauy)", Version)
 			c := impo.NewImpoClient(impoOptions, db, repo)
 			err = c.Update()
 			metrics.Merge(&c.Metrics)
 		}
+
 		if !impoOptions.SkipSearch {
 			log.Printf(
 				"Total search phase metrics - %d new records from a total of %d records across %d pages",
@@ -131,6 +141,7 @@ var impoUpdateCmd = &cobra.Command{
 				metrics.SearchPages,
 			)
 		}
+
 		if !impoOptions.SkipDownload {
 			log.Printf(
 				"Total download phase metrics - %d successful, %d failed",
@@ -138,6 +149,7 @@ var impoUpdateCmd = &cobra.Command{
 				metrics.DownloadsErr,
 			)
 		}
+
 		if !impoOptions.SkipExtract {
 			log.Printf(
 				"Total extraction phase metrics - %d new records, %d errors from %d documents, %d successful and %d failed.",

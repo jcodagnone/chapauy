@@ -10,8 +10,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/jcodagnone/chapauy/impo"
 	"github.com/spf13/cobra"
+
+	"github.com/jcodagnone/chapauy/impo"
 )
 
 // we say that it isn't.
@@ -43,9 +44,11 @@ BTX1234		{Country:UY AdmDivision:B … Category:Taxi MercosurFormat:true}
 		if isTerminal(input) {
 			fmt.Fprintln(os.Stderr, "Ingrese mátriculas a analizar, una por línea…")
 		}
+
 		scanner := bufio.NewScanner(input)
 		for scanner.Scan() {
 			plate := scanner.Text()
+
 			info, err := impo.AnalyzeVehicleID(plate, "")
 			if err != nil {
 				fmt.Printf("%s\t%q\n", plate, err)
@@ -57,6 +60,7 @@ BTX1234		{Country:UY AdmDivision:B … Category:Taxi MercosurFormat:true}
 				}
 			}
 		}
+
 		if err := scanner.Err(); err != nil {
 			fmt.Fprintf(os.Stderr, "Error reading input: %s\n", err)
 			os.Exit(1)

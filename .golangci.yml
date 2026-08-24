@@ -1,0 +1,43 @@
+# Copyright 2026 The ChapaUY Authors
+# SPDX-License-Identifier: Apache-2.0
+
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - dupl
+    - errorlint
+    - makezero
+    - nlreturn
+    - perfsprint
+    - prealloc
+    - revive
+    - testifylint
+    - usestdlibvars
+    - wsl_v5
+  settings:
+    revive:
+      enable-default-rules: true
+      rules:
+        - name: exported
+          disabled: true
+        - name: package-comments
+          disabled: true
+  exclusions:
+    rules:
+      - linters:
+          - errcheck
+        text: "Error return value of `.+\\.(Close|Remove|RemoveAll)` is not checked"
+
+formatters:
+  enable:
+    - gci
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - localmodule

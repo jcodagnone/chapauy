@@ -350,8 +350,8 @@ func (r *sqlOffenseRepository) SaveTrafficOffenses(offenses []*TrafficOffense) e
 	}
 
 	docSource := offenses[0].DocSource
-	tx, err := r.db.Begin()
 
+	tx, err := r.db.Begin()
 	if err != nil {
 		return fmt.Errorf("starting transaction for %s: %w", docSource, err)
 	}
@@ -383,7 +383,7 @@ func (r *sqlOffenseRepository) SaveTrafficOffenses(offenses []*TrafficOffense) e
 	for _, record := range offenses {
 		var countryHint string
 		if record.VehicleInfo != nil {
-			countryHint = record.VehicleInfo.Country
+			countryHint = record.Country
 		}
 
 		info, _ := AnalyzeVehicleID(record.Vehicle, countryHint)

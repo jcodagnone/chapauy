@@ -13,10 +13,11 @@ import (
 	"path/filepath"
 
 	_ "github.com/duckdb/duckdb-go/v2" // register duckdb driver
+	"github.com/spf13/cobra"
+
 	"github.com/jcodagnone/chapauy/curation"
 	"github.com/jcodagnone/chapauy/curation/utils"
 	"github.com/jcodagnone/chapauy/impo"
-	"github.com/spf13/cobra"
 )
 
 const judgmentsFile = "judgments.json"
@@ -40,6 +41,7 @@ var curationServeCmd = &cobra.Command{
 		if err := os.MkdirAll(impoOptions.DbPath, 0o750); err != nil {
 			return fmt.Errorf("creating db directory: %w", err)
 		}
+
 		dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
 
 		if _, err := os.Stat(dbpath); errors.Is(err, os.ErrNotExist) {
@@ -54,6 +56,7 @@ var curationServeCmd = &cobra.Command{
 
 		// Build DB map
 		dbMap := make(map[int]string)
+
 		if err := impo.Each(func(ref impo.DbReference) error {
 			dbMap[ref.ID] = ref.Name
 
@@ -100,6 +103,7 @@ var curationStoreCmd = &cobra.Command{
 	Args:  cobra.NoArgs,
 	RunE: func(_ *cobra.Command, _ []string) error {
 		dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
+
 		db, err := sql.Open("duckdb", dbpath)
 		if err != nil {
 			return fmt.Errorf("opening database: %w", err)
@@ -107,12 +111,14 @@ var curationStoreCmd = &cobra.Command{
 		defer db.Close()
 
 		repo := curation.NewLocationRepository(db, nil)
+
 		locations, err := repo.GetAllJudgmentsSorted()
 		if err != nil {
 			return fmt.Errorf("getting location judgments: %w", err)
 		}
 
 		descrRepo := curation.NewDescriptionRepository(db)
+
 		descriptions, err := descrRepo.GetAllDescriptionJudgmentsSorted()
 		if err != nil {
 			return fmt.Errorf("getting description judgments: %w", err)
@@ -159,6 +165,7 @@ After importing, it updates the offenses table with the geocoding information.`,
 	RunE: func(cmd *cobra.Command, _ []string) error {
 		force, _ := cmd.Flags().GetBool("force")
 		dbpath := filepath.Join(impoOptions.DbPath, "chapauy.duckdb")
+
 		db, err := sql.Open("duckdb", dbpath)
 		if err != nil {
 			return fmt.Errorf("opening database: %w", err)

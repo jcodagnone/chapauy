@@ -74,6 +74,7 @@ func TestDescriptionSchema(t *testing.T) {
 
 	// Check if tables exist
 	var count int
+
 	err := db.QueryRow("SELECT COUNT(*) FROM articles").Scan(&count)
 	require.NoError(t, err)
 	assert.Equal(t, 4, count) // Changed from 3 to 4

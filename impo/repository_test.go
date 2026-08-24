@@ -67,16 +67,19 @@ func TestSQLRepository_SaveTrafficOffenses(t *testing.T) {
 
 	// Verify using raw SQL
 	var count int
+
 	err = db.QueryRow("SELECT COUNT(*) FROM offenses").Scan(&count)
 	require.NoError(t, err)
 	assert.Equal(t, 2, count)
 
 	var vehicle string
+
 	err = db.QueryRow("SELECT vehicle FROM offenses WHERE record_id = 1").Scan(&vehicle)
 	require.NoError(t, err)
 	assert.Equal(t, "AAAA123", vehicle)
 
 	var errStr string
+
 	err = db.QueryRow("SELECT error FROM offenses WHERE record_id = 2").Scan(&errStr)
 	require.NoError(t, err)
 	assert.Equal(t, "Some error", errStr)
@@ -137,6 +140,7 @@ func TestSQLRepository_SaveTrafficOffenses_H3Nulls(t *testing.T) {
 	require.NoError(t, err)
 
 	var h3Res1 sql.NullInt64
+
 	err = db.QueryRow("SELECT h3_res1 FROM offenses WHERE record_id = 1").Scan(&h3Res1)
 	require.NoError(t, err)
 

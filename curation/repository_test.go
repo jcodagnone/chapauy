@@ -10,6 +10,7 @@ import (
 	"time"
 
 	_ "github.com/duckdb/duckdb-go/v2"
+
 	"github.com/jcodagnone/chapauy/spatial"
 )
 

@@ -623,8 +623,8 @@ func (r *sqlDescriptionRepository) GetReviewAssignments() ([]ReviewCode, error) 
 						LEFT JOIN description_offense_counts doc ON d.description = doc.description
 						ORDER BY a.code ASC, a.id ASC, d.description ASC;
 					`
-	rows, err := r.db.Query(query)
 
+	rows, err := r.db.Query(query)
 	if err != nil {
 		return nil, err
 	}

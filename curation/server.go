@@ -19,9 +19,10 @@ import (
 	apikeys "cloud.google.com/go/apikeys/apiv2"
 	"cloud.google.com/go/apikeys/apiv2/apikeyspb"
 	"github.com/gin-gonic/gin"
-	"github.com/jcodagnone/chapauy/spatial"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/iterator"
+
+	"github.com/jcodagnone/chapauy/spatial"
 )
 
 type Server struct {

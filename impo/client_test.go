@@ -69,7 +69,6 @@ func TestClient_downloadMissing_NotYetPublished(t *testing.T) {
 	client.options.DryRun = false
 
 	err = client.downloadMissing()
-
 	if err != nil {
 		t.Errorf("Expected nil error, got %v", err)
 	}

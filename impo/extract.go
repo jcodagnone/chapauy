@@ -17,11 +17,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/jcodagnone/chapauy/spatial"
-	"github.com/jcodagnone/chapauy/utils/htmlutils"
 	"github.com/mattn/go-isatty"
 	"github.com/schollz/progressbar/v3"
 	"golang.org/x/net/html"
+
+	"github.com/jcodagnone/chapauy/spatial"
+	"github.com/jcodagnone/chapauy/utils/htmlutils"
 )
 
 // UR represents Unidad Reajustable.
@@ -329,7 +330,7 @@ func (record *TrafficOffense) set(i OffenseProperty, s string) error {
 				record.VehicleInfo = &VehicleInfo{}
 			}
 
-			record.VehicleInfo.Country = country
+			record.Country = country
 		}
 	case propIgnore:
 		// skip
@@ -730,8 +731,8 @@ func (c *Client) extractDocument(id string) (*ExtractMetrics, error) {
 	failedMetrics := &ExtractMetrics{
 		FailedDocs: 1,
 	}
-	r, err := c.store.GetDocument(id)
 
+	r, err := c.store.GetDocument(id)
 	if err != nil {
 		return failedMetrics, fmt.Errorf("opening document %s: %w", id, err)
 	}
@@ -752,7 +753,7 @@ func (c *Client) extractDocument(id string) (*ExtractMetrics, error) {
 	}
 
 	if len(offenses) > 0 {
-		offenses[0].Document.DocSource = id
+		offenses[0].DocSource = id
 	}
 
 	for _, o := range offenses {
@@ -925,6 +926,7 @@ func (c *Client) extractDocuments() error {
 
 		go func(id string) {
 			defer wg.Done()
+
 			semaphore <- struct{}{}
 
 			defer func() { <-semaphore }()
