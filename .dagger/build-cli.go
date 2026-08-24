@@ -11,6 +11,9 @@ import (
 
 const (
 	cliUser = "appuser" // we'll create this user in the container
+	// Official golang images set GOTOOLCHAIN=local, so this tag must be
+	// at least the `go` directive in the root go.mod.
+	goImage = "golang:1.26.7-bookworm"
 )
 
 // Builds the CLI binary
@@ -28,7 +31,7 @@ func (c *Chapauy) BuildCliBase(
 	return dag.Container().
 		// we use bookworm and not something like alpine because duckdb is
 		// very sensitive to musl
-		From("golang:1.25.8-bookworm").
+		From(goImage).
 		// Create a non-root user 'appuser' to avoid running the build as root,
 		// trying to improve security (process will have a different uid in the host)
 		WithExec([]string{"useradd", "-m", "-u", "1000", cliUser}).
