@@ -60,7 +60,7 @@
     "@vitest/browser-webdriverio": "4.1.11",
     "@vitest/ui": "4.1.11",
     "eslint": "^10.9.0",
-    "eslint-config-next": "16.3.2",
+    "eslint-config-next": "16.3.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^30.0.1",
