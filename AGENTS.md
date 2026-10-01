@@ -12,6 +12,8 @@ Documentación de referencia: [Arquitectura](web/docs/000-arquitectura.md) · [A
 
 ## Comandos
 
+Entorno: `devenv shell` (Go, Node.js, pnpm, DuckDB, Dagger, Podman, gcloud).
+
 Backend: `make test` · `make` (linter) · `go run main.go impo update` · `go run main.go curation serve`
 
 Frontend: `cd web && pnpm dev` · `pnpm test` · `pnpm lint`

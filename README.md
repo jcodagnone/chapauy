@@ -78,3 +78,25 @@ ChapaUY incluye interfaces para la geocodificación interactiva y la clasificaci
 ```
 
 Consulte el manual de [Enriquecimiento](web/docs/020-curate.md) para más detalles sobre la estrategia de bloques de matrículas y flujos de trabajo de curación.
+
+# Entorno de desarrollo
+
+Las herramientas de desarrollo están declaradas en [`devenv.nix`](devenv.nix).
+El shell trae Go, Node.js 24, pnpm 10.33.3, el CLI de DuckDB, Dagger, Podman,
+`gcloud` y las herramientas que usa `make` (golangci-lint, gosec, govulncheck,
+staticcheck, syft, cosign, cyclonedx-gomod, addlicense).
+
+```bash
+devenv shell
+```
+
+Con [direnv](https://direnv.net/), `direnv allow` activa el entorno al entrar
+al directorio (`.envrc`).
+
+Podman corre rootless y usa el `newuidmap` del sistema operativo; Nix no puede
+proveer ese binario porque exige setuid. Dagger lo usa como runtime de
+contenedores. `gcloud` es software no libre: `devenv.yaml` lo habilita solo
+para ese paquete, y las credenciales siguen en `~/.config/gcloud`.
+
+El driver de Go enlaza DuckDB 1.5.6. El CLI es el de nixpkgs, de la misma
+serie 1.5, y alcanza para inspeccionar `db/chapauy.duckdb`.

@@ -9,3 +9,8 @@ inputs:
     inputs:
       nixpkgs:
         follows: nixpkgs
+
+# gcloud is unfree. Permit that package only.
+nixpkgs:
+  permitted_unfree_packages:
+    - google-cloud-sdk

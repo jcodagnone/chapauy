@@ -30,10 +30,11 @@ db/
 .zed
 
 #########################
-# devenv.sh             #
+# devenv                #
 #########################
 .devenv/
 .devenv.flake.nix
+.direnv/
 
 
 backups

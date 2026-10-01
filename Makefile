@@ -6,15 +6,16 @@ VERSION=$(shell git describe --tags --always --dirty)
 BUILD_DIR=./build
 MAIN_PKG=main.go
 
-# TOOLs
-GOSEC=$(shell go env GOPATH)/bin/gosec
-GOLANGCI_LINT=$(shell go env GOPATH)/bin/golangci-lint
-STATICCHECK=$(shell go env GOPATH)/bin/staticcheck
-CYCLONEDX=$(shell go env GOPATH)/bin/cyclonedx-gomod
-COSIGN=$(shell go env GOPATH)/bin/cosign
-SYFT=$(shell go env GOPATH)/bin/syft
-ADDLICENSE=$(shell go env GOPATH)/bin/addlicense
-GOVULNCHECK=$(shell go env GOPATH)/bin/govulncheck
+# Tools on PATH (devenv) win. Otherwise fall back to GOPATH/bin (`make deps`).
+tool = $(shell command -v $(1) 2>/dev/null || echo "$$(go env GOPATH)/bin/$(1)")
+GOSEC=$(call tool,gosec)
+GOLANGCI_LINT=$(call tool,golangci-lint)
+STATICCHECK=$(call tool,staticcheck)
+CYCLONEDX=$(call tool,cyclonedx-gomod)
+COSIGN=$(call tool,cosign)
+SYFT=$(call tool,syft)
+ADDLICENSE=$(call tool,addlicense)
+GOVULNCHECK=$(call tool,govulncheck)
 
 all:  lint test security vuln license build #sbom sign
 
