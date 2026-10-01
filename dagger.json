@@ -1,6 +1,6 @@
 {
   "name": "chapauy",
-  "engineVersion": "v0.21.3",
+  "engineVersion": "v0.21.10",
   "sdk": {
     "source": "go"
   },
