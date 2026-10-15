@@ -136,6 +136,16 @@ https://geoservicios.mtop.gub.uy/geoserver/inf_tte_ttelog_terrestre/ows?service=
 
 En las notificaciones esto suele escribirse como `Ruta 005 y 038K131_D`. Hay toda una heurística para intentar usar estos nombres.
 
+`038K131` es la progresiva: 38 km y 131 m desde el kilómetro 0 de la ruta, medidos en el sentido en que el kilometraje crece. El mojón del kilómetro 38 es la progresiva `038K000`. La ruta y los metros van en campos de ancho fijo, con ceros a la izquierda: `008` es la Ruta 8 y `039` son 39 m.
+
+La letra final es el sentido de circulación. **C** es creciente, el sentido en que los kilómetros suben y la ruta se aleja de su origen. **D** es decreciente, el sentido de vuelta hacia ese origen. En la Ruta 8 el origen está en Montevideo y el creciente va hacia Melo. En una doble vía cada calzada tiene su propia progresiva, así que un mismo pórtico llega como dos textos separados por decenas o unos cientos de metros, por ejemplo `015K858C` y `015K934D`. El listado del ministerio suele guardar esas dos progresivas en un solo punto de `radares_rutas`, como `13K457/13K385`. El guión bajo no cambia el sentido: `038K131_D` y `038K131D` son la misma referencia.
+
+Los mojones los releva la Dirección Nacional de Vialidad y los publica la IDE del MTOP en la capa `postes_km` del mismo geoportal: [visualizador](https://geoportal.mtop.gub.uy/visualizador/?call=capas&c=postes_km). Vialidad no tiene un portal aparte. La descarga WFS es
+
+https://geoservicios.mtop.gub.uy/geoserver/inf_tte_ttelog_terrestre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=inf_tte_ttelog_terrestre:postes_km&outputFormat=application/json
+
+La copia local está en `curation/postes_km.json` (6381 puntos al 15 de octubre de 2026). Cada punto trae `ruta`, `km` y `relev_por`. El servidor de curación carga `radares.json` para sugerir coordenadas. Esta copia queda como referencia de progresivas y todavía no tiene lector. Un par `ruta` + `km` puede repetirse: hay re-relevamientos marcados como "Nuevo" y mojones desplazados, y algunos kilómetros están cargados en lugares incompatibles entre sí.
+
 ### Descripciones
 
 Las descripciones de las infracciones también son texto libre y varían enormemente ("Exceso vel.", "Art 13 vel.", "Velocidad excesiva"). El proceso de curación asigna a cada descripción única:
