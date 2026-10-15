@@ -177301,6 +177301,20 @@
     },
     {
       "db_id": 26,
+      "location": "AV BALTASAR BRUM y ANA M LAVALLEJA",
+      "point": {
+        "lat": -34.3783026,
+        "lng": -55.2537386
+      },
+      "is_electronic": false,
+      "geocoding_method": "google_maps",
+      "confidence": "medium",
+      "notes": "Av. Dr. Baltasar Brum \u0026 Ana Monterroso de Lavalleja, 30000 Minas, Departamento de Lavalleja, Uruguay",
+      "created_at": "2026-10-15T14:34:45.153787Z",
+      "updated_at": "2026-10-15T14:34:45.153787Z"
+    },
+    {
+      "db_id": 26,
       "location": "AV BALTASAR BRUM y FRAC LOS LAGOS",
       "point": {
         "lat": -34.378933367360084,
@@ -231608,6 +231622,48 @@
     },
     {
       "db_id": 68,
+      "location": "RUTA 008 / 015K858C",
+      "point": {
+        "lat": -34.801938,
+        "lng": -56.087319
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Villa Don Bosco, Villa García. Progresiva medida desde el poste km 16 de DNV; no figura en radares_rutas.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 015K934D",
+      "point": {
+        "lat": -34.801426,
+        "lng": -56.086693
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Villa Don Bosco, Villa García. Progresiva medida desde el poste km 16 de DNV; no figura en radares_rutas.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 021K039C",
+      "point": {
+        "lat": -34.776326,
+        "lng": -56.044551
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Ruta 8, Montevideo. Progresiva medida desde el poste km 21 de DNV; no figura en radares_rutas.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
+    },
+    {
+      "db_id": 68,
       "location": "RUTA 008 / 023K479C",
       "point": {
         "lat": -34.8222,
@@ -231620,6 +231676,48 @@
       "created_at": "2026-04-19T13:15:31.052779Z",
       "updated_at": "2026-04-19T13:23:05.848198Z",
       "canonical_location": "Ruta 008 y 023K479_C"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 024K055C",
+      "point": {
+        "lat": -34.763251,
+        "lng": -56.017283
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Villa Hermosa, Barros Blancos. Progresiva medida desde el poste km 24 de DNV; no figura en radares_rutas.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 024K291D",
+      "point": {
+        "lat": -34.761917,
+        "lng": -56.015304
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Villa Electrón, Barros Blancos. Progresiva medida desde el poste km 24 de DNV; no figura en radares_rutas.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
+    },
+    {
+      "db_id": 68,
+      "location": "RUTA 008 / 024K291_D",
+      "point": {
+        "lat": -34.761917,
+        "lng": -56.015304
+      },
+      "is_electronic": true,
+      "geocoding_method": "manual",
+      "confidence": "medium",
+      "notes": "Villa Electrón, Barros Blancos. Misma progresiva que RUTA 008 / 024K291D.",
+      "created_at": "2026-10-15T18:10:00Z",
+      "updated_at": "2026-10-15T18:10:00Z"
     },
     {
       "db_id": 68,
