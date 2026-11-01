@@ -55,10 +55,10 @@ vuln:
 
 license:
 	@echo "Checking source boilerplate..."
-	$(ADDLICENSE) --check --ignore 'build/**' --ignore '.dagger/internal/**'  --ignore 'web/**' -c 'The ChapaUY Authors' -l apache  -s=only .
+	$(ADDLICENSE) --check --ignore 'build/**' --ignore '.dagger/internal/**'  --ignore 'web/**' --ignore '.devenv/**' -c 'The ChapaUY Authors' -l apache  -s=only .
 
 addlicense:
-	$(ADDLICENSE)  --ignore 'build/**' --ignore '.dagger/internal/**' --ignore 'web/**'   -c 'The ChapaUY Authors' -l apache  -s=only .
+	$(ADDLICENSE)  --ignore 'build/**' --ignore '.dagger/internal/**' --ignore 'web/**' --ignore '.devenv/**'  -c 'The ChapaUY Authors' -l apache  -s=only .
 
 sbom:
 	@echo "Generating SBOM..."
